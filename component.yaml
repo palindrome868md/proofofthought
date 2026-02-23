@@ -1,0 +1,27 @@
+components:
+  - id: ProofOfThought
+    owner: Debargha Ganguly
+    primaryThrust: core/ModelCommons
+    name: Proof of Thought
+    status: BetaRelease
+    website: https://debarghag.github.io/proofofthought/
+    description: LLM-based reasoning using Z3 theorem proving with multiple backend support (SMT2 and JSON). Provides a high-level Python API for neurosymbolic reasoning tasks with postprocessing techniques for enhanced quality.
+    componentVersion: 1.0.1
+    targetIcicleRelease: 2023-04
+    licenseUrl: https://github.com/debarghaG/proofofthought/blob/main/LICENSE
+    publicAccess: true
+    sourceCodeUrl: https://github.com/debarghaG/proofofthought
+    releaseNotesUrl: https://github.com/debarghaG/proofofthought/releases
+    citation: "Debargha Ganguly, Srinivasan Iyengar, Vipin Chaudhary, Shivkumar Kalyanaraman. (2024) PROOF OF THOUGHT: Neurosymbolic Program Synthesis allows Robust and Interpretable Reasoning. The First Workshop on System-2 Reasoning at Scale, NeurIPS'24. https://openreview.net/forum?id=Pxx3r14j3U"
+    pypiPackage: proofofthought:1.0.1
+    codeReviewConducted: true
+    testsWritten: true
+    securityReviewConducted: false
+    biasAssessmentConducted: false
+    usageDocumentationAvailable: true
+    usageDocumentationUrl: https://debarghag.github.io/proofofthought/
+    developerDocumentationAvailable: true
+    developerDocumentationUrl: https://github.com/debarghaG/proofofthought/blob/main/README.md
+    trainingTutorialsAvailable: true
+    trainingTutorialsUrl: https://debarghag.github.io/proofofthought/
+    usageMetricsCollected: false

@@ -9,6 +9,8 @@
 
 LLM-based reasoning using Z3 theorem proving with multiple backend support (SMT2 and JSON).
 
+**Tags:** `AI4CI` `Software`
+
 ## Features
 
 - **Dual Backend Support**: Choose between SMT2 (default) or JSON execution backends
@@ -17,6 +19,38 @@ LLM-based reasoning using Z3 theorem proving with multiple backend support (SMT2
 - **High-level API**: Simple Python interface for reasoning tasks
 - **Batch Evaluation Pipeline**: Built-in tools for dataset evaluation and metrics
 - **Postprocessing Techniques**: Self-Refine, Self-Consistency, Decomposed Prompting, and Least-to-Most Prompting for enhanced reasoning quality
+
+### License
+
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## References
+
+- [Z3 Theorem Prover](https://github.com/Z3Prover/z3) — The underlying SMT solver used by ProofOfThought.
+- [OpenAI API](https://platform.openai.com/docs) — LLM provider for reasoning generation.
+- [Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/) — Azure-hosted LLM endpoint support.
+- [SMT-LIB Standard](https://smtlib.cs.uiowa.edu/) — The SMT-LIB 2.0 standard used by the SMT2 backend.
+- [Diataxis Documentation Framework](https://diataxis.fr/) — Framework guiding the structure of this documentation.
+
+## Acknowledgements
+
+This work was supported by:
+
+*National Science Foundation (NSF) funded AI institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE) (OAC 2112606)*
+
+## Issue Reporting
+
+If you encounter any issues, please report them via [GitHub Issues](https://github.com/debarghaG/proofofthought/issues). When filing an issue, please include:
+- A clear description of the problem
+- Steps to reproduce the issue
+- Your Python version and OS
+- Relevant logs or error messages
+
+---
+
+# Tutorials
 
 ## Installation
 
@@ -123,20 +157,34 @@ result = pot.query("Would Nancy Pelosi publicly denounce abortion?")
 print(result.answer)  # False
 ```
 
-## Batch Evaluation
+## Examples
 
-```python
-from z3adapter.reasoning import EvaluationPipeline, ProofOfThought
+The `examples/` directory contains complete working examples for various use cases:
 
-evaluator = EvaluationPipeline(proof_of_thought=pot, output_dir="results/")
-result = evaluator.evaluate(
-    dataset="data/strategyQA_train.json",
-    question_field="question",
-    answer_field="answer",
-    max_samples=10
-)
-print(f"Accuracy: {result.metrics.accuracy:.2%}")
+- **simple_usage.py** - Basic usage with OpenAI
+- **azure_simple_example.py** - Simple Azure OpenAI integration
+- **backend_comparison.py** - Comparing SMT2 vs JSON backends
+- **batch_evaluation.py** - Evaluating on datasets
+- **postprocessor_example.py** - Using postprocessing techniques
+
+### Running Examples After pip Install
+
+If you installed via `pip install proofofthought`, you can create your own scripts anywhere using the Quick Start examples above. The examples directory is primarily for development and testing.
+
+### Running Examples in Development Mode
+
+If you cloned the repository:
+
+```bash
+cd /path/to/proofofthought
+python examples/simple_usage.py
 ```
+
+**Note:** Some examples use helper modules like `utils/azure_config.py` which are only available when running from the repository root.
+
+---
+
+# How-To Guides
 
 ## Backend Selection
 
@@ -186,39 +234,20 @@ Available techniques:
 
 See [POSTPROCESSORS.md](POSTPROCESSORS.md) for complete documentation and usage examples.
 
-## Architecture
+## Batch Evaluation
 
-The system has two layers:
+```python
+from z3adapter.reasoning import EvaluationPipeline, ProofOfThought
 
-1. **High-level API** (`z3adapter.reasoning`) - Simple Python interface for reasoning tasks
-2. **Low-level execution** (`z3adapter.backends`) - JSON DSL or SMT2 backend for Z3
-
-Most users should use the high-level API.
-
-## Examples
-
-The `examples/` directory contains complete working examples for various use cases:
-
-- **simple_usage.py** - Basic usage with OpenAI
-- **azure_simple_example.py** - Simple Azure OpenAI integration
-- **backend_comparison.py** - Comparing SMT2 vs JSON backends
-- **batch_evaluation.py** - Evaluating on datasets
-- **postprocessor_example.py** - Using postprocessing techniques
-
-### Running Examples After pip Install
-
-If you installed via `pip install proofofthought`, you can create your own scripts anywhere using the Quick Start examples above. The examples directory is primarily for development and testing.
-
-### Running Examples in Development Mode
-
-If you cloned the repository:
-
-```bash
-cd /path/to/proofofthought
-python examples/simple_usage.py
+evaluator = EvaluationPipeline(proof_of_thought=pot, output_dir="results/")
+result = evaluator.evaluate(
+    dataset="data/strategyQA_train.json",
+    question_field="question",
+    answer_field="answer",
+    max_samples=10
+)
+print(f"Accuracy: {result.metrics.accuracy:.2%}")
 ```
-
-**Note:** Some examples use helper modules like `utils/azure_config.py` which are only available when running from the repository root.
 
 ## Running Experiments
 
@@ -236,9 +265,28 @@ This will:
 - Generate results tables in `results/`
 - Automatically update the benchmark results section below
 
+---
+
+# Explanation
+
+## Architecture
+
+The system has two layers:
+
+1. **High-level API** (`z3adapter.reasoning`) - Simple Python interface for reasoning tasks
+2. **Low-level execution** (`z3adapter.backends`) - JSON DSL or SMT2 backend for Z3
+
+Most users should use the high-level API.
+
+For full documentation, visit the [ProofOfThought Documentation Site](https://debarghag.github.io/proofofthought/).
+
+---
+
+# Reference
+
 <!-- BENCHMARK_RESULTS_START -->
 
-# Benchmark Results
+## Benchmark Results
 
 **Last Updated:** 2025-10-16 18:14:07
 
@@ -255,11 +303,9 @@ This will:
 | CONDITIONALQA | JSON | 100 | 76.00% | 0.9180 | 0.8750 | 0.8960 | 89.00% |
 | STRATEGYQA | JSON | 100 | 68.00% | 0.7500 | 0.7895 | 0.7692 | 86.00% |
 
-
-
 <!-- BENCHMARK_RESULTS_END -->
 
-# Citations
+## Citations
 
 Please consider citing our work if you find this useful.
 
