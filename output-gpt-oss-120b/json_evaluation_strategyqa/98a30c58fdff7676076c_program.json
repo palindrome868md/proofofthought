@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Discipline",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Particle",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "studies",
+      "domain": [
+        "Discipline",
+        "Particle"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "disciplines": {
+      "sort": "Discipline",
+      "members": [
+        "biochemistry"
+      ]
+    },
+    "particles": {
+      "sort": "Particle",
+      "members": [
+        "gluon"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(studies(biochemistry, gluon))"
+  ],
+  "verifications": [
+    {
+      "name": "Biochemistry studies gluons",
+      "constraint": "studies(biochemistry, gluon)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

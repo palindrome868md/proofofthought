@@ -1,0 +1,92 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_bank_account",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_mentally_incapable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sectioned",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_relative",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_be_appointee",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "brother"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(me) == 28",
+    "age(brother) == 30",
+    "has_bank_account(me) == True",
+    "is_sectioned(brother) == True",
+    "is_mentally_incapable(brother) == True",
+    "is_relative(me, brother) == True",
+    "ForAll([p, c], Implies(And(age(p) > 18, has_bank_account(p), is_mentally_incapable(c)), can_be_appointee(p, c)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can I be appointed for brother's tax credits",
+      "constraint": "can_be_appointee(me, brother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

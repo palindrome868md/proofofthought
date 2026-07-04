@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "University",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "attends",
+      "domain": [
+        "Person",
+        "University"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "University",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    },
+    "universities": {
+      "sort": "University",
+      "members": [
+        "edinburgh_university"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "united_kingdom"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "attends(william_dickinson, edinburgh_university)",
+    "located_in(edinburgh_university, united_kingdom)"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson attended a university in the United Kingdom",
+      "constraint": "And(attends(william_dickinson, edinburgh_university), located_in(edinburgh_university, united_kingdom))"
+    }
+  ]
+}

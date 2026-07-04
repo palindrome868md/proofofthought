@@ -1,0 +1,92 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "AMC_AList",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HBO",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "EligibleThreeMoviesFree",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GoesWeekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "WatchesTVSeriesInCinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "JamesFamilyMember",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "PrefersTVSeries",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(AMC_AList(p), EligibleThreeMoviesFree(p)))",
+    "Exists([q], And(JamesFamilyMember(q), GoesWeekly(q)))",
+    "ForAll([p], Implies(JamesFamilyMember(p), Or(AMC_AList(p), HBO(p))))",
+    "ForAll([p], Implies(PrefersTVSeries(p), Not(WatchesTVSeriesInCinema(p))))",
+    "ForAll([p], Implies(HBO(p), PrefersTVSeries(p)))",
+    "JamesFamilyMember(lily)",
+    "AMC_AList(lily)",
+    "WatchesTVSeriesInCinema(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Lily weekly cinemas or 3 free movies",
+      "constraint": "Or(GoesWeekly(lily), EligibleThreeMoviesFree(lily))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

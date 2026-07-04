@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "adopts",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "husband"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "partner(me, husband) == True",
+    "ForAll([p1, p2], Implies(And(partner(p1, p2), adopts(p1), adopts(p2)), False))"
+  ],
+  "verifications": [
+    {
+      "name": "BothCanTakePaidLeave",
+      "constraint": "And(adopts(me), adopts(husband))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

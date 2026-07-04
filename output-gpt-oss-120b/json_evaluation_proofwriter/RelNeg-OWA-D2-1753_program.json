@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "bear",
+        "cat",
+        "rabbit",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "eats(bear, cat)",
+    "sees(bear, cat)",
+    "eats(cat, bear)",
+    "is_red(cat)",
+    "sees(cat, rabbit)",
+    "eats(rabbit, squirrel)",
+    "sees(rabbit, squirrel)",
+    "eats(squirrel, bear)",
+    "eats(squirrel, cat)",
+    "visits(squirrel, rabbit)",
+    "ForAll([x], Implies(sees(x, cat), visits(cat, squirrel)))",
+    "ForAll([x], Implies(And(eats(x, squirrel), is_green(squirrel)), Not(visits(squirrel, cat))))",
+    "ForAll([x], Implies(And(is_nice(x), eats(x, squirrel)), visits(squirrel, cat)))",
+    "ForAll([x], Implies(And(is_red(x), visits(x, squirrel)), eats(x, cat)))",
+    "Implies(And(Not(is_green(rabbit)), Not(sees(rabbit, bear))), visits(rabbit, squirrel))",
+    "ForAll([x], Implies(visits(x, bear), eats(bear, rabbit)))",
+    "Implies(Not(eats(squirrel, rabbit)), visits(rabbit, cat))",
+    "ForAll([x], Implies(And(visits(x, cat), sees(x, squirrel)), Not(eats(cat, bear))))"
+  ],
+  "verifications": [
+    {
+      "name": "CatVisitsSquirrel",
+      "constraint": "visits(cat, squirrel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

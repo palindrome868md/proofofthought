@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Position",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "played_as",
+      "domain": [
+        "Person",
+        "Position"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "thomas_barber"
+      ]
+    },
+    "positions": {
+      "sort": "Position",
+      "members": [
+        "halfback",
+        "inside_left"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "played_as(thomas_barber, halfback)",
+    "played_as(thomas_barber, inside_left)"
+  ],
+  "verifications": [
+    {
+      "name": "Thomas Barber played as an inside left",
+      "constraint": "played_as(thomas_barber, inside_left)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

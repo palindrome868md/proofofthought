@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_jew",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "dustin_hoffman"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_jew(dustin_hoffman)"
+  ],
+  "verifications": [
+    {
+      "name": "Is Dustin Hoffman a Bnei Yisrael",
+      "constraint": "is_jew(dustin_hoffman)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

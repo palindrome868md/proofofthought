@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "ex_employee_ncb",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_fuel",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "myself"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "ex_employee_ncb(myself) == True"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "ex_employee_ncb(p)",
+        "consequent": "eligible_for_fuel(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Entitled to fuel payment",
+      "constraint": "eligible_for_fuel(myself)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

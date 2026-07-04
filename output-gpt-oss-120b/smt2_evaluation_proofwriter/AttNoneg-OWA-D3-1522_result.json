@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-1522",
+  "question": "Bob is cold. Bob is furry. Bob is nice. Bob is red. Bob is round. Bob is smart. Erin is red. If someone is furry then they are round. If Bob is nice and Bob is big then Bob is smart. All red people are furry. If someone is furry and big then they are round. If someone is red and round then they are nice. All big, cold people are red. All furry people are red. All big people are cold.\n\nQuestion: Erin is not nice.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

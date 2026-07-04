@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_probate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_pay_from_deceased_account",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "executor",
+      "sort": "Person"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "has_probate(executor) == True",
+    "ForAll([p], Implies(has_probate(p), can_pay_from_deceased_account(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can pay inheritance tax from father's account",
+      "constraint": "can_pay_from_deceased_account(executor)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

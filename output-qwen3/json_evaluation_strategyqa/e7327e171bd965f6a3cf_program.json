@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Subject",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "EducationSystem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_core_subject",
+      "domain": [
+        "Subject",
+        "EducationSystem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_prioritized",
+      "domain": [
+        "Subject",
+        "EducationSystem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "subjects": {
+      "sort": "Subject",
+      "members": [
+        "art",
+        "math",
+        "science",
+        "reading",
+        "music"
+      ]
+    },
+    "education_systems": {
+      "sort": "EducationSystem",
+      "members": [
+        "us_education"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Subject"
+    }
+  ],
+  "knowledge_base": [
+    "is_core_subject(math, us_education) == True",
+    "is_core_subject(science, us_education) == True",
+    "is_core_subject(reading, us_education) == True",
+    "is_core_subject(art, us_education) == False",
+    "is_core_subject(music, us_education) == False",
+    "ForAll([s], Implies(is_prioritized(s, us_education), is_core_subject(s, us_education)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is art prioritized in US education system",
+      "constraint": "is_prioritized(art, us_education)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

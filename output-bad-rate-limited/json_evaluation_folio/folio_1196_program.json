@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "subscribe_AList",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribe_HBO",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watches_TV_series_in_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_to_cinema_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_three_movies_week",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_TV_series_over_movies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "family": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(subscribe_AList(p), eligible_three_movies_week(p)))",
+    "ForAll([p], Or(subscribe_AList(p), subscribe_HBO(p)))",
+    "ForAll([p], Implies(subscribe_HBO(p), prefers_TV_series_over_movies(p)))",
+    "ForAll([p], Implies(prefers_TV_series_over_movies(p), Not(watches_TV_series_in_cinema(p))))",
+    "subscribe_AList(lily)",
+    "watches_TV_series_in_cinema(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Lily availability and TV-watching imply weekly cinema and TV preference",
+      "constraint": "Not(Implies(And(eligible_three_movies_week(lily), watches_TV_series_in_cinema(lily)), And(goes_to_cinema_weekly(lily), prefers_TV_series_over_movies(lily))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

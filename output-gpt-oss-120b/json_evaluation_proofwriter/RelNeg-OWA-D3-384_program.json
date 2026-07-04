@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "bear",
+        "cat",
+        "dog",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "chases(bear, cat)",
+    "visits(bear, tiger)",
+    "chases(cat, dog)",
+    "Not(young(cat))",
+    "Not(chases(dog, bear))",
+    "eats(dog, bear)",
+    "visits(tiger, cat)",
+    "ForAll([x], Implies(chases(x, cat), Not(kind(cat))))",
+    "ForAll([x], Implies(visits(x, tiger), chases(tiger, cat)))",
+    "Implies(And(eats(cat, dog), chases(dog, tiger)), eats(tiger, bear))",
+    "ForAll([x], Implies(chases(x, cat), kind(x)))",
+    "ForAll([x], Implies(And(visits(x, tiger), Not(eats(x, tiger))), visits(tiger, bear)))",
+    "ForAll([x], Implies(kind(x), visits(x, tiger)))"
+  ],
+  "verifications": [
+    {
+      "name": "TigerVisitsTiger",
+      "constraint": "visits(tiger, tiger)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

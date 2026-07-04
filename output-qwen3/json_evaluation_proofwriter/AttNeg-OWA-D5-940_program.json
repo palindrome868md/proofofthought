@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "Charlie",
+        "Dave",
+        "Erin",
+        "Harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_blue(Charlie)",
+    "is_green(Charlie)",
+    "is_rough(Dave)",
+    "Not(is_cold(Erin))",
+    "is_green(Erin)",
+    "is_rough(Erin)",
+    "is_young(Erin)",
+    "is_green(Harry)",
+    "is_red(Harry)",
+    "is_rough(Harry)",
+    "Not(is_young(Harry))",
+    "ForAll([x], Implies(is_rough(x), is_red(x)))",
+    "ForAll([x], Implies(is_blue(x), is_rough(x)))",
+    "ForAll([x], Implies(is_green(x), is_rough(x)))",
+    "ForAll([x], Implies(is_quiet(x), is_cold(x)))",
+    "Implies(is_blue(Harry), is_green(Harry))",
+    "Implies(And(is_blue(Dave), is_red(Dave)), is_quiet(Dave))",
+    "ForAll([x], Implies(And(is_rough(x), is_red(x)), is_blue(x)))",
+    "ForAll([x], Implies(And(is_green(x), is_cold(x)), Not(is_quiet(x))))",
+    "ForAll([x], Implies(is_cold(x), Not(is_young(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Charlie is not red",
+      "constraint": "Not(is_red(Charlie))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

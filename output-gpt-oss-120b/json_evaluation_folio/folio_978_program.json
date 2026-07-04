@@ -1,0 +1,114 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "State",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "went_to_clay",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefer_home",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "makes_matcha",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "regular_job",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high_profile_celebrity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wakeLate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "startAfterNoon",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_ca",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attend_yoga",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bunny"
+      ]
+    },
+    "states": {
+      "sort": "State",
+      "members": [
+        "california"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(went_to_clay(p), makes_matcha(p)), And(Not(wakeLate(p)), Not(startAfterNoon(p)))))",
+    "ForAll([p], Implies(And(went_to_clay(p), lives_in_ca(p), attend_yoga(p)), makes_matcha(p)))",
+    "ForAll([p], Implies(And(went_to_clay(p), high_profile_celebrity(p)), And(wakeLate(p), startAfterNoon(p))))",
+    "ForAll([p], Implies(And(went_to_clay(p), Not(regular_job(p))), high_profile_celebrity(p)))",
+    "ForAll([p], Implies(And(went_to_clay(p), prefer_home(p)), Not(regular_job(p))))",
+    "And(went_to_clay(bunny), Or(And(prefer_home(bunny), makes_matcha(bunny)), And(Not(prefer_home(bunny)), Not(makes_matcha(bunny)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Bunny statement truth",
+      "constraint": "And(went_to_clay(bunny), Not(prefer_home(bunny)), Not(And(lives_in_ca(bunny), attend_yoga(bunny))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

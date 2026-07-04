@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_cold",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Thing",
+      "members": [
+        "bob",
+        "charlie",
+        "erin",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "is_cold(bob)",
+    "is_quiet(charlie)",
+    "is_quiet(erin)",
+    "is_big(harry)",
+    "ForAll([x], Implies(And(is_big(x), is_round(x)), is_green(x)))",
+    "ForAll([x], Implies(And(is_cold(x), is_red(x)), is_green(x)))",
+    "ForAll([x], Implies(And(is_white(x), is_cold(x)), is_big(x)))",
+    "ForAll([x], Implies(is_cold(x), is_big(x)))",
+    "ForAll([x], Implies(is_big(x), is_red(x)))",
+    "ForAll([x], Implies(And(is_red(x), Not(is_white(x))), Not(is_round(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is not big",
+      "constraint": "Not(is_big(harry))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

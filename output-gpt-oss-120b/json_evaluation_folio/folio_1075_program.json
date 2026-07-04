@@ -1,0 +1,84 @@
+{
+  "sorts": [
+    {
+      "name": "Lipstick",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Finish",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tag",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_finish",
+      "domain": [
+        "Lipstick",
+        "Finish"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "refillable",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "description_contains",
+      "domain": [
+        "Lipstick",
+        "Tag"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "finishes": {
+      "sort": "Finish",
+      "members": [
+        "Velvet",
+        "Satin"
+      ]
+    },
+    "tags": {
+      "sort": "Tag",
+      "members": [
+        "rosewood"
+      ]
+    },
+    "lipsticks": {
+      "sort": "Lipstick",
+      "members": [
+        "rouge_balm"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Lipstick"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(has_finish(x, Velvet), refillable(x)))",
+    "ForAll([x], Or(has_finish(x, Velvet), has_finish(x, Satin)))",
+    "ForAll([x], Implies(has_finish(x, Satin), description_contains(x, rosewood)))",
+    "ForAll([x], Or(Not(description_contains(x, rosewood)), description_contains(x, rosewood)))",
+    "Or(description_contains(rouge_balm, rosewood), has_finish(rouge_balm, Velvet))"
+  ],
+  "verifications": [
+    {
+      "name": "Statement truth",
+      "constraint": "Implies(Or(refillable(rouge_balm), description_contains(rouge_balm, rosewood)), Or(refillable(rouge_balm), description_contains(rouge_balm, rosewood)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

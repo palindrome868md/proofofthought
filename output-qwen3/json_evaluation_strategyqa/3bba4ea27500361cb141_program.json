@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "CruiseShip",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "RoadTunnel",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "traverses",
+      "domain": [
+        "CruiseShip",
+        "RoadTunnel"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "ships": {
+      "sort": "CruiseShip",
+      "members": [
+        "oasis"
+      ]
+    },
+    "tunnels": {
+      "sort": "RoadTunnel",
+      "members": [
+        "lincoln_tunnel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "CruiseShip"
+    },
+    {
+      "name": "t",
+      "sort": "RoadTunnel"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([s, t], Not(traverses(s, t)))"
+  ],
+  "verifications": [
+    {
+      "name": "Oasis traverses Lincoln Tunnel",
+      "constraint": "traverses(oasis, lincoln_tunnel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Bool",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_widow",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spouse_died_in_service",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spouse_died_in_iraq",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spouse_died_before_april_2005",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_war_widow_pension",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_afcs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "aunt"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_widow(aunt) == True",
+    "spouse_died_in_service(aunt) == True",
+    "spouse_died_in_iraq(aunt) == True",
+    "spouse_died_before_april_2005(aunt) == False",
+    "ForAll([p], Implies(And(is_widow(p), spouse_died_in_service(p), spouse_died_before_april_2005(p)), eligible_war_widow_pension(p)))",
+    "ForAll([p], Implies(And(is_widow(p), spouse_died_in_service(p), Not(spouse_died_before_april_2005(p))), eligible_afcs(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can aunt claim War Widow Pension",
+      "constraint": "eligible_war_widow_pension(aunt)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

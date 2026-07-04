@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "made_by_LG",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_type_c_port",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_before_2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "L_2021",
+        "some_LG_monitor"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Monitor"
+    }
+  ],
+  "knowledge_base": [
+    "made_by_LG(some_LG_monitor) == True",
+    "has_type_c_port(some_LG_monitor) == True",
+    "ForAll([m], Implies(has_type_c_port(m), Not(made_before_2010(m))))",
+    "ForAll([m], Implies(in_library(m), made_before_2010(m)))",
+    "Or(in_library(L_2021), has_type_c_port(L_2021))",
+    "Or(And(made_before_2010(L_2021), made_by_LG(L_2021)), And(Not(made_before_2010(L_2021)), Not(made_by_LG(L_2021))))"
+  ],
+  "verifications": [
+    {
+      "name": "Statement is True",
+      "constraint": "Not(Implies(Or(And(in_library(L_2021), made_by_LG(L_2021)), And(Not(in_library(L_2021)), Not(made_by_LG(L_2021)))), And(Not(has_type_c_port(L_2021)), Not(made_by_LG(L_2021)))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

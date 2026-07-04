@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_heavy_metal",
+      "domain": [
+        "Substance"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "causes_zombie_skin_color",
+      "domain": [
+        "Substance"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "nickel"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_heavy_metal(nickel)"
+  ],
+  "rules": [
+    {
+      "name": "HeavyMetalCausesZombieColor",
+      "forall": [
+        {
+          "name": "s",
+          "sort": "Substance"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_heavy_metal(s)",
+        "consequent": "causes_zombie_skin_color(s)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CouldNickelCauseZombieSkinColor",
+      "constraint": "causes_zombie_skin_color(nickel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

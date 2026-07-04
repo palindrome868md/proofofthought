@@ -1,0 +1,98 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_under_15",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_undergrad_finance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_postgraduate_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "permanent_resident_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_dependent",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "partner_not_claiming_other_help",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "partner"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "son"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_full_time_student(applicant)",
+    "child_under_15(applicant, son)",
+    "receives_undergrad_finance(applicant)",
+    "not_postgraduate_loan(applicant)",
+    "permanent_resident_england(applicant)",
+    "child_dependent(applicant, son)",
+    "partner_not_claiming_other_help(applicant)"
+  ],
+  "verifications": [
+    {
+      "name": "Can apply for childcare grant",
+      "constraint": "And(is_full_time_student(applicant), child_under_15(applicant, son), receives_undergrad_finance(applicant), not_postgraduate_loan(applicant), permanent_resident_england(applicant), child_dependent(applicant, son), partner_not_claiming_other_help(applicant))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

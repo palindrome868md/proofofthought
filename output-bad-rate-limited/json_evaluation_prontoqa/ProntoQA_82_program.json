@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "happy",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "yumpuses": {
+      "sort": "Yumpus",
+      "members": [
+        "Rex"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(happy(Rex))"
+  ],
+  "verifications": [
+    {
+      "name": "Rex is not happy",
+      "constraint": "happy(Rex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_mesothelioma",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "exposure_work_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "employers_traceable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "civil_claim_made",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "damages_received",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "diagnosis_after_2012",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "uncle"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "has_mesothelioma(uncle) == True",
+    "exposure_work_uk(uncle) == True",
+    "employers_traceable(uncle) == True",
+    "civil_claim_made(uncle) == False",
+    "damages_received(uncle) == False",
+    "diagnosis_after_2012(uncle) == True"
+  ],
+  "verifications": [
+    {
+      "name": "DMPS Eligibility Check",
+      "constraint": "And(has_mesothelioma(uncle), exposure_work_uk(uncle), diagnosis_after_2012(uncle), Not(employers_traceable(uncle)), Not(civil_claim_made(uncle)), Not(damages_received(uncle)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

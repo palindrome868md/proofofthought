@@ -1,0 +1,63 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "income",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "liable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_benefit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "receives_benefit(me) == True",
+    "income(me) + income(partner) == 51000",
+    "income(me) < 50000",
+    "income(partner) < 50000",
+    "ForAll([p], Implies(And(income(p) > 50000, Or(receives_benefit(p), receives_benefit(partner))), liable(p)))",
+    "ForAll([p], Implies(liable(p), income(p) > 50000))"
+  ],
+  "verifications": [
+    {
+      "name": "Check if we have to pay tax charge",
+      "constraint": "Or(liable(me), liable(partner))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

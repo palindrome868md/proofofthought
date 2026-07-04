@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_518",
+  "question": "Given the following premises:\n\nSam is doing a project.\nA project is written either in C++ or Python.\nIf Sam does a project written in Python, he will not use a Mac.\nSam is using a Mac.\nIf Sam uses a Mac, he will play a song.\nIf a song is not titled \"Perfect,\" Sam will never play it.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: The project Sam is doing is written in C++.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

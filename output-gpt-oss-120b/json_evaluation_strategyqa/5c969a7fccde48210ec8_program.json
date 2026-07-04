@@ -1,0 +1,98 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "ClothingBrand",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wears",
+      "domain": [
+        "Person",
+        "ClothingBrand"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_amish",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cousin",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shunned_by_amish_cousins",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alice",
+        "elijah"
+      ]
+    },
+    "brands": {
+      "sort": "ClothingBrand",
+      "members": [
+        "dolce_gabbana"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "wears(alice, dolce_gabbana)",
+    "cousin(alice, elijah)",
+    "is_amish(elijah)"
+  ],
+  "rules": [
+    {
+      "name": "ShunDG",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(wears(p, dolce_gabbana), Exists([c], And(cousin(p, c), is_amish(c))))",
+        "consequent": "shunned_by_amish_cousins(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Would Alice be shunned by her Amish cousins?",
+      "constraint": "shunned_by_amish_cousins(alice)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob",
+        "fiona",
+        "gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_big(anne)",
+    "is_nice(anne)",
+    "is_big(bob)",
+    "is_cold(bob)",
+    "is_nice(bob)",
+    "is_cold(fiona)",
+    "Not(is_cold(gary))",
+    "ForAll([p], Implies(And(is_nice(p), is_cold(p)), is_smart(p)))",
+    "ForAll([p], Implies(And(is_nice(p), is_big(p)), is_cold(p)))",
+    "ForAll([p], Implies(is_furry(p), is_round(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Anne is not cold",
+      "constraint": "Not(is_cold(anne))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "LeetcodeProblem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_easy",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_hard",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_recommended_to_novices",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starred_count",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "LeetcodeProblem",
+      "members": [
+        "problem_2sum",
+        "problem_4sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "LeetcodeProblem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_easy(p), ac_rate(p) < 20))",
+    "ForAll([p], Implies(is_recommended_to_novices(p), is_easy(p)))",
+    "ForAll([p], Or(is_easy(p), is_hard(p)))",
+    "ForAll([p], Implies(starred_count(p) > 1000, is_hard(p)))",
+    "is_recommended_to_novices(problem_2sum)",
+    "starred_count(problem_4sum) > 1000"
+  ],
+  "verifications": [
+    {
+      "name": "Is 2Sum Easy",
+      "constraint": "is_easy(problem_2sum)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

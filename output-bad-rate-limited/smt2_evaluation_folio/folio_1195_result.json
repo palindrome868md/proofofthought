@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1195",
+  "question": "Given the following premises:\n\nAll customers in James' family who subscribe to AMC A-List are eligible to watch three movies every week without any additional fees. \nSome of the customers in James' family go to the cinema every week.\nCustomers in James' family subscribe to AMC A-List or HBO service. \nCustomers in James' family who prefer TV series will not watch TV series in cinemas.\nAll customers in James' family who subscribe to HBO services prefer TV series to movies. \nLily is in James' family; she watches TV series in cinemas. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: If Lily does not both go to cinemas every week and subscribe to HBO service, then Lily is either available to watch 3 movies every week without any additional fees or she prefers TV more.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

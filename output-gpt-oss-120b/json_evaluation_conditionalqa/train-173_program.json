@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_civil_partnership",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "partnership_duration",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "cheating",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_end",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "q",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "in_civil_partnership(me, partner)",
+    "partnership_duration(me, partner) == 2",
+    "cheating(partner, me)",
+    "ForAll([p, q], Implies(And(in_civil_partnership(p, q), partnership_duration(p, q) >= 1, cheating(q, p)), can_end(p, q)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can end partnership under cheating grounds",
+      "constraint": "can_end(me, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

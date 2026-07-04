@@ -1,0 +1,31 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "avg_peas_per_pod",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "commas_in_billion",
+      "domain": [],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [
+    "avg_peas_per_pod() == 6",
+    "commas_in_billion() == 3"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is average peas enough for billion commas",
+      "constraint": "avg_peas_per_pod() >= commas_in_billion()"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

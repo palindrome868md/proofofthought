@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "claiming_duration",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "previous_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "current_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_housing_costs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entitled_to_housing_help",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "work_expected_duration",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "stopped_benefit_due_to_work",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "income_support"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "claiming_duration(me, income_support) == 17",
+    "previous_hours(me) == 10",
+    "current_hours(me) == 40",
+    "has_housing_costs(me) == True",
+    "entitled_to_housing_help(me) == True",
+    "work_expected_duration(me) >= 5",
+    "stopped_benefit_due_to_work(me, income_support) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Can me claim Mortgage Interest Run On",
+      "constraint": "And(stopped_benefit_due_to_work(me, income_support), claiming_duration(me, income_support) >= 26, work_expected_duration(me) >= 5, has_housing_costs(me), entitled_to_housing_help(me), current_hours(me) > previous_hours(me))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

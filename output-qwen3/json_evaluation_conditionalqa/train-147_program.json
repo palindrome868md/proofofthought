@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "reaches_pension_age",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_regular_employment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_REA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_RetirementAllowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "currently_receiving_REA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "REA",
+        "RetirementAllowance"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(user) == 66",
+    "currently_receiving_REA(user)",
+    "Not(in_regular_employment(user))",
+    "ForAll([p], Implies(age(p) >= 66, reaches_pension_age(p)))",
+    "ForAll([p], Implies(And(reaches_pension_age(p), Not(in_regular_employment(p))), Not(eligible_for_REA(p))))",
+    "ForAll([p], Implies(And(reaches_pension_age(p), Not(in_regular_employment(p))), eligible_for_RetirementAllowance(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "User still eligible for REA at pension age without regular work",
+      "constraint": "eligible_for_REA(user)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

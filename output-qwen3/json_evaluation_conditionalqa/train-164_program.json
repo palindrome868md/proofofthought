@@ -1,0 +1,120 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_existing_children",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "had_multiple_birth",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claimed_within_deadline",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_scotland",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_sure_start_grant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "england",
+        "scotland"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "universal_credit",
+        "income_support",
+        "jobseekers_allowance",
+        "employment_support_allowance",
+        "pension_credit",
+        "child_tax_credit",
+        "working_tax_credit"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "lives_in(applicant, england) == True",
+    "lives_in_scotland(applicant) == False",
+    "receives_benefit(applicant, universal_credit) == True",
+    "has_existing_children(applicant) == True",
+    "had_multiple_birth(applicant) == True",
+    "claimed_within_deadline(applicant) == True",
+    "ForAll([p], Implies(And(Not(lives_in_scotland(p)), Or(receives_benefit(p, universal_credit), receives_benefit(p, income_support), receives_benefit(p, jobseekers_allowance)), claimed_within_deadline(p), Or(Not(has_existing_children(p)), And(has_existing_children(p), had_multiple_birth(p)))), eligible_for_sure_start_grant(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Check applicant eligibility for Sure Start Maternity Grant",
+      "constraint": "eligible_for_sure_start_grant(applicant) == True"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

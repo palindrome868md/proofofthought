@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_claimant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claim_is_about",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_original_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_civil_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_alive",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "required_to_send_copy",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user",
+        "father",
+        "civil_partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Person"
+    },
+    {
+      "name": "m",
+      "sort": "Person"
+    },
+    {
+      "name": "r",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_claimant(user)",
+    "claim_is_about(user, father)",
+    "made_original_claim(civil_partner)",
+    "is_civil_partner(father, civil_partner)",
+    "is_alive(civil_partner)",
+    "ForAll([c, m, r], Implies(And(is_claimant(c), claim_is_about(c, m), Or(And(made_original_claim(r), is_alive(r)), And(is_civil_partner(m, r), is_alive(r)))), required_to_send_copy(c, r)))"
+  ],
+  "verifications": [
+    {
+      "name": "Check if copy must be sent to civil partner",
+      "constraint": "required_to_send_copy(user, civil_partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_86",
+  "question": "Zumpuses are luminous. Each zumpus is a tumpus. Each tumpus is not spicy. Tumpuses are vumpuses. Vumpuses are not fruity. Every vumpus is an impus. Each impus is small. Rompuses are not shy. Impuses are yumpuses. Each yumpus is temperate. Every yumpus is a jompus. Each jompus is bright. Each jompus is a wumpus. Wumpuses are amenable. Each wumpus is a dumpus. Dumpuses are shy. Dumpuses are numpuses. Stella is an impus.\n\nIs the following statement true or false? Stella is not shy.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

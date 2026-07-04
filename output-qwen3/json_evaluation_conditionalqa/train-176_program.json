@@ -1,0 +1,178 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "location_in_england",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_parent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_main_carer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_publicly_funded",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sixth_form_college",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_apprentice_with_salary",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_higher_ed",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible",
+      "domain": [
+        "Person",
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "covers_childminding",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "course"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "london"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "age(applicant) == 19",
+    "lives_in(applicant, london)",
+    "location_in_england(london)",
+    "is_parent(applicant)",
+    "is_main_carer(applicant)",
+    "is_sixth_form_college(course)",
+    "is_publicly_funded(course)",
+    "Not(is_apprentice_with_salary(applicant))",
+    "Not(is_higher_ed(course))"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "Course"
+        },
+        {
+          "name": "loc",
+          "sort": "Location"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(age(p) < 20, lives_in(p, loc), location_in_england(loc), is_parent(p), is_main_carer(p), is_publicly_funded(c), is_sixth_form_college(c), Not(is_apprentice_with_salary(p)), Not(is_higher_ed(c)))",
+        "consequent": "is_eligible(p, c)"
+      }
+    },
+    {
+      "name": "Childminding Coverage Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "Course"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_eligible(p, c)",
+        "consequent": "covers_childminding(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can Claim Childminding Costs",
+      "constraint": "covers_childminding(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "care_hours",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "earnings",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "receives_dla_high",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_scotland",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "me",
+      "sort": "Person"
+    },
+    {
+      "name": "partner",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "care_hours(me, partner) == 30",
+    "earnings(me) == 125",
+    "receives_dla_high(partner) == True",
+    "lives_in_scotland(me) == True"
+  ],
+  "rules": [
+    {
+      "name": "CarerAllowanceEligibility",
+      "forall": [
+        {
+          "name": "cg",
+          "sort": "Person"
+        },
+        {
+          "name": "ce",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(care_hours(cg, ce) >= 35, receives_dla_high(ce), earnings(cg) <= 128, lives_in_scotland(cg))",
+        "consequent": "can_claim(cg, ce)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CanClaimCarersAllowance",
+      "constraint": "can_claim(me, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

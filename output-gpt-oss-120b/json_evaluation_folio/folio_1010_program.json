@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "attends_wedding",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "getting_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_getting_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "preteen_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoys_celebrating",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fond_large",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "outgoing_spirited",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "carol"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(attends_wedding(p), Or(getting_married(p), knows_getting_married(p))))",
+    "ForAll([p], Implies(preteen_young(p), And(Not(getting_married(p)), Not(knows_getting_married(p)))))",
+    "ForAll([p], Implies(enjoys_celebrating(p), attends_wedding(p)))",
+    "ForAll([p], Implies(fond_large(p), enjoys_celebrating(p)))",
+    "ForAll([p], Implies(outgoing_spirited(p), fond_large(p)))",
+    "Implies(And(Not(preteen_young(carol)), attends_wedding(carol)), And(Not(getting_married(carol)), Not(knows_getting_married(carol))))"
+  ],
+  "verifications": [
+    {
+      "name": "Carol neither enjoys celebrating life milestones nor is outgoing and spirited",
+      "constraint": "And(Not(enjoys_celebrating(carol)), Not(outgoing_spirited(carol)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

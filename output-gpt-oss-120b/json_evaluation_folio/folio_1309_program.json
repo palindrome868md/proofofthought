@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_swim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_walk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "functional_brainstem",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "control_balance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stand_by_self",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "functional_leg_muscles",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "control_breath",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "George",
+        "Archie"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([p], Implies(control_breath(p), functional_brainstem(p)))",
+    "ForAll([p], Implies(can_swim(p), control_breath(p)))",
+    "ForAll([p], Or(can_swim(p), can_walk(p)))",
+    "ForAll([p], Implies(can_walk(p), stand_by_self(p)))",
+    "ForAll([p], Implies(functional_brainstem(p), control_balance(p)))",
+    "ForAll([p], Implies(stand_by_self(p), functional_leg_muscles(p)))",
+    "And(control_balance(George), can_swim(George))",
+    "And(Implies(can_walk(Archie), functional_brainstem(Archie)), Implies(functional_brainstem(Archie), can_walk(Archie)))"
+  ],
+  "verifications": [
+    {
+      "name": "Archie cannot control balance and lacks functional leg muscles",
+      "constraint": "And(Not(control_balance(Archie)), Not(functional_leg_muscles(Archie)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

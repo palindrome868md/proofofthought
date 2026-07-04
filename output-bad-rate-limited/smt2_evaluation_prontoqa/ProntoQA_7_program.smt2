@@ -1,0 +1,52 @@
+; Declare sorts
+(declare-sort Entity 0)
+
+; Declare predicates (uninterpreted relations)
+(declare-fun rompus (Entity) Bool)
+(declare-fun orange (Entity) Bool)
+(declare-fun impus (Entity) Bool)
+(declare-fun vumpus (Entity) Bool)
+(declare-fun happy (Entity) Bool)
+(declare-fun spicy (Entity) Bool)
+(declare-fun wumpus (Entity) Bool)
+(declare-fun numpus (Entity) Bool)
+(declare-fun kind (Entity) Bool)
+(declare-fun tumpus (Entity) Bool)
+(declare-fun yumpus (Entity) Bool)
+(declare-fun dumpus (Entity) Bool)
+(declare-fun zumpus (Entity) Bool)
+(declare-fun earthy (Entity) Bool)
+(declare-fun jompus (Entity) Bool)
+(declare-fun transparent (Entity) Bool)
+(declare-fun bright (Entity) Bool)
+(declare-fun liquid (Entity) Bool)
+
+; Declare constants
+(declare-const Stella Entity)
+
+; Knowledge base (the given rules)
+(assert (forall ((x Entity)) (=> (rompus x) (orange x))))
+(assert (forall ((x Entity)) (=> (rompus x) (impus x))))
+(assert (forall ((x Entity)) (=> (vumpus x) (happy x))))
+(assert (forall ((x Entity)) (=> (impus x) (spicy x))))
+(assert (forall ((x Entity)) (=> (impus x) (wumpus x))))
+(assert (forall ((x Entity)) (=> (wumpus x) (transparent x))))
+(assert (forall ((x Entity)) (=> (wumpus x) (numpus x))))
+(assert (forall ((x Entity)) (=> (numpus x) (not (kind x)))))
+(assert (forall ((x Entity)) (=> (numpus x) (tumpus x))))
+(assert (forall ((x Entity)) (=> (tumpus x) (not (bright x)))))
+(assert (forall ((x Entity)) (=> (tumpus x) (yumpus x))))
+(assert (forall ((x Entity)) (=> (yumpus x) (not (liquid x)))))
+(assert (forall ((x Entity)) (=> (yumpus x) (dumpus x))))
+(assert (forall ((x Entity)) (=> (dumpus x) (not (happy x)))))
+(assert (forall ((x Entity)) (=> (dumpus x) (zumpus x))))
+(assert (forall ((x Entity)) (=> (zumpus x) (earthy x))))
+(assert (forall ((x Entity)) (=> (zumpus x) (jompus x))))
+(assert (wumpus Stella))
+
+; Test question: Is Stella happy?
+(assert (happy Stella))
+
+; Check satisfiability to determine truth of the statement
+(check-sat)
+(get-model)

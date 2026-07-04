@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Subject",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "teaches",
+      "domain": [
+        "Person",
+        "Subject"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ethics_professor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_art_subject",
+      "domain": [
+        "Subject"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alice"
+      ]
+    },
+    "subjects": {
+      "sort": "Subject",
+      "members": [
+        "cezanne"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_ethics_professor(alice) == True",
+    "is_art_subject(cezanne) == True"
+  ],
+  "rules": [
+    {
+      "name": "EthicsProfessorCannotTeachArt",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "s",
+          "sort": "Subject"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_ethics_professor(p), is_art_subject(s))",
+        "consequent": "Not(teaches(p, s))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "WouldEthicsProfessorTeachCezanne",
+      "constraint": "teaches(alice, cezanne)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

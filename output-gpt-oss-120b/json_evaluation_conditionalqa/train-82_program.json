@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "power_of_attorney_valid",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dead",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "grandfather"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_dead(grandfather)",
+    "ForAll([p], Implies(is_dead(p), Not(power_of_attorney_valid(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Power of attorney after death",
+      "constraint": "power_of_attorney_valid(grandfather)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

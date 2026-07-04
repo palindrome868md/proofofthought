@@ -1,0 +1,125 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alan",
+        "bob",
+        "charlie",
+        "eric"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "young(alan)",
+    "rough(alan)",
+    "round(alan)",
+    "kind(alan)",
+    "cold(bob)",
+    "nice(bob)",
+    "red(bob)",
+    "green(bob)",
+    "rough(charlie)",
+    "red(charlie)",
+    "kind(charlie)",
+    "round(eric)",
+    "ForAll([p], Implies(And(rough(p), red(p), green(p)), blue(p)))",
+    "ForAll([p], Implies(And(big(p), round(p), kind(p)), rough(p)))",
+    "ForAll([p], Implies(And(kind(p), red(p)), green(p)))",
+    "ForAll([p], Implies(And(kind(p), rough(p)), red(p)))",
+    "ForAll([p], Implies(And(blue(p), red(p), big(p)), cold(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Alan is not red",
+      "constraint": "Not(red(alan))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rents_car",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spends_money",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_to",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "drives",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns_car",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "borrows_car",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_camping",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "sarah"
+      ]
+    },
+    "places": {
+      "sort": "Place",
+      "members": [
+        "vermont"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "loc",
+      "sort": "Place"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, loc], Implies(rents_car(p, loc), spends_money(p)))",
+    "Implies(goes_to(sarah, vermont), drives(sarah, vermont))",
+    "ForAll([p, loc], Implies(And(drives(p, loc), Not(owns_car(p))), Or(borrows_car(p, loc), rents_car(p, loc))))",
+    "Not(owns_car(sarah))",
+    "ForAll([loc], Implies(goes_camping(sarah, loc), Not(borrows_car(sarah, loc))))",
+    "goes_camping(sarah, vermont)",
+    "ForAll([p, loc], Implies(goes_camping(p, loc), goes_to(p, loc)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sarah Spends Money",
+      "constraint": "spends_money(sarah)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

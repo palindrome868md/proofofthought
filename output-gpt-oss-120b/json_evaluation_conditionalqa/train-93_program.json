@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_next_of_kin",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "automatically_authorised",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "aunt"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, a], Implies(is_next_of_kin(p, a), Not(automatically_authorised(p, a))))"
+  ],
+  "verifications": [
+    {
+      "name": "Automatic authorisation for next of kin",
+      "constraint": "And(is_next_of_kin(me, aunt), automatically_authorised(me, aunt))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_registered_blind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_blind_certificate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_married_to",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_with",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pays_tax",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earns_enough_for_full_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "claimant",
+        "wife"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_registered_blind(claimant) == True",
+    "has_blind_certificate(claimant) == True",
+    "lives_in_england(claimant) == True",
+    "is_married_to(claimant, wife) == True",
+    "lives_with(claimant, wife) == True",
+    "pays_tax(claimant) == False",
+    "earns_enough_for_full_allowance(claimant) == False"
+  ],
+  "verifications": [
+    {
+      "name": "Can claim and transfer blind allowance",
+      "constraint": "And(is_registered_blind(claimant), has_blind_certificate(claimant), lives_in_england(claimant), is_married_to(claimant, wife), lives_with(claimant, wife), Or(Not(pays_tax(claimant)), Not(earns_enough_for_full_allowance(claimant))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

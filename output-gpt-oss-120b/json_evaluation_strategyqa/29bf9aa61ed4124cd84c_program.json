@@ -1,0 +1,45 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "population",
+      "domain": [
+        "City"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "year_reaches",
+      "domain": [
+        "City",
+        "IntSort"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "cities": {
+      "sort": "City",
+      "members": [
+        "albany_ga",
+        "albany_ny"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Albany GA reaches 100k before Albany NY",
+      "constraint": "year_reaches(albany_ga, 100000) < year_reaches(albany_ny, 100000)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

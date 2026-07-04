@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Wrestler",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [],
+  "constants": {
+    "powerpuff_girls": {
+      "sort": "Wrestler",
+      "members": [
+        "blossom",
+        "bubbles",
+        "buttercup"
+      ]
+    }
+  },
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Powerpuff Tag Team Match Possible",
+      "exists": [
+        {
+          "name": "p1",
+          "sort": "Wrestler"
+        },
+        {
+          "name": "p2",
+          "sort": "Wrestler"
+        },
+        {
+          "name": "p3",
+          "sort": "Wrestler"
+        },
+        {
+          "name": "p4",
+          "sort": "Wrestler"
+        }
+      ],
+      "constraint": "And(Distinct(p1,p2,p3,p4), Or(p1 == blossom, p1 == bubbles, p1 == buttercup), Or(p2 == blossom, p2 == bubbles, p2 == buttercup), Or(p3 == blossom, p3 == bubbles, p3 == buttercup), Or(p4 == blossom, p4 == bubbles, p4 == buttercup))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

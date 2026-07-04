@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Band",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_member",
+      "domain": [
+        "Person",
+        "Band"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_law_enforcement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_perform_lawful_arrest",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sting",
+        "andy_summers",
+        "stewart_copeland"
+      ]
+    },
+    "bands": {
+      "sort": "Band",
+      "members": [
+        "the_police"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_member(sting, the_police)",
+    "is_member(andy_summers, the_police)",
+    "is_member(stewart_copeland, the_police)",
+    "Not(is_law_enforcement(sting))",
+    "Not(is_law_enforcement(andy_summers))",
+    "Not(is_law_enforcement(stewart_copeland))",
+    "ForAll([p], Implies(can_perform_lawful_arrest(p), is_law_enforcement(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Could Police band members perform lawful arrests",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_member(p, the_police), can_perform_lawful_arrest(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

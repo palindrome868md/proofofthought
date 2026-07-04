@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D3-649",
+  "question": "Anne is big. Charlie is not blue. Dave is kind. Erin is not big. If someone is red then they are not young. If someone is nice then they are blue. If someone is kind and not round then they are blue. Big, blue people are red. All big people are red. Kind people are big.\n\nQuestion: Anne is not big.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

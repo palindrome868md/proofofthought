@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-663",
+  "question": "Anne is red. Charlie is young. All red, young people are smart. If someone is young then they are cold. If Anne is red then Anne is cold. All red people are young. Young, cold people are quiet. All cold, young people are red.\n\nQuestion: Anne is red.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

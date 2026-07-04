@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Marriage",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "meets_residency",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_void",
+      "domain": [
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_voidable",
+      "domain": [
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "duration_years",
+      "domain": [
+        "Marriage"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_abusive",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_annulment",
+      "domain": [
+        "Person",
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "wife",
+        "husband"
+      ]
+    },
+    "marriages": {
+      "sort": "Marriage",
+      "members": [
+        "current_marriage"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "m",
+      "sort": "Marriage"
+    }
+  ],
+  "knowledge_base": [
+    "duration_years(current_marriage) == 1",
+    "is_abusive(husband) == True",
+    "ForAll([m], Implies(And(meets_residency(wife), Or(is_void(m), is_voidable(m))), eligible_for_annulment(wife, m)))"
+  ],
+  "verifications": [
+    {
+      "name": "Check annulment eligibility",
+      "constraint": "eligible_for_annulment(wife, current_marriage)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

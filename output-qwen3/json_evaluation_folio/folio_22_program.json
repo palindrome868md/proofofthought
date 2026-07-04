@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_choral_conductor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "specialized_renaissance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_musician",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "loves_music",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "miroslav"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_choral_conductor(miroslav)",
+    "specialized_renaissance(miroslav)",
+    "ForAll([x], Implies(is_choral_conductor(x), is_musician(x)))",
+    "Exists([x], And(is_musician(x), loves_music(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "No choral conductor specialized in Renaissance",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_choral_conductor(x)",
+        "consequent": "Not(specialized_renaissance(x))"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

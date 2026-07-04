@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Fruit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_yard",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_vitc",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_apple",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_healthy",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "on_warning",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fruits": {
+      "sort": "Fruit",
+      "members": [
+        "cherries"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Fruit"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(in_yard(x), is_red(x)), has_vitc(x)))",
+    "ForAll([x], Implies(And(in_yard(x), is_apple(x)), is_red(x)))",
+    "ForAll([x], Implies(And(in_yard(x), has_vitc(x)), is_healthy(x)))",
+    "ForAll([x], Implies(And(in_yard(x), is_healthy(x)), Not(on_warning(x))))",
+    "in_yard(cherries)",
+    "Implies(And(Not(is_apple(cherries)), Not(is_healthy(cherries))), is_red(cherries))"
+  ],
+  "verifications": [
+    {
+      "name": "Cherries Health and Color Statement",
+      "constraint": "Implies(Or(is_healthy(cherries), on_warning(cherries)), Not(is_red(cherries)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

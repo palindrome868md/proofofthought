@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "pregnancy_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "meets_ma_pregnancy_requirement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ma_affects_benefit",
+      "domain": [
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "potentially_eligible_for_ma",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "universal_credit",
+        "housing_benefit",
+        "esa",
+        "income_support",
+        "jsa",
+        "tax_credits",
+        "council_tax_reduction",
+        "carers_allowance",
+        "bereavement_benefits"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "b",
+      "sort": "Benefit"
+    }
+  ],
+  "knowledge_base": [
+    "pregnancy_weeks(applicant) == 30",
+    "meets_ma_pregnancy_requirement(applicant) == (pregnancy_weeks(applicant) >= 26)",
+    "ma_affects_benefit(universal_credit) == True",
+    "ma_affects_benefit(housing_benefit) == True",
+    "ma_affects_benefit(esa) == True",
+    "ma_affects_benefit(income_support) == True",
+    "ma_affects_benefit(jsa) == True",
+    "ma_affects_benefit(tax_credits) == False",
+    "ma_affects_benefit(council_tax_reduction) == True",
+    "ma_affects_benefit(carers_allowance) == True",
+    "ma_affects_benefit(bereavement_benefits) == True",
+    "potentially_eligible_for_ma(applicant) == meets_ma_pregnancy_requirement(applicant)",
+    "receives_benefit(applicant, universal_credit) == True"
+  ],
+  "verifications": [
+    {
+      "name": "MA eligibility and benefit impact verification",
+      "constraint": "And(potentially_eligible_for_ma(applicant), Exists([b], And(receives_benefit(applicant, b), ma_affects_benefit(b))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

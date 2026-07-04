@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "deputy_start_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_current_deputy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "deputyship_in_refund_period",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_refund",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "deputy_start_year(applicant) == 2018",
+    "is_current_deputy(applicant) == True",
+    "ForAll([p], Implies(And(deputy_start_year(p) >= 2008, deputy_start_year(p) <= 2015), deputyship_in_refund_period(p)))",
+    "ForAll([p], Implies(And(deputyship_in_refund_period(p), Not(is_current_deputy(p))), can_apply_for_refund(p)))",
+    "ForAll([p], Implies(is_current_deputy(p), Not(can_apply_for_refund(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can applicant apply for refund",
+      "constraint": "can_apply_for_refund(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

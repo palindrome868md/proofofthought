@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_fish",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stings",
+      "domain": [
+        "Animal",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "treated",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "causes_death",
+      "domain": [
+        "Animal",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stepped_on",
+      "domain": [
+        "Person",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "stonefish"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "f",
+      "sort": "Animal"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_fish(stonefish)",
+    "ForAll([p], Implies(stepped_on(p, stonefish), stings(stonefish, p)))",
+    "ForAll([p], Implies(And(stings(stonefish, p), Not(treated(p))), causes_death(stonefish, p)))",
+    "Exists([f, p], And(is_fish(f), stings(f, p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Some fish stings cause death if not treated",
+      "exists": [
+        {
+          "name": "f",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(is_fish(f), ForAll([p], Implies(And(stings(f, p), Not(treated(p))), causes_death(f, p))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

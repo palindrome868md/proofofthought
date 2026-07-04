@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob",
+        "gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_blue(anne)",
+    "Not(is_blue(bob))",
+    "is_blue(gary)",
+    "ForAll([p], Implies(is_rough(p), is_big(p)))",
+    "ForAll([p], Implies(And(is_furry(p), is_kind(p)), is_big(p)))",
+    "ForAll([p], Implies(is_furry(p), is_big(p)))",
+    "ForAll([p], Implies(is_green(p), is_rough(p)))",
+    "ForAll([p], Implies(And(is_blue(p), is_quiet(p)), Not(is_furry(p))))",
+    "Implies(is_quiet(gary), is_rough(gary))"
+  ],
+  "verifications": [
+    {
+      "name": "Bob is blue",
+      "constraint": "is_blue(bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "d9987847af1ab751c75a",
+  "question": "Will someone die without white blood cells?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

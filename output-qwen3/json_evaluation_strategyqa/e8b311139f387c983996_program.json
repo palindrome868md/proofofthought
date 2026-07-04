@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_saltwater_crocodile",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_memphis",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "native_to",
+      "domain": [
+        "Animal",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_photograph",
+      "domain": [
+        "Animal",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "saltwater_crocodile"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "memphis",
+        "australia",
+        "southeast_asia"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Animal"
+    },
+    {
+      "name": "l",
+      "sort": "Location"
+    }
+  ],
+  "knowledge_base": [
+    "is_saltwater_crocodile(saltwater_crocodile)",
+    "is_memphis(memphis)",
+    "native_to(saltwater_crocodile, australia)",
+    "native_to(saltwater_crocodile, southeast_asia)",
+    "Not(native_to(saltwater_crocodile, memphis))",
+    "ForAll([a, l], Implies(And(is_saltwater_crocodile(a), is_memphis(l), Not(native_to(a, l))), Not(can_photograph(a, l))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can photograph saltwater crocodile in Memphis",
+      "constraint": "can_photograph(saltwater_crocodile, memphis)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

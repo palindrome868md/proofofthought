@@ -1,0 +1,69 @@
+{
+  "sorts": [
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Princess",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_princess",
+      "domain": [
+        "Company",
+        "Princess"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ice_princess",
+      "domain": [
+        "Princess"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "disney"
+      ]
+    },
+    "princesses": {
+      "sort": "Princess",
+      "members": [
+        "elsa",
+        "cinderella"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Princess"
+    }
+  ],
+  "knowledge_base": [
+    "has_princess(disney, elsa)",
+    "is_ice_princess(elsa)"
+  ],
+  "verifications": [
+    {
+      "name": "Disney has an ice princess",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Princess"
+        }
+      ],
+      "constraint": "And(has_princess(disney, p), is_ice_princess(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

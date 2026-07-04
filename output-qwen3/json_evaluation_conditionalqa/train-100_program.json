@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "years_missing",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_disaster_disappearance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sibling",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_jurisdiction",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_to_claim",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "brother"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Person"
+    },
+    {
+      "name": "m",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "years_missing(brother) == 2",
+    "is_disaster_disappearance(brother)",
+    "is_sibling(me, brother)",
+    "meets_jurisdiction(brother)",
+    "ForAll([c, m], Implies(And(is_sibling(c, m), meets_jurisdiction(m), Or(years_missing(m) >= 7, And(years_missing(m) < 7, is_disaster_disappearance(m)))), eligible_to_claim(c, m)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can I declare brother dead",
+      "constraint": "eligible_to_claim(me, brother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

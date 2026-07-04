@@ -1,0 +1,141 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_spicy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_shy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_amenable",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_floral",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Rex"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_jompus(Rex)",
+    "Implies(is_jompus(Rex), is_numpus(Rex))",
+    "Implies(is_numpus(Rex), Not(is_opaque(Rex)))",
+    "Implies(is_numpus(Rex), is_wumpus(Rex))",
+    "Implies(is_wumpus(Rex), is_rompus(Rex))",
+    "Implies(is_rompus(Rex), Not(is_red(Rex)))",
+    "Implies(is_rompus(Rex), is_tumpus(Rex))",
+    "Implies(is_tumpus(Rex), is_spicy(Rex))",
+    "Implies(is_tumpus(Rex), is_dumpus(Rex))",
+    "Implies(is_dumpus(Rex), is_shy(Rex))",
+    "Implies(is_dumpus(Rex), is_zumpus(Rex))",
+    "Implies(is_wumpus(Rex), is_amenable(Rex))",
+    "Implies(is_jompus(Rex), Not(is_dull(Rex)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rex not spicy",
+      "constraint": "Not(is_spicy(Rex))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

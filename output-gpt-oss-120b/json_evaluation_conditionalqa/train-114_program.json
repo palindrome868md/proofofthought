@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "functions": [
+    {
+      "name": "caring_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_carer_credit_eligibility",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_carer_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_child_benefit_under12",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_over_16",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_under_state_pension_age",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "caring_hours(me) == 22",
+    "is_over_16(me) == True",
+    "is_under_state_pension_age(me) == True",
+    "has_carer_allowance(me) == False",
+    "receives_child_benefit_under12(me) == False",
+    "ForAll([p], Implies(And(is_over_16(p), is_under_state_pension_age(p), caring_hours(p) >= 20, Not(has_carer_allowance(p)), Not(receives_child_benefit_under12(p))), has_carer_credit_eligibility(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for Carer Credit",
+      "constraint": "has_carer_credit_eligibility(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

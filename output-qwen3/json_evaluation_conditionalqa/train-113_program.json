@@ -1,0 +1,123 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_mesothelioma",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "exposed_in_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "employer_traced",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "insurer_traced",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "civil_claim_made",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "damages_received",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_dmps",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_2008_scheme",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_state_compensation",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "months_since_diagnosis",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "claimant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(claimant) == 54",
+    "months_since_diagnosis(claimant) == 6",
+    "has_mesothelioma(claimant)",
+    "exposed_in_uk(claimant)",
+    "Not(employer_traced(claimant))",
+    "Not(insurer_traced(claimant))",
+    "Not(civil_claim_made(claimant))",
+    "Not(damages_received(claimant))",
+    "ForAll([p], Implies(And(has_mesothelioma(p), exposed_in_uk(p), Not(employer_traced(p)), Not(insurer_traced(p)), Not(civil_claim_made(p)), Not(damages_received(p))), eligible_for_dmps(p)))",
+    "ForAll([p], Implies(And(has_mesothelioma(p), exposed_in_uk(p), months_since_diagnosis(p) <= 12, Not(damages_received(p))), eligible_for_2008_scheme(p)))",
+    "ForAll([p], Implies(Or(eligible_for_dmps(p), eligible_for_2008_scheme(p)), eligible_for_state_compensation(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Claimant eligible for state compensation despite untraced employer",
+      "constraint": "eligible_for_state_compensation(claimant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

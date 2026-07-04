@@ -1,0 +1,114 @@
+{
+  "sorts": [
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Wumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Zumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Impus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Impus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "wumpuses": {
+      "sort": "Wumpus",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "ForAll([{\"name\":\"p\",\"sort\":\"Wumpus\"}], zumpus(p))",
+    "ForAll([{\"name\":\"z\",\"sort\":\"Zumpus\"}], numpus(z))",
+    "ForAll([{\"name\":\"n\",\"sort\":\"Numpus\"}], dumpus(n))",
+    "ForAll([{\"name\":\"d\",\"sort\":\"Dumpus\"}], impus(d))",
+    "ForAll([{\"name\":\"i\",\"sort\":\"Impus\"}], Not(hot(i)))",
+    "ForAll([{\"name\":\"i\",\"sort\":\"Impus\"}], vumpus(i))"
+  ],
+  "verifications": [
+    {
+      "name": "Max not hot",
+      "constraint": "Not(hot(Max))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

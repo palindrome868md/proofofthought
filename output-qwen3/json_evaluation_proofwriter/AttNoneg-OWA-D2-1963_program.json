@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "smart",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "bob",
+        "erin"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "smart(bob)",
+    "cold(erin)",
+    "young(erin)",
+    "Implies(And(white(bob), cold(bob)), kind(bob))",
+    "ForAll([x], Implies(furry(x), cold(x)))",
+    "ForAll([x], Implies(furry(x), white(x)))",
+    "ForAll([x], Implies(And(cold(x), smart(x)), rough(x)))",
+    "ForAll([x], Implies(young(x), smart(x)))",
+    "Implies(white(bob), young(bob))"
+  ],
+  "verifications": [
+    {
+      "name": "Erin is not rough",
+      "constraint": "Not(rough(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

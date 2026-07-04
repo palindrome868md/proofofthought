@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_bald_spot",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_see_bald_spot_from_above",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "robert_wadlow",
+        "frankenstein_monster"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "height(robert_wadlow) == 272",
+    "height(frankenstein_monster) == 240",
+    "has_bald_spot(frankenstein_monster) == True",
+    "ForAll([p1, p2], Implies(And(height(p1) > height(p2), has_bald_spot(p2)), can_see_bald_spot_from_above(p1, p2)))"
+  ],
+  "verifications": [
+    {
+      "name": "Could Wadlow see Monster's bald spot",
+      "constraint": "can_see_bald_spot_from_above(robert_wadlow, frankenstein_monster)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

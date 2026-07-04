@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Food",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Ingredient",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Smell",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_ingredient",
+      "domain": [
+        "Food",
+        "Ingredient"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_smell",
+      "domain": [
+        "Food",
+        "Smell"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "ingredients": {
+      "sort": "Ingredient",
+      "members": [
+        "black_salt"
+      ]
+    },
+    "smells": {
+      "sort": "Smell",
+      "members": [
+        "sulfur"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "f",
+      "sort": "Food"
+    }
+  ],
+  "knowledge_base": [],
+  "rules": [
+    {
+      "name": "Black Salt Causes Sulfur Smell",
+      "forall": [
+        {
+          "name": "f",
+          "sort": "Food"
+        }
+      ],
+      "implies": {
+        "antecedent": "has_ingredient(f, black_salt)",
+        "consequent": "has_smell(f, sulfur)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Food with black salt smells of sulfur",
+      "forall": [
+        {
+          "name": "f",
+          "sort": "Food"
+        }
+      ],
+      "implies": {
+        "antecedent": "has_ingredient(f, black_salt)",
+        "consequent": "has_smell(f, sulfur)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

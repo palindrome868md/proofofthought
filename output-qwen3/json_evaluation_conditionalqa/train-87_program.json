@@ -1,0 +1,108 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Date",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CauseOfDeath",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "served_before_date",
+      "domain": [
+        "Person",
+        "Date"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "death_due_to_service",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_funeral_grant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "service_in_armed_forces",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_spouse",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife"
+      ]
+    },
+    "dates": {
+      "sort": "Date",
+      "members": [
+        "cutoff_date_2005",
+        "service_date_1990s"
+      ]
+    },
+    "causes": {
+      "sort": "CauseOfDeath",
+      "members": [
+        "cancer_from_radiation",
+        "other"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Date"
+    },
+    {
+      "name": "s",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "service_in_armed_forces(husband) == True",
+    "served_before_date(husband, cutoff_date_2005) == True",
+    "death_due_to_service(husband) == True",
+    "is_spouse(wife, husband) == True",
+    "ForAll([p, d], Implies(And(service_in_armed_forces(p), served_before_date(p, d), death_due_to_service(p)), eligible_for_funeral_grant(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can wife get funeral grant for husband",
+      "constraint": "eligible_for_funeral_grant(husband)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_spouse",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "died_as_result_of_service",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "death_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "eligible_for_war_widow_pension",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "aunt",
+        "husband"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "w",
+      "sort": "Person"
+    },
+    {
+      "name": "h",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_spouse(aunt, husband)",
+    "died_as_result_of_service(husband)",
+    "death_year(husband) == 2023",
+    "ForAll([w, h], Implies(And(is_spouse(w, h), died_as_result_of_service(h), death_year(h) < 2005), eligible_for_war_widow_pension(w)))"
+  ],
+  "verifications": [
+    {
+      "name": "Aunt eligibility for war widow pension",
+      "constraint": "eligible_for_war_widow_pension(aunt)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

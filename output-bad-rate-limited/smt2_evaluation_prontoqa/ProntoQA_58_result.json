@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_58",
+  "question": "Tumpuses are kind. Every tumpus is an impus. Impuses are not dull. Impuses are jompuses. Jompuses are not large. Jompuses are zumpuses. Every zumpus is happy. Zumpuses are wumpuses. Every dumpus is not fruity. Each wumpus is sweet. Wumpuses are yumpuses. Yumpuses are orange. Every yumpus is a numpus. Numpuses are transparent. Each numpus is a vumpus. Vumpuses are fruity. Every vumpus is a rompus. Fae is a zumpus.\n\nIs the following statement true or false? Fae is not fruity.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

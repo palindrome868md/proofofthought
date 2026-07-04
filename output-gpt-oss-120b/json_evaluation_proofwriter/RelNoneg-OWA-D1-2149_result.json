@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D1-2149",
+  "question": "The bear is blue. The bear is nice. The bear likes the cat. The bear likes the tiger. The cat chases the tiger. The cat is blue. The cat is nice. The cat is rough. The cat needs the tiger. The tiger chases the cat. The tiger is blue. The tiger is rough. The tiger likes the bear. The tiger likes the cat. The tiger needs the bear. The tiger needs the cat. If someone needs the cat then the cat likes the tiger. Red people are blue.\n\nQuestion: The cat needs the tiger.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

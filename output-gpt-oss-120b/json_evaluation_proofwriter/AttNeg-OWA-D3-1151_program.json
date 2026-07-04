@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob",
+        "charlie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "red(anne)",
+    "Not(nice(bob))",
+    "blue(charlie)",
+    "ForAll([x], Implies(young(x), green(x)))",
+    "ForAll([x], Implies(And(young(x), green(x)), Not(red(x))))",
+    "ForAll([x], Implies(red(x), white(x)))",
+    "Implies(white(charlie), blue(charlie))",
+    "ForAll([x], Implies(white(x), Not(young(x))))",
+    "ForAll([x], Implies(And(red(x), Not(young(x))), nice(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "AnneIsNice",
+      "constraint": "nice(anne)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

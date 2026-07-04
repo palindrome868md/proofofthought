@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_56",
+  "question": "Given the following premises:\n\nThomas Barber was an English professional footballer.\nThomas Barber played in the Football League for Aston Villa.\nThomas Barber played as a halfback and inside left.\nThomas Barber scored the winning goal in the 1913 FA Cup Final.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: An English professional footballer scored the winning goal in the 1913 FA Cup Final.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: argument of type 'NoneType' is not iterable"
+}

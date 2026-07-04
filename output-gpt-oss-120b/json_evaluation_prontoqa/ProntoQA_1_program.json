@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Obj",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "yumpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "objects": {
+      "sort": "Obj",
+      "members": [
+        "max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Obj"
+    }
+  ],
+  "knowledge_base": [
+    "yumpus(max)",
+    "ForAll([x], Implies(yumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), Not(sour(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Max is sour",
+      "constraint": "sour(max)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Boat",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_traditional",
+      "domain": [
+        "Boat",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "boats": {
+      "sort": "Boat",
+      "members": [
+        "kayak"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "new_zealand"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_traditional(kayak, new_zealand) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Kayak traditional in New Zealand",
+      "constraint": "is_traditional(kayak, new_zealand)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

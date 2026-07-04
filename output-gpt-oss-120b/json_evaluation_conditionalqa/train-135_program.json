@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    },
+    {
+      "name": "co",
+      "sort": "Country"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "day_to_day_care_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_cms",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "my_son"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "uk",
+        "abroad_country"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "lives_in(me, abroad_country)",
+    "lives_in(my_son, abroad_country)",
+    "day_to_day_care_parent(my_son, me)",
+    {
+      "assertion": "ForAll([p, c, co], Implies(And(lives_in(p, co), lives_in(c, co), day_to_day_care_parent(c, p)), Not(can_claim_cms(p))))",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can claim child maintenance while living abroad",
+      "constraint": "can_claim_cms(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

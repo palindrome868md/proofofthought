@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "works_for",
+      "domain": [
+        "Person",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_armed_forces",
+      "domain": [
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_pay_child_maintenance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "ex_husband"
+      ]
+    },
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "british_army"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "germany"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "works_for(ex_husband, british_army)",
+    "is_armed_forces(british_army)"
+  ],
+  "rules": [
+    {
+      "name": "Armed Forces Payment Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "o",
+          "sort": "Organization"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(works_for(p, o), is_armed_forces(o))",
+        "consequent": "can_pay_child_maintenance(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can absent army parent be required to pay",
+      "constraint": "can_pay_child_maintenance(ex_husband)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

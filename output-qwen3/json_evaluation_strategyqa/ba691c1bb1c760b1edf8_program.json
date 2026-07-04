@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Character",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Flower",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_allergic_to",
+      "domain": [
+        "Character",
+        "Flower"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cares_for",
+      "domain": [
+        "Character",
+        "Flower"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_affection_for",
+      "domain": [
+        "Character",
+        "Flower"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "characters": {
+      "sort": "Character",
+      "members": [
+        "little_prince"
+      ]
+    },
+    "flowers": {
+      "sort": "Flower",
+      "members": [
+        "rose"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Character"
+    },
+    {
+      "name": "f",
+      "sort": "Flower"
+    }
+  ],
+  "knowledge_base": [
+    "cares_for(little_prince, rose) == True",
+    "has_affection_for(little_prince, rose) == True",
+    "ForAll([c, f], Implies(is_allergic_to(c, f), Not(cares_for(c, f))))"
+  ],
+  "verifications": [
+    {
+      "name": "Little Prince Allergic to Flowers",
+      "constraint": "is_allergic_to(little_prince, rose)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

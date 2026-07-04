@@ -1,0 +1,114 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Asset",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "spouse_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "inherits",
+      "domain": [
+        "Person",
+        "Asset"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "value_of",
+      "domain": [
+        "Asset"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "inheritance_tax_due",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "widow",
+        "husband"
+      ]
+    },
+    "assets": {
+      "sort": "Asset",
+      "members": [
+        "home"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "spouse_of(widow, husband)",
+    "spouse_of(husband, widow)",
+    "inherits(widow, home)",
+    "value_of(home) == 300000"
+  ],
+  "rules": [
+    {
+      "name": "Spouse exemption",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "a",
+          "sort": "Asset"
+        },
+        {
+          "name": "s",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(inherits(p, a), spouse_of(p, s))",
+        "consequent": "Not(inheritance_tax_due(p))"
+      }
+    },
+    {
+      "name": "Below\u2011threshold exemption",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "a",
+          "sort": "Asset"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(inherits(p, a), value_of(a) <= 325000)",
+        "consequent": "Not(inheritance_tax_due(p))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Tax due for widow",
+      "constraint": "inheritance_tax_due(widow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

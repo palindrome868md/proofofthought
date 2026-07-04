@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Part",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "get_location",
+      "domain": [
+        "Part"
+      ],
+      "range": "Location"
+    }
+  ],
+  "constants": {
+    "parts": {
+      "sort": "Part",
+      "members": [
+        "flesh",
+        "seeds",
+        "best_part"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "center"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "best_part == flesh",
+    "Not(get_location(flesh) == center)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is best part in center",
+      "constraint": "get_location(best_part) == center"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

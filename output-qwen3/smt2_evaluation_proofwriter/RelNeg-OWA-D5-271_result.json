@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D5-271",
+  "question": "The bear is cold. The dog does not like the bear. The dog likes the squirrel. The mouse is blue. The mouse is rough. The mouse likes the dog. The mouse does not need the bear. The squirrel is cold. The squirrel likes the dog. The squirrel likes the mouse. If someone likes the bear and they like the dog then they like the squirrel. If someone is blue then they chase the bear. If someone needs the squirrel and the squirrel is cold then they chase the bear. If the dog does not need the bear then the dog does not chase the squirrel. If someone likes the mouse and the mouse needs the dog then they chase the dog. If someone chases the dog then the dog needs the squirrel. If someone chases the bear and they do not need the bear then they need the dog. If someone likes the mouse and they are cold then they need the squirrel.\n\nQuestion: The mouse is not rough.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "00f951d01196c2e77fe6",
+  "question": "Would the high school class of 2010 have lived through the Presidency of Richard Nixon?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

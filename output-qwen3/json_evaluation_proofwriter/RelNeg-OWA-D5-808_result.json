@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D5-808",
+  "question": "The cat is young. The cow is young. The cow visits the mouse. The mouse eats the cat. The mouse needs the cat. The mouse needs the rabbit. The mouse does not visit the cow. The mouse visits the rabbit. The rabbit is round. The rabbit does not need the cat. The rabbit visits the mouse. If someone eats the cat and they eat the cow then they do not need the mouse. If someone visits the cat then the cat eats the cow. All nice people are red. If the mouse needs the rabbit and the mouse eats the cat then the mouse eats the cow. If someone is red and they visit the mouse then the mouse needs the cow. If someone needs the cow then the cow visits the cat. All round people are nice. If someone needs the cat and the cat visits the rabbit then they do not eat the rabbit.\n\nQuestion: The cat does not eat the cow.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

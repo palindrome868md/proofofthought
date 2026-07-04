@@ -1,0 +1,123 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sweet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "zumpus(fae)",
+    "ForAll([p], Implies(zumpus(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), numpus(p)))",
+    "ForAll([p], Implies(numpus(p), vumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), rompus(p)))",
+    "ForAll([p], Implies(zumpus(p), happy(p)))",
+    "ForAll([p], Implies(wumpus(p), sweet(p)))",
+    "ForAll([p], Implies(yumpus(p), orange(p)))",
+    "ForAll([p], Implies(vumpus(p), fruity(p)))",
+    "ForAll([p], Implies(numpus(p), transparent(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is not fruity",
+      "constraint": "Not(fruity(fae))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

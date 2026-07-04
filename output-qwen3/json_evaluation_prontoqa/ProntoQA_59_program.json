@@ -1,0 +1,179 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(rompus(x), mean(x)))",
+    "ForAll([x], Implies(rompus(x), wumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), nervous(x)))",
+    "ForAll([x], Implies(wumpus(x), brown(x)))",
+    "ForAll([x], Implies(wumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), large(x)))",
+    "ForAll([x], Implies(yumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), dull(x)))",
+    "ForAll([x], Implies(vumpus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), earthy(x)))",
+    "ForAll([x], Implies(zumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), Not(sour(x))))",
+    "ForAll([x], Implies(numpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), transparent(x)))",
+    "ForAll([x], Implies(impus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), Not(nervous(x))))",
+    "ForAll([x], Implies(dumpus(x), jompus(x)))",
+    "vumpus(max)"
+  ],
+  "verifications": [
+    {
+      "name": "Max not nervous",
+      "constraint": "Not(nervous(max))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

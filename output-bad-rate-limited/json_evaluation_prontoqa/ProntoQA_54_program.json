@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impuse",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "red",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "vumpuses": {
+      "sort": "Vumpus",
+      "members": [
+        "Stella"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(red(Stella))"
+  ],
+  "verifications": [
+    {
+      "name": "Stella not red",
+      "constraint": "red(Stella)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

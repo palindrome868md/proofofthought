@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Class",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Field",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "expertise",
+      "domain": [
+        "Person"
+      ],
+      "range": "Field"
+    },
+    {
+      "name": "subject",
+      "domain": [
+        "Class"
+      ],
+      "range": "Field"
+    },
+    {
+      "name": "teaches",
+      "domain": [
+        "Person",
+        "Class"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "professors": {
+      "sort": "Person",
+      "members": [
+        "ethics_prof"
+      ]
+    },
+    "classes": {
+      "sort": "Class",
+      "members": [
+        "cezanne_class"
+      ]
+    },
+    "fields": {
+      "sort": "Field",
+      "members": [
+        "ethics_field",
+        "art_field"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Class"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, c], Implies(teaches(p, c), expertise(p) == subject(c)))",
+    "expertise(ethics_prof) == ethics_field",
+    "subject(cezanne_class) == art_field",
+    "ethics_field != art_field"
+  ],
+  "verifications": [
+    {
+      "name": "Ethics Professor Teaches Cezanne Class",
+      "constraint": "teaches(ethics_prof, cezanne_class)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

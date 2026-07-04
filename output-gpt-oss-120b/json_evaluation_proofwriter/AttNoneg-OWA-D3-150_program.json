@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Dave",
+        "Erin",
+        "Gary",
+        "Harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "smart(Dave)",
+    "furry(Erin)",
+    "nice(Erin)",
+    "nice(Gary)",
+    "nice(Harry)",
+    "red(Harry)",
+    "smart(Harry)",
+    "ForAll([x], Implies(big(x), furry(x)))",
+    "ForAll([x], Implies(blue(x), big(x)))",
+    "ForAll([x], Implies(red(x), blue(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is blue",
+      "constraint": "blue(Harry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Human",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "functional_brainstem",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_control_breath",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_swim",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_walk",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_stand",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_control_balance",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "functional_leg_muscles",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Human",
+      "members": [
+        "george",
+        "archie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "h",
+      "sort": "Human"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([h], Implies(can_control_breath(h), functional_brainstem(h)))",
+    "ForAll([h], Implies(can_swim(h), can_control_breath(h)))",
+    "ForAll([h], Or(can_swim(h), can_walk(h)))",
+    "ForAll([h], Implies(can_walk(h), can_stand(h)))",
+    "ForAll([h], Implies(functional_brainstem(h), can_control_balance(h)))",
+    "ForAll([h], Implies(can_stand(h), functional_leg_muscles(h)))",
+    "And(can_control_balance(george), can_swim(george))",
+    "can_walk(archie) == functional_brainstem(archie)"
+  ],
+  "verifications": [
+    {
+      "name": "Archie Leg Muscles and Balance",
+      "constraint": "And(functional_leg_muscles(archie), can_control_balance(archie))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

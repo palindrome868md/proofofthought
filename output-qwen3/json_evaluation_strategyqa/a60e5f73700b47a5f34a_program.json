@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Movie",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Role",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_rock_star",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays_role_in_movie",
+      "domain": [
+        "Person",
+        "Movie",
+        "Role"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_captain_role",
+      "domain": [
+        "Role"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_boat_role",
+      "domain": [
+        "Role"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "keith_richards"
+      ]
+    },
+    "movies": {
+      "sort": "Movie",
+      "members": [
+        "pirates_of_caribbean"
+      ]
+    },
+    "roles": {
+      "sort": "Role",
+      "members": [
+        "captain_teague"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Movie"
+    },
+    {
+      "name": "r",
+      "sort": "Role"
+    }
+  ],
+  "knowledge_base": [
+    "is_rock_star(keith_richards)",
+    "plays_role_in_movie(keith_richards, pirates_of_caribbean, captain_teague)",
+    "is_captain_role(captain_teague)",
+    "is_boat_role(captain_teague)"
+  ],
+  "verifications": [
+    {
+      "name": "Keith Richards plays captain of boat in movie",
+      "constraint": "And(is_rock_star(keith_richards), Exists([m, r], And(plays_role_in_movie(keith_richards, m, r), is_captain_role(r), is_boat_role(r))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

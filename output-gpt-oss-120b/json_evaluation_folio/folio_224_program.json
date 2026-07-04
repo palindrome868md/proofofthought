@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Species",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Genus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "belongsToGenus",
+      "domain": [
+        "Species",
+        "Genus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "livesIn",
+      "domain": [
+        "Species",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "genus": {
+      "sort": "Genus",
+      "members": [
+        "ambiortus"
+      ]
+    },
+    "species": {
+      "sort": "Species",
+      "members": [
+        "ambiortus_dementjevi"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "mongolia"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Species"
+    }
+  ],
+  "knowledge_base": [
+    "belongsToGenus(ambiortus_dementjevi, ambiortus)",
+    "livesIn(ambiortus_dementjevi, mongolia)"
+  ],
+  "verifications": [
+    {
+      "name": "All species of Ambiortus live in Mongolia",
+      "forall": [
+        {
+          "name": "s",
+          "sort": "Species"
+        }
+      ],
+      "implies": {
+        "antecedent": "belongsToGenus(s, ambiortus)",
+        "consequent": "livesIn(s, mongolia)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

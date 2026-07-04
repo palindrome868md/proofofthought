@@ -1,0 +1,179 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Sweet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([x], Implies(Numpus(x), Not(Mean(x))))",
+    "ForAll([x], Implies(Numpus(x), Impus(x)))",
+    "ForAll([x], Implies(Impus(x), Not(Fruity(x))))",
+    "ForAll([x], Implies(Impus(x), Zumpus(x)))",
+    "ForAll([x], Implies(Zumpus(x), Small(x)))",
+    "ForAll([x], Implies(Zumpus(x), Tumpus(x)))",
+    "ForAll([x], Implies(Tumpus(x), Transparent(x)))",
+    "ForAll([x], Implies(Tumpus(x), Jompus(x)))",
+    "ForAll([x], Implies(Wumpus(x), Not(Orange(x))))",
+    "ForAll([x], Implies(Jompus(x), Not(Bright(x))))",
+    "ForAll([x], Implies(Jompus(x), Dumpus(x)))",
+    "ForAll([x], Implies(Dumpus(x), Orange(x)))",
+    "ForAll([x], Implies(Dumpus(x), Vumpus(x)))",
+    "ForAll([x], Implies(Vumpus(x), Sweet(x)))",
+    "ForAll([x], Implies(Vumpus(x), Yumpus(x)))",
+    "ForAll([x], Implies(Yumpus(x), Wooden(x)))",
+    "ForAll([x], Implies(Yumpus(x), Rompus(x)))",
+    "Impus(sam)"
+  ],
+  "verifications": [
+    {
+      "name": "SamIsOrange",
+      "constraint": "Orange(sam)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

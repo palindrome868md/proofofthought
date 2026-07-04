@@ -1,0 +1,36 @@
+{
+  "sorts": [
+    {
+      "name": "Game",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "popular",
+      "domain": [
+        "Game"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "games": {
+      "sort": "Game",
+      "members": [
+        "illuminati_card_game"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Is Illuminati card game still popular",
+      "constraint": "popular(illuminati_card_game)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

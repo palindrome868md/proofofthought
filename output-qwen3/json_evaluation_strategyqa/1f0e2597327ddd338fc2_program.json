@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_warhog",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_african_animal",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nyc_location",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_at_location",
+      "domain": [
+        "Animal",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "warthog"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "broadway"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Animal"
+    },
+    {
+      "name": "l",
+      "sort": "Location"
+    }
+  ],
+  "knowledge_base": [
+    "is_warhog(warthog)",
+    "is_african_animal(warthog)",
+    "is_nyc_location(broadway)",
+    "ForAll([a, l], Implies(And(is_african_animal(a), is_nyc_location(l)), Not(is_at_location(a, l))))"
+  ],
+  "verifications": [
+    {
+      "name": "Is there a warthog on Broadway",
+      "constraint": "And(is_warhog(warthog), is_at_location(warthog, broadway))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

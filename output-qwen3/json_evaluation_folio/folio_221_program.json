@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Genus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Species",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_bird_genus",
+      "domain": [
+        "Genus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "discoverer",
+      "domain": [
+        "Person",
+        "Genus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "species_of",
+      "domain": [
+        "Species",
+        "Genus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_in",
+      "domain": [
+        "Species",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "yevgeny_kurochkin"
+      ]
+    },
+    "genera": {
+      "sort": "Genus",
+      "members": [
+        "ambiortus"
+      ]
+    },
+    "species": {
+      "sort": "Species",
+      "members": [
+        "ambiortus_dementjevi"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "mongolia"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_bird_genus(ambiortus)",
+    "species_of(ambiortus_dementjevi, ambiortus)",
+    "lived_in(ambiortus_dementjevi, mongolia)",
+    "discoverer(yevgeny_kurochkin, ambiortus)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Yevgeny Kurochkin discovered a bird genus",
+      "exists": [
+        {
+          "name": "g",
+          "sort": "Genus"
+        }
+      ],
+      "constraint": "And(discoverer(yevgeny_kurochkin, g), is_bird_genus(g))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

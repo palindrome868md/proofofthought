@@ -1,0 +1,172 @@
+{
+  "sorts": [
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Vumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Tumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Dumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "NumpusP",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Jompus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Wumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Rompus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Yumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Zumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Blue",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Impuse",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Sour",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Bright",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Large",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Metallic",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Angry",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Shy",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Opaque",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "numpuses": {
+      "sort": "Numpus",
+      "members": [
+        "alex"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Vumpus(x), Tumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Tumpus(x), Dumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Dumpus(x), Not(Large(x))))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Dumpus(x), NumpusP(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(NumpusP(x), Metallic(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(NumpusP(x), Jompus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Jompus(x), Not(Angry(x))))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Jompus(x), Wumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Wumpus(x), Not(Shy(x))))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Wumpus(x), Rompus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Rompus(x), Not(Opaque(x))))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Rompus(x), Yumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Zumpus(x), Not(Blue(x))))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Yumpus(x), Blue(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Numpus\"}], Implies(Yumpus(x), Impuse(x)))",
+    "NumpusP(alex)"
+  ],
+  "verifications": [
+    {
+      "name": "Alex blue",
+      "constraint": "Blue(alex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

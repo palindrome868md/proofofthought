@@ -1,0 +1,11 @@
+{
+  "sample_id": "train-181",
+  "question": "Scenario: I have two children and I am currently due to start a degree course in social work this coming Autumn.\n\nQuestion: Can I make a claim given that I will be studying and no longer working?\n\nDocument - Parents' Learning Allowance:\n## Overview\n\nYou may be eligible for help with your learning costs if you\u2019re a full-time student with children. This is called Parents\u2019 Learning Allowance.\n\nHow much you get depends on your household income.\n\nThe allowance:\n\n- does not have to be paid back\n\n- is paid on top of your other student finance\n\n- will not affect your benefits or tax credit\n\n## What you'll get\n\nDepending on your household income, in the 2021 to 2022 academic year you could get between \u00a350 and \u00a31,821 a year.\n\nIt\u2019s usually paid in 3 instalments direct to your bank account, one at the start of each term.\n\nParents\u2019 Learning Allowance is paid on top of your other student finance and does not have to be paid back.\n\n## 2020 to 2021 academic year\n\nFull-time students could get up to  \u00a31,766 a year.\n\n## Eligibility\n\nIf you\u2019re a student from England with dependent children you may qualify if you\u2019re taking:\n\n- a full-time undergraduate course\n\n- an Initial Teacher Training (ITT) course\n\nYou do not need to be paying for childcare to qualify.\n\n## How to apply\n\nYou can apply for the Parents\u2019 Learning Allowance when you apply for student finance.\n\n## After you apply\n\nAfter you apply you\u2019ll get a letter telling you how much you can get.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

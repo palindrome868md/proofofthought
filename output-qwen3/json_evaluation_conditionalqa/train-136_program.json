@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Agreement",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Court",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_legally_binding",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requires_court_approval",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_consent_order",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_avoid_court_hearing",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "parties_agree",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "agreements": {
+      "sort": "Agreement",
+      "members": [
+        "consent_order",
+        "informal_agreement",
+        "financial_order"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Agreement"
+    }
+  ],
+  "knowledge_base": [
+    "is_consent_order(consent_order) == True",
+    "is_consent_order(informal_agreement) == False",
+    "is_consent_order(financial_order) == False",
+    "requires_court_approval(consent_order) == True",
+    "requires_court_approval(informal_agreement) == False",
+    "requires_court_approval(financial_order) == True",
+    "is_legally_binding(consent_order) == True",
+    "is_legally_binding(informal_agreement) == False",
+    "is_legally_binding(financial_order) == True",
+    "can_avoid_court_hearing(consent_order) == True",
+    "can_avoid_court_hearing(informal_agreement) == True",
+    "can_avoid_court_hearing(financial_order) == False",
+    "ForAll([a], Implies(is_legally_binding(a), requires_court_approval(a)))",
+    "ForAll([a], Implies(is_consent_order(a), And(is_legally_binding(a), can_avoid_court_hearing(a))))",
+    "ForAll([a], Implies(And(is_legally_binding(a), Not(requires_court_approval(a))), False))"
+  ],
+  "verifications": [
+    {
+      "name": "Can Create Legally Binding Agreement Without Court Approval",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Agreement"
+        }
+      ],
+      "constraint": "And(is_legally_binding(a), Not(requires_court_approval(a)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

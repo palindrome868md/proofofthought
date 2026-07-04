@@ -1,0 +1,171 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpuse",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "luminous",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(numpus(x), large(x)))",
+    "ForAll([x], Implies(numpus(x), impuse(x)))",
+    "ForAll([x], Implies(impuse(x), dumpuse(x)))",
+    "ForAll([x], Implies(dumpuse(x), Not(floral(x))))",
+    "ForAll([x], Implies(dumpuse(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), Not(luminous(x))))",
+    "ForAll([x], Implies(vumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(rompus(x), Not(blue(x))))",
+    "ForAll([x], Implies(yumpus(x), blue(x)))",
+    "ForAll([x], Implies(yumpus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), happy(x)))",
+    "ForAll([x], Implies(tumpus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), sour(x)))",
+    "ForAll([x], Implies(zumpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), bright(x)))",
+    "ForAll([x], Implies(wumpus(x), jompus(x)))",
+    "numpus(sally)"
+  ],
+  "verifications": [
+    {
+      "name": "Is Sally blue",
+      "constraint": "blue(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

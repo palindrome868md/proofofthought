@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_step_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_DLA",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "step_father",
+      "sort": "Person"
+    },
+    {
+      "name": "child",
+      "sort": "Person"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, c], Implies(is_step_parent(p, c), can_claim_DLA(p, c)))",
+    "is_step_parent(step_father, child)"
+  ],
+  "verifications": [
+    {
+      "name": "StepParentCanClaimDLA",
+      "constraint": "can_claim_DLA(step_father, child)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

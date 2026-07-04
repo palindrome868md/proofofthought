@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "receiving_income_support",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "income_support_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "work_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "expected_work_duration",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "entitled_housing_costs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_mortgage_interest_run_on",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "claimant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "receiving_income_support(claimant) == True",
+    "income_support_weeks(claimant) == 30",
+    "work_hours(claimant) == 40",
+    "expected_work_duration(claimant) == 6",
+    "entitled_housing_costs(claimant) == True"
+  ],
+  "rules": [
+    {
+      "name": "MortgageInterestRunOnEligibility",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(receiving_income_support(p), income_support_weeks(p) >= 26, work_hours(p) >= 35, expected_work_duration(p) >= 5, entitled_housing_costs(p))",
+        "consequent": "can_claim_mortgage_interest_run_on(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CanClaimMortgageInterestRunOn",
+      "constraint": "can_claim_mortgage_interest_run_on(claimant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

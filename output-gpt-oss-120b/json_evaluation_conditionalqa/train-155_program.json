@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_registered_contact",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "withdraw_allowed",
+      "domain": [
+        "Person",
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "richard"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "is_registered_contact(me, richard) == True",
+    "ForAll([p, c, a], Implies(And(is_registered_contact(p, c), a < 18), Not(withdraw_allowed(p, c, a))))",
+    "ForAll([c, a], Implies(a >= 18, withdraw_allowed(c, c, a)))"
+  ],
+  "verifications": [
+    {
+      "name": "ParentWithdrawBefore18",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "IntSort"
+        }
+      ],
+      "constraint": "And(a < 18, withdraw_allowed(me, richard, a))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

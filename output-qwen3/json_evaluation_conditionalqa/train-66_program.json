@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Injury",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "served_in_armed_forces",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "injured_during_service",
+      "domain": [
+        "Person",
+        "Injury"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_compensation",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "claimants": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "injuries": {
+      "sort": "Injury",
+      "members": [
+        "leg_injury"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Injury"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, i], Implies(And(served_in_armed_forces(p), injured_during_service(p, i)), eligible_for_compensation(p)))",
+    "served_in_armed_forces(me)",
+    "injured_during_service(me, leg_injury)"
+  ],
+  "verifications": [
+    {
+      "name": "Can claim compensation",
+      "constraint": "eligible_for_compensation(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

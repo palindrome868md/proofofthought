@@ -1,0 +1,53 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_czech",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "published_in_1946",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "miroslav_venhoda"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_czech(miroslav_venhoda)",
+    "published_in_1946(miroslav_venhoda)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "A Czech published a book in 1946",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_czech(p), published_in_1946(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

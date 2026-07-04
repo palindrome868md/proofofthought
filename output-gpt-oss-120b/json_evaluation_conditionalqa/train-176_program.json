@@ -1,0 +1,151 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person"
+      ],
+      "range": "Location"
+    },
+    {
+      "name": "is_public_funded",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sixth_form_college",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_main_carer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_british_or_legal",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_care_to_learn",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_of",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_age",
+      "domain": [
+        "Child"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "my_course"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "london"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "my_child"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "age(me) == 19",
+    "lives_in(me) == london",
+    "is_public_funded(my_course) == True",
+    "is_sixth_form_college(my_course) == True",
+    "is_main_carer(me) == True",
+    "is_british_or_legal(me) == True",
+    "child_of(me, my_child) == True",
+    "child_age(my_child) == 2"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "Course"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(age(p) < 20, is_main_carer(p), lives_in(p) == london, is_public_funded(c), is_sixth_form_college(c), is_british_or_legal(p))",
+        "consequent": "eligible_for_care_to_learn(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can claim Care to Learn",
+      "constraint": "eligible_for_care_to_learn(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

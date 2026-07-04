@@ -1,0 +1,46 @@
+{
+  "sorts": [
+    {
+      "name": "Concept",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_metric_of_effect",
+      "domain": [
+        "Concept"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_threshold_for_belief",
+      "domain": [
+        "Concept"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "concepts": {
+      "sort": "Concept",
+      "members": [
+        "p_value"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(is_metric_of_effect(p_value))",
+    "is_threshold_for_belief(p_value)"
+  ],
+  "verifications": [
+    {
+      "name": "P values are not metrics of effect",
+      "constraint": "Not(is_metric_of_effect(p_value))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

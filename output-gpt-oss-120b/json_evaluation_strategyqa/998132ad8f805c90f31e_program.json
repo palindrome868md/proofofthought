@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "antarctica"
+      ]
+    },
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "groundhog"
+      ]
+    },
+    "events": {
+      "sort": "Event",
+      "members": [
+        "groundhog_day"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Animal",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_good_location_for_event",
+      "domain": [
+        "Location",
+        "Event"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "l",
+      "sort": "Location"
+    }
+  ],
+  "knowledge_base": [
+    "Not(lives_in(groundhog, antarctica))",
+    "ForAll([l], Implies(Not(lives_in(groundhog, l)), Not(is_good_location_for_event(l, groundhog_day))))"
+  ],
+  "verifications": [
+    {
+      "name": "Antarctica Good for Groundhog Day",
+      "constraint": "is_good_location_for_event(antarctica, groundhog_day)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

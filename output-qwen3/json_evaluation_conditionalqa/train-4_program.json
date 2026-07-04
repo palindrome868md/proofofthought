@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Parent",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Bool",
+      "type": "BoolSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "works_full_time",
+      "domain": [
+        "Parent"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "on_SPL",
+      "domain": [
+        "Parent"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_ShPP",
+      "domain": [
+        "Parent"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_ShPP",
+      "domain": [
+        "Parent"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_earnings_criteria",
+      "domain": [
+        "Parent"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_employment_criteria",
+      "domain": [
+        "Parent"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mother_ended_maternity_pay",
+      "domain": [],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "parents": {
+      "sort": "Parent",
+      "members": [
+        "mother",
+        "partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Parent"
+    }
+  ],
+  "knowledge_base": [
+    "meets_earnings_criteria(mother) == True",
+    "meets_earnings_criteria(partner) == True",
+    "meets_employment_criteria(mother) == True",
+    "meets_employment_criteria(partner) == True",
+    "mother_ended_maternity_pay() == True",
+    "ForAll([p], Implies(eligible_for_ShPP(p), And(meets_earnings_criteria(p), meets_employment_criteria(p))))",
+    "ForAll([p], Implies(receives_ShPP(p), And(eligible_for_ShPP(p), on_SPL(p))))",
+    "ForAll([p], Implies(on_SPL(p), Not(works_full_time(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Both parents working full time receive ShPP benefit",
+      "constraint": "And(works_full_time(mother), works_full_time(partner), receives_ShPP(mother))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

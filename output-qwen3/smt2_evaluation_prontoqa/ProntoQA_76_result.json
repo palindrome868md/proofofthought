@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_76",
+  "question": "Zumpuses are not spicy. Each yumpus is cold. Yumpuses are impuses. Every impus is red. Impuses are jompuses. Every jompus is not feisty. Every jompus is a rompus. Rompuses are angry. Each rompus is a wumpus. Each wumpus is spicy. Wumpuses are vumpuses. Vumpuses are not small. Vumpuses are numpuses. Numpuses are earthy. Numpuses are tumpuses. Every tumpus is luminous. Tumpuses are dumpuses. Sally is a yumpus.\n\nIs the following statement true or false? Sally is spicy.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

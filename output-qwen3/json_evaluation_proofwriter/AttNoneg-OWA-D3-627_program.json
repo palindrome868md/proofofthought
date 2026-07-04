@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "dave",
+        "fiona",
+        "gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_furry(anne)",
+    "is_cold(dave)",
+    "is_furry(dave)",
+    "is_green(dave)",
+    "is_nice(dave)",
+    "is_red(dave)",
+    "is_round(dave)",
+    "is_cold(fiona)",
+    "is_red(fiona)",
+    "is_rough(gary)",
+    "ForAll([x], Implies(And(is_round(x), is_furry(x)), is_red(x)))",
+    "ForAll([x], Implies(And(is_nice(x), is_red(x)), is_furry(x)))",
+    "ForAll([x], Implies(is_red(x), is_round(x)))",
+    "ForAll([x], Implies(And(is_furry(x), is_cold(x)), is_rough(x)))",
+    "ForAll([x], Implies(is_round(x), is_furry(x)))",
+    "ForAll([x], Implies(is_furry(x), is_red(x)))",
+    "Implies(And(is_nice(dave), is_furry(dave)), is_green(dave))",
+    "Implies(is_red(anne), is_nice(anne))"
+  ],
+  "verifications": [
+    {
+      "name": "Anne is furry",
+      "constraint": "is_furry(anne)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "Anne",
+        "Fiona",
+        "Gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_big(Anne)",
+    "is_red(Anne)",
+    "is_big(Fiona)",
+    "Not(is_round(Fiona))",
+    "is_smart(Fiona)",
+    "is_furry(Gary)",
+    "is_smart(Gary)",
+    "Implies(And(is_big(Anne), is_furry(Anne)), is_blue(Anne))",
+    "ForAll([x], Implies(is_white(x), is_round(x)))",
+    "Implies(is_blue(Anne), is_white(Anne))",
+    "ForAll([x], Implies(And(is_red(x), is_big(x)), is_white(x)))",
+    "ForAll([x], Implies(is_white(x), is_furry(x)))",
+    "ForAll([x], Implies(is_furry(x), is_smart(x)))",
+    "Implies(And(is_blue(Gary), Not(is_big(Gary))), is_smart(Gary))",
+    "Implies(And(is_red(Fiona), Not(is_furry(Fiona))), is_smart(Fiona))"
+  ],
+  "verifications": [
+    {
+      "name": "Gary is not smart",
+      "constraint": "Not(is_smart(Gary))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

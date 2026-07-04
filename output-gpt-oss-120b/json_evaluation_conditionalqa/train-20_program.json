@@ -1,0 +1,80 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "weeks_employed",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualifies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "weeks_employed(me) == 8",
+    "is_employee(me) == True"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility forward",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_employee(p), weeks_employed(p) >= 26)",
+        "consequent": "qualifies(p)"
+      }
+    },
+    {
+      "name": "Eligibility backward",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "qualifies(p)",
+        "consequent": "And(is_employee(p), weeks_employed(p) >= 26)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Will I qualify for paternity leave",
+      "constraint": "qualifies(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

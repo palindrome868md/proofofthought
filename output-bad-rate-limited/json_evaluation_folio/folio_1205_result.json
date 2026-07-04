@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1205",
+  "question": "Given the following premises:\n\nEveryone working at Meta has a high income. \nA person with a high income will not take a bus to their destination.\nPeople will either take a bus or drive to their destination. \nEveryone who has a car will choose to drive to their destination. \nNo students drive to their destination. \nJames has a car or works at Meta.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: James drives to his destination or he is a student.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

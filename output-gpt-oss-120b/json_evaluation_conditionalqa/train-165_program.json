@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "receives_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_get_assistance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "income_support"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "receives_benefit(me, income_support)",
+    "ForAll([p], Implies(receives_benefit(p, income_support), can_get_assistance(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Financial assistance availability",
+      "constraint": "can_get_assistance(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

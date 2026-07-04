@@ -1,0 +1,11 @@
+{
+  "sample_id": "1b29d402c3e17cb3b435",
+  "question": "Is a pound sterling valuable?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

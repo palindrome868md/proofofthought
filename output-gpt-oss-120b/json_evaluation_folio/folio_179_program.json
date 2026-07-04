@@ -1,0 +1,123 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Manager",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Logo",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "located_in",
+      "domain": [
+        "Building",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "managed_by",
+      "domain": [
+        "Building",
+        "Manager"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owned_by",
+      "domain": [
+        "Building",
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_logo",
+      "domain": [
+        "Building",
+        "Logo"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "TowerA",
+        "TowerB"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "NewHaven",
+        "Manhattans"
+      ]
+    },
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "Bloomberg"
+      ]
+    },
+    "managers": {
+      "sort": "Manager",
+      "members": [
+        "Yale_Housing"
+      ]
+    },
+    "logos": {
+      "sort": "Logo",
+      "members": [
+        "Bloomberg_Logo"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Building"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([b], Implies(located_in(b, NewHaven), Not(high(b))))",
+    "ForAll([b], Implies(located_in(b, Manhattans), high(b)))",
+    "ForAll([b], Implies(managed_by(b, Yale_Housing), located_in(b, NewHaven)))",
+    "ForAll([b], Implies(owned_by(b, Bloomberg), located_in(b, Manhattans)))",
+    "ForAll([b], Implies(has_logo(b, Bloomberg_Logo), owned_by(b, Bloomberg)))",
+    "managed_by(TowerA, Yale_Housing)",
+    "has_logo(TowerB, Bloomberg_Logo)"
+  ],
+  "verifications": [
+    {
+      "name": "TowerB located in New Haven",
+      "constraint": "located_in(TowerB, NewHaven)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

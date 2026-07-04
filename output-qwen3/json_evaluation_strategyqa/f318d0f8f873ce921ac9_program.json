@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "took_oath_in_court",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "witness"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(took_oath_in_court(p), Not(lies(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Is lying after oath permissible",
+      "constraint": "And(took_oath_in_court(witness), lies(witness))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

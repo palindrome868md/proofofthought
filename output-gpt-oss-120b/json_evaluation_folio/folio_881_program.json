@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Athlete",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "NeverExercise",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ProfessionalBasketballPlayer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "NBAPlayer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "KnicksPlayer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "SometimesExercise",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john",
+        "jim"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(Athlete(x), Not(NeverExercise(x))))",
+    "ForAll([x], Implies(ProfessionalBasketballPlayer(x), Athlete(x)))",
+    "ForAll([x], Implies(NBAPlayer(x), ProfessionalBasketballPlayer(x)))",
+    "ForAll([x], Implies(KnicksPlayer(x), NBAPlayer(x)))",
+    "Or(And(ProfessionalBasketballPlayer(john), NeverExercise(john)), And(Not(ProfessionalBasketballPlayer(john)), SometimesExercise(john)))"
+  ],
+  "verifications": [
+    {
+      "name": "JimIsKnicksPlayer",
+      "constraint": "KnicksPlayer(jim)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

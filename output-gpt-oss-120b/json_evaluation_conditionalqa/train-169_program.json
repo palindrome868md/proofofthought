@@ -1,0 +1,111 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Region",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "TaxYear",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_registered_blind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_certificate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Region"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_with",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earnings",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "blind_allowance_amount",
+      "domain": [
+        "TaxYear"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "wife"
+      ]
+    },
+    "regions": {
+      "sort": "Region",
+      "members": [
+        "england"
+      ]
+    },
+    "taxyears": {
+      "sort": "TaxYear",
+      "members": [
+        "tax_2021_2022"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_registered_blind(me)",
+    "has_certificate(me)",
+    "lives_in(me, england)",
+    "married(me, wife)",
+    "lives_with(me, wife)",
+    "earnings(me) == 0",
+    "blind_allowance_amount(tax_2021_2022) == 2520"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can claim Blind Person's Allowance and transfer it",
+      "constraint": "And(is_registered_blind(me), has_certificate(me), lives_in(me, england), married(me, wife), lives_with(me, wife), earnings(me) <= blind_allowance_amount(tax_2021_2022))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

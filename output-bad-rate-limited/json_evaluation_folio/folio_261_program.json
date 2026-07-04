@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_legislator",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "found_guilty_of_funds",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "suspended_from_office",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "served_term",
+      "domain": [
+        "Person",
+        "IntSort",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "tiffany_alston"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(is_legislator(p), found_guilty_of_funds(p)), suspended_from_office(p)))",
+    {
+      "assertion": "is_legislator(tiffany_alston)",
+      "value": true
+    },
+    {
+      "assertion": "served_term(tiffany_alston, 2011, 2013)",
+      "value": true
+    },
+    {
+      "assertion": "found_guilty_of_funds(tiffany_alston)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Tiffany Alston suspended from the Maryland House of Delegates",
+      "constraint": "suspended_from_office(tiffany_alston)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

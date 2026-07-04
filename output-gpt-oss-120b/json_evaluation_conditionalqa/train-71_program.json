@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "pregnant_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "employed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "self_employed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "recently_stopped",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_MA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "affects_other_benefits",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "pregnant_weeks(applicant) == 30",
+    "employed(applicant) == True",
+    "self_employed(applicant) == False",
+    "recently_stopped(applicant) == False",
+    "ForAll([p], Implies(And(pregnant_weeks(p) >= 26, Or(employed(p), self_employed(p), recently_stopped(p))), eligible_MA(p)))",
+    "ForAll([p], Implies(eligible_MA(p), affects_other_benefits(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility and impact of MA for applicant",
+      "constraint": "And(eligible_MA(applicant), affects_other_benefits(applicant))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Object",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "uses_object",
+      "domain": [
+        "Event",
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_space_competition",
+      "domain": [
+        "Event"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_athletic_equipment",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "events": {
+      "sort": "Event",
+      "members": [
+        "space_race"
+      ]
+    },
+    "objects": {
+      "sort": "Object",
+      "members": [
+        "relay_baton"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "e",
+      "sort": "Event"
+    },
+    {
+      "name": "o",
+      "sort": "Object"
+    }
+  ],
+  "knowledge_base": [
+    "is_space_competition(space_race) == True",
+    "is_athletic_equipment(relay_baton) == True",
+    "ForAll([e, o], Implies(And(is_space_competition(e), is_athletic_equipment(o)), Not(uses_object(e, o))))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Space Race used relay batons",
+      "constraint": "uses_object(space_race, relay_baton)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

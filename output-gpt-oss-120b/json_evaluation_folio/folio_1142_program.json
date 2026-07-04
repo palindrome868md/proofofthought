@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Fruit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "growInBen",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "redFruit",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "containsVitC",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "apple",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "healthy",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "warningList",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fruits": {
+      "sort": "Fruit",
+      "members": [
+        "cherries"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Fruit"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(redFruit(x), growInBen(x)), containsVitC(x)))",
+    "ForAll([x], Implies(And(apple(x), growInBen(x)), redFruit(x)))",
+    "ForAll([x], Implies(And(growInBen(x), containsVitC(x)), healthy(x)))",
+    "ForAll([x], Implies(And(growInBen(x), healthy(x)), Not(warningList(x))))",
+    "growInBen(cherries)",
+    "Implies(And(Not(apple(cherries)), Not(healthy(cherries))), redFruit(cherries))"
+  ],
+  "verifications": [
+    {
+      "name": "CherriesAreApples",
+      "constraint": "apple(cherries)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

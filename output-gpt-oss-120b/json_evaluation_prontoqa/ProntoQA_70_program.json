@@ -1,0 +1,131 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "metallic",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "rex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(jompus(x), earthy(x)))",
+    "ForAll([x], Implies(jompus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), metallic(x)))",
+    "ForAll([x], Implies(yumpus(x), impus(x)))",
+    "ForAll([x], Implies(dumpus(x), Not(transparent(x))))",
+    "ForAll([x], Implies(impus(x), nervous(x)))",
+    "ForAll([x], Implies(impus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), small(x)))",
+    "ForAll([x], Implies(rompus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), transparent(x)))",
+    "ForAll([x], Implies(tumpus(x), vumpus(x)))",
+    "jompus(rex)"
+  ],
+  "verifications": [
+    {
+      "name": "Rex not transparent",
+      "constraint": "Not(transparent(rex))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

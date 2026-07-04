@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "dog",
+        "lion",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "is_cold(bear)",
+    "Not(chases(dog, lion))",
+    "Not(is_blue(lion))",
+    "likes(lion, squirrel)",
+    "eats(squirrel, lion)",
+    "is_cold(squirrel)",
+    "Not(likes(squirrel, bear))",
+    "Implies(is_cold(squirrel), chases(squirrel, bear))",
+    "ForAll([x], Implies(chases(x, bear), eats(bear, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bear does not eat squirrel",
+      "constraint": "Not(eats(bear, squirrel))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "leader_for_life",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_power",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_king",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_queen",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_male",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_female",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "elizabeth"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(leader_for_life(p), has_power(p)))",
+    "ForAll([p], Implies(leader_for_life(p), Or(is_king(p), is_queen(p))))",
+    "ForAll([p], Implies(is_queen(p), is_female(p)))",
+    "ForAll([p], Implies(is_king(p), is_male(p)))",
+    "is_queen(elizabeth)",
+    "leader_for_life(elizabeth)",
+    "ForAll([p], Not(And(is_male(p), is_female(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Elizabeth a king",
+      "constraint": "is_king(elizabeth)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

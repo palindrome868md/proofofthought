@@ -1,0 +1,139 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "polly"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(jompus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), Not(transparent(p))))",
+    "ForAll([p], Implies(dumpus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), feisty(p)))",
+    "ForAll([p], Implies(feisty(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), Not(dull(p))))",
+    "ForAll([p], Implies(wumpus(p), impus(p)))",
+    "ForAll([p], Implies(vumpus(p), Not(blue(p))))",
+    "ForAll([p], Implies(impus(p), blue(p)))",
+    "ForAll([p], Implies(impus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), Not(floral(p))))",
+    "ForAll([p], Implies(tumpus(p), numpus(p)))",
+    "jompus(polly)"
+  ],
+  "verifications": [
+    {
+      "name": "Polly is blue",
+      "constraint": "blue(polly)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

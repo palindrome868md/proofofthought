@@ -1,0 +1,109 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "cow",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_young(cat)",
+    "is_young(cow)",
+    "visits(cow, mouse)",
+    "eats(mouse, cat)",
+    "needs(mouse, cat)",
+    "needs(mouse, rabbit)",
+    "Not(visits(mouse, cow))",
+    "visits(mouse, rabbit)",
+    "is_round(rabbit)",
+    "Not(needs(rabbit, cat))",
+    "visits(rabbit, mouse)",
+    "ForAll([x], Implies(And(eats(x, cat), eats(x, cow)), Not(needs(x, mouse))))",
+    "ForAll([x], Implies(visits(x, cat), eats(cat, cow)))",
+    "ForAll([x], Implies(is_nice(x), is_red(x)))",
+    "Implies(And(needs(mouse, rabbit), eats(mouse, cat)), eats(mouse, cow))",
+    "ForAll([x], Implies(And(is_red(x), visits(x, mouse)), needs(mouse, cow)))",
+    "ForAll([x], Implies(needs(x, cow), visits(cow, cat)))",
+    "ForAll([x], Implies(is_round(x), is_nice(x)))",
+    "ForAll([x], Implies(And(needs(x, cat), visits(cat, rabbit)), Not(eats(x, rabbit))))"
+  ],
+  "verifications": [
+    {
+      "name": "Cat does not eat cow",
+      "constraint": "Not(eats(cat, cow))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

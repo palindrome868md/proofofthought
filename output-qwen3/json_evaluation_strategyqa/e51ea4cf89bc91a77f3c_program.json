@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "War",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "participated_in",
+      "domain": [
+        "Country",
+        "War"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "was_neutral",
+      "domain": [
+        "Country",
+        "War"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "portugal",
+        "switzerland",
+        "angola",
+        "mozambique",
+        "guinea_bissau"
+      ]
+    },
+    "wars": {
+      "sort": "War",
+      "members": [
+        "portuguese_colonial_war",
+        "wwii"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Country"
+    },
+    {
+      "name": "w",
+      "sort": "War"
+    }
+  ],
+  "knowledge_base": [
+    "was_neutral(switzerland, wwii)",
+    "participated_in(portugal, portuguese_colonial_war)",
+    "participated_in(angola, portuguese_colonial_war)",
+    "participated_in(mozambique, portuguese_colonial_war)",
+    "participated_in(guinea_bissau, portuguese_colonial_war)",
+    "Not(was_neutral(portugal, portuguese_colonial_war))",
+    "Not(was_neutral(angola, portuguese_colonial_war))",
+    "Not(was_neutral(mozambique, portuguese_colonial_war))",
+    "Not(was_neutral(guinea_bissau, portuguese_colonial_war))"
+  ],
+  "verifications": [
+    {
+      "name": "Any Neutral Country in Portuguese Colonial War",
+      "exists": [
+        {
+          "name": "c",
+          "sort": "Country"
+        }
+      ],
+      "constraint": "And(participated_in(c, portuguese_colonial_war), was_neutral(c, portuguese_colonial_war))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

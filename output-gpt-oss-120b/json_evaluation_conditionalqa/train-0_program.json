@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_child_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sibling_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "more_entitled",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "me",
+        "uncle"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    },
+    {
+      "name": "y",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_child_of(me, father)",
+    "is_sibling_of(uncle, father)",
+    "ForAll([x, y], Implies(And(is_child_of(x, father), is_sibling_of(y, father)), more_entitled(x, y)))"
+  ],
+  "verifications": [
+    {
+      "name": "ChildHasGreaterProbateRightThanUncle",
+      "constraint": "more_entitled(me, uncle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

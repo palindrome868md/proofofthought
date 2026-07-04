@@ -1,0 +1,110 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "PoliticalGroup",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "School",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Supported",
+      "domain": [
+        "Person",
+        "PoliticalGroup"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GotSeatInParliament",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "SatInHouseOfCommons",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "AttendedSchool",
+      "domain": [
+        "Person",
+        "School"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "LocatedIn",
+      "domain": [
+        "School",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    },
+    "groups": {
+      "sort": "PoliticalGroup",
+      "members": [
+        "portland_whigs"
+      ]
+    },
+    "schools": {
+      "sort": "School",
+      "members": [
+        "westminster_school",
+        "university_of_edinburgh"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "united_kingdom"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "SatInHouseOfCommons(william_dickinson)",
+    "AttendedSchool(william_dickinson, westminster_school)",
+    "AttendedSchool(william_dickinson, university_of_edinburgh)",
+    "LocatedIn(university_of_edinburgh, united_kingdom)",
+    "Supported(william_dickinson, portland_whigs)",
+    "ForAll([p], Implies(Supported(p, portland_whigs), Not(GotSeatInParliament(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson Seat Verification",
+      "constraint": "Not(GotSeatInParliament(william_dickinson))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

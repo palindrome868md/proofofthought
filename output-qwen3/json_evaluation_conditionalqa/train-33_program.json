@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "EmploymentStatus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_teacher",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_adopting",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_take_adoption_leave",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_take_paternity_leave",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_employment_requirements",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user",
+        "husband"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_teacher(user)",
+    "is_teacher(husband)",
+    "is_partner(user, husband)",
+    "is_adopting(user)",
+    "is_adopting(husband)",
+    "meets_employment_requirements(user)",
+    "meets_employment_requirements(husband)",
+    "ForAll([p], Implies(And(is_adopting(p), meets_employment_requirements(p)), can_take_adoption_leave(p)))",
+    "ForAll([p1, p2], Implies(And(is_partner(p1, p2), And(is_adopting(p1), is_adopting(p2))), Not(And(can_take_adoption_leave(p1), can_take_adoption_leave(p2)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can both partners take adoption leave",
+      "constraint": "And(can_take_adoption_leave(user), can_take_adoption_leave(husband))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

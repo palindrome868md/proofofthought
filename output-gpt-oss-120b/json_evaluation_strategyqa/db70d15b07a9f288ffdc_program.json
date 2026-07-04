@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "water_temp",
+      "domain": [
+        "Animal"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "is_manta_ray",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "manta1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_manta_ray(manta1)",
+    "water_temp(manta1) > 20"
+  ],
+  "verifications": [
+    {
+      "name": "Manta rays live in water above safe temperature",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(is_manta_ray(x), water_temp(x) > 4)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

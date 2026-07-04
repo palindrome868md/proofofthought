@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Object",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Religion",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "city_dominant_religion",
+      "domain": [
+        "City"
+      ],
+      "range": "Religion"
+    },
+    {
+      "name": "is_christian_symbol",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "found_in",
+      "domain": [
+        "Object",
+        "City"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "cities": {
+      "sort": "City",
+      "members": [
+        "karachi"
+      ]
+    },
+    "objects": {
+      "sort": "Object",
+      "members": [
+        "crucifix"
+      ]
+    },
+    "religions": {
+      "sort": "Religion",
+      "members": [
+        "Christian",
+        "Muslim"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "City"
+    },
+    {
+      "name": "o",
+      "sort": "Object"
+    }
+  ],
+  "knowledge_base": [
+    "city_dominant_religion(karachi) == Muslim",
+    "is_christian_symbol(crucifix) == True",
+    "ForAll([c, o], Implies(And(is_christian_symbol(o), city_dominant_religion(c) != Christian), Not(found_in(o, c))))"
+  ],
+  "verifications": [
+    {
+      "name": "Find Crucifix in Karachi",
+      "constraint": "found_in(crucifix, karachi)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

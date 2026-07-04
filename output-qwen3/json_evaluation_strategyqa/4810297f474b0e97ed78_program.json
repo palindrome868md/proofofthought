@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "weight_lbs",
+      "domain": [
+        "Substance"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "min_crush_weight",
+      "domain": [
+        "Person"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "can_crush",
+      "domain": [
+        "Substance",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "ten_gallons_seawater"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "six_year_old_child"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Substance"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "weight_lbs(ten_gallons_seawater) == 85",
+    "min_crush_weight(six_year_old_child) == 500",
+    "ForAll([s, p], Implies(can_crush(s, p), weight_lbs(s) >= min_crush_weight(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Could ten gallons seawater crush six year old",
+      "constraint": "can_crush(ten_gallons_seawater, six_year_old_child)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

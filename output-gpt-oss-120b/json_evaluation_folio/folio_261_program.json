@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "legislator",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "found_guilty_stealing",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "suspended",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "tiffany_alston"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(found_guilty_stealing(p), suspended(p)))",
+    "legislator(tiffany_alston)",
+    "found_guilty_stealing(tiffany_alston)"
+  ],
+  "verifications": [
+    {
+      "name": "Tiffany Alston suspended",
+      "constraint": "suspended(tiffany_alston)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

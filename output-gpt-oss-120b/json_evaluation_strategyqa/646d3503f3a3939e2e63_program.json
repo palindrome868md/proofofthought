@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Mountain",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Sea",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "InSea",
+      "domain": [
+        "Mountain",
+        "Sea"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "TopSticksOutOf",
+      "domain": [
+        "Mountain",
+        "Sea"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "mountains": {
+      "sort": "Mountain",
+      "members": [
+        "mount_fuji"
+      ]
+    },
+    "seas": {
+      "sort": "Sea",
+      "members": [
+        "sea_of_japan"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Mountain"
+    },
+    {
+      "name": "s",
+      "sort": "Sea"
+    }
+  ],
+  "knowledge_base": [
+    "Not(InSea(mount_fuji, sea_of_japan))",
+    "ForAll([m, s], Implies(Not(InSea(m, s)), Not(TopSticksOutOf(m, s))))"
+  ],
+  "verifications": [
+    {
+      "name": "Top of Mount Fuji sticks out of Sea of Japan",
+      "constraint": "TopSticksOutOf(mount_fuji, sea_of_japan)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

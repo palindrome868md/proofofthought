@@ -1,0 +1,138 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Estate",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BoolSort",
+      "type": "BoolSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_will",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sole_ownership",
+      "domain": [
+        "Property",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jointly_owned",
+      "domain": [
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_property",
+      "domain": [
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_savings_only",
+      "domain": [
+        "Estate"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "inherited_by",
+      "domain": [
+        "Property",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_probate_to_sell",
+      "domain": [
+        "Property",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_sell_without_probate",
+      "domain": [
+        "Property",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "uncle",
+        "user"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "house"
+      ]
+    },
+    "estates": {
+      "sort": "Estate",
+      "members": [
+        "uncle_estate"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "prop",
+      "sort": "Property"
+    },
+    {
+      "name": "e",
+      "sort": "Estate"
+    }
+  ],
+  "knowledge_base": [
+    "has_will(uncle) == True",
+    "sole_ownership(house, uncle) == True",
+    "jointly_owned(house) == False",
+    "is_property(house) == True",
+    "inherited_by(house, user) == True",
+    "is_savings_only(uncle_estate) == False",
+    "ForAll([p, prop], Implies(And(jointly_owned(prop), inherited_by(prop, p)), can_sell_without_probate(prop, p)))",
+    "ForAll([p, prop], Implies(And(is_property(prop), Not(jointly_owned(prop)), inherited_by(prop, p), has_will(uncle)), needs_probate_to_sell(prop, p)))",
+    "ForAll([p, prop], Implies(And(is_savings_only(uncle_estate), inherited_by(prop, p)), can_sell_without_probate(prop, p)))",
+    "ForAll([p, prop], Implies(needs_probate_to_sell(prop, p), Not(can_sell_without_probate(prop, p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Does user need probate to sell inherited house",
+      "constraint": "needs_probate_to_sell(house, user)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

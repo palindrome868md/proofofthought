@@ -1,0 +1,63 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_ex_employee",
+      "domain": [
+        "Person",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_entitled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "NCB",
+        "BCC"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(Or(is_ex_employee(p, NCB), is_ex_employee(p, BCC)), is_entitled(p)))",
+    "is_ex_employee(me, NCB)"
+  ],
+  "verifications": [
+    {
+      "name": "Employment Entitlement Check",
+      "constraint": "is_entitled(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_children",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_undergraduate_course",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_itt_course",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_from_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enrolled_in",
+      "domain": [
+        "Person",
+        "Course"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "social_work_degree"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Course"
+    }
+  ],
+  "knowledge_base": [
+    "has_children(me)",
+    "is_full_time_student(me)",
+    "enrolled_in(me, social_work_degree)",
+    "is_undergraduate_course(social_work_degree)",
+    "is_from_england(me)",
+    "ForAll([p, c], Implies(And(is_from_england(p), has_children(p), is_full_time_student(p), enrolled_in(p, c), Or(is_undergraduate_course(c), is_itt_course(c))), eligible_for_allowance(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can I make a claim for Parents Learning Allowance",
+      "constraint": "eligible_for_allowance(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

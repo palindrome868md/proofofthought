@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_psychic",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "admits_hot_reading",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "trustworthy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [
+    {
+      "name": "HotReadingTrustRule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_psychic(p), admits_hot_reading(p))",
+        "consequent": "Not(trustworthy(p))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "PsychicAdmitsHotReadingTrustworthy",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_psychic(p), admits_hot_reading(p), trustworthy(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

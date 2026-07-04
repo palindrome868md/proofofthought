@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "legislator_MD_HoD",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "found_guilty_government_funds",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "suspended_MD_HoD",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "tiffany_alston"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "legislator_MD_HoD(tiffany_alston)",
+    "found_guilty_government_funds(tiffany_alston)"
+  ],
+  "rules": [
+    {
+      "name": "Suspension Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(legislator_MD_HoD(p), found_guilty_government_funds(p))",
+        "consequent": "suspended_MD_HoD(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Tiffany Alston was not suspended from the Maryland House of Delegates",
+      "constraint": "Not(suspended_MD_HoD(tiffany_alston))"
+    }
+  ]
+}

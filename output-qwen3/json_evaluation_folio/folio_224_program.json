@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Genus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Species",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_species_of",
+      "domain": [
+        "Species",
+        "Genus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_in",
+      "domain": [
+        "Species",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "discovered_by",
+      "domain": [
+        "Genus",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "genera": {
+      "sort": "Genus",
+      "members": [
+        "ambiortus"
+      ]
+    },
+    "species": {
+      "sort": "Species",
+      "members": [
+        "ambiortus_dementjevi"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "mongolia"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "yevgeny_kurochkin"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Species"
+    }
+  ],
+  "knowledge_base": [
+    "is_species_of(ambiortus_dementjevi, ambiortus)",
+    "ForAll([s], Implies(is_species_of(s, ambiortus), s == ambiortus_dementjevi))",
+    "lived_in(ambiortus_dementjevi, mongolia)",
+    "discovered_by(ambiortus, yevgeny_kurochkin)"
+  ],
+  "verifications": [
+    {
+      "name": "All Ambiortus species live in Mongolia",
+      "forall": [
+        {
+          "name": "s",
+          "sort": "Species"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_species_of(s, ambiortus)",
+        "consequent": "lived_in(s, mongolia)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

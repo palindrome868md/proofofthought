@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Bob",
+        "Dave"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "Not(big(Bob))",
+    "furry(Bob)",
+    "green(Bob)",
+    "rough(Bob)",
+    "round(Bob)",
+    "smart(Bob)",
+    "Not(white(Bob))",
+    "big(Dave)",
+    "furry(Dave)",
+    "green(Dave)",
+    "rough(Dave)",
+    "Not(round(Dave))",
+    "Not(smart(Dave))",
+    "white(Dave)",
+    "ForAll([x], Implies(And(smart(x), white(x)), big(x)))",
+    "Implies(white(Dave), big(Dave))",
+    "ForAll([x], Implies(And(white(x), Not(big(x))), round(x)))",
+    "ForAll([x], Implies(And(big(x), white(x)), Not(round(x))))",
+    "ForAll([x], Implies(And(big(x), smart(x)), round(x)))",
+    "ForAll([x], Implies(white(x), furry(x)))",
+    "ForAll([x], Implies(And(round(x), rough(x)), furry(x)))",
+    "Implies(And(round(Dave), green(Dave)), furry(Dave))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Bob White",
+      "constraint": "white(Bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

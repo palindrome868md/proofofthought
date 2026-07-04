@@ -1,0 +1,39 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "Japan",
+        "England"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "higher_status",
+      "domain": [
+        "Country",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "higher_status(Japan, England)"
+  ],
+  "verifications": [
+    {
+      "name": "JapaneseSerfdomHigherThanEnglish",
+      "constraint": "higher_status(Japan, England)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

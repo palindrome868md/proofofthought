@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1008",
+  "question": "Given the following premises:\n\nAll people who attend weddings are getting married or know the people who are getting married.\nNo preteens or young children are getting married or know the people who are getting married.\nPeople who enjoy celebrating life milestone events with other people attend weddings.\nPeople who are fond of large group functions enjoy celebrating life milestone events with other people.\nAll people who are outgoing and spirited are fond of large group functions.\nIf Carol is not both a pre-teen or young child and attends a wedding, then Carol is not getting married or knows the people who are getting married.  \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Carol is outgoing and very spirited.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

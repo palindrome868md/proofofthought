@@ -1,0 +1,108 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rents_car",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spends_money",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns_car",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_to",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "drives",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "borrows_car",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "go_camping",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sarah"
+      ]
+    },
+    "places": {
+      "sort": "Place",
+      "members": [
+        "vermont"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "pl",
+      "sort": "Place"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(rents_car(p), spends_money(p)))",
+    "Implies(goes_to(sarah, vermont), drives(sarah, vermont))",
+    "ForAll([p, pl], Implies(And(Not(owns_car(p)), drives(p, pl)), Or(borrows_car(p), rents_car(p))))",
+    "Not(owns_car(sarah))",
+    "ForAll([pl], Implies(go_camping(sarah, pl), Not(borrows_car(sarah))))",
+    "go_camping(sarah, vermont)",
+    "ForAll([p, pl], Implies(go_camping(p, pl), goes_to(p, pl)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sarah spends money this weekend",
+      "constraint": "spends_money(sarah)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

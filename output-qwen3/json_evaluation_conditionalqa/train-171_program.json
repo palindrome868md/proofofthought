@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Court",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cannot_agree_on_assets",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_request_court_decision",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "court_can_decide_asset_division",
+      "domain": [
+        "Court",
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "spouse1",
+        "spouse2"
+      ]
+    },
+    "courts": {
+      "sort": "Court",
+      "members": [
+        "family_court"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Court"
+    }
+  ],
+  "knowledge_base": [
+    "married(spouse1, spouse2)",
+    "cannot_agree_on_assets(spouse1, spouse2)",
+    "ForAll([p1, p2], Implies(And(married(p1, p2), cannot_agree_on_assets(p1, p2)), can_request_court_decision(p1, p2)))",
+    "ForAll([p1, p2, c], Implies(can_request_court_decision(p1, p2), court_can_decide_asset_division(c, p1, p2)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can court decide on asset division when spouses cannot agree",
+      "constraint": "court_can_decide_asset_division(family_court, spouse1, spouse2)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

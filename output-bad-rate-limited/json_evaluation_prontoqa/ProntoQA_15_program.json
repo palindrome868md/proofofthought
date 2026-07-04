@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [],
+  "constants": {
+    "numpuses": {
+      "sort": "Numpus",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_numpus(sam)",
+    "ForAll([j], Implies(is_jompus(j), Not(is_small(j))))",
+    "ForAll([j], Implies(is_jompus(j), is_tumpus(j)))",
+    "ForAll([t], Implies(is_tumpus(t), Not(is_kind(t))))",
+    "ForAll([t], Implies(is_tumpus(t), is_vumpus(t)))",
+    "ForAll([v], Implies(is_vumpus(v), is_numpus(v)))",
+    "ForAll([n], Implies(is_numpus(n), is_fruit(n)))",
+    "ForAll([n], Implies(is_numpus(n), is_dumpus(n)))",
+    "ForAll([d], Implies(is_dumpus(d), is_nervous(d)))",
+    "ForAll([d], Implies(is_dumpus(d), is_rompus(d)))",
+    "ForAll([r], Implies(is_rompus(r), is_opaque(r)))",
+    "ForAll([r], Implies(is_rompus(r), is_zumpus(r)))",
+    "ForAll([z], Implies(is_zumpus(z), is_hot(z)))",
+    "ForAll([z], Implies(is_zumpus(z), is_impus(z)))",
+    "ForAll([i], Implies(is_impus(i), Not(is_dull(i))))",
+    "ForAll([i], Implies(is_impus(i), is_yumpus(i)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam not dull",
+      "constraint": "Not(is_dull(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

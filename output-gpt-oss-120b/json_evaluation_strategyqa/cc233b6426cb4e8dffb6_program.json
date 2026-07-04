@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "birthplace",
+      "domain": [
+        "Person"
+      ],
+      "range": "Location"
+    },
+    {
+      "name": "near",
+      "domain": [
+        "Location",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sean_connery"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "edinburgh",
+        "washington_monument"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "birthplace(sean_connery) == edinburgh",
+    "Not(near(edinburgh, washington_monument))"
+  ],
+  "verifications": [
+    {
+      "name": "Sean Connery born near Washington Monument",
+      "constraint": "near(birthplace(sean_connery), washington_monument)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

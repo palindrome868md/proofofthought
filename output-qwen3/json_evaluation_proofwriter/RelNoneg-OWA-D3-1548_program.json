@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "cat",
+        "dog"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "cold(bald_eagle)",
+    "kind(bald_eagle)",
+    "young(bald_eagle)",
+    "sees(bald_eagle, cat)",
+    "visits(bald_eagle, cat)",
+    "visits(bald_eagle, dog)",
+    "kind(cat)",
+    "sees(cat, dog)",
+    "eats(dog, bald_eagle)",
+    "eats(dog, cat)",
+    "cold(dog)",
+    "is_round(dog)",
+    "sees(dog, bald_eagle)",
+    "sees(dog, cat)",
+    "visits(dog, bald_eagle)",
+    "visits(dog, cat)",
+    "Implies(visits(dog, cat), eats(cat, dog))",
+    "ForAll([x], Implies(kind(x), sees(x, dog)))",
+    "Implies(sees(bald_eagle, dog), cold(dog))",
+    "ForAll([x], Implies(And(visits(x, cat), eats(cat, dog)), kind(dog)))",
+    "ForAll([x], Implies(And(eats(x, cat), is_round(x)), rough(cat)))",
+    "ForAll([x], Implies(And(visits(x, cat), visits(cat, bald_eagle)), visits(cat, dog)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dog sees dog",
+      "constraint": "sees(dog, dog)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

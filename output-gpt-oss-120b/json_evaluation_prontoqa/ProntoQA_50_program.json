@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "Impus(fae)",
+    "ForAll([x], Implies(Impus(x), Yumpus(x)))",
+    "ForAll([x], Implies(Yumpus(x), Zumpus(x)))",
+    "ForAll([x], Implies(Zumpus(x), Vumpus(x)))",
+    "ForAll([x], Implies(Vumpus(x), Tumpus(x)))",
+    "ForAll([x], Implies(Tumpus(x), Blue(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is not blue",
+      "constraint": "Not(Blue(fae))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

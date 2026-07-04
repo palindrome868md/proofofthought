@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "class_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "birth_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "remembers",
+      "domain": [
+        "Person",
+        "Event"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "student_2017"
+      ]
+    },
+    "events": {
+      "sort": "Event",
+      "members": [
+        "nine_eleven"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "class_year(student_2017) == 2017",
+    "birth_year(student_2017) == 1999"
+  ],
+  "rules": [
+    {
+      "name": "YoungAgeAmnesiaRule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(class_year(p) == 2017, (2001 - birth_year(p)) < 5)",
+        "consequent": "Not(remembers(p, nine_eleven))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Student2017Amnesia",
+      "constraint": "Not(remembers(student_2017, nine_eleven))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

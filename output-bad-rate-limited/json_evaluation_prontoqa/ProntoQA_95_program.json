@@ -1,0 +1,160 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "stella"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "vumpus(stella)",
+    "ForAll([p], Implies(vumpus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), rompus(p)))",
+    "ForAll([p], Implies(rompus(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), Not(feisty(p))))",
+    "ForAll([p], Implies(zumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), floral(p)))",
+    "ForAll([p], Implies(yumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), bitter(p)))",
+    "ForAll([p], Implies(impus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), dull(p)))",
+    "ForAll([p], Implies(impus(p), large(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Stella is feisty",
+      "constraint": "feisty(stella)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

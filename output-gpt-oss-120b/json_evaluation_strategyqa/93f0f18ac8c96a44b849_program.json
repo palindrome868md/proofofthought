@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Artist",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Song",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "top_ranked_song",
+      "domain": [
+        "Artist"
+      ],
+      "range": "Song"
+    },
+    {
+      "name": "collaborator",
+      "domain": [
+        "Song",
+        "Artist"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_lox_member",
+      "domain": [
+        "Artist"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "artists": {
+      "sort": "Artist",
+      "members": [
+        "lil_jon",
+        "usher",
+        "jadakiss",
+        "sheek_louch",
+        "styles_p"
+      ]
+    },
+    "songs": {
+      "sort": "Song",
+      "members": [
+        "yeah"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "top_ranked_song(lil_jon) == yeah",
+    "collaborator(yeah, usher) == True",
+    "collaborator(yeah, lil_jon) == True",
+    "is_lox_member(jadakiss) == True",
+    "is_lox_member(sheek_louch) == True",
+    "is_lox_member(styles_p) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Lil Jon top song collaboration with a Lox member",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Artist"
+        }
+      ],
+      "constraint": "And(is_lox_member(a), collaborator(top_ranked_song(lil_jon), a))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

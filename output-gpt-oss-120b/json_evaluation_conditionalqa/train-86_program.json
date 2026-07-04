@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "missing_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_claim_presumed_death",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "me",
+        "sister"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "missing_years(father) == 5"
+  ],
+  "rules": [
+    {
+      "name": "EligibilityRule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "can_claim_presumed_death(p) == (missing_years(p) >= 7)"
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can I get a death certificate for father?",
+      "constraint": "can_claim_presumed_death(father)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

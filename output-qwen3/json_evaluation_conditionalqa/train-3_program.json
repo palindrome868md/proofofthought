@@ -1,0 +1,110 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Marriage",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_uk_citizen",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_resident_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "was_pregnant_by_other_at_marriage",
+      "domain": [
+        "Person",
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wife",
+      "domain": [
+        "Person",
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_residency_requirement",
+      "domain": [
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_voidable_ground",
+      "domain": [
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_annul",
+      "domain": [
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife"
+      ]
+    },
+    "marriages": {
+      "sort": "Marriage",
+      "members": [
+        "marriage"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "m",
+      "sort": "Marriage"
+    }
+  ],
+  "knowledge_base": [
+    "is_uk_citizen(husband)",
+    "is_uk_citizen(wife)",
+    "is_resident_uk(husband)",
+    "is_resident_uk(wife)",
+    "is_wife(wife, marriage)",
+    "was_pregnant_by_other_at_marriage(wife, marriage)",
+    "meets_residency_requirement(marriage)",
+    "ForAll([p, m], Implies(And(is_wife(p, m), was_pregnant_by_other_at_marriage(p, m)), has_voidable_ground(m)))",
+    "ForAll([m], Implies(And(meets_residency_requirement(m), has_voidable_ground(m)), can_annul(m)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can marriage be annulled",
+      "constraint": "can_annul(marriage)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

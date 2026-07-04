@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_nice",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "cat",
+        "dog",
+        "rabbit",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "is_nice(cat)",
+    "chases(dog, rabbit)",
+    "visits(rabbit, tiger)",
+    "is_nice(tiger)",
+    "Implies(And(is_blue(rabbit), visits(rabbit, tiger)), is_young(tiger))",
+    "Implies(And(visits(rabbit, dog), visits(dog, rabbit)), eats(rabbit, cat))",
+    "ForAll([x], Implies(And(eats(x, rabbit), is_red(x)), eats(rabbit, cat)))",
+    "ForAll([x], Implies(And(eats(x, tiger), eats(x, rabbit)), visits(x, tiger)))",
+    "ForAll([x], Implies(is_young(x), is_blue(x)))",
+    "ForAll([x], Implies(chases(x, rabbit), is_blue(rabbit)))",
+    "ForAll([x], Implies(And(is_red(x), visits(x, cat)), visits(cat, tiger)))",
+    "ForAll([x], Implies(And(eats(x, tiger), visits(x, rabbit)), chases(x, dog)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cat is not nice",
+      "constraint": "Not(is_nice(cat))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

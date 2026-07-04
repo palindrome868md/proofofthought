@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Store",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Brand",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sells",
+      "domain": [
+        "Store",
+        "Brand"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsPetStore",
+      "domain": [
+        "Store"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsElectronicsBrand",
+      "domain": [
+        "Brand"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "stores": {
+      "sort": "Store",
+      "members": [
+        "petco"
+      ]
+    },
+    "brands": {
+      "sort": "Brand",
+      "members": [
+        "casio"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Store"
+    },
+    {
+      "name": "b",
+      "sort": "Brand"
+    }
+  ],
+  "knowledge_base": [
+    "IsPetStore(petco) == True",
+    "IsElectronicsBrand(casio) == True",
+    "ForAll([s, b], Implies(And(IsPetStore(s), IsElectronicsBrand(b)), Not(sells(s, b))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can buy Casio at Petco",
+      "constraint": "sells(petco, casio)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

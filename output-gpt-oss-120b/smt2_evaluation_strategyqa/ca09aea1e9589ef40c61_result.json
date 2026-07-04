@@ -1,0 +1,11 @@
+{
+  "sample_id": "ca09aea1e9589ef40c61",
+  "question": "Would the Titanic be well preserved at the bottom of the Gulf of Finland?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

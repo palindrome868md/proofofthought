@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "SectionType",
+      "type": "EnumSort",
+      "values": [
+        "section_2",
+        "section_3"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_detained",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nearest_relative",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "section_type",
+      "domain": [
+        "Person"
+      ],
+      "range": "SectionType"
+    },
+    {
+      "name": "days_since_section",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "deadline_for_section",
+      "domain": [
+        "SectionType"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_apply_for_discharge",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user",
+        "mother"
+      ]
+    },
+    "section_types": {
+      "sort": "SectionType",
+      "members": [
+        "section_2",
+        "section_3"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "s",
+      "sort": "SectionType"
+    }
+  ],
+  "knowledge_base": [
+    "is_detained(mother) == True",
+    "is_nearest_relative(user, mother) == True",
+    "section_type(mother) == section_3",
+    "days_since_section(mother) == 30",
+    "deadline_for_section(section_2) == 14",
+    "deadline_for_section(section_3) == 180",
+    "ForAll([p, s], Implies(And(is_detained(p), section_type(p) == s, days_since_section(p) < deadline_for_section(s)), can_apply_for_discharge(user, p) == True))",
+    "ForAll([p], Implies(is_nearest_relative(user, p), can_apply_for_discharge(user, p) == True))"
+  ],
+  "verifications": [
+    {
+      "name": "Can user apply for mother's discharge as nearest relative",
+      "constraint": "can_apply_for_discharge(user, mother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

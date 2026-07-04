@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Currency",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "occurrence_year",
+      "domain": [
+        "Event"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "currency_used",
+      "domain": [
+        "Event"
+      ],
+      "range": "Currency"
+    },
+    {
+      "name": "creation_year",
+      "domain": [
+        "Currency"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "events": {
+      "sort": "Event",
+      "members": [
+        "louisiana_purchase"
+      ]
+    },
+    "currencies": {
+      "sort": "Currency",
+      "members": [
+        "bitcoin",
+        "us_dollar",
+        "french_franc"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "e",
+      "sort": "Event"
+    },
+    {
+      "name": "c",
+      "sort": "Currency"
+    }
+  ],
+  "knowledge_base": [
+    "occurrence_year(louisiana_purchase) == 1803",
+    "creation_year(bitcoin) == 2009",
+    "ForAll([e, c], Implies(currency_used(e) == c, occurrence_year(e) >= creation_year(c)))"
+  ],
+  "verifications": [
+    {
+      "name": "Was Louisiana Purchase made with bitcoin",
+      "constraint": "currency_used(louisiana_purchase) == bitcoin"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

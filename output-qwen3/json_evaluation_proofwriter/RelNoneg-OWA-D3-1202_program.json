@@ -1,0 +1,120 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Thing",
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Thing",
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Thing",
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Thing",
+      "members": [
+        "bald_eagle",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "eats(bald_eagle, mouse)",
+    "sees(bald_eagle, mouse)",
+    "sees(bald_eagle, rabbit)",
+    "visits(bald_eagle, mouse)",
+    "eats(mouse, bald_eagle)",
+    "eats(mouse, rabbit)",
+    "sees(mouse, bald_eagle)",
+    "visits(mouse, rabbit)",
+    "eats(rabbit, bald_eagle)",
+    "is_cold(rabbit)",
+    "is_kind(rabbit)",
+    "is_rough(rabbit)",
+    "is_young(rabbit)",
+    "sees(rabbit, bald_eagle)",
+    "sees(rabbit, mouse)",
+    "visits(rabbit, bald_eagle)",
+    "ForAll([x], Implies(visits(x, rabbit), is_young(x)))",
+    "ForAll([x], Implies(sees(x, mouse), visits(mouse, bald_eagle)))",
+    "ForAll([x], Implies(is_big(x), is_cold(x)))",
+    "ForAll([x], Implies(sees(x, rabbit), visits(x, rabbit)))",
+    "ForAll([x], Implies(is_young(x), is_cold(x)))",
+    "ForAll([x], Implies(And(sees(x, mouse), visits(x, mouse)), eats(mouse, rabbit)))",
+    "ForAll([x], Implies(sees(x, mouse), is_big(mouse)))",
+    "ForAll([x], Implies(And(visits(x, mouse), is_rough(mouse)), eats(x, mouse)))"
+  ],
+  "verifications": [
+    {
+      "name": "Mouse does not eat bald eagle",
+      "constraint": "Not(eats(mouse, bald_eagle))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

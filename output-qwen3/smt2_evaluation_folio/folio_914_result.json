@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_914",
+  "question": "Given the following premises:\n\nAll professional athletes spend most of their time on sports.\nAll Olympic gold medal winners are professional athletes.\nNo full-time scientists spend the majority of their time on sports.\nAll Nobel physics laureates are full-time scientists.\nAmy spends the most time on sports, or Amy is an Olympic gold medal winner.\nIf Amy is not a Nobel physics laureate, then Amy is not an Olympic gold medal winner.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Amy is neither a full-time scientist nor an Olympic gold medal winner.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

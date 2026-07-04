@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "dave",
+        "fiona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "nice(dave)",
+    "quiet(fiona)",
+    "ForAll([x], Implies(And(red(x), cold(x)), quiet(x)))",
+    "Implies(And(quiet(fiona), blue(fiona)), round(fiona))",
+    "ForAll([x], Implies(And(nice(x), green(x)), red(x)))",
+    "ForAll([x], Implies(nice(x), Not(blue(x))))",
+    "Implies(Not(blue(dave)), round(dave))",
+    "Implies(And(red(dave), Not(round(dave))), Not(quiet(dave)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dave not round",
+      "constraint": "Not(round(dave))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

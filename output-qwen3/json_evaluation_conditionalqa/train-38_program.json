@@ -1,0 +1,111 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Illness",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Scheme",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "served_after_2005",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_mental_condition",
+      "domain": [
+        "Illness"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_late_onset",
+      "domain": [
+        "Illness"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_afcs",
+      "domain": [
+        "Person",
+        "Illness"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "within_7_years",
+      "domain": [
+        "Person",
+        "Illness"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "service_related",
+      "domain": [
+        "Person",
+        "Illness"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "claimant"
+      ]
+    },
+    "illnesses": {
+      "sort": "Illness",
+      "members": [
+        "pts"
+      ]
+    },
+    "schemes": {
+      "sort": "Scheme",
+      "members": [
+        "afcs",
+        "wps"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Illness"
+    }
+  ],
+  "knowledge_base": [
+    "served_after_2005(claimant) == True",
+    "is_mental_condition(pts) == True",
+    "is_late_onset(pts) == True",
+    "service_related(claimant, pts) == True",
+    "ForAll([p, i], Implies(And(served_after_2005(p), is_mental_condition(i), service_related(p, i), is_late_onset(i)), can_claim_afcs(p, i)))",
+    "ForAll([p, i], Implies(And(served_after_2005(p), is_mental_condition(i), service_related(p, i), is_late_onset(i)), Not(within_7_years(p, i))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can claim for late onset PTS under AFCS",
+      "constraint": "can_claim_afcs(claimant, pts)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

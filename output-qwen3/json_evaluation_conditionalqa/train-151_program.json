@@ -1,0 +1,138 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Court",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Will",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Application",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_dementia",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lacks_testamentary_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_statutory_will",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_family_member",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_estate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_existing_will",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "court_approval_required",
+      "domain": [
+        "Application"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "acts_in_best_interest",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_make_will_on_behalf",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "grandmother",
+        "grandchild",
+        "other_family_members"
+      ]
+    },
+    "courts": {
+      "sort": "Court",
+      "members": [
+        "court_of_protection"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "q",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "Application"
+    }
+  ],
+  "knowledge_base": [
+    "has_dementia(grandmother)",
+    "has_estate(grandmother)",
+    "Not(made_existing_will(grandmother))",
+    "is_family_member(grandchild, grandmother)",
+    "ForAll([p], Implies(has_dementia(p), lacks_testamentary_capacity(p)))",
+    "ForAll([p, q], Implies(And(lacks_testamentary_capacity(p), is_family_member(q, p), has_estate(p), Not(made_existing_will(p))), can_apply_for_statutory_will(q, p)))",
+    "ForAll([p, q], Implies(can_apply_for_statutory_will(q, p), acts_in_best_interest(q, p)))",
+    "ForAll([p, q], Implies(And(can_apply_for_statutory_will(q, p), acts_in_best_interest(q, p)), can_make_will_on_behalf(q, p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can grandchild make statutory will for grandmother",
+      "constraint": "can_make_will_on_behalf(grandchild, grandmother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

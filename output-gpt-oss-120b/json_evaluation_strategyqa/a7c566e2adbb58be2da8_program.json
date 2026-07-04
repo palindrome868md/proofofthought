@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Technology",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Virus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_make",
+      "domain": [
+        "Technology",
+        "Virus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "technologies": {
+      "sort": "Technology",
+      "members": [
+        "printer3d"
+      ]
+    },
+    "viruses": {
+      "sort": "Virus",
+      "members": [
+        "adenovirus"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(can_make(printer3d, adenovirus))"
+  ],
+  "verifications": [
+    {
+      "name": "3D printing can make adenovirus",
+      "constraint": "can_make(printer3d, adenovirus)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

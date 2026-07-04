@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_78",
+  "question": "Each impus is not happy. Each impus is a vumpus. Each vumpus is brown. Vumpuses are dumpuses. Each jompus is not small. Dumpuses are not earthy. Every dumpus is a rompus. Each rompus is transparent. Rompuses are wumpuses. Wumpuses are kind. Wumpuses are yumpuses. Yumpuses are small. Each yumpus is a zumpus. Each zumpus is liquid. Zumpuses are tumpuses. Tumpuses are hot. Each tumpus is a numpus. Fae is a vumpus.\n\nIs the following statement true or false? Fae is small.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

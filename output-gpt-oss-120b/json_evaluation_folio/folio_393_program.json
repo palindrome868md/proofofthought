@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "added_to_NRHP",
+      "domain": [
+        "Building",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "five_story",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "Building",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "built_in_year",
+      "domain": [
+        "Building",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_at",
+      "domain": [
+        "Person",
+        "Building"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "blake_mcfall_company_building",
+        "emmet_building"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "portland_oregon"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "added_to_NRHP(blake_mcfall_company_building, 1990)",
+    "five_story(emmet_building)",
+    "located_in(emmet_building, portland_oregon)",
+    "built_in_year(emmet_building, 1915)",
+    "emmet_building == blake_mcfall_company_building",
+    "works_at(john, emmet_building)"
+  ],
+  "verifications": [
+    {
+      "name": "Blake McFall Company Building location",
+      "constraint": "located_in(blake_mcfall_company_building, portland_oregon)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

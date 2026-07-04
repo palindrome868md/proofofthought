@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "visits(mouse, rabbit)",
+    "needs(rabbit, mouse)",
+    "Implies(visits(mouse, rabbit), needs(mouse, rabbit))",
+    "ForAll([x], Implies(And(visits(x, rabbit), sees(rabbit, mouse)), Not(sees(mouse, rabbit))))",
+    "ForAll([x], Implies(needs(x, rabbit), Not(rough(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit does not need mouse",
+      "constraint": "Not(needs(rabbit, mouse))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

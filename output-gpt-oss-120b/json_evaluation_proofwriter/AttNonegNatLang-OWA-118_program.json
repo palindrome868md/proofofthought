@@ -1,0 +1,127 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "dave",
+        "fred",
+        "gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "young(bob)",
+    "kind(bob)",
+    "blue(bob)",
+    "green(bob)",
+    "cold(bob)",
+    "big(bob)",
+    "nice(dave)",
+    "green(fred)",
+    "cold(fred)",
+    "kind(gary)",
+    "round(gary)",
+    "green(gary)",
+    "ForAll([x], Implies(And(nice(x), round(x), cold(x)), blue(x)))",
+    "ForAll([x], Implies(And(green(x), big(x), cold(x)), nice(x)))",
+    "ForAll([x], Implies(And(kind(x), young(x), green(x)), cold(x)))",
+    "ForAll([x], Implies(young(x), round(x)))",
+    "ForAll([x], Implies(And(round(x), green(x), nice(x)), red(x)))",
+    "ForAll([x], Implies(And(rough(x), green(x), kind(x)), blue(x)))",
+    "ForAll([x], Implies(And(round(x), red(x)), rough(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bob not red",
+      "constraint": "Not(red(bob))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

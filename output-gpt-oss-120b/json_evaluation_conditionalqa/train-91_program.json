@@ -1,0 +1,43 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "deputy_start_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "deputy_active",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "me",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "deputy_start_year(me) == 2018",
+    "deputy_active(me) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Can apply for deputyship fee refund",
+      "constraint": "And(deputy_start_year(me) >= 2008, deputy_start_year(me) <= 2015, Not(deputy_active(me)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

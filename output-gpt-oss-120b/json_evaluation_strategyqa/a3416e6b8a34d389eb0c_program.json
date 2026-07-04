@@ -1,0 +1,39 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height",
+      "domain": [
+        "Entity"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "andre_the_giant",
+        "yeti"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "height(andre_the_giant) == 224"
+  ],
+  "verifications": [
+    {
+      "name": "Andre towers over Yeti",
+      "constraint": "height(andre_the_giant) > height(yeti)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

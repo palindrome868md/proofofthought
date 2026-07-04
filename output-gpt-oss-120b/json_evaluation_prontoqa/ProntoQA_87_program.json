@@ -1,0 +1,163 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "alex"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([x], Implies(numpus(x), Not(fruity(x))))",
+    "ForAll([x], Implies(numpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), Not(orange(x))))",
+    "ForAll([x], Implies(dumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), nervous(x)))",
+    "ForAll([x], Implies(yumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(impus(x), sour(x)))",
+    "ForAll([x], Implies(vumpus(x), hot(x)))",
+    "ForAll([x], Implies(vumpus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), small(x)))",
+    "ForAll([x], Implies(tumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), mean(x)))",
+    "ForAll([x], Implies(rompus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), Not(sour(x))))",
+    "ForAll([x], Implies(zumpus(x), jompus(x)))",
+    "yumpus(alex)"
+  ],
+  "verifications": [
+    {
+      "name": "Alex is not sour",
+      "constraint": "Not(sour(alex))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

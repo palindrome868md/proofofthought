@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Food",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Ingredient",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "contains",
+      "domain": [
+        "Food",
+        "Ingredient"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_horchata",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rice_pudding",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "add_water",
+      "domain": [
+        "Food"
+      ],
+      "range": "Food"
+    },
+    {
+      "name": "has_cinnamon",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_milk",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "foods": {
+      "sort": "Food",
+      "members": [
+        "rice_pudding",
+        "horchata"
+      ]
+    },
+    "ingredients": {
+      "sort": "Ingredient",
+      "members": [
+        "rice",
+        "milk",
+        "water",
+        "sugar",
+        "cinnamon"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "f",
+      "sort": "Food"
+    }
+  ],
+  "knowledge_base": [
+    "is_rice_pudding(rice_pudding)",
+    "has_milk(rice_pudding)",
+    "Not(has_cinnamon(rice_pudding))",
+    "is_horchata(horchata)",
+    "has_cinnamon(horchata)",
+    "Not(has_milk(horchata))",
+    "ForAll([f], Implies(is_horchata(f), has_cinnamon(f)))",
+    "ForAll([f], Implies(is_horchata(f), Not(has_milk(f))))",
+    "ForAll([f], Implies(is_rice_pudding(f), has_milk(f)))",
+    "has_milk(add_water(rice_pudding))",
+    "Not(has_cinnamon(add_water(rice_pudding)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is rice pudding with water horchata",
+      "constraint": "is_horchata(add_water(rice_pudding))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

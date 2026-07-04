@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompuse",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_angry",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dumpuses": {
+      "sort": "Dumpus",
+      "members": [
+        "max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Dumpus"
+    }
+  ],
+  "knowledge_base": [
+    "is_dumpus(max)",
+    "ForAll([x], Implies(is_dumpus(x), is_rompuse(x)))",
+    "ForAll([x], Implies(is_rompuse(x), is_jompus(x)))",
+    "ForAll([x], Implies(is_jompus(x), is_wumpus(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_zumpus(x)))",
+    "ForAll([x], Implies(is_zumpus(x), is_angry(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Max is angry",
+      "constraint": "is_angry(max)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

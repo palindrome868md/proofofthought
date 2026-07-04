@@ -1,0 +1,11 @@
+{
+  "sample_id": "decb9886ca17f7af209d",
+  "question": "Is the language used in Saint Vincent and the Grenadines rooted in English?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

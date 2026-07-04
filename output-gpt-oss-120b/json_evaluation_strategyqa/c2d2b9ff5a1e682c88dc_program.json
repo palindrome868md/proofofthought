@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "FoodItem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_plastic",
+      "domain": [
+        "FoodItem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dishes": {
+      "sort": "FoodItem",
+      "members": [
+        "shrimp_scampi"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(has_plastic(shrimp_scampi))"
+  ],
+  "verifications": [
+    {
+      "name": "ShrimpScampiFreeOfPlastic",
+      "constraint": "Not(has_plastic(shrimp_scampi))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

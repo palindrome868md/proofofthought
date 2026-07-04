@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "received_income_support",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stopped_for_fulltime_work",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claim_duration_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "work_duration_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "had_mortgage_interest_support",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_housing_costs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_run_on",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "income_support",
+        "mortgage_interest"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "received_income_support(applicant) == True",
+    "stopped_for_fulltime_work(applicant) == True",
+    "had_mortgage_interest_support(applicant) == True",
+    "has_housing_costs(applicant) == True",
+    "ForAll([p], Implies(And(received_income_support(p), stopped_for_fulltime_work(p), claim_duration_weeks(p) >= 26, work_duration_weeks(p) >= 5, had_mortgage_interest_support(p), has_housing_costs(p)), eligible_for_run_on(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Check Mortgage Interest Run On Eligibility",
+      "constraint": "And(claim_duration_weeks(applicant) >= 26, work_duration_weeks(applicant) >= 5, eligible_for_run_on(applicant))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

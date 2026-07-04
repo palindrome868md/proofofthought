@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_249",
+  "question": "Given the following premises:\n\nLawton Park is a neighborhood in Seattle. \nAll citizens of Lawton Park use the zip code 98199. \nTom is a citizen of Lawton Park.\nDaniel uses the zip code 98199. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Tom uses the zip code 98199.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

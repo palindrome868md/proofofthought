@@ -1,0 +1,124 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "LPA",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "on_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_exemption",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_reduction",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earns_less_than",
+      "domain": [
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lpa_registration_cost",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "lpa_cost_reduced",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_get_financial_assistance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "the_user"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "income_support"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "b",
+      "sort": "Benefit"
+    }
+  ],
+  "knowledge_base": [
+    "lpa_registration_cost() == 82",
+    "lives_in_england(the_user)",
+    "age(the_user) == 57",
+    "on_benefit(the_user, income_support)",
+    "ForAll([p], Implies(on_benefit(p, income_support), eligible_for_exemption(p)))",
+    "ForAll([p], Implies(earns_less_than(p, 12000), eligible_for_reduction(p)))",
+    "ForAll([p], Implies(Or(eligible_for_exemption(p), eligible_for_reduction(p)), lpa_cost_reduced(p)))",
+    "ForAll([p], Implies(lpa_cost_reduced(p), can_get_financial_assistance(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can user get financial assistance for LPA",
+      "constraint": "can_get_financial_assistance(the_user)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "num_stories",
+      "domain": [
+        "Building"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "built_year",
+      "domain": [
+        "Building"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "works_at",
+      "domain": [
+        "Person",
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "historic_register_year",
+      "domain": [
+        "Building"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "emmet_building",
+        "blake_mcfall_building"
+      ]
+    },
+    "people": {
+      "sort": "Person",
+      "members": [
+        "john"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "num_stories(emmet_building) == 5",
+    "built_year(emmet_building) == 1915",
+    "emmet_building == blake_mcfall_building",
+    "historic_register_year(blake_mcfall_building) == 1990",
+    "works_at(john, emmet_building)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Five Story Building Built in 1915",
+      "exists": [
+        {
+          "name": "b",
+          "sort": "Building"
+        }
+      ],
+      "constraint": "And(num_stories(b) == 5, built_year(b) == 1915)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

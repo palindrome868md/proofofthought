@@ -1,0 +1,212 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "eats(bald_eagle, mouse)",
+    "sees(bald_eagle, mouse)",
+    "sees(bald_eagle, rabbit)",
+    "visits(bald_eagle, mouse)",
+    "eats(mouse, bald_eagle)",
+    "eats(mouse, rabbit)",
+    "sees(mouse, bald_eagle)",
+    "visits(mouse, rabbit)",
+    "eats(rabbit, bald_eagle)",
+    "cold(rabbit)",
+    "kind(rabbit)",
+    "rough(rabbit)",
+    "young(rabbit)",
+    "sees(rabbit, bald_eagle)",
+    "sees(rabbit, mouse)",
+    "visits(rabbit, bald_eagle)"
+  ],
+  "rules": [
+    {
+      "name": "VisitsRabbitImpliesYoung",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "visits(x, rabbit)",
+        "consequent": "young(x)"
+      }
+    },
+    {
+      "name": "SeesMouseImpliesMouseVisitsBaldEagle",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "sees(x, mouse)",
+        "consequent": "visits(mouse, bald_eagle)"
+      }
+    },
+    {
+      "name": "BigImpliesCold",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "big(x)",
+        "consequent": "cold(x)"
+      }
+    },
+    {
+      "name": "SeesRabbitImpliesVisitsRabbit",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "sees(x, rabbit)",
+        "consequent": "visits(x, rabbit)"
+      }
+    },
+    {
+      "name": "YoungImpliesCold",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "young(x)",
+        "consequent": "cold(x)"
+      }
+    },
+    {
+      "name": "SeesMouseAndVisitsMouseImpliesMouseEatsRabbit",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(sees(x, mouse), visits(x, mouse))",
+        "consequent": "eats(mouse, rabbit)"
+      }
+    },
+    {
+      "name": "SeesMouseImpliesMouseBig",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "sees(x, mouse)",
+        "consequent": "big(mouse)"
+      }
+    },
+    {
+      "name": "VisitsMouseAndMouseRoughImpliesEatsMouse",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(visits(x, mouse), rough(mouse))",
+        "consequent": "eats(x, mouse)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "MouseDoesNotEatBaldEagle",
+      "constraint": "Not(eats(mouse, bald_eagle))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

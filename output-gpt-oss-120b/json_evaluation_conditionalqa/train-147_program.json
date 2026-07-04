@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eligible_REA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "reaches_state_pension",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "regular_employment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "applicant",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Not(regular_employment(applicant))",
+    "reaches_state_pension(applicant)"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility Replacement Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(reaches_state_pension(p), Not(regular_employment(p)))",
+        "consequent": "Not(eligible_REA(p))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility after reaching State Pension age",
+      "constraint": "eligible_REA(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

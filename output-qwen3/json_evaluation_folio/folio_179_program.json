@@ -1,0 +1,114 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Logo",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "In",
+      "domain": [
+        "Building",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "High",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ManagedBy",
+      "domain": [
+        "Building",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "OwnedBy",
+      "domain": [
+        "Building",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HasLogo",
+      "domain": [
+        "Building",
+        "Logo"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "TowerA",
+        "TowerB"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "NewHaven",
+        "Manhattans"
+      ]
+    },
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "YaleHousing",
+        "Bloomberg"
+      ]
+    },
+    "logos": {
+      "sort": "Logo",
+      "members": [
+        "BloombergLogo"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Building"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([b], Implies(In(b, NewHaven), Not(High(b))))",
+    "ForAll([b], Implies(ManagedBy(b, YaleHousing), In(b, NewHaven)))",
+    "ForAll([b], Implies(In(b, Manhattans), High(b)))",
+    "ForAll([b], Implies(OwnedBy(b, Bloomberg), In(b, Manhattans)))",
+    "ForAll([b], Implies(HasLogo(b, BloombergLogo), OwnedBy(b, Bloomberg)))",
+    "ManagedBy(TowerA, YaleHousing)",
+    "HasLogo(TowerB, BloombergLogo)"
+  ],
+  "verifications": [
+    {
+      "name": "Tower B in New Haven",
+      "constraint": "In(TowerB, NewHaven)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

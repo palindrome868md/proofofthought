@@ -1,0 +1,35 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [
+    {
+      "name": "dragon_ball_shows",
+      "sort": "IntSort"
+    },
+    {
+      "name": "dragon_ball_movies",
+      "sort": "IntSort"
+    },
+    {
+      "name": "friday_13th_projects",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "dragon_ball_shows == 5",
+    "dragon_ball_movies == 21",
+    "friday_13th_projects == 13"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Dragon Ball projects fewer than Friday 13th",
+      "constraint": "dragon_ball_shows + dragon_ball_movies < friday_13th_projects"
+    }
+  ],
+  "optimization": {},
+  "actions": [
+    "verify_conditions"
+  ]
+}

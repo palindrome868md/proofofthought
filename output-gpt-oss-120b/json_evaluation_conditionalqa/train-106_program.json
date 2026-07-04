@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "gifted",
+      "domain": [
+        "Property",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "continue_residing",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rent_required",
+      "domain": [
+        "Person",
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "parents",
+        "son"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "home",
+        "annexe"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "gifted(home, son)",
+    "continue_residing(parents, home)",
+    "Not(lives_in(son, home))"
+  ],
+  "rules": [
+    {
+      "name": "RentRule",
+      "forall": [
+        {
+          "name": "owner",
+          "sort": "Person"
+        },
+        {
+          "name": "newowner",
+          "sort": "Person"
+        },
+        {
+          "name": "prop",
+          "sort": "Property"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(gifted(prop, newowner), continue_residing(owner, prop), Not(lives_in(newowner, prop)))",
+        "consequent": "rent_required(owner, newowner, prop)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "MustPayRent",
+      "constraint": "rent_required(parents, son, home)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

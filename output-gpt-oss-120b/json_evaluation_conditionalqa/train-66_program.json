@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Injury",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "served",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "injured_during_service",
+      "domain": [
+        "Person",
+        "Injury"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john"
+      ]
+    },
+    "injuries": {
+      "sort": "Injury",
+      "members": [
+        "right_leg_injury"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Injury"
+    }
+  ],
+  "knowledge_base": [
+    "served(john) == True",
+    "injured_during_service(john, right_leg_injury) == True",
+    "ForAll([p, i], Implies(And(served(p), injured_during_service(p, i)), can_claim(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can John claim compensation",
+      "constraint": "can_claim(john) == True"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

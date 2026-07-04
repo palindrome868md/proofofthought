@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "fiona",
+        "gary",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_big(bob)",
+    "is_kind(bob)",
+    "is_red(bob)",
+    "is_big(fiona)",
+    "is_cold(fiona)",
+    "is_kind(fiona)",
+    "is_red(fiona)",
+    "is_young(fiona)",
+    "is_blue(gary)",
+    "is_cold(gary)",
+    "is_kind(gary)",
+    "is_red(gary)",
+    "is_rough(gary)",
+    "is_young(gary)",
+    "is_blue(harry)",
+    "ForAll([p], Implies(is_red(p), is_blue(p)))",
+    "ForAll([p], Implies(is_blue(p), is_young(p)))",
+    "ForAll([p], Implies(And(is_red(p), is_young(p)), is_cold(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is not young",
+      "constraint": "Not(is_young(harry))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

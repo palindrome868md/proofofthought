@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "dog",
+        "rabbit",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "nice(cat)",
+    "nice(tiger)",
+    "chases(dog, rabbit)",
+    "visits(rabbit, tiger)",
+    "Implies(And(blue(rabbit), visits(rabbit, tiger)), young(tiger))",
+    "Implies(And(visits(rabbit, dog), visits(dog, rabbit)), eats(rabbit, cat))",
+    "ForAll([x], Implies(And(eats(x, rabbit), red(x)), eats(rabbit, cat)))",
+    "ForAll([x], Implies(And(eats(x, tiger), eats(x, rabbit)), visits(x, tiger)))",
+    "ForAll([x], Implies(young(x), blue(x)))",
+    "ForAll([x], Implies(chases(x, rabbit), blue(rabbit)))",
+    "ForAll([x], Implies(And(red(x), visits(x, cat)), visits(cat, tiger)))",
+    "ForAll([x], Implies(And(eats(x, tiger), visits(x, rabbit)), chases(x, dog)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cat is not nice",
+      "constraint": "Not(nice(cat))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

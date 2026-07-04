@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Church",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "recognizes_as_saint",
+      "domain": [
+        "Church",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "churches": {
+      "sort": "Church",
+      "members": [
+        "ukrainian_greek_catholic_church",
+        "russian_orthodox_church"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alexander_nevsky"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "recognizes_as_saint(russian_orthodox_church, alexander_nevsky)",
+    "Not(recognizes_as_saint(ukrainian_greek_catholic_church, alexander_nevsky))"
+  ],
+  "verifications": [
+    {
+      "name": "Ukrainian Greek Catholic Church recognizes Alexander Nevsky as saint",
+      "constraint": "recognizes_as_saint(ukrainian_greek_catholic_church, alexander_nevsky)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

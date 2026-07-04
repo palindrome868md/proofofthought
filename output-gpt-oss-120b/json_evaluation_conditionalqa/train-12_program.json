@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "disabled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "intends_to_live",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_grant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "aunt"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "big_home"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "h",
+      "sort": "Property"
+    }
+  ],
+  "knowledge_base": [
+    "disabled(aunt) == True",
+    "owns(aunt, big_home) == True",
+    "intends_to_live(aunt, big_home) == True",
+    "ForAll([p, h], Implies(And(disabled(p), owns(p, h), intends_to_live(p, h)), eligible_for_grant(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Aunt can seek Disabled Facilities Grant",
+      "constraint": "eligible_for_grant(aunt)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

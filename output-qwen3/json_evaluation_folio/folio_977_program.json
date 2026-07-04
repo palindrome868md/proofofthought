@@ -1,0 +1,98 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "WentToClaysSchool",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "MakesMatcha",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "LateSchedule",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "LivesInCalifornia",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "AttendsYoga",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Celebrity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "RegularJob",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "WorkFromHome",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Bunny"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(WentToClaysSchool(p), MakesMatcha(p)), Not(LateSchedule(p))))",
+    "ForAll([p], Implies(And(WentToClaysSchool(p), And(LivesInCalifornia(p), AttendsYoga(p))), MakesMatcha(p)))",
+    "ForAll([p], Implies(And(WentToClaysSchool(p), Celebrity(p)), LateSchedule(p)))",
+    "ForAll([p], Implies(And(WentToClaysSchool(p), Not(RegularJob(p))), Celebrity(p)))",
+    "ForAll([p], Implies(And(WentToClaysSchool(p), WorkFromHome(p)), Not(RegularJob(p))))",
+    "WentToClaysSchool(Bunny)",
+    "Or(And(WorkFromHome(Bunny), MakesMatcha(Bunny)), And(Not(WorkFromHome(Bunny)), Not(MakesMatcha(Bunny))))"
+  ],
+  "verifications": [
+    {
+      "name": "Check Statement",
+      "constraint": "And(WentToClaysSchool(Bunny), And(LivesInCalifornia(Bunny), AttendsYoga(Bunny)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

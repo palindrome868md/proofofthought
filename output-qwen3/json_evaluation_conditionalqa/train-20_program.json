@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "tenure_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "employees": {
+      "sort": "Person",
+      "members": [
+        "user"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_employee(user)",
+    "tenure_weeks(user) == 8",
+    "Implies(And(is_employee(user), tenure_weeks(user) + 5 < 26), Not(is_eligible(user)))",
+    "Implies(And(is_employee(user), tenure_weeks(user) + 5 >= 26), is_eligible(user))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Qualify for Paternity Leave",
+      "constraint": "is_eligible(user)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

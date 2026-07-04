@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Artwork",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Artist",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_crucifix",
+      "domain": [
+        "Artwork"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "created_by",
+      "domain": [
+        "Artwork",
+        "Artist"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "identified_year",
+      "domain": [
+        "Artwork"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_life_size",
+      "domain": [
+        "Artwork"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "artists": {
+      "sort": "Artist",
+      "members": [
+        "donatello"
+      ]
+    },
+    "artworks": {
+      "sort": "Artwork",
+      "members": [
+        "donatello_crucifix_2020"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_crucifix(donatello_crucifix_2020)",
+    "created_by(donatello_crucifix_2020, donatello)",
+    "identified_year(donatello_crucifix_2020) == 2020",
+    "is_life_size(donatello_crucifix_2020)"
+  ],
+  "verifications": [
+    {
+      "name": "Is Donatello crucifix life size",
+      "constraint": "is_life_size(donatello_crucifix_2020)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "agree_evenly",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_draft_consent_order",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "consent_order_legally_binding",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "court_hearing_needed",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "you",
+        "ex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "e",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, e], Implies(agree_evenly(p, e), can_draft_consent_order(p, e)))",
+    "ForAll([p, e], Implies(can_draft_consent_order(p, e), consent_order_legally_binding(p, e)))",
+    "ForAll([p, e], Implies(consent_order_legally_binding(p, e), Not(court_hearing_needed(p, e))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can make legally binding contract without court",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "e",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(agree_evenly(p, e), consent_order_legally_binding(p, e), Not(court_hearing_needed(p, e)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

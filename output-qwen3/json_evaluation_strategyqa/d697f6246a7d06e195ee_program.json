@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Tree",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_christmas_tree",
+      "domain": [
+        "Tree"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deciduous_tree",
+      "domain": [
+        "Tree"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_coniferous",
+      "domain": [
+        "Tree"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_evergreen",
+      "domain": [
+        "Tree"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "t",
+      "sort": "Tree"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([t], Implies(is_christmas_tree(t), is_coniferous(t)))",
+    "ForAll([t], Implies(is_christmas_tree(t), is_evergreen(t)))",
+    "ForAll([t], Implies(is_deciduous_tree(t), Not(is_evergreen(t))))",
+    "ForAll([t], Implies(is_coniferous(t), Not(is_deciduous_tree(t))))"
+  ],
+  "verifications": [
+    {
+      "name": "Christmas and Deciduous Tree Overlap",
+      "exists": [
+        {
+          "name": "t",
+          "sort": "Tree"
+        }
+      ],
+      "constraint": "And(is_christmas_tree(t), is_deciduous_tree(t))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

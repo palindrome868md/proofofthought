@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_392",
+  "question": "Given the following premises:\n\nThe Blake McFall Company Building is a building added to the National Register of Historic Places in 1990.\nThe Emmet Building is a five-story building in Portland, Oregon.\nThe Emmet Building was built in 1915.\nThe Emmet Building is another name for the Blake McFall Company Building.\nJohn works at the Emmet Building.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: A five-story building is built in 1915.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

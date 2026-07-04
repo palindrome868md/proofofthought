@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Artwork",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "identification_year",
+      "domain": [
+        "Artwork"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "life_size",
+      "domain": [
+        "Artwork"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "artworks": {
+      "sort": "Artwork",
+      "members": [
+        "donatello_crucifix"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "identification_year(donatello_crucifix) == 2020",
+    "life_size(donatello_crucifix)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Donatello crucifix identified in 2020 is life size",
+      "constraint": "And(identification_year(donatello_crucifix) == 2020, life_size(donatello_crucifix))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

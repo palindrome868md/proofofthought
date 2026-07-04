@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "numpus(sam)",
+    "ForAll([x], Implies(numpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), Not(liquid(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam is not liquid",
+      "constraint": "Not(liquid(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

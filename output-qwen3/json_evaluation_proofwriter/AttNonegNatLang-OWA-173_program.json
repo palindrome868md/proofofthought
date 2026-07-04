@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alan",
+        "bob",
+        "charlie",
+        "eric"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_rough(alan)",
+    "is_round(alan)",
+    "is_kind(alan)",
+    "is_cold(bob)",
+    "is_kind(charlie)",
+    "is_round(eric)",
+    "ForAll([p], Implies(And(is_rough(p), is_red(p), is_green(p)), is_blue(p)))",
+    "ForAll([p], Implies(And(is_big(p), is_round(p), is_kind(p)), is_rough(p)))",
+    "ForAll([p], Implies(And(is_kind(p), is_red(p)), is_green(p)))",
+    "ForAll([p], Implies(And(is_kind(p), is_rough(p)), is_red(p)))",
+    "ForAll([p], Implies(And(is_blue(p), is_red(p), is_big(p)), is_cold(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Alan is not red",
+      "constraint": "Not(is_red(alan))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

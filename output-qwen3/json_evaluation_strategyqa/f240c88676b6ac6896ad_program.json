@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Boat",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Region",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_traditional_boat_in",
+      "domain": [
+        "Boat",
+        "Region"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "boats": {
+      "sort": "Boat",
+      "members": [
+        "kayak",
+        "waka"
+      ]
+    },
+    "regions": {
+      "sort": "Region",
+      "members": [
+        "new_zealand",
+        "arctic"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Boat"
+    }
+  ],
+  "knowledge_base": [
+    "is_traditional_boat_in(waka, new_zealand) == True",
+    "is_traditional_boat_in(kayak, arctic) == True",
+    "ForAll([b], Implies(is_traditional_boat_in(b, new_zealand), b == waka))"
+  ],
+  "verifications": [
+    {
+      "name": "Is kayak traditional in New Zealand",
+      "constraint": "is_traditional_boat_in(kayak, new_zealand)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

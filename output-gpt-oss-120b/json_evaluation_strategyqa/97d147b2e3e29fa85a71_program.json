@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Church",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Saint",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "recognizes",
+      "domain": [
+        "Church",
+        "Saint"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "churches": {
+      "sort": "Church",
+      "members": [
+        "ugcc"
+      ]
+    },
+    "saints": {
+      "sort": "Saint",
+      "members": [
+        "alexander_nevsky"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(recognizes(ugcc, alexander_nevsky))"
+  ],
+  "verifications": [
+    {
+      "name": "UGCC recognizes Alexander Nevsky",
+      "constraint": "recognizes(ugcc, alexander_nevsky)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

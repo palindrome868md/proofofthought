@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "cow"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "rough(bald_eagle)",
+    "chases(cow, bald_eagle)",
+    "ForAll([x], Implies(And(likes(x, bald_eagle), eats(bald_eagle, cow)), chases(bald_eagle, cow)))",
+    "ForAll([x], Implies(And(eats(x, bald_eagle), eats(bald_eagle, cow)), chases(bald_eagle, cow)))",
+    "ForAll([x], Implies(And(likes(x, cow), blue(x)), chases(x, bald_eagle)))",
+    "ForAll([x], Implies(eats(x, cow), likes(x, bald_eagle)))",
+    "ForAll([x], Implies(cold(x), chases(x, bald_eagle)))",
+    "ForAll([x], Implies(chases(x, bald_eagle), eats(bald_eagle, cow)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bald Eagle does not like itself",
+      "constraint": "Not(likes(bald_eagle, bald_eagle))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

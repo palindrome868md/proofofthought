@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Food",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Ingredient",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Smell",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "contains_ingredient",
+      "domain": [
+        "Food",
+        "Ingredient"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_smell",
+      "domain": [
+        "Food",
+        "Smell"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ingredient_produces_smell",
+      "domain": [
+        "Ingredient",
+        "Smell"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "foods": {
+      "sort": "Food",
+      "members": [
+        "food_with_black_salt"
+      ]
+    },
+    "ingredients": {
+      "sort": "Ingredient",
+      "members": [
+        "black_salt"
+      ]
+    },
+    "smells": {
+      "sort": "Smell",
+      "members": [
+        "sulfur_smell"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "f",
+      "sort": "Food"
+    },
+    {
+      "name": "i",
+      "sort": "Ingredient"
+    },
+    {
+      "name": "s",
+      "sort": "Smell"
+    }
+  ],
+  "knowledge_base": [
+    "contains_ingredient(food_with_black_salt, black_salt)",
+    "ingredient_produces_smell(black_salt, sulfur_smell)",
+    "ForAll([f, i, s], Implies(And(contains_ingredient(f, i), ingredient_produces_smell(i, s)), has_smell(f, s)))"
+  ],
+  "verifications": [
+    {
+      "name": "Food with black salt has sulfur smell",
+      "constraint": "has_smell(food_with_black_salt, sulfur_smell)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

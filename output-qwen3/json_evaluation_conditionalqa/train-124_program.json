@@ -1,0 +1,141 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Account",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Estate",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "TaxAuthority",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_deceased",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_personal_representative",
+      "domain": [
+        "Person",
+        "Estate"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deceased_account",
+      "domain": [
+        "Account",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_direct_payment_scheme",
+      "domain": [
+        "Account"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_pay_inheritance_tax_from",
+      "domain": [
+        "Account",
+        "TaxAuthority"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns_account",
+      "domain": [
+        "Person",
+        "Account"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_liable_for_inheritance_tax",
+      "domain": [
+        "Person",
+        "Estate"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "me"
+      ]
+    },
+    "accounts": {
+      "sort": "Account",
+      "members": [
+        "fathers_bank_account"
+      ]
+    },
+    "estates": {
+      "sort": "Estate",
+      "members": [
+        "fathers_estate"
+      ]
+    },
+    "tax_authorities": {
+      "sort": "TaxAuthority",
+      "members": [
+        "hmrc"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "Account"
+    },
+    {
+      "name": "e",
+      "sort": "Estate"
+    },
+    {
+      "name": "t",
+      "sort": "TaxAuthority"
+    }
+  ],
+  "knowledge_base": [
+    "is_deceased(father)",
+    "is_personal_representative(me, fathers_estate)",
+    "is_deceased_account(fathers_bank_account, father)",
+    "owns_account(father, fathers_bank_account)",
+    "is_liable_for_inheritance_tax(me, fathers_estate)",
+    "ForAll([a], Implies(has_direct_payment_scheme(a), can_pay_inheritance_tax_from(a, hmrc)))",
+    "ForAll([a, p, e], Implies(And(is_deceased_account(a, p), is_personal_representative(me, e), owns_account(p, a)), has_direct_payment_scheme(a)))",
+    "ForAll([p, e, t], Implies(And(is_deceased(p), is_liable_for_inheritance_tax(me, e), is_personal_representative(me, e)), Exists([a], And(owns_account(p, a), can_pay_inheritance_tax_from(a, t)))))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can pay inheritance tax from deceased father's account",
+      "constraint": "can_pay_inheritance_tax_from(fathers_bank_account, hmrc)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

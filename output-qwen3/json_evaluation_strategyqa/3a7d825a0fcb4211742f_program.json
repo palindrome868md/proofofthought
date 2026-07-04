@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Profession",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Discipline",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_profession",
+      "domain": [
+        "Person",
+        "Profession"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_discipline_in_work",
+      "domain": [
+        "Person",
+        "Discipline"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "profession_typically_uses",
+      "domain": [
+        "Profession",
+        "Discipline"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "sample_geographer"
+      ]
+    },
+    "professions": {
+      "sort": "Profession",
+      "members": [
+        "geographer",
+        "biochemist",
+        "geologist"
+      ]
+    },
+    "disciplines": {
+      "sort": "Discipline",
+      "members": [
+        "biochemistry",
+        "geography",
+        "geology",
+        "cartography"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "prof",
+      "sort": "Profession"
+    },
+    {
+      "name": "disc",
+      "sort": "Discipline"
+    }
+  ],
+  "knowledge_base": [
+    "has_profession(sample_geographer, geographer)",
+    "ForAll([p, prof, disc], Implies(And(has_profession(p, prof), profession_typically_uses(prof, disc)), uses_discipline_in_work(p, disc)))",
+    "profession_typically_uses(geographer, geography)",
+    "profession_typically_uses(geographer, cartography)",
+    "profession_typically_uses(geographer, geology)",
+    "Not(profession_typically_uses(geographer, biochemistry))",
+    "profession_typically_uses(biochemist, biochemistry)",
+    "ForAll([p], Implies(has_profession(p, geographer), Not(uses_discipline_in_work(p, biochemistry))))"
+  ],
+  "verifications": [
+    {
+      "name": "Would geographer use biochemistry",
+      "constraint": "uses_discipline_in_work(sample_geographer, biochemistry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

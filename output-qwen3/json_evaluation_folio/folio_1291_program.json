@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "KnowsBFS",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "KnowsQueue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "SeasonedGoogleInterviewer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HasHumanRights",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "EntitledToLifeLiberty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "CanBeDeprivedWithoutDueProcess",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "KnowsFIFO",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "jack"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(KnowsBFS(x), KnowsQueue(x)))",
+    "ForAll([x], Implies(SeasonedGoogleInterviewer(x), KnowsBFS(x)))",
+    "ForAll([x], Or(SeasonedGoogleInterviewer(x), HasHumanRights(x)))",
+    "ForAll([x], Implies(HasHumanRights(x), EntitledToLifeLiberty(x)))",
+    "ForAll([x], Implies(KnowsQueue(x), KnowsFIFO(x)))",
+    "ForAll([x], Implies(EntitledToLifeLiberty(x), Not(CanBeDeprivedWithoutDueProcess(x))))",
+    "Or(EntitledToLifeLiberty(jack), HasHumanRights(jack), KnowsFIFO(jack))"
+  ],
+  "verifications": [
+    {
+      "name": "Jack can be deprived",
+      "constraint": "CanBeDeprivedWithoutDueProcess(jack)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

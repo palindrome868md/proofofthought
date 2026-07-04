@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "weight_grams",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "daily_caloric_need",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "caloric_content_grams",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_subsist",
+      "domain": [
+        "Animal",
+        "Animal",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "ocelot",
+        "bee_hummingbird"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "predator",
+      "sort": "Animal"
+    },
+    {
+      "name": "prey",
+      "sort": "Animal"
+    },
+    {
+      "name": "count",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "weight_grams(ocelot) >= 8000",
+    "weight_grams(bee_hummingbird) <= 2",
+    "daily_caloric_need(ocelot) >= 500",
+    "caloric_content_grams(bee_hummingbird) <= 10",
+    "ForAll([predator, prey, count], Implies(And(can_subsist(predator, prey, count), count >= 1), caloric_content_grams(prey) * count >= daily_caloric_need(predator)))"
+  ],
+  "verifications": [
+    {
+      "name": "Ocelot can subsist on one bee hummingbird per day",
+      "constraint": "can_subsist(ocelot, bee_hummingbird, 1)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

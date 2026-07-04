@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "diagnosed_dysphoria",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "intends_life",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "resident_country",
+      "domain": [
+        "Person"
+      ],
+      "range": "Country"
+    },
+    {
+      "name": "lived_in_gender_years",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_certificate_in_country",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "approved_country",
+      "domain": [
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "australia",
+        "uk"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "me",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(me) >= 18",
+    "diagnosed_dysphoria(me) == True",
+    "intends_life(me) == True",
+    "resident_country(me) == uk",
+    "lived_in_gender_years(me, uk) >= 2",
+    "has_certificate_in_country(me, australia) == True",
+    "approved_country(australia) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for Gender Recognition Certificate",
+      "constraint": "Or(And(age(me) >= 18, diagnosed_dysphoria(me), lived_in_gender_years(me, resident_country(me)) >= 2, intends_life(me)), And(age(me) >= 18, has_certificate_in_country(me, australia), approved_country(australia)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

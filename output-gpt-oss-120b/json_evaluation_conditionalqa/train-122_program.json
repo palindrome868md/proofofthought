@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "receives_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "landlord"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "IncomeSupport",
+        "JSA",
+        "ESA",
+        "UniversalCredit",
+        "PensionCredit"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(receives_benefit(landlord, IncomeSupport))",
+    "Not(receives_benefit(landlord, JSA))",
+    "Not(receives_benefit(landlord, ESA))",
+    "Not(receives_benefit(landlord, UniversalCredit))",
+    "Not(receives_benefit(landlord, PensionCredit))"
+  ],
+  "verifications": [
+    {
+      "name": "Can landlord get SMI",
+      "constraint": "Or(receives_benefit(landlord, IncomeSupport), receives_benefit(landlord, JSA), receives_benefit(landlord, ESA), receives_benefit(landlord, UniversalCredit), receives_benefit(landlord, PensionCredit))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

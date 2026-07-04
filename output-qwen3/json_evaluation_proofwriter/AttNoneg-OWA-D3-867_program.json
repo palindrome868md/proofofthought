@@ -1,0 +1,99 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "charlie",
+        "fiona",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_white(bob)",
+    "is_smart(charlie)",
+    "is_cold(fiona)",
+    "is_smart(harry)",
+    "ForAll([x], Implies(is_smart(x), is_young(x)))",
+    "ForAll([x], Implies(And(is_white(x), is_rough(x)), is_quiet(x)))",
+    "ForAll([x], Implies(is_smart(x), is_quiet(x)))",
+    "ForAll([x], Implies(And(is_smart(x), is_white(x)), is_young(x)))",
+    "ForAll([x], Implies(is_young(x), is_quiet(x)))",
+    "ForAll([x], Implies(And(is_cold(x), is_quiet(x)), is_nice(x)))",
+    "ForAll([x], Implies(is_cold(x), is_smart(x)))",
+    "ForAll([x], Implies(is_white(x), is_young(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fiona is quiet",
+      "constraint": "is_quiet(fiona)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

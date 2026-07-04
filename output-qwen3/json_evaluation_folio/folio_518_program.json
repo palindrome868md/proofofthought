@@ -1,0 +1,99 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Project",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Song",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "EnumSort",
+      "values": [
+        "Cpp",
+        "Python"
+      ]
+    },
+    {
+      "name": "SongTitle",
+      "type": "EnumSort",
+      "values": [
+        "Perfect",
+        "Other"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "project_language",
+      "domain": [
+        "Project"
+      ],
+      "range": "Language"
+    },
+    {
+      "name": "uses_mac",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays",
+      "domain": [
+        "Person",
+        "Song"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "song_title",
+      "domain": [
+        "Song"
+      ],
+      "range": "SongTitle"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "sam"
+      ]
+    },
+    "projects": {
+      "sort": "Project",
+      "members": [
+        "sam_project"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Song"
+    }
+  ],
+  "knowledge_base": [
+    "uses_mac(sam)",
+    "Or(project_language(sam_project) == Cpp, project_language(sam_project) == Python)",
+    "Implies(project_language(sam_project) == Python, Not(uses_mac(sam)))",
+    "Implies(uses_mac(sam), Exists([s], plays(sam, s)))",
+    "ForAll([s], Implies(Not(song_title(s) == Perfect), Not(plays(sam, s))))"
+  ],
+  "verifications": [
+    {
+      "name": "Project is C++",
+      "constraint": "project_language(sam_project) == Cpp"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

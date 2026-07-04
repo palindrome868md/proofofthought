@@ -1,0 +1,55 @@
+{
+  "sorts": [
+    {
+      "name": "Creature",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vessel",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "length_of",
+      "domain": [
+        "Creature"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "deck_length",
+      "domain": [
+        "Vessel"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Creature",
+      "members": [
+        "giant_squid"
+      ]
+    },
+    "vessels": {
+      "sort": "Vessel",
+      "members": [
+        "titanic"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "length_of(giant_squid) == 15.0",
+    "deck_length(titanic) == 269.0"
+  ],
+  "verifications": [
+    {
+      "name": "Giant Squid Fits on Titanic Deck",
+      "constraint": "length_of(giant_squid) <= deck_length(titanic)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "DeputyType",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Court",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_deputy_type",
+      "domain": [
+        "DeputyType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_appoint",
+      "domain": [
+        "Court",
+        "Person",
+        "DeputyType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_panel_deputy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_qualified_for_finances",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_financial_management",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_available",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_family_member",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "applies_for_deputyship",
+      "domain": [
+        "Person",
+        "DeputyType"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "father",
+        "panel_deputy_candidate"
+      ]
+    },
+    "deputy_types": {
+      "sort": "DeputyType",
+      "members": [
+        "personal_welfare",
+        "property_financial_affairs"
+      ]
+    },
+    "courts": {
+      "sort": "Court",
+      "members": [
+        "court_of_protection"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "dt",
+      "sort": "DeputyType"
+    },
+    {
+      "name": "c",
+      "sort": "Court"
+    }
+  ],
+  "knowledge_base": [
+    "applies_for_deputyship(applicant, personal_welfare)",
+    "needs_financial_management(father)",
+    "is_family_member(applicant, father)",
+    "Not(is_qualified_for_finances(applicant))",
+    "is_panel_deputy(panel_deputy_candidate)",
+    "is_qualified_for_finances(panel_deputy_candidate)",
+    "ForAll([c, p, dt], Implies(And(is_panel_deputy(p), is_qualified_for_finances(p)), can_appoint(c, p, dt)))",
+    "ForAll([c, p, dt], Implies(And(needs_financial_management(father), Not(is_available(p)), is_qualified_for_finances(p)), can_appoint(c, p, property_financial_affairs)))",
+    "can_appoint(court_of_protection, panel_deputy_candidate, property_financial_affairs)"
+  ],
+  "verifications": [
+    {
+      "name": "Can Court Appoint Qualified Financial Deputy",
+      "constraint": "can_appoint(court_of_protection, panel_deputy_candidate, property_financial_affairs)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

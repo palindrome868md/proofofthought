@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Team",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "points",
+      "domain": [
+        "Team"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "h2h_points",
+      "domain": [
+        "Team",
+        "Team"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "ranks_higher",
+      "domain": [
+        "Team",
+        "Team"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_la_liga",
+      "domain": [
+        "Team"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "teams": {
+      "sort": "Team",
+      "members": [
+        "real_madrid",
+        "barcelona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "t1",
+      "sort": "Team"
+    },
+    {
+      "name": "t2",
+      "sort": "Team"
+    }
+  ],
+  "knowledge_base": [
+    "is_la_liga(real_madrid)",
+    "is_la_liga(barcelona)",
+    "points(real_madrid) > points(barcelona)",
+    "h2h_points(real_madrid, barcelona) == h2h_points(barcelona, real_madrid)",
+    "ForAll([t1, t2], Implies(And(is_la_liga(t1), is_la_liga(t2), points(t1) > points(t2)), ranks_higher(t1, t2)))",
+    "ForAll([t1, t2], Implies(And(is_la_liga(t1), is_la_liga(t2), points(t1) == points(t2), h2h_points(t1, t2) > h2h_points(t2, t1)), ranks_higher(t1, t2)))",
+    "ForAll([t1, t2], Implies(ranks_higher(t1, t2), Not(ranks_higher(t2, t1))))"
+  ],
+  "verifications": [
+    {
+      "name": "Barcelona ranks higher than Real Madrid",
+      "constraint": "ranks_higher(barcelona, real_madrid)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

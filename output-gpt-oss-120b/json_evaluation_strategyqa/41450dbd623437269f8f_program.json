@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_depressed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "consumes",
+      "domain": [
+        "Person",
+        "Substance"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cheer_up",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_MAO",
+      "domain": [
+        "Substance"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "depressed_friend"
+      ]
+    },
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "monoamine_oxidase_candy"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_depressed(depressed_friend)",
+    "consumes(depressed_friend, monoamine_oxidase_candy)",
+    "has_MAO(monoamine_oxidase_candy)"
+  ],
+  "rules": [
+    {
+      "name": "MAO_negative_effect",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "s",
+          "sort": "Substance"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_depressed(p), consumes(p, s), has_MAO(s))",
+        "consequent": "Not(cheer_up(p))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Cheer_up_possible",
+      "constraint": "cheer_up(depressed_friend)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

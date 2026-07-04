@@ -1,0 +1,81 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Network",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_anchor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_at",
+      "domain": [
+        "Person",
+        "Network"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "speaks_language",
+      "domain": [
+        "Person",
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "networks": {
+      "sort": "Network",
+      "members": [
+        "rede_globo"
+      ]
+    },
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "chinese",
+        "portuguese"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(is_anchor(p), works_at(p, rede_globo)), speaks_language(p, portuguese)))",
+    "ForAll([p], Implies(And(is_anchor(p), works_at(p, rede_globo)), Not(speaks_language(p, chinese))))"
+  ],
+  "verifications": [
+    {
+      "name": "Do Rede Globo anchors speak Chinese",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_anchor(p), works_at(p, rede_globo), speaks_language(p, chinese))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

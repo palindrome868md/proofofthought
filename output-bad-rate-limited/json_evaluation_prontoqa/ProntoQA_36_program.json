@@ -1,0 +1,155 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuses",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpuses",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(jompus(x), bright(x)))",
+    "ForAll([x], Implies(jompus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), wooden(x)))",
+    "ForAll([x], Implies(wumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), amenable(x)))",
+    "ForAll([x], Implies(yumpus(x), impuses(x)))",
+    "ForAll([x], Implies(impuses(x), temperate(x)))",
+    "ForAll([x], Implies(impuses(x), tumpuses(x)))",
+    "ForAll([x], Implies(tumpuses(x), shy(x)))",
+    "ForAll([x], Implies(tumpuses(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), fruity(x)))",
+    "ForAll([x], Implies(numpus(x), vumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), Not(shy(x))))",
+    "jompus(sally)"
+  ],
+  "verifications": [
+    {
+      "name": "Sally shy",
+      "constraint": "shy(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

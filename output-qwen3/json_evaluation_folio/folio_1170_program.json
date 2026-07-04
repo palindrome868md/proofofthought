@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_at_math",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_at_chemistry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoys_experiments",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_at_planning",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "failed_class",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "james"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([p], And(is_student(p), good_at_math(p), good_at_chemistry(p)))",
+    "ForAll([p], Implies(And(is_student(p), good_at_chemistry(p)), enjoys_experiments(p)))",
+    "ForAll([p], Implies(And(is_student(p), enjoys_experiments(p)), good_at_planning(p)))",
+    "ForAll([p], Implies(And(is_student(p), good_at_planning(p)), Not(failed_class(p))))",
+    "is_student(james)",
+    "Or(And(good_at_chemistry(james), failed_class(james)), And(Not(good_at_chemistry(james)), Not(failed_class(james))))"
+  ],
+  "verifications": [
+    {
+      "name": "James is good at math and chemistry",
+      "constraint": "And(good_at_math(james), good_at_chemistry(james))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

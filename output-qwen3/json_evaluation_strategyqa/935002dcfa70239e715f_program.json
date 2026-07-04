@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Group",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Memorial",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "responded_to",
+      "domain": [
+        "Group",
+        "Event"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "died_in",
+      "domain": [
+        "Group",
+        "Event"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "included_in",
+      "domain": [
+        "Group",
+        "Memorial"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "commemorates",
+      "domain": [
+        "Memorial",
+        "Event"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "honors_victims",
+      "domain": [
+        "Memorial"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "groups": {
+      "sort": "Group",
+      "members": [
+        "firefighters"
+      ]
+    },
+    "events": {
+      "sort": "Event",
+      "members": [
+        "september_11"
+      ]
+    },
+    "memorials": {
+      "sort": "Memorial",
+      "members": [
+        "nine_eleven_memorial"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "g",
+      "sort": "Group"
+    },
+    {
+      "name": "e",
+      "sort": "Event"
+    },
+    {
+      "name": "m",
+      "sort": "Memorial"
+    }
+  ],
+  "knowledge_base": [
+    "responded_to(firefighters, september_11)",
+    "died_in(firefighters, september_11)",
+    "commemorates(nine_eleven_memorial, september_11)",
+    "honors_victims(nine_eleven_memorial)",
+    "ForAll([g, e, m], Implies(And(responded_to(g, e), died_in(g, e), commemorates(m, e), honors_victims(m)), included_in(g, m)))"
+  ],
+  "verifications": [
+    {
+      "name": "Firefighters included in 9/11 memorial",
+      "constraint": "included_in(firefighters, nine_eleven_memorial)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

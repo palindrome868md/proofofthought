@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_61",
+  "question": "Rompuses are amenable. Rompuses are numpuses. Numpuses are brown. Numpuses are zumpuses. Every zumpus is bright. Vumpuses are nervous. Every zumpus is a dumpus. Every dumpus is sweet. Dumpuses are yumpuses. Every yumpus is not nervous. Yumpuses are jompuses. Jompuses are not liquid. Jompuses are impuses. Impuses are not small. Each impus is a tumpus. Tumpuses are not transparent. Tumpuses are wumpuses. Max is a rompus.\n\nIs the following statement true or false? Max is not nervous.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

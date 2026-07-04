@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "LG",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "TypeC",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Before2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "l2021"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Monitor"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([m], And(LG(m), TypeC(m)))",
+    "ForAll([m], Implies(TypeC(m), Not(Before2010(m))))",
+    "ForAll([m], Implies(Library(m), Before2010(m)))",
+    "Or(Library(l2021), TypeC(l2021))",
+    "Or(And(Before2010(l2021), LG(l2021)), And(Not(Before2010(l2021)), Not(LG(l2021))))"
+  ],
+  "verifications": [
+    {
+      "name": "Statement Verification",
+      "constraint": "Implies(Or(And(LG(l2021), Before2010(l2021)), And(Not(LG(l2021)), Not(Before2010(l2021)))), Or(Library(l2021), LG(l2021)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

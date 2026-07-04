@@ -1,0 +1,140 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "EmploymentStatus",
+      "type": "EnumSort",
+      "values": [
+        "employee",
+        "worker"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_eligible_for_spl",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_take_leave_simultaneously",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_full_time",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_parental_responsibility",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "employed_continuously_26_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earns_above_threshold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "employment_status",
+      "domain": [
+        "Person"
+      ],
+      "range": "EmploymentStatus"
+    },
+    {
+      "name": "having_baby",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "policy_allows_simultaneous_leave",
+      "domain": [],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "baby"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Child"
+    }
+  ],
+  "knowledge_base": [
+    "having_baby(me, partner)",
+    "works_full_time(me)",
+    "works_full_time(partner)",
+    "has_parental_responsibility(me, baby)",
+    "has_parental_responsibility(partner, baby)",
+    "employed_continuously_26_weeks(me)",
+    "employed_continuously_26_weeks(partner)",
+    "earns_above_threshold(me)",
+    "earns_above_threshold(partner)",
+    "employment_status(me) == employee",
+    "employment_status(partner) == employee",
+    "policy_allows_simultaneous_leave()",
+    "ForAll([p], Implies(And(employed_continuously_26_weeks(p), earns_above_threshold(p), employment_status(p) == employee, has_parental_responsibility(p, baby)), is_eligible_for_spl(p)))",
+    "ForAll([p, p2], Implies(And(is_eligible_for_spl(p), is_eligible_for_spl(p2), policy_allows_simultaneous_leave()), can_take_leave_simultaneously(p, p2)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can take SPL at same time as partner",
+      "constraint": "can_take_leave_simultaneously(me, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Currency",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "currency_of",
+      "domain": [
+        "Event"
+      ],
+      "range": "Currency"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "united_states",
+        "france"
+      ]
+    },
+    "events": {
+      "sort": "Event",
+      "members": [
+        "louisiana_purchase"
+      ]
+    },
+    "currencies": {
+      "sort": "Currency",
+      "members": [
+        "bitcoin",
+        "gold"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "currency_of(louisiana_purchase) == gold"
+  ],
+  "verifications": [
+    {
+      "name": "Was Louisiana Purchase made with bitcoin?",
+      "constraint": "currency_of(louisiana_purchase) == bitcoin"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

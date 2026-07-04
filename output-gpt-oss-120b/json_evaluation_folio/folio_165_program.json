@@ -1,0 +1,137 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_king",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_queen",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_leader_for_life",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_power",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_male",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_female",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "elizabeth"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_queen(elizabeth)",
+    "is_leader_for_life(elizabeth)"
+  ],
+  "rules": [
+    {
+      "name": "LeaderHasPower",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_leader_for_life(x)",
+        "consequent": "has_power(x)"
+      }
+    },
+    {
+      "name": "LeaderIsKingOrQueen",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_leader_for_life(x)",
+        "consequent": "Or(is_king(x), is_queen(x))"
+      }
+    },
+    {
+      "name": "QueenIsFemale",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_queen(x)",
+        "consequent": "is_female(x)"
+      }
+    },
+    {
+      "name": "KingIsMale",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_king(x)",
+        "consequent": "is_male(x)"
+      }
+    },
+    {
+      "name": "MutualExclusivityKingQueen",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "Not(And(is_king(x), is_queen(x)))"
+    }
+  ],
+  "verifications": [
+    {
+      "name": "ElizabethIsKing",
+      "constraint": "is_king(elizabeth)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

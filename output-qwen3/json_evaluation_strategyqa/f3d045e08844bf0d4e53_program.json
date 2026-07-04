@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Artwork",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "License",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_public_domain",
+      "domain": [
+        "Artwork"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "was_sold_cc_license",
+      "domain": [
+        "Person",
+        "Artwork"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ripped_off",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "creation_year",
+      "domain": [
+        "Artwork"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "artworks": {
+      "sort": "Artwork",
+      "members": [
+        "birth_of_venus"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "buyer"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "Artwork"
+    }
+  ],
+  "knowledge_base": [
+    "creation_year(birth_of_venus) == 1486",
+    "ForAll([a], Implies(creation_year(a) < 1928, is_public_domain(a)))",
+    "is_public_domain(birth_of_venus)",
+    "ForAll([p, a], Implies(And(was_sold_cc_license(p, a), is_public_domain(a)), is_ripped_off(p)))",
+    "was_sold_cc_license(buyer, birth_of_venus)"
+  ],
+  "verifications": [
+    {
+      "name": "Was buyer ripped off for Birth of Venus CC License",
+      "constraint": "is_ripped_off(buyer)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

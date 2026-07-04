@@ -1,0 +1,99 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "charlie",
+        "dave",
+        "erin"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_cold(charlie)",
+    "is_furry(charlie)",
+    "is_green(charlie)",
+    "is_red(charlie)",
+    "is_round(charlie)",
+    "is_smart(charlie)",
+    "is_white(charlie)",
+    "is_cold(dave)",
+    "is_green(dave)",
+    "is_furry(erin)",
+    "ForAll([p], Implies(is_green(p), is_round(p)))",
+    "ForAll([p], Implies(And(is_smart(p), is_green(p)), is_white(p)))",
+    "ForAll([p], Implies(is_round(p), is_smart(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dave is round",
+      "constraint": "is_round(dave)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

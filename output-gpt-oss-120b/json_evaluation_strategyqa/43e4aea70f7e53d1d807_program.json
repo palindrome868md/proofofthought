@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Podcast",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_fan",
+      "domain": [
+        "Person",
+        "Podcast"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deacon",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "deacon"
+      ]
+    },
+    "podcasts": {
+      "sort": "Podcast",
+      "members": [
+        "god_awful_movies"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_deacon(deacon)",
+    "ForAll([p], Implies(is_deacon(p), Not(is_fan(p, god_awful_movies))))"
+  ],
+  "verifications": [
+    {
+      "name": "Deacon fan of God Awful Movies",
+      "constraint": "is_fan(deacon, god_awful_movies)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

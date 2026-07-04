@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Soup",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_liquid",
+      "domain": [
+        "Soup"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_eat",
+      "domain": [
+        "Soup"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "soups": {
+      "sort": "Soup",
+      "members": [
+        "clear_soup",
+        "chunky_soup"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Soup"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([s], Implies(is_liquid(s), can_eat(s)))",
+    "ForAll([s], Implies(Not(is_liquid(s)), Not(can_eat(s))))",
+    "is_liquid(clear_soup)",
+    "Not(is_liquid(chunky_soup))"
+  ],
+  "verifications": [
+    {
+      "name": "Exists soup you cannot eat on liquid diet",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Soup"
+        }
+      ],
+      "constraint": "Not(can_eat(s))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

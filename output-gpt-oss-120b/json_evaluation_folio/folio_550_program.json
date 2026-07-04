@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Team",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "more_points",
+      "domain": [
+        "Team",
+        "Team"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ranks_higher",
+      "domain": [
+        "Team",
+        "Team"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "more_points_between",
+      "domain": [
+        "Team",
+        "Team"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_la_liga",
+      "domain": [
+        "Team"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "teams": {
+      "sort": "Team",
+      "members": [
+        "real_madrid",
+        "barcelona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "t1",
+      "sort": "Team"
+    },
+    {
+      "name": "t2",
+      "sort": "Team"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([t1, t2], Implies(And(is_la_liga(t1), is_la_liga(t2), more_points(t1, t2)), ranks_higher(t1, t2)))",
+    "ForAll([t1, t2], Implies(And(is_la_liga(t1), is_la_liga(t2), Not(more_points(t1, t2)), Not(more_points(t2, t1)), more_points_between(t1, t2)), ranks_higher(t1, t2)))",
+    "is_la_liga(real_madrid)",
+    "is_la_liga(barcelona)",
+    "more_points(real_madrid, barcelona)",
+    "Not(more_points_between(real_madrid, barcelona))",
+    "Not(more_points_between(barcelona, real_madrid))"
+  ],
+  "verifications": [
+    {
+      "name": "RM ranks higher than Barcelona",
+      "constraint": "ranks_higher(real_madrid, barcelona)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

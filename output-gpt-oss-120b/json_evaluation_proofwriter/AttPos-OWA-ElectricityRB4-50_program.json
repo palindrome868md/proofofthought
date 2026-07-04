@@ -1,0 +1,129 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "includes_switch",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "includes_light_bulb",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "includes_battery",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "includes_bell",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "includes_radio",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "switch_on",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "battery_not_flat",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wire_is_metal",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wire_is_plastic",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wire_conducting",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "circuit_powered",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "circuit_complete",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_runs_through_circuit",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_runs_through_light_bulb",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_runs_through_bell",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_runs_through_radio",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "light_bulb_glowing",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bell_ringing",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "radio_playing",
+      "domain": [],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [
+    "includes_switch()",
+    "switch_on()",
+    "wire_is_metal()",
+    "includes_light_bulb()",
+    "Implies(And(includes_battery(), battery_not_flat()), circuit_powered())",
+    "Implies(And(includes_switch(), switch_on()), circuit_complete())",
+    "Implies(Not(includes_switch()), circuit_complete())",
+    "Implies(wire_is_metal(), wire_conducting())",
+    "Implies(wire_is_plastic(), Not(wire_conducting()))",
+    "Implies(And(circuit_powered(), circuit_complete(), wire_conducting()), current_runs_through_circuit())",
+    "Implies(And(current_runs_through_circuit(), includes_light_bulb()), current_runs_through_light_bulb())",
+    "Implies(And(current_runs_through_circuit(), includes_bell()), current_runs_through_bell())",
+    "Implies(And(current_runs_through_circuit(), includes_radio()), current_runs_through_radio())",
+    "Implies(current_runs_through_light_bulb(), light_bulb_glowing())",
+    "Implies(current_runs_through_bell(), bell_ringing())",
+    "Implies(current_runs_through_radio(), radio_playing())"
+  ],
+  "verifications": [
+    {
+      "name": "Circuit includes light bulb",
+      "constraint": "includes_light_bulb()"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

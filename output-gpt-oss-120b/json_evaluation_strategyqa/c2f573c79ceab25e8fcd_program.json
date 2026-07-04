@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_worms",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dog",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "strawberry",
+        "dog"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_dog(x), has_worms(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can strawberry get worms",
+      "constraint": "has_worms(strawberry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

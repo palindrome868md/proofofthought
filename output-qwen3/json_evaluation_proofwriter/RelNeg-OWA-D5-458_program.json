@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "cow",
+        "tiger",
+        "cat"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    },
+    {
+      "name": "y",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bald_eagle, cow)",
+    "Not(sees(bald_eagle, tiger))",
+    "Not(visits(bald_eagle, tiger))",
+    "Not(is_rough(cat))",
+    "Not(visits(cow, bald_eagle))",
+    "is_blue(tiger)",
+    "is_rough(tiger)",
+    "needs(tiger, bald_eagle)",
+    "needs(tiger, cat)",
+    "sees(tiger, bald_eagle)",
+    "visits(tiger, cat)",
+    "visits(tiger, cow)",
+    "ForAll([x], Implies(And(visits(x, tiger), visits(tiger, bald_eagle)), Not(visits(tiger, cow))))",
+    "ForAll([x], Implies(And(needs(x, tiger), sees(tiger, cat)), sees(tiger, bald_eagle)))",
+    "ForAll([x], Implies(is_blue(x), sees(x, tiger)))",
+    "ForAll([x], Implies(needs(x, cat), is_nice(x)))",
+    "ForAll([x], Implies(is_nice(x), needs(x, cow)))",
+    "ForAll([x], Implies(needs(x, bald_eagle), visits(x, bald_eagle)))",
+    "ForAll([x], Implies(needs(x, cow), needs(cow, cat)))"
+  ],
+  "verifications": [
+    {
+      "name": "Tiger visits bald eagle",
+      "constraint": "visits(tiger, bald_eagle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

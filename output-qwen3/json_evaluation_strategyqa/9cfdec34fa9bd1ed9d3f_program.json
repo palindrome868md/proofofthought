@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_healthy_lungs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_heavy_smoker",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "j_p_morgan"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_heavy_smoker(j_p_morgan)",
+    "ForAll([p], Implies(is_heavy_smoker(p), Not(has_healthy_lungs(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Did J.P. Morgan have healthy lungs",
+      "constraint": "has_healthy_lungs(j_p_morgan)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

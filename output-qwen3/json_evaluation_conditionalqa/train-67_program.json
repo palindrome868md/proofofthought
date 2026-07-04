@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_civil_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "missing_duration_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "claimant_residence_months_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_civil_partner(me, partner)",
+    "missing_duration_years(partner) >= 7",
+    "claimant_residence_months_uk(me) == 18"
+  ],
+  "rules": [
+    {
+      "name": "Claim Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_civil_partner(p, partner), claimant_residence_months_uk(p) >= 12, missing_duration_years(partner) >= 7)",
+        "consequent": "can_claim(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Check Claim Eligibility",
+      "constraint": "can_claim(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

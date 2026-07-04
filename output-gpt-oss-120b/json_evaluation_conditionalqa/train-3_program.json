@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pregnant_by",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_annul",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife",
+        "other_father"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "married(husband, wife)",
+    "pregnant_by(wife, other_father)"
+  ],
+  "rules": [
+    {
+      "name": "Annulment for spouse pregnant by another",
+      "forall": [
+        {
+          "name": "h",
+          "sort": "Person"
+        },
+        {
+          "name": "w",
+          "sort": "Person"
+        },
+        {
+          "name": "o",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(married(h, w), pregnant_by(w, o))",
+        "consequent": "can_annul(h, w)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can husband obtain annulment based on wife\u2019s pregnancy by another",
+      "exists": [
+        {
+          "name": "h",
+          "sort": "Person"
+        },
+        {
+          "name": "w",
+          "sort": "Person"
+        },
+        {
+          "name": "o",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(married(h, w), pregnant_by(w, o), can_annul(h, w))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

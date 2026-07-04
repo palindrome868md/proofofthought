@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "squirrel"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "likes(cat, squirrel)",
+    "is_blue(squirrel)",
+    "ForAll([x], Implies(And(visits(x, cat), likes(cat, squirrel)), is_kind(squirrel)))",
+    "ForAll([x], Implies(visits(x, cat), visits(cat, squirrel)))",
+    "ForAll([x], Implies(And(likes(x, cat), is_round(cat)), visits(cat, squirrel)))",
+    "ForAll([x], Implies(sees(x, cat), visits(x, cat)))",
+    "ForAll([x], Implies(And(is_kind(x), visits(x, cat)), likes(cat, squirrel)))",
+    "ForAll([x], Implies(likes(x, squirrel), sees(x, cat)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cat likes the squirrel",
+      "constraint": "likes(cat, squirrel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

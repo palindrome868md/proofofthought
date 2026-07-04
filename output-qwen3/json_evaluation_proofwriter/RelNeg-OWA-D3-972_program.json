@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "cow",
+        "lion",
+        "mouse"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_kind(bald_eagle)",
+    "is_blue(cow)",
+    "chases(lion, mouse)",
+    "chases(mouse, lion)",
+    "ForAll([x], Implies(chases(x, mouse), Not(is_rough(mouse))))",
+    "ForAll([x], Implies(sees(x, mouse), chases(x, cow)))",
+    "ForAll([x], Implies(is_kind(x), is_cold(x)))",
+    "ForAll([x], Implies(And(chases(x, lion), Not(sees(x, mouse))), Not(is_kind(x))))",
+    "ForAll([x], Implies(is_cold(x), likes(x, lion)))",
+    "ForAll([x], Implies(likes(x, lion), chases(lion, cow)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bald Eagle Does Not Like Lion",
+      "constraint": "Not(likes(bald_eagle, lion))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

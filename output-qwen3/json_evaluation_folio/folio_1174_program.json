@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "made_by_LG",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_type_c_port",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_before_2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "l_2021"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Monitor"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([m], And(made_by_LG(m), has_type_c_port(m)))",
+    "ForAll([m], Implies(has_type_c_port(m), Not(made_before_2010(m))))",
+    "ForAll([m], Implies(in_library(m), made_before_2010(m)))",
+    "Or(in_library(l_2021), has_type_c_port(l_2021))",
+    "Or(And(made_before_2010(l_2021), made_by_LG(l_2021)), And(Not(made_before_2010(l_2021)), Not(made_by_LG(l_2021))))"
+  ],
+  "verifications": [
+    {
+      "name": "L-2021 in library or made by LG",
+      "constraint": "Or(in_library(l_2021), made_by_LG(l_2021))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

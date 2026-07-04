@@ -1,0 +1,131 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(dumpus(x), cold(x)))",
+    "ForAll([x], Implies(dumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), Not(bitter(x))))",
+    "ForAll([x], Implies(numpus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), fruity(x)))",
+    "ForAll([x], Implies(zumpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), large(x)))",
+    "ForAll([x], Implies(tumpus(x), Not(wooden(x))))",
+    "ForAll([x], Implies(wumpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), wooden(x)))",
+    "ForAll([x], Implies(impus(x), rompuse(x)))",
+    "dumpus(fae)"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is wooden (must be true)",
+      "constraint": "Not(wooden(fae))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

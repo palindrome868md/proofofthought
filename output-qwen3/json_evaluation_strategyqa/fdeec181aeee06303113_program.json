@@ -1,0 +1,109 @@
+{
+  "sorts": [
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Religion",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "ReligiousSymbol",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_in",
+      "domain": [
+        "Location",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "predominant_religion",
+      "domain": [
+        "Location"
+      ],
+      "range": "Religion"
+    },
+    {
+      "name": "is_symbol_of",
+      "domain": [
+        "ReligiousSymbol",
+        "Religion"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_religious_community",
+      "domain": [
+        "Religion",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_find",
+      "domain": [
+        "ReligiousSymbol",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "karachi",
+        "pakistan"
+      ]
+    },
+    "religions": {
+      "sort": "Religion",
+      "members": [
+        "christianity",
+        "islam"
+      ]
+    },
+    "symbols": {
+      "sort": "ReligiousSymbol",
+      "members": [
+        "crucifix"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "l",
+      "sort": "Location"
+    },
+    {
+      "name": "r",
+      "sort": "Religion"
+    },
+    {
+      "name": "s",
+      "sort": "ReligiousSymbol"
+    }
+  ],
+  "knowledge_base": [
+    "is_in(karachi, pakistan)",
+    "predominant_religion(pakistan) == islam",
+    "is_symbol_of(crucifix, christianity)",
+    "has_religious_community(christianity, karachi)",
+    "ForAll([s, r, l], Implies(And(is_symbol_of(s, r), has_religious_community(r, l)), can_find(s, l)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can find crucifix in Karachi",
+      "constraint": "can_find(crucifix, karachi)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

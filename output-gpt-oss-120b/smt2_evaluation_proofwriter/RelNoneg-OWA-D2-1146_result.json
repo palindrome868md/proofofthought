@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D2-1146",
+  "question": "The bald eagle sees the bear. The bald eagle sees the rabbit. The bear chases the bald eagle. The bear chases the rabbit. The bear eats the mouse. The bear is blue. The bear sees the rabbit. The mouse chases the rabbit. The mouse is cold. The mouse is nice. The mouse sees the bear. The mouse sees the rabbit. The rabbit eats the bear. The rabbit eats the mouse. The rabbit sees the bald eagle. If something chases the rabbit then the rabbit eats the bald eagle. If something sees the bear then the bear is red. If something is red then it is big. If something chases the bald eagle and the bald eagle eats the rabbit then the bald eagle is red. Red things are blue. If something eats the rabbit and the rabbit is red then it is blue.\n\nQuestion: The rabbit eats the mouse.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "EnumSort",
+      "values": [
+        "GuaranteeCredit",
+        "SavingsCredit"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "gets",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_discount",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "GuaranteeCredit",
+        "SavingsCredit"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "gets(husband, GuaranteeCredit)",
+    "gets(husband, SavingsCredit)",
+    "gets(wife, GuaranteeCredit)",
+    "gets(wife, SavingsCredit)"
+  ],
+  "rules": [
+    {
+      "name": "Core group eligibility",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "gets(p, GuaranteeCredit)",
+        "consequent": "eligible_discount(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility despite receiving Savings Credit",
+      "constraint": "eligible_discount(husband)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

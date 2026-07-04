@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "went_to_clays_school",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "makes_matcha",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wakes_up_late",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_california",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attends_yoga",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_entertainment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_regular_job",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_home",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bunny"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(went_to_clays_school(x), makes_matcha(x)), Not(wakes_up_late(x))))",
+    "ForAll([x], Implies(And(went_to_clays_school(x), lives_in_california(x), attends_yoga(x)), makes_matcha(x)))",
+    "ForAll([x], Implies(And(went_to_clays_school(x), works_entertainment(x)), wakes_up_late(x)))",
+    "ForAll([x], Implies(And(went_to_clays_school(x), Not(has_regular_job(x))), works_entertainment(x)))",
+    "ForAll([x], Implies(And(went_to_clays_school(x), prefers_home(x)), Not(has_regular_job(x))))",
+    "And(went_to_clays_school(bunny), Or(And(prefers_home(bunny), makes_matcha(bunny)), And(Not(prefers_home(bunny)), Not(makes_matcha(bunny)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Bunny Statement Verification",
+      "constraint": "And(went_to_clays_school(bunny), Not(prefers_home(bunny)), Not(And(lives_in_california(bunny), attends_yoga(bunny))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

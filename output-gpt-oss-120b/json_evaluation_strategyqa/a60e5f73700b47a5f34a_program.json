@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Movie",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_rock_star",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays_captain",
+      "domain": [
+        "Person",
+        "Movie"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "keith_richards"
+      ]
+    },
+    "movies": {
+      "sort": "Movie",
+      "members": [
+        "pirates_of_the_caribbean"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Movie"
+    }
+  ],
+  "knowledge_base": [
+    "is_rock_star(keith_richards) == True",
+    {
+      "assertion": "ForAll([m], Not(plays_captain(keith_richards, m)))",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Does Keith Richards play a captain of a boat in a movie",
+      "exists": [
+        {
+          "name": "m",
+          "sort": "Movie"
+        }
+      ],
+      "constraint": "plays_captain(keith_richards, m)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

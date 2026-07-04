@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Human",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "functional_brainstem",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_swim",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_control_breath",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_walk",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stand_on_ground_by_themselves",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "functional_leg_muscles",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_control_balance",
+      "domain": [
+        "Human"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "humans": {
+      "sort": "Human",
+      "members": [
+        "george",
+        "archie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "h",
+      "sort": "Human"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([h], Implies(can_control_breath(h), functional_brainstem(h)))",
+    "ForAll([h], Implies(can_swim(h), can_control_breath(h)))",
+    "ForAll([h], Or(can_swim(h), can_walk(h)))",
+    "ForAll([h], Implies(can_walk(h), stand_on_ground_by_themselves(h)))",
+    "ForAll([h], Implies(functional_brainstem(h), can_control_balance(h)))",
+    "ForAll([h], Implies(stand_on_ground_by_themselves(h), functional_leg_muscles(h)))",
+    "can_control_balance(george)",
+    "can_swim(george)",
+    "Implies(can_walk(archie), functional_brainstem(archie))",
+    "Implies(functional_brainstem(archie), can_walk(archie))"
+  ],
+  "verifications": [
+    {
+      "name": "Archie has functional leg muscles and can control his balance",
+      "constraint": "And(functional_leg_muscles(archie), can_control_balance(archie))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

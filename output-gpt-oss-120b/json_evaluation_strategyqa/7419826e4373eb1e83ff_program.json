@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Sound",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_dog",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_grey_seal",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bell",
+      "domain": [
+        "Sound"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "responds_before",
+      "domain": [
+        "Animal",
+        "Animal",
+        "Sound"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "dog",
+        "grey_seal"
+      ]
+    },
+    "sounds": {
+      "sort": "Sound",
+      "members": [
+        "bell"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "d",
+      "sort": "Animal"
+    },
+    {
+      "name": "g",
+      "sort": "Animal"
+    },
+    {
+      "name": "s",
+      "sort": "Sound"
+    }
+  ],
+  "knowledge_base": [
+    "is_dog(dog)",
+    "is_grey_seal(grey_seal)",
+    "is_bell(bell)",
+    "ForAll([d, g, s], Implies(And(is_dog(d), is_grey_seal(g), is_bell(s)), responds_before(d, g, s)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dog responds before Grey seal to bell",
+      "constraint": "responds_before(dog, grey_seal, bell)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

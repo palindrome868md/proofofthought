@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_pict",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_old_english",
+      "domain": [
+        "Language"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "native_language",
+      "domain": [
+        "Person"
+      ],
+      "range": "Language"
+    },
+    {
+      "name": "understands",
+      "domain": [
+        "Person",
+        "Language"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "confused_by",
+      "domain": [
+        "Person",
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "pict_person"
+      ]
+    },
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "old_english",
+        "pictish"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "l",
+      "sort": "Language"
+    }
+  ],
+  "knowledge_base": [
+    "is_pict(pict_person)",
+    "is_old_english(old_english)",
+    "native_language(pict_person) == pictish",
+    "Not(is_old_english(pictish))",
+    "ForAll([p, l], Implies(And(is_pict(p), is_old_english(l), native_language(p) != l), Not(understands(p, l))))",
+    "ForAll([p, l], Implies(And(is_pict(p), is_old_english(l), Not(understands(p, l))), confused_by(p, l)))"
+  ],
+  "verifications": [
+    {
+      "name": "Would Pict be confused by Old English",
+      "constraint": "confused_by(pict_person, old_english)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_age",
+      "domain": [
+        "Child"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "gets_undergraduate_finance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_permanent_resident_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_financially_dependent",
+      "domain": [
+        "Child",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claims_tax_free_childcare",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claims_universal_credit_childcare",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_nhs_childcare_help",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "gets_postgraduate_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "son"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_full_time_student(applicant) == True",
+    "child_age(son) == 5",
+    "gets_undergraduate_finance(applicant) == True",
+    "is_permanent_resident_england(applicant) == True",
+    "is_financially_dependent(son, applicant) == True",
+    "claims_tax_free_childcare(applicant) == False",
+    "claims_universal_credit_childcare(applicant) == False",
+    "receives_nhs_childcare_help(applicant) == False",
+    "gets_postgraduate_loan(applicant) == False"
+  ],
+  "verifications": [
+    {
+      "name": "Check Childcare Grant Eligibility",
+      "constraint": "And(is_full_time_student(applicant), child_age(son) < 15, gets_undergraduate_finance(applicant), is_permanent_resident_england(applicant), is_financially_dependent(son, applicant), Not(claims_tax_free_childcare(applicant)), Not(claims_universal_credit_childcare(applicant)), Not(receives_nhs_childcare_help(applicant)), Not(gets_postgraduate_loan(applicant)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Film",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Award",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "directed",
+      "domain": [
+        "Person",
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "documentary",
+      "domain": [
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "film",
+      "domain": [
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "filmmaker",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_from",
+      "domain": [
+        "Person",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "city_in_country",
+      "domain": [
+        "City",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "from_country",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nominated",
+      "domain": [
+        "Film",
+        "Award"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lana_wilson"
+      ]
+    },
+    "films": {
+      "sort": "Film",
+      "members": [
+        "after_tiller",
+        "the_departure",
+        "miss_americana"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "kirkland"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "us"
+      ]
+    },
+    "awards": {
+      "sort": "Award",
+      "members": [
+        "independent_spirit_best_doc"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "directed(lana_wilson, after_tiller)",
+    "directed(lana_wilson, the_departure)",
+    "directed(lana_wilson, miss_americana)",
+    "documentary(after_tiller)",
+    "is_from(lana_wilson, kirkland)",
+    "city_in_country(kirkland, us)",
+    "nominated(after_tiller, independent_spirit_best_doc)"
+  ],
+  "rules": [
+    {
+      "name": "DirectorIsFilmmaker",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "f",
+          "sort": "Film"
+        }
+      ],
+      "implies": {
+        "antecedent": "directed(p, f)",
+        "consequent": "filmmaker(p)"
+      }
+    },
+    {
+      "name": "DocIsFilm",
+      "forall": [
+        {
+          "name": "d",
+          "sort": "Film"
+        }
+      ],
+      "implies": {
+        "antecedent": "documentary(d)",
+        "consequent": "film(d)"
+      }
+    },
+    {
+      "name": "FromCityToCountry",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "City"
+        },
+        {
+          "name": "cn",
+          "sort": "Country"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_from(p, c), city_in_country(c, cn))",
+        "consequent": "from_country(p, cn)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "LanaWilsonIsUSFilmmaker",
+      "constraint": "And(filmmaker(lana_wilson), from_country(lana_wilson, us))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_wild",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_domestic",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "size_large",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_pet_for",
+      "domain": [
+        "Animal",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "child6"
+      ]
+    },
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "northern_fur_seal"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_wild(northern_fur_seal)",
+    "Not(is_domestic(northern_fur_seal))",
+    "size_large(northern_fur_seal)",
+    "age(child6) == 6",
+    "is_child(child6)"
+  ],
+  "rules": [
+    {
+      "name": "UnsuitableWildAnimal",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "Animal"
+        },
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "Or(is_wild(a), Not(is_domestic(a)), size_large(a))",
+        "consequent": "Not(good_pet_for(a, p))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Northern fur seal good pet for six year old",
+      "constraint": "good_pet_for(northern_fur_seal, child6)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

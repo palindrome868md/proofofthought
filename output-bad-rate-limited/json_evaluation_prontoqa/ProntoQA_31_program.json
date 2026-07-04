@@ -1,0 +1,130 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "angry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(jompus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), temperate(p)))",
+    "ForAll([p], Implies(zumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), brown(p)))",
+    "ForAll([p], Implies(tumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), wooden(p)))",
+    "ForAll([p], Implies(yumpus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), Not(angry(p))))",
+    "ForAll([p], Implies(numpus(p), Not(dull(p))))",
+    "ForAll([p], Implies(numpus(p), vumpus(p)))",
+    "jompus(wren)"
+  ],
+  "verifications": [
+    {
+      "name": "Wren not angry",
+      "constraint": "Not(angry(wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

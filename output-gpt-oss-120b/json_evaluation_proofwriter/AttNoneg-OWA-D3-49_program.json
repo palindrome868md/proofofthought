@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "fiona",
+        "gary",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "big(bob)",
+    "kind(bob)",
+    "red(bob)",
+    "big(fiona)",
+    "cold(fiona)",
+    "kind(fiona)",
+    "red(fiona)",
+    "young(fiona)",
+    "blue(gary)",
+    "cold(gary)",
+    "kind(gary)",
+    "red(gary)",
+    "rough(gary)",
+    "young(gary)",
+    "blue(harry)",
+    "ForAll([x], Implies(red(x), blue(x)))",
+    "ForAll([x], Implies(blue(x), young(x)))",
+    "ForAll([x], Implies(And(red(x), young(x)), cold(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is not young",
+      "constraint": "Not(young(harry))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

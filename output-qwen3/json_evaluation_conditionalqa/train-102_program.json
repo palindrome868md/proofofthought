@@ -1,0 +1,117 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Application",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CourtOrder",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_family_member",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_connected_to_application",
+      "domain": [
+        "Person",
+        "Application"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "seeking_protection_order",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_notified_family",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_without_notification",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_lost_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_applicant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "grandmother",
+        "family_member_1",
+        "family_member_2",
+        "family_member_3"
+      ]
+    },
+    "applications": {
+      "sort": "Application",
+      "members": [
+        "court_application"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "Application"
+    }
+  ],
+  "knowledge_base": [
+    "has_lost_capacity(grandmother) == True",
+    "is_applicant(applicant) == True",
+    "ForAll([p], Implies(is_family_member(p, grandmother), is_connected_to_application(p, court_application)))",
+    "is_family_member(family_member_1, grandmother) == True",
+    "is_family_member(family_member_2, grandmother) == True",
+    "is_family_member(family_member_3, grandmother) == True",
+    "ForAll([p, a], Implies(And(seeking_protection_order(p), is_connected_to_application(p, a)), has_notified_family(p)))",
+    "ForAll([p], Implies(And(is_applicant(p), seeking_protection_order(p)), Not(can_apply_without_notification(p))))",
+    "seeking_protection_order(applicant) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Can applicant seek court protection without informing family members",
+      "constraint": "can_apply_without_notification(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

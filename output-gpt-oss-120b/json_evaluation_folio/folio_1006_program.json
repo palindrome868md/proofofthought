@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Object",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "OutsideSolarSystem",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "InSolarSystem",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HasSunStar",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GravitationallyBoundBySun",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Planet",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "RoguePlanet",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "OrphanPlanet",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "objects": {
+      "sort": "Object",
+      "members": [
+        "psoj"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Object"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Or(OutsideSolarSystem(x), InSolarSystem(x)))",
+    "ForAll([x], Implies(OutsideSolarSystem(x), Not(HasSunStar(x))))",
+    "ForAll([x], Implies(InSolarSystem(x), GravitationallyBoundBySun(x)))",
+    "ForAll([x], Implies(And(GravitationallyBoundBySun(x), Planet(x)), Not(RoguePlanet(x))))",
+    "ForAll([x], Implies(OrphanPlanet(x), RoguePlanet(x)))",
+    "Implies(Not(And(RoguePlanet(psoj), GravitationallyBoundBySun(psoj))), RoguePlanet(psoj))"
+  ],
+  "verifications": [
+    {
+      "name": "StatementTruth",
+      "constraint": "Or(OrphanPlanet(psoj), Not(HasSunStar(psoj)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

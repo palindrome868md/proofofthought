@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_children",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "studying_course",
+      "domain": [
+        "Person",
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_undergraduate",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "social_work_course"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "has_children(me) == True",
+    "is_full_time_student(me) == True",
+    "studying_course(me, social_work_course) == True",
+    "is_undergraduate(social_work_course) == True",
+    "works(me) == False"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "Course"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(has_children(p), is_full_time_student(p), studying_course(p, c), is_undergraduate(c))",
+        "consequent": "eligible_for_claim(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can I claim Parents Learning Allowance",
+      "constraint": "eligible_for_claim(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

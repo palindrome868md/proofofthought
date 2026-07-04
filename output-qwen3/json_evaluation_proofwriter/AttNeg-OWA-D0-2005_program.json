@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "furry",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "furry(harry)",
+    "green(harry)",
+    "kind(harry)",
+    "red(harry)",
+    "rough(harry)",
+    "round(harry)",
+    "Not(young(harry))",
+    "Implies(And(young(harry), green(harry)), kind(harry))",
+    "Implies(Not(young(harry)), rough(harry))",
+    "ForAll([x], Implies(And(rough(x), young(x)), furry(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is furry",
+      "constraint": "furry(harry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Fruit",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Part",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "best_tasting_part",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "Part"
+    },
+    {
+      "name": "is_center",
+      "domain": [
+        "Part"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fruits": {
+      "sort": "Fruit",
+      "members": [
+        "papaya"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_center(best_tasting_part(papaya))"
+  ],
+  "verifications": [
+    {
+      "name": "Best Tasting Part Is Center",
+      "constraint": "is_center(best_tasting_part(papaya))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

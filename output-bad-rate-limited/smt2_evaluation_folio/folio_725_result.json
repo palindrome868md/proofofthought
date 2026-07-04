@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_725",
+  "question": "Given the following premises:\n\nAll bears in zoos are not wild. \nSome bears are in zoos. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Not all bears are wild.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Error: write() argument must be str, not None\nTraceback (most recent call last):\n  File \"/home/kyi/proofofthought/z3adapter/reasoning/proof_of_thought.py\", line 239, in query\n    f.write(gen_result.program)  # type: ignore\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: write() argument must be str, not None\n"
+}

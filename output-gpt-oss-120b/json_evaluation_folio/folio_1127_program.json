@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "drinks_coffee_regularly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dependent_on_caffeine",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "doesnt_want_addiction",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "unaware_caffeine_is_drug",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "rina"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(drinks_coffee_regularly(p), dependent_on_caffeine(p)))",
+    "ForAll([p], Or(drinks_coffee_regularly(p), doesnt_want_addiction(p)))",
+    "ForAll([p], Implies(doesnt_want_addiction(p), Not(unaware_caffeine_is_drug(p))))",
+    "Or(And(is_student(rina), unaware_caffeine_is_drug(rina)), And(Not(is_student(rina)), Not(unaware_caffeine_is_drug(rina))))",
+    "Or(And(is_student(rina), dependent_on_caffeine(rina)), And(Not(is_student(rina)), Not(dependent_on_caffeine(rina))))"
+  ],
+  "verifications": [
+    {
+      "name": "Rina statement entails",
+      "constraint": "And(Not(doesnt_want_addiction(rina)), Not(unaware_caffeine_is_drug(rina)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

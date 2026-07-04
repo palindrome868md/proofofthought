@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_missing",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "missing_duration_days",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_business_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "over_18",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "partner"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_missing(partner) == True",
+    "missing_duration_days(partner) == 180",
+    "is_business_partner(applicant, partner) == True",
+    "over_18(applicant) == True",
+    "Implies(And(is_missing(partner), missing_duration_days(partner) >= 90, is_business_partner(applicant, partner), over_18(applicant)), can_apply(applicant, partner))"
+  ],
+  "verifications": [
+    {
+      "name": "CanApplyGuardianship",
+      "constraint": "can_apply(applicant, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

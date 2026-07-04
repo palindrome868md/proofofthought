@@ -1,0 +1,139 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "DeputyType",
+      "type": "EnumSort",
+      "values": [
+        "welfare_deputy",
+        "financial_deputy"
+      ]
+    },
+    {
+      "name": "Court",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Will",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Application",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_deputyship",
+      "domain": [
+        "Person",
+        "DeputyType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_dementia",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lacks_testamentary_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_statutory_will",
+      "domain": [
+        "Person",
+        "DeputyType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_financial_matter",
+      "domain": [
+        "Application"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "deputy_type",
+      "domain": [
+        "Person"
+      ],
+      "range": "DeputyType"
+    },
+    {
+      "name": "is_welfare_deputy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_financial_deputy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user",
+        "father",
+        "financial_deputy_person",
+        "younger_brother"
+      ]
+    },
+    "courts": {
+      "sort": "Court",
+      "members": [
+        "court_of_protection"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "dt",
+      "sort": "DeputyType"
+    },
+    {
+      "name": "app",
+      "sort": "Application"
+    }
+  ],
+  "knowledge_base": [
+    "has_dementia(father) == True",
+    "lacks_testamentary_capacity(father) == True",
+    "has_deputyship(user, welfare_deputy) == True",
+    "has_deputyship(financial_deputy_person, financial_deputy) == True",
+    "is_welfare_deputy(user) == True",
+    "is_financial_deputy(financial_deputy_person) == True",
+    "deputy_type(user) == welfare_deputy",
+    "deputy_type(financial_deputy_person) == financial_deputy",
+    "ForAll([p, dt], Implies(And(has_deputyship(p, dt), lacks_testamentary_capacity(father)), can_apply_for_statutory_will(p, dt)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can Welfare Deputy Apply for Will Change",
+      "constraint": "can_apply_for_statutory_will(user, welfare_deputy)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Creature",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Ship",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "max_length",
+      "domain": [
+        "Creature"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "deck_length",
+      "domain": [
+        "Ship"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "deck_width",
+      "domain": [
+        "Ship"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "fits_on_deck",
+      "domain": [
+        "Creature",
+        "Ship"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Creature",
+      "members": [
+        "giant_squid"
+      ]
+    },
+    "ships": {
+      "sort": "Ship",
+      "members": [
+        "titanic"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Creature"
+    },
+    {
+      "name": "s",
+      "sort": "Ship"
+    }
+  ],
+  "knowledge_base": [
+    "max_length(giant_squid) == 13",
+    "deck_length(titanic) == 269",
+    "deck_width(titanic) == 28",
+    "ForAll([c, s], Implies(And(max_length(c) <= deck_length(s), max_length(c) <= deck_width(s)), fits_on_deck(c, s)))"
+  ],
+  "verifications": [
+    {
+      "name": "Could giant squid fit on titanic deck",
+      "constraint": "fits_on_deck(giant_squid, titanic)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

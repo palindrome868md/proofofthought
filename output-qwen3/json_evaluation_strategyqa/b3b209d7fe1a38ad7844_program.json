@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Show",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_host",
+      "domain": [
+        "Person",
+        "Show"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_performer",
+      "domain": [
+        "Person",
+        "Show"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "performs_double_duty",
+      "domain": [
+        "Person",
+        "Show"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "shows": {
+      "sort": "Show",
+      "members": [
+        "dancing_with_the_stars"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "dwts_host"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "s",
+      "sort": "Show"
+    }
+  ],
+  "knowledge_base": [
+    "is_host(dwts_host, dancing_with_the_stars)",
+    "is_performer(dwts_host, dancing_with_the_stars)",
+    "ForAll([p, s], Implies(And(is_host(p, s), is_performer(p, s)), performs_double_duty(p, s)))"
+  ],
+  "verifications": [
+    {
+      "name": "Double duty is incorrect phrase for DWTS host",
+      "constraint": "Not(performs_double_duty(dwts_host, dancing_with_the_stars))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

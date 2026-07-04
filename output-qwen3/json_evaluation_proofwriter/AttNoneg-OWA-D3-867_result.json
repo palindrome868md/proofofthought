@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-867",
+  "question": "Bob is white. Charlie is smart. Fiona is cold. Harry is smart. If someone is smart then they are young. All white, rough people are quiet. All smart people are quiet. If someone is smart and white then they are young. All young people are quiet. All cold, quiet people are nice. Cold people are smart. All white people are young.\n\nQuestion: Fiona is quiet.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

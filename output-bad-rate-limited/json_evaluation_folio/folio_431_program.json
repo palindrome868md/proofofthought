@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Band",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Instrument",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Style",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "plays_instrument",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "member_of",
+      "domain": [
+        "Person",
+        "Band"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays_style",
+      "domain": [
+        "Person",
+        "Style"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "vic_dicara"
+      ]
+    },
+    "bands": {
+      "sort": "Band",
+      "members": [
+        "inside_out"
+      ]
+    },
+    "instruments": {
+      "sort": "Instrument",
+      "members": [
+        "guitar",
+        "bass"
+      ]
+    },
+    "styles": {
+      "sort": "Style",
+      "members": [
+        "punk"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "plays_instrument(vic_dicara, guitar)",
+    "plays_instrument(vic_dicara, bass)",
+    "member_of(vic_dicara, inside_out)",
+    "plays_style(vic_dicara, punk)"
+  ],
+  "verifications": [
+    {
+      "name": "Exists InsideOut musician who plays bass",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(member_of(x, inside_out), plays_instrument(x, bass))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Vessel",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tunnel",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height",
+      "domain": [
+        "Vessel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "length",
+      "domain": [
+        "Vessel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "tunnel_height",
+      "domain": [
+        "Tunnel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "tunnel_length",
+      "domain": [
+        "Tunnel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "sail_through",
+      "domain": [
+        "Vessel",
+        "Tunnel"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "vessels": {
+      "sort": "Vessel",
+      "members": [
+        "ark"
+      ]
+    },
+    "tunnels": {
+      "sort": "Tunnel",
+      "members": [
+        "lincoln_tunnel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "v",
+      "sort": "Vessel"
+    },
+    {
+      "name": "t",
+      "sort": "Tunnel"
+    }
+  ],
+  "knowledge_base": [
+    "height(ark) == 150",
+    "length(ark) == 300",
+    "tunnel_height(lincoln_tunnel) == 13",
+    "tunnel_length(lincoln_tunnel) == 8000",
+    "ForAll([v, t], Implies(sail_through(v, t), And(height(v) <= tunnel_height(t), length(v) <= tunnel_length(t))))"
+  ],
+  "verifications": [
+    {
+      "name": "Ark sails through Lincoln Tunnel",
+      "constraint": "sail_through(ark, lincoln_tunnel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

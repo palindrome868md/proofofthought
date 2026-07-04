@@ -1,0 +1,45 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "habitat_temp",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "safe_cold_storage_temp",
+      "domain": [],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "manta_ray"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "habitat_temp(manta_ray) == 25",
+    "safe_cold_storage_temp() == 4"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Manta ray habitat above cold storage temp",
+      "constraint": "habitat_temp(manta_ray) > safe_cold_storage_temp()"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

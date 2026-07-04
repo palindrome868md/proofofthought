@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "diagnosed_on_or_after",
+      "domain": [
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "exposure_work_UK",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_trace_employer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_civil_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "received_payment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "uncle",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "diagnosed_on_or_after(uncle, 2013)",
+    "exposure_work_UK(uncle)",
+    "Not(can_trace_employer(uncle))",
+    "Not(has_civil_claim(uncle))",
+    "Not(received_payment(uncle))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Uncle can claim DMPS",
+      "constraint": "And(diagnosed_on_or_after(uncle, 2013), exposure_work_UK(uncle), Not(can_trace_employer(uncle)), Not(has_civil_claim(uncle)), Not(received_payment(uncle)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

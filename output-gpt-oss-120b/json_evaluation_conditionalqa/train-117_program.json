@@ -1,0 +1,117 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Disability",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "DisabilityCategory",
+      "type": "EnumSort",
+      "values": [
+        "specific_learning_difficulty",
+        "mental_health",
+        "physical",
+        "sensory",
+        "long_term_health"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualifies_for_finance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_disability",
+      "domain": [
+        "Person",
+        "Disability"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "disability_category",
+      "domain": [
+        "Disability"
+      ],
+      "range": "DisabilityCategory"
+    },
+    {
+      "name": "course_duration_at_least_one_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entitled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "disabilities": {
+      "sort": "Disability",
+      "members": [
+        "asperger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Disability"
+    }
+  ],
+  "knowledge_base": [
+    "is_student(me) == True",
+    "lives_in_england(me) == True",
+    "qualifies_for_finance(me) == True",
+    "has_disability(me, asperger) == True",
+    "disability_category(asperger) == specific_learning_difficulty",
+    "course_duration_at_least_one_year(me) == True",
+    "ForAll([p, d], Implies(And(is_student(p), lives_in_england(p), qualifies_for_finance(p), has_disability(p, d), Or(disability_category(d) == specific_learning_difficulty, disability_category(d) == mental_health, disability_category(d) == physical, disability_category(d) == sensory, disability_category(d) == long_term_health), course_duration_at_least_one_year(p)), entitled(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Disability Entitles DSA",
+      "constraint": "entitled(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

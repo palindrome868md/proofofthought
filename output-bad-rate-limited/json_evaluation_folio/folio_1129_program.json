@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Coffee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Dependent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "UnawareDrug",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "AwareDrug",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "NotWant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "rina"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(Coffee(x), Dependent(x)))",
+    "ForAll([x], Or(Coffee(x), NotWant(x)))",
+    "ForAll([x], Implies(NotWant(x), Not(UnawareDrug(x))))",
+    "Or(And(Student(rina), UnawareDrug(rina)), And(Not(Student(rina)), AwareDrug(rina)))",
+    "Or(And(Student(rina), Dependent(rina)), And(Not(Student(rina)), Not(Dependent(rina))))"
+  ],
+  "verifications": [
+    {
+      "name": "Statement about Rina",
+      "constraint": "Implies(Or(And(NotWant(rina), UnawareDrug(rina)), And(Not(NotWant(rina)), Not(UnawareDrug(rina)))), And(NotWant(rina), Coffee(rina)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

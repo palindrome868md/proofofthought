@@ -1,0 +1,55 @@
+{
+  "sorts": [
+    {
+      "name": "President",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Emperor",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "president_number",
+      "domain": [
+        "President"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "emperor_number",
+      "domain": [
+        "Emperor"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "presidents": {
+      "sort": "President",
+      "members": [
+        "andrew_johnson"
+      ]
+    },
+    "emperors": {
+      "sort": "Emperor",
+      "members": [
+        "elagabalus"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "president_number(andrew_johnson) == 17",
+    "emperor_number(elagabalus) == 25"
+  ],
+  "verifications": [
+    {
+      "name": "Andrew Johnson exceeds Elagabalus",
+      "constraint": "president_number(andrew_johnson) > emperor_number(elagabalus)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

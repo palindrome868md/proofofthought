@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "birth_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "presidency_start",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "presidency_end",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "lived_through_presidency",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "student_2010",
+        "richard_nixon"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "birth_year(student_2010) == 1992",
+    "presidency_start(richard_nixon) == 1969",
+    "presidency_end(richard_nixon) == 1974"
+  ],
+  "rules": [
+    {
+      "name": "BornAfterPresEnd",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "pres",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "birth_year(p) > presidency_end(pres)",
+        "consequent": "Not(lived_through_presidency(p, pres))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Class2010LivedThroughNixon",
+      "constraint": "lived_through_presidency(student_2010, richard_nixon)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

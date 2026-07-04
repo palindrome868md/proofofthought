@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "KeyboardLayout",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_fine_motor_control_issues",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_altered_layout",
+      "domain": [
+        "KeyboardLayout"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "benefits_from",
+      "domain": [
+        "Person",
+        "KeyboardLayout"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_difficulty_with_standard",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "layouts": {
+      "sort": "KeyboardLayout",
+      "members": [
+        "standard_layout",
+        "altered_layout"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "k",
+      "sort": "KeyboardLayout"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(has_fine_motor_control_issues(p), has_difficulty_with_standard(p)))",
+    "is_altered_layout(altered_layout)",
+    "ForAll([p], Implies(has_difficulty_with_standard(p), benefits_from(p, altered_layout)))"
+  ],
+  "verifications": [
+    {
+      "name": "Could someone with fine motor control issues benefit from altered keyboard",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(has_fine_motor_control_issues(p), benefits_from(p, altered_layout))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

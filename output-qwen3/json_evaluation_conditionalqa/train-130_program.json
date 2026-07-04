@@ -1,0 +1,99 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_long_term_disability",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "disability_affects_mobility",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_in_uk_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "meets_age_requirement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_disability_requirement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_residency_requirement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_pip",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "kid"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(kid) == 16",
+    "has_long_term_disability(kid)",
+    "disability_affects_mobility(kid)",
+    "lived_in_uk_years(kid) == 16",
+    "ForAll([p], Implies(age(p) >= 16, meets_age_requirement(p)))",
+    "ForAll([p], Implies(And(has_long_term_disability(p), disability_affects_mobility(p)), meets_disability_requirement(p)))",
+    "ForAll([p], Implies(lived_in_uk_years(p) >= 2, meets_residency_requirement(p)))",
+    "ForAll([p], Implies(And(meets_age_requirement(p), meets_disability_requirement(p), meets_residency_requirement(p)), eligible_for_pip(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is kid eligible for PIP",
+      "constraint": "eligible_for_pip(kid)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

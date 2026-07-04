@@ -1,0 +1,84 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_sibling",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lacks_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_adult",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_be_deputy_for",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "my_brother",
+        "partner",
+        "partner_brother"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "d",
+      "sort": "Person"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "has_partner(my_brother, partner)",
+    "has_sibling(partner, partner_brother)",
+    "lacks_capacity(my_brother)",
+    "is_adult(partner_brother)",
+    "ForAll([d, p], Implies(And(is_adult(d), lacks_capacity(p)), can_be_deputy_for(d, p)))"
+  ],
+  "verifications": [
+    {
+      "name": "PartnerBrotherCanBeDeputy",
+      "constraint": "can_be_deputy_for(partner_brother, my_brother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

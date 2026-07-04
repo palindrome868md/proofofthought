@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_dementia",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lost_mental_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "manipulating_for_money",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "concern_about_finances",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_care_home",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "sister"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "major_disagreement",
+      "sort": "BoolSort"
+    },
+    {
+      "name": "can_apply_one_off_decision",
+      "sort": "BoolSort"
+    },
+    {
+      "name": "possible_to_stop_visits",
+      "sort": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "has_dementia(father)",
+    "Implies(has_dementia(father), lost_mental_capacity(father))",
+    "manipulating_for_money(sister, father)",
+    "Implies(manipulating_for_money(sister, father), concern_about_finances(father))",
+    "in_care_home(father)",
+    "major_disagreement == True",
+    "Implies(And(lost_mental_capacity(father), concern_about_finances(father), major_disagreement), can_apply_one_off_decision)",
+    "Implies(And(can_apply_one_off_decision, in_care_home(father)), possible_to_stop_visits)"
+  ],
+  "verifications": [
+    {
+      "name": "Is it possible to stop visits",
+      "constraint": "possible_to_stop_visits"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

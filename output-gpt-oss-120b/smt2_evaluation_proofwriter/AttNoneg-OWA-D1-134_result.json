@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D1-134",
+  "question": "Bob is green. Bob is rough. Bob is smart. Dave is big. Dave is blue. Dave is quiet. Dave is rough. Dave is smart. Fiona is rough. Fiona is smart. If someone is smart and big then they are blue. All smart people are furry. Rough, green people are big. All green, rough people are smart. If someone is blue and rough then they are quiet. If Bob is blue and Bob is smart then Bob is big. All quiet people are big. If someone is big then they are furry.\n\nQuestion: Bob is not furry.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "AttendsWedding",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GettingMarried",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "KnowsCouple",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsPreteen",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsYoungChild",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "EnjoysCelebrating",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "FondOfLargeGroups",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Outgoing",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Spirited",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Carol"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(AttendsWedding(x), Or(GettingMarried(x), KnowsCouple(x))))",
+    "ForAll([x], Implies(Or(IsPreteen(x), IsYoungChild(x)), Not(Or(GettingMarried(x), KnowsCouple(x)))))",
+    "ForAll([x], Implies(EnjoysCelebrating(x), AttendsWedding(x)))",
+    "ForAll([x], Implies(FondOfLargeGroups(x), EnjoysCelebrating(x)))",
+    "ForAll([x], Implies(And(Outgoing(x), Spirited(x)), FondOfLargeGroups(x)))",
+    "Implies(Not(And(Or(IsPreteen(Carol), IsYoungChild(Carol)), AttendsWedding(Carol))), Not(Or(GettingMarried(Carol), KnowsCouple(Carol))))"
+  ],
+  "verifications": [
+    {
+      "name": "Carol Statement Verification",
+      "constraint": "And(Not(EnjoysCelebrating(Carol)), Not(And(Outgoing(Carol), Spirited(Carol))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

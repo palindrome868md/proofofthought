@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D2-2021",
+  "question": "The mouse is rough. The mouse likes the rabbit. The mouse likes the tiger. The mouse visits the rabbit. The rabbit is red. The rabbit is round. The rabbit likes the tiger. The rabbit visits the tiger. The tiger is nice. The tiger is rough. Red, nice things are kind. If something likes the rabbit then the rabbit is nice.\n\nQuestion: The rabbit is kind.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

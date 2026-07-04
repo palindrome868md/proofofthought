@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "easy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "recommended",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starred",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate_low",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(easy(p), ac_rate_low(p)))",
+    "ForAll([p], Implies(recommended(p), easy(p)))",
+    "ForAll([p], Or(easy(p), hard(p)))",
+    "ForAll([p], Implies(starred(p), hard(p)))",
+    "recommended(two_sum) == True",
+    "starred(four_sum) == True"
+  ],
+  "verifications": [
+    {
+      "name": "2Sum is easy level",
+      "constraint": "easy(two_sum) == True"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "worked_at",
+      "domain": [
+        "Person",
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualified_for_ncfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "widow_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_ncfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "widow"
+      ]
+    },
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "bcc"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "husband",
+      "sort": "Person"
+    },
+    {
+      "name": "widow",
+      "sort": "Person"
+    },
+    {
+      "name": "bcc",
+      "sort": "Company"
+    }
+  ],
+  "knowledge_base": [
+    "worked_at(husband, bcc)",
+    "qualified_for_ncfs(husband)",
+    "widow_of(widow, husband)"
+  ],
+  "rules": [
+    {
+      "name": "WidowEligibilityRule",
+      "forall": [
+        {
+          "name": "w",
+          "sort": "Person"
+        },
+        {
+          "name": "s",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(widow_of(w, s), qualified_for_ncfs(s))",
+        "consequent": "eligible_for_ncfs(w)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CheckWidowEligibility",
+      "constraint": "eligible_for_ncfs(widow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

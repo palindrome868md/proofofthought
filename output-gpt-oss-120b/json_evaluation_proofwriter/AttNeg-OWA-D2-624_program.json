@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "functions": [
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob",
+        "fiona",
+        "gary"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "big(anne)",
+    "nice(anne)",
+    "big(bob)",
+    "cold(bob)",
+    "nice(bob)",
+    "cold(fiona)",
+    "Not(cold(gary))",
+    "ForAll([x], Implies(And(nice(x), cold(x)), smart(x)))",
+    "ForAll([x], Implies(And(nice(x), big(x)), cold(x)))",
+    "ForAll([x], Implies(furry(x), round(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Anne not cold",
+      "constraint": "Not(cold(anne))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_registered_blind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_blindness_certificate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cannot_do_eyesight_work",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england_wales",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_scotland_ni",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible_for_bpa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_large_savings",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_partially_blind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blind_or_severely_sight_impaired",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sister"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "england_wales",
+        "scotland_ni"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_partially_blind(sister)",
+    "has_large_savings(sister)",
+    "ForAll([p], Implies(is_partially_blind(p), Not(is_blind_or_severely_sight_impaired(p))))",
+    "ForAll([p], Implies(And(lives_in_england_wales(p), is_blind_or_severely_sight_impaired(p), is_registered_blind(p), has_blindness_certificate(p)), is_eligible_for_bpa(p)))",
+    "ForAll([p], Implies(And(lives_in_scotland_ni(p), is_blind_or_severely_sight_impaired(p), cannot_do_eyesight_work(p), has_blindness_certificate(p)), is_eligible_for_bpa(p)))",
+    "ForAll([p], Implies(has_large_savings(p), is_eligible_for_bpa(p)))",
+    "lives_in_england_wales(sister)"
+  ],
+  "verifications": [
+    {
+      "name": "Can sister claim BPA with large savings",
+      "constraint": "is_eligible_for_bpa(sister)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

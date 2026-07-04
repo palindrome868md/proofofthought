@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_groundhog_population",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_suitable_climate",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_good_location_for",
+      "domain": [
+        "Location",
+        "Event"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requires_groundhogs",
+      "domain": [
+        "Event"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requires_suitable_climate",
+      "domain": [
+        "Event"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "antarctica"
+      ]
+    },
+    "events": {
+      "sort": "Event",
+      "members": [
+        "groundhog_day"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "loc",
+      "sort": "Location"
+    },
+    {
+      "name": "evt",
+      "sort": "Event"
+    }
+  ],
+  "knowledge_base": [
+    "Not(has_groundhog_population(antarctica))",
+    "Not(has_suitable_climate(antarctica))",
+    "requires_groundhogs(groundhog_day)",
+    "requires_suitable_climate(groundhog_day)",
+    "ForAll([loc, evt], Implies(And(requires_groundhogs(evt), Not(has_groundhog_population(loc))), Not(is_good_location_for(loc, evt))))",
+    "ForAll([loc, evt], Implies(And(requires_suitable_climate(evt), Not(has_suitable_climate(loc))), Not(is_good_location_for(loc, evt))))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Antarctica good for Groundhog Day",
+      "constraint": "is_good_location_for(antarctica, groundhog_day)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

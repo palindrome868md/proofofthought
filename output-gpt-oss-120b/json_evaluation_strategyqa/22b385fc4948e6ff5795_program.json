@@ -1,0 +1,53 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "birth_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "career_start_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lil_wayne"
+      ]
+    },
+    "ints": {
+      "sort": "IntSort",
+      "members": [
+        "legal_driving_age"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "birth_year(lil_wayne) == 1982",
+    "career_start_year(lil_wayne) == 1995",
+    "legal_driving_age == 16"
+  ],
+  "verifications": [
+    {
+      "name": "Can Lil Wayne legally operate a vehicle at the beginning of his career",
+      "constraint": "(career_start_year(lil_wayne) - birth_year(lil_wayne)) >= legal_driving_age"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

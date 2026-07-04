@@ -1,0 +1,69 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "erin",
+        "fiona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "quiet(erin)",
+    "young(erin)",
+    "furry(fiona)",
+    "ForAll([p], Implies(young(p), big(p)))",
+    "ForAll([p], Implies(furry(p), young(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fiona is not furry",
+      "constraint": "Not(furry(fiona))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

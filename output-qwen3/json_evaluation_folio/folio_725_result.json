@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_725",
+  "question": "Given the following premises:\n\nAll bears in zoos are not wild. \nSome bears are in zoos. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Not all bears are wild.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,131 @@
+{
+  "sorts": [
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rompus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sweet",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "rompuses": {
+      "sort": "Rompus",
+      "members": [
+        "polly"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Rompus"
+    }
+  ],
+  "knowledge_base": [
+    "rompus(polly)",
+    "ForAll([x], Implies(rompus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), sweet(x)))",
+    "ForAll([x], Implies(zumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), brown(x)))",
+    "ForAll([x], Implies(vumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), dull(x)))",
+    "ForAll([x], Implies(numpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), wumpus(x)))",
+    "ForAll([x], Implies(jompus(x), Not(cold(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Polly not dull",
+      "constraint": "Not(dull(polly))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

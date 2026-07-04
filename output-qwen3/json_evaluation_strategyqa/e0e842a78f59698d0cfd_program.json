@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Poem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "syllable_count",
+      "domain": [
+        "Poem"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "character_count",
+      "domain": [
+        "Poem"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_haiku",
+      "domain": [
+        "Poem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fits_tweet",
+      "domain": [
+        "Poem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Poem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_haiku(p), syllable_count(p) == 17))",
+    "ForAll([p], Implies(fits_tweet(p), character_count(p) <= 280))",
+    "ForAll([p], Implies(is_haiku(p), character_count(p) <= syllable_count(p) * 15))"
+  ],
+  "verifications": [
+    {
+      "name": "Can haiku fit in tweet",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Poem"
+        }
+      ],
+      "constraint": "And(is_haiku(p), fits_tweet(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

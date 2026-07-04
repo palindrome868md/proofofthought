@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tribunal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_patient",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requests_reports",
+      "domain": [
+        "Tribunal",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "assesses_before_decision",
+      "domain": [
+        "Tribunal",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "dina"
+      ]
+    },
+    "tribunals": {
+      "sort": "Tribunal",
+      "members": [
+        "mht"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_patient(dina)",
+    "ForAll([p], Implies(is_patient(p), requests_reports(mht, p)))",
+    "ForAll([p], Implies(requests_reports(mht, p), assesses_before_decision(mht, p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Tribunal Assesses Health Before Decision",
+      "constraint": "assesses_before_decision(mht, dina)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

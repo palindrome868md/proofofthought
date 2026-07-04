@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "erin"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "red(erin)",
+    "Implies(nice(erin), cold(erin))",
+    "Implies(cold(erin), big(erin))"
+  ],
+  "rules": [
+    {
+      "name": "RedNice",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "red(x)",
+        "consequent": "nice(x)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Erin not cold",
+      "constraint": "Not(cold(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

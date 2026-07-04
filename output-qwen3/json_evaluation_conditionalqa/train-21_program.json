@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "the_person",
+        "the_spouse"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "england_wales",
+        "texas",
+        "uk"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "lived_in_location_years",
+      "domain": [
+        "Person",
+        "Location"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_permanent_home_months",
+      "domain": [
+        "Person",
+        "Location"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "are_closely_related",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "was_already_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_file_annulment_petition",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "s",
+      "sort": "Person"
+    },
+    {
+      "name": "loc",
+      "sort": "Location"
+    }
+  ],
+  "knowledge_base": [
+    "age(the_person) == 24",
+    "lived_in_location_years(the_person, uk) == 2",
+    "lived_in_location_years(the_person, england_wales) == 2",
+    "are_closely_related(the_person, the_spouse) == True",
+    "is_married(the_person, the_spouse) == True",
+    "was_already_married(the_person) == False",
+    "was_already_married(the_spouse) == False",
+    "ForAll([p], Implies(And(lived_in_location_years(p, england_wales) >= 1, are_closely_related(p, the_spouse)), can_file_annulment_petition(p)))",
+    "ForAll([p], Implies(And(lived_in_location_years(p, england_wales) >= 1, Or(And(are_closely_related(p, s), is_married(p, s)), age(p) < 16, was_already_married(p))), can_file_annulment_petition(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can person file annulment petition",
+      "constraint": "can_file_annulment_petition(the_person)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D3-384",
+  "question": "The bear chases the cat. The bear visits the tiger. The cat chases the dog. The cat is not young. The dog does not chase the bear. The dog eats the bear. The tiger visits the cat. If something chases the cat then the cat is not kind. If something visits the tiger then the tiger chases the cat. If the cat eats the dog and the dog chases the tiger then the tiger eats the bear. If something chases the cat then it is kind. If something visits the tiger and it does not eat the tiger then the tiger visits the bear. If something is kind then it visits the tiger.\n\nQuestion: The tiger visits the tiger.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

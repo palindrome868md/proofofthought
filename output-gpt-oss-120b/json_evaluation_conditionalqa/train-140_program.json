@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "name_changed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_update",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "sister",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "name_changed(sister)"
+  ],
+  "rules": [
+    {
+      "name": "NameChangeImpliesUpdate",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "name_changed(a)",
+        "consequent": "needs_update(a)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "NeedUpdateForSister",
+      "constraint": "needs_update(sister)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

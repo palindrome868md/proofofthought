@@ -1,0 +1,179 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Yumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Wumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Dumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Rompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Jompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Impus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Thing",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(Yumpus(x), small(x)))",
+    "ForAll([x], Implies(Yumpus(x), Vumpus(x)))",
+    "ForAll([x], Implies(Vumpus(x), red(x)))",
+    "ForAll([x], Implies(Vumpus(x), Numpus(x)))",
+    "ForAll([x], Implies(Numpus(x), bitter(x)))",
+    "ForAll([x], Implies(Numpus(x), Wumpus(x)))",
+    "ForAll([x], Implies(Impus(x), Not(amenable(x))))",
+    "ForAll([x], Implies(Wumpus(x), bright(x)))",
+    "ForAll([x], Implies(Wumpus(x), Dumpus(x)))",
+    "ForAll([x], Implies(Dumpus(x), temperate(x)))",
+    "ForAll([x], Implies(Dumpus(x), Rompus(x)))",
+    "ForAll([x], Implies(Rompus(x), floral(x)))",
+    "ForAll([x], Implies(Rompus(x), Tumpus(x)))",
+    "ForAll([x], Implies(Tumpus(x), opaque(x)))",
+    "ForAll([x], Implies(Tumpus(x), Jompus(x)))",
+    "ForAll([x], Implies(Jompus(x), amenable(x)))",
+    "ForAll([x], Implies(Jompus(x), Zumpus(x)))",
+    "Wumpus(sally)"
+  ],
+  "verifications": [
+    {
+      "name": "Sally is amenable",
+      "constraint": "amenable(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

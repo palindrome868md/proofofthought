@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Symptom",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Color",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "causes",
+      "domain": [
+        "Substance",
+        "Symptom"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_color",
+      "domain": [
+        "Symptom",
+        "Color"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zombie_color",
+      "domain": [
+        "Color"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "nickel"
+      ]
+    },
+    "symptoms": {
+      "sort": "Symptom",
+      "members": [
+        "green_mark"
+      ]
+    },
+    "colors": {
+      "sort": "Color",
+      "members": [
+        "green"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "causes(nickel, green_mark)",
+    "has_color(green_mark, green)",
+    "is_zombie_color(green)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Nickel causes zombie skin color",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Symptom"
+        },
+        {
+          "name": "c",
+          "sort": "Color"
+        }
+      ],
+      "constraint": "And(causes(nickel, s), has_color(s, c), is_zombie_color(c))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

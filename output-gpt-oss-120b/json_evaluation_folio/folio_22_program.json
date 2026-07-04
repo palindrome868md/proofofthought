@@ -1,0 +1,84 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Genre",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "choral_conductor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "musician",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "loves_music",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "specialized",
+      "domain": [
+        "Person",
+        "Genre"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "miroslav_venhoda"
+      ]
+    },
+    "genres": {
+      "sort": "Genre",
+      "members": [
+        "renaissance",
+        "baroque"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "choral_conductor(miroslav_venhoda)",
+    "specialized(miroslav_venhoda, renaissance)",
+    "specialized(miroslav_venhoda, baroque)",
+    "ForAll([p], Implies(choral_conductor(p), musician(p)))",
+    "Exists([x], And(musician(x), loves_music(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "No choral conductor specialized in Renaissance",
+      "constraint": "ForAll([p], Implies(choral_conductor(p), Not(specialized(p, renaissance))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

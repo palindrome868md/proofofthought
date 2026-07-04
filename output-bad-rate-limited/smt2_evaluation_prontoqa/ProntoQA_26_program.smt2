@@ -1,0 +1,51 @@
+; Declare sorts
+(declare-sort Person 0)
+
+; Declare predicates (uninterpreted)
+(declare-fun numpus (Person) Bool)
+(declare-fun fruity (Person) Bool)
+(declare-fun tumpus (Person) Bool)
+(declare-fun dull (Person) Bool)
+(declare-fun jompus (Person) Bool)
+(declare-fun orange (Person) Bool)
+(declare-fun impus (Person) Bool)
+(declare-fun shy (Person) Bool)
+(declare-fun wumpus (Person) Bool)
+(declare-fun sweet (Person) Bool)
+(declare-fun rompus (Person) Bool)
+(declare-fun amenable (Person) Bool)
+(declare-fun zumpus (Person) Bool)
+(declare-fun large (Person) Bool)
+(declare-fun yumpus (Person) Bool)
+(declare-fun transparent (Person) Bool)
+(declare-fun dumpus (Person) Bool)
+(declare-fun vumpus (Person) Bool)
+
+; Constant Rex
+(declare-const rex Person)
+
+; Knowledge base (universal rules)
+(assert (forall ((p Person)) (=> (numpus p) (fruity p))))
+(assert (forall ((p Person)) (=> (numpus p) (tumpus p))))
+(assert (forall ((p Person)) (=> (tumpus p) (dull p))))
+(assert (forall ((p Person)) (=> (tumpus p) (jompus p))))
+(assert (forall ((p Person)) (=> (jompus p) (not (orange p)))))
+(assert (forall ((p Person)) (=> (jompus p) (impus p))))
+(assert (forall ((p Person)) (=> (impus p) (not (shy p)))))
+(assert (forall ((p Person)) (=> (impus p) (wumpus p))))
+(assert (forall ((p Person)) (=> (wumpus p) (sweet p))))
+(assert (forall ((p Person)) (=> (wumpus p) (rompus p))))
+(assert (forall ((p Person)) (=> (rompus p) (not (amenable p)))))
+(assert (forall ((p Person)) (=> (rompus p) (zumpus p))))
+(assert (forall ((p Person)) (=> (zumpus p) (large p))))
+(assert (forall ((p Person)) (=> (zumpus p) (yumpus p))))
+(assert (forall ((p Person)) (=> (vumpus p) (not (large p)))))
+(assert (forall ((p Person)) (=> (yumpus p) (transparent p))))
+(assert (forall ((p Person)) (=> (yumpus p) (dumpus p))))
+
+; Facts
+(assert (jompus rex))
+
+; Test: Is Rex large? Use negation to verify entailment
+(assert (not (large rex)))
+(check-sat)

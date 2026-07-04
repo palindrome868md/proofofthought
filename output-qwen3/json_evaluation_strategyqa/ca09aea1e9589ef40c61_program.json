@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Ship",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "location",
+      "domain": [
+        "Ship"
+      ],
+      "range": "Location"
+    },
+    {
+      "name": "is_well_preserved_at",
+      "domain": [
+        "Ship",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "ships": {
+      "sort": "Ship",
+      "members": [
+        "titanic"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "gulf_of_finland",
+        "north_atlantic"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Ship"
+    },
+    {
+      "name": "l",
+      "sort": "Location"
+    }
+  ],
+  "knowledge_base": [
+    "location(titanic) == north_atlantic",
+    "north_atlantic != gulf_of_finland",
+    "ForAll([s, l], Implies(is_well_preserved_at(s, l), location(s) == l))"
+  ],
+  "verifications": [
+    {
+      "name": "Titanic Preserved in Gulf of Finland",
+      "constraint": "is_well_preserved_at(titanic, gulf_of_finland)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

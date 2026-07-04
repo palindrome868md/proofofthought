@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_child_abuser",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_for",
+      "domain": [
+        "Person",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "subway",
+        "fast_food_inc"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john_doe"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_child_abuser(john_doe) == True",
+    "works_for(john_doe, fast_food_inc) == True",
+    "ForAll([p], Implies(works_for(p, subway), Not(is_child_abuser(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Subway connection with child abuser",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(works_for(p, subway), is_child_abuser(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "associated_with",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "items": {
+      "sort": "Entity",
+      "members": [
+        "menthol",
+        "turkey",
+        "pumpkin",
+        "cranberry",
+        "cigarettes",
+        "candy"
+      ]
+    },
+    "holidays": {
+      "sort": "Entity",
+      "members": [
+        "thanksgiving",
+        "christmas",
+        "halloween"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "associated_with(turkey, thanksgiving)",
+    "associated_with(pumpkin, thanksgiving)",
+    "associated_with(cranberry, thanksgiving)",
+    "associated_with(cigarettes, menthol)",
+    "associated_with(candy, menthol)",
+    "Not(associated_with(menthol, thanksgiving))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is Menthol Associated with Thanksgiving",
+      "constraint": "associated_with(menthol, thanksgiving)"
+    }
+  ],
+  "optimization": null,
+  "actions": [
+    "verify_conditions"
+  ]
+}

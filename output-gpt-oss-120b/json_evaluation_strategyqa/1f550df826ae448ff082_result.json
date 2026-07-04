@@ -1,0 +1,11 @@
+{
+  "sample_id": "1f550df826ae448ff082",
+  "question": "Has the Subway restaurant franchise had any connections with child abusers?",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

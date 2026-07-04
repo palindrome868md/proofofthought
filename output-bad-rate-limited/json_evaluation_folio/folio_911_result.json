@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_911",
+  "question": "Given the following premises:\n\nAll kids are young.\nAll toddlers are kids.\nIf someone is young, then they are not elderly.\nAll pirates are seafarers.\nIf Nancy is not a pirate, then Nancy is young.\nIf Nancy is not a toddler, then Nancy is a seafarer.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Nancy is either both a pirate and a toddler, or neither a pirate nor a toddler.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: argument of type 'NoneType' is not iterable"
+}

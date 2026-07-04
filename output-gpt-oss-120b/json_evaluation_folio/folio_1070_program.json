@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Lipstick",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Velvet",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Satin",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Refillable",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Rosewood",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "InSet",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "lipsticks": {
+      "sort": "Lipstick",
+      "members": [
+        "rouge_balm"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Lipstick"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(InSet(x), Velvet(x)), Refillable(x)))",
+    "ForAll([x], Implies(InSet(x), Or(Velvet(x), Satin(x))))",
+    "ForAll([x], Implies(And(InSet(x), Satin(x)), Rosewood(x)))",
+    "ForAll([x], Implies(InSet(x), Or(Not(Rosewood(x)), Rosewood(x))))",
+    "And(InSet(rouge_balm), Or(Rosewood(rouge_balm), Velvet(rouge_balm)))"
+  ],
+  "verifications": [
+    {
+      "name": "Balm refillable or rosewood",
+      "constraint": "Or(Refillable(rouge_balm), Rosewood(rouge_balm))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

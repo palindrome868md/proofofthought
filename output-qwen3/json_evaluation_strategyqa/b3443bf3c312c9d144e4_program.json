@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CelestialBody",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "burial_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "orbit_period",
+      "domain": [
+        "CelestialBody"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "pantheon_women": {
+      "sort": "Person",
+      "members": [
+        "sophie_berthelot",
+        "marie_curie"
+      ]
+    },
+    "planets": {
+      "sort": "CelestialBody",
+      "members": [
+        "neptune"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "burial_year(sophie_berthelot) == 1907",
+    "burial_year(marie_curie) == 1995",
+    "orbit_period(neptune) == 165",
+    "burial_year(sophie_berthelot) < burial_year(marie_curie)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Check Neptunian Orbit Gap",
+      "constraint": "burial_year(marie_curie) - burial_year(sophie_berthelot) >= orbit_period(neptune)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

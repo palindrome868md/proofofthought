@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_covid_condition",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receiving_ssp",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "working_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "earnings",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_claim_esa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(has_covid_condition(p), Not(receiving_ssp(p)), working_hours(p) < 16, earnings(p) <= 143), can_claim_esa(p)))",
+    "has_covid_condition(me)",
+    "Not(receiving_ssp(me))"
+  ],
+  "verifications": [
+    {
+      "name": "Can claim ESA while working freelance",
+      "constraint": "can_claim_esa(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

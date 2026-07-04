@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNonegNatLang-OWA-157",
+  "question": "You can tell me Alan is rough, and I know he is kind, cold, blue and very young. For being so cold, it's good Dave can remain nice. Fred may be round, but he is also kind. Round young people, red with loveliness, are very cold towards others. Nice people with blue and rough skin are very young and cannot be trusted with responsibility. Most young kind people tend to be red too. Someone that is cold rough and red is also considered to be kind. A young aged and big blue person will definitely be cold. I bet anyone who is round and kind is also pretty young. If a person acts cold yet nice and green, they will be kind.\n\nQuestion: Fred is not young.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

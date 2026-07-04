@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_blind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_certificate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_large_savings",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claim_allowed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sister"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_blind(sister) == True",
+    "has_certificate(sister) == True",
+    "has_large_savings(sister) == True",
+    "ForAll([p], Implies(And(is_blind(p), has_certificate(p)), claim_allowed(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can sister claim blind persons allowance with large savings",
+      "constraint": "claim_allowed(sister)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

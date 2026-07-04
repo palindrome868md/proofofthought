@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Bool",
+      "type": "BoolSort"
+    },
+    {
+      "name": "Int",
+      "type": "IntSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "hours_of_care",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "earnings_per_week",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "partner_receives_qualifying_benefit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "in_full_time_education",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_carers_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "hours_of_care(applicant) == 30",
+    "earnings_per_week(applicant) == 115",
+    "partner_receives_qualifying_benefit(applicant)",
+    "lives_in_uk(applicant)",
+    "age(applicant) >= 16",
+    "Not(in_full_time_education(applicant))",
+    "ForAll([p], Implies(And(hours_of_care(p) >= 35, earnings_per_week(p) <= 128, partner_receives_qualifying_benefit(p), lives_in_uk(p), age(p) >= 16, Not(in_full_time_education(p))), eligible_for_carers_allowance(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can applicant claim Carers Allowance",
+      "constraint": "eligible_for_carers_allowance(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

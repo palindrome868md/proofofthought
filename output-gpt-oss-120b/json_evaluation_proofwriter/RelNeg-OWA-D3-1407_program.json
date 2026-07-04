@@ -1,0 +1,121 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "mouse",
+        "squirrel",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "eats(cat, tiger)",
+    "cold(cat)",
+    "round(cat)",
+    "nice(mouse)",
+    "Not(rough(mouse))",
+    "likes(mouse, cat)",
+    "likes(mouse, squirrel)",
+    "Not(visits(mouse, cat))",
+    "eats(squirrel, mouse)",
+    "nice(squirrel)",
+    "rough(squirrel)",
+    "visits(squirrel, tiger)",
+    "eats(tiger, squirrel)",
+    "nice(tiger)",
+    "likes(tiger, cat)",
+    "likes(tiger, squirrel)",
+    "ForAll([x], Implies(And(likes(x, mouse), Not(round(mouse))), cold(mouse)))",
+    "ForAll([x], Implies(rough(x), Not(cold(x))))",
+    "Implies(And(visits(mouse, tiger), Not(cold(mouse))), cold(tiger))",
+    "ForAll([x], Implies(And(eats(x, tiger), cold(tiger)), Not(eats(tiger, cat))))",
+    "ForAll([x], Implies(And(red(x), visits(x, tiger)), Not(eats(tiger, cat))))",
+    "Implies(And(eats(squirrel, tiger), visits(squirrel, cat)), visits(tiger, cat))",
+    "Implies(Not(cold(squirrel)), visits(squirrel, cat))",
+    "ForAll([x], Implies(visits(x, cat), visits(cat, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "SquirrelIsCold",
+      "constraint": "cold(squirrel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Child"
+    }
+  ],
+  "functions": [
+    {
+      "name": "married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_born",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "share_responsibility_at_birth",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible",
+      "domain": [
+        "Person",
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "mother",
+        "father"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "baby"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "married(mother, father)",
+    "child_born(baby)",
+    "share_responsibility_at_birth(mother, baby)",
+    "share_responsibility_at_birth(father, baby)",
+    "ForAll([p1, p2, c], Implies(And(married(p1, p2), child_born(c), share_responsibility_at_birth(p1, c), share_responsibility_at_birth(p2, c)), eligible(p1, p2, c)))"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for SPL and ShPP after birth",
+      "constraint": "eligible(mother, father, baby)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

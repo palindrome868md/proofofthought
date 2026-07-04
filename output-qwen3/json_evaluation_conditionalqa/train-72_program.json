@@ -1,0 +1,146 @@
+{
+  "sorts": [
+    {
+      "name": "Student",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Grant",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Student"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_special_needs",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_age",
+      "domain": [
+        "Child"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_childcare_grant",
+      "domain": [
+        "Grant"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "must_repay",
+      "domain": [
+        "Grant"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible_for_grant",
+      "domain": [
+        "Student",
+        "Child",
+        "Grant"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_undergraduate_finance",
+      "domain": [
+        "Student"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_postgraduate_loan",
+      "domain": [
+        "Student"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_permanent_resident_england",
+      "domain": [
+        "Student"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claims_other_childcare_benefits",
+      "domain": [
+        "Student"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "students": {
+      "sort": "Student",
+      "members": [
+        "pharmacist_student"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "autism_child"
+      ]
+    },
+    "grants": {
+      "sort": "Grant",
+      "members": [
+        "childcare_grant_2022"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Student"
+    },
+    {
+      "name": "c",
+      "sort": "Child"
+    },
+    {
+      "name": "g",
+      "sort": "Grant"
+    }
+  ],
+  "knowledge_base": [
+    "is_childcare_grant(childcare_grant_2022) == True",
+    "must_repay(childcare_grant_2022) == False",
+    "is_full_time_student(pharmacist_student) == True",
+    "has_special_needs(autism_child) == True",
+    "child_age(autism_child) == 6",
+    "receives_undergraduate_finance(pharmacist_student) == True",
+    "receives_postgraduate_loan(pharmacist_student) == False",
+    "is_permanent_resident_england(pharmacist_student) == True",
+    "claims_other_childcare_benefits(pharmacist_student) == False",
+    "ForAll([g], Implies(is_childcare_grant(g), Not(must_repay(g))))",
+    "ForAll([s, c, g], Implies(And(is_childcare_grant(g), is_full_time_student(s), has_special_needs(c), child_age(c) < 17, receives_undergraduate_finance(s), Not(receives_postgraduate_loan(s)), is_permanent_resident_england(s), Not(claims_other_childcare_benefits(s))), is_eligible_for_grant(s, c, g)))"
+  ],
+  "verifications": [
+    {
+      "name": "Must Repay Childcare Grant",
+      "constraint": "must_repay(childcare_grant_2022)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

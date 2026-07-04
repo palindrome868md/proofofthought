@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1146",
+  "question": "Given the following premises:\n\nAll red fruits that grow in Ben's yard contain some Vitamin C.\nAll apples that grow in Ben's yard are red fruits.\nAll fruits that grow in Ben's yard and contain some Vitamin C are healthy. \nNo fruits that grow in Ben's yard and are healthy are on a warning list.\nThe cherries grow in Ben's yard.\nIf cherries are not apples and are not healthy, then they are red fruits.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: If the cherries are either on a warning list or are red, then they are not healthy and do not contain any amount of vitamin C.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: argument of type 'NoneType' is not iterable"
+}

@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "novice_recommended",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "easy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate",
+      "domain": [
+        "Problem"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "starred_more_than_1000",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(novice_recommended(p), easy(p)))",
+    "ForAll([p], Implies(easy(p), ac_rate(p) < 20))",
+    "ForAll([p], Or(easy(p), hard(p)))",
+    "ForAll([p], Implies(starred_more_than_1000(p), hard(p)))",
+    "starred_more_than_1000(two_sum)",
+    "novice_recommended(two_sum)",
+    "starred_more_than_1000(four_sum)"
+  ],
+  "verifications": [
+    {
+      "name": "TwoSum AC rate greater than 20",
+      "constraint": "ac_rate(two_sum) > 20"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

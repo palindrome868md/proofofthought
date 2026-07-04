@@ -1,0 +1,156 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Court",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Application",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_dementia",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lost_mental_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_nursing_home",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_domestic_violence_conviction",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "causes_distress_to",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requests_visit_to",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "concerned_about_welfare",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "major_disagreement_exists",
+      "domain": [
+        "Person",
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_court_of_protection",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_one_off_decision",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_get_order_preventing_visits",
+      "domain": [
+        "Person",
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "mother",
+        "former_partner",
+        "child"
+      ]
+    },
+    "courts": {
+      "sort": "Court",
+      "members": [
+        "court_of_protection"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "q",
+      "sort": "Person"
+    },
+    {
+      "name": "r",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "has_dementia(mother) == True",
+    "lost_mental_capacity(mother) == True",
+    "in_nursing_home(mother) == True",
+    "has_domestic_violence_conviction(former_partner) == True",
+    "causes_distress_to(former_partner, mother) == True",
+    "requests_visit_to(former_partner, mother) == True",
+    "concerned_about_welfare(child, mother) == True",
+    "major_disagreement_exists(child, former_partner, mother) == True",
+    "ForAll([p], Implies(has_dementia(p), lost_mental_capacity(p)))",
+    "ForAll([p], Implies(And(lost_mental_capacity(p), in_nursing_home(p)), eligible_for_court_of_protection(p)))",
+    "ForAll([p, q], Implies(And(eligible_for_court_of_protection(p), concerned_about_welfare(q, p)), can_apply_for_one_off_decision(q, p)))",
+    "ForAll([p, q, r], Implies(And(can_apply_for_one_off_decision(q, p), major_disagreement_exists(q, r, p), causes_distress_to(r, p), has_domestic_violence_conviction(r)), can_get_order_preventing_visits(q, p, r)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can child get court order preventing former partner visits",
+      "constraint": "can_get_order_preventing_visits(child, mother, former_partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

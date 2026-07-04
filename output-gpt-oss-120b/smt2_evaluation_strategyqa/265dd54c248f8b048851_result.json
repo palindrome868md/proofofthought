@@ -1,0 +1,11 @@
+{
+  "sample_id": "265dd54c248f8b048851",
+  "question": "Do the anchors on Rede Globo speak Chinese?",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "nice",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "dog"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "nice(dog)",
+    "ForAll([x], Implies(And(round(x), Not(nice(x))), green(x)))",
+    "ForAll([x], Implies(And(kind(x), big(x)), green(x)))",
+    "ForAll([x], Implies(green(x), kind(x)))",
+    "ForAll([x], Implies(And(green(x), kind(x)), big(x)))",
+    "Implies(nice(dog), green(dog))",
+    "ForAll([x], Implies(And(nice(x), kind(x)), round(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dog is kind",
+      "constraint": "kind(dog)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

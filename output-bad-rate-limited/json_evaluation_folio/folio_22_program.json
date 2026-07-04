@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "MusicStyle",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "choral_conductor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "musician",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "specializes_in",
+      "domain": [
+        "Person",
+        "MusicStyle"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "loves_music",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "published_book",
+      "domain": [
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "styles": {
+      "sort": "MusicStyle",
+      "members": [
+        "renaissance",
+        "baroque"
+      ]
+    },
+    "people": {
+      "sort": "Person",
+      "members": [
+        "miroslav_venhoda"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "choral_conductor(miroslav_venhoda)",
+    "specializes_in(miroslav_venhoda, renaissance)",
+    "specializes_in(miroslav_venhoda, baroque)",
+    "ForAll([p], Implies(choral_conductor(p), musician(p)))",
+    "Exists([m], And(musician(m), loves_music(m)))",
+    "published_book(miroslav_venhoda, 1946)"
+  ],
+  "verifications": [
+    {
+      "name": "No choral conductor specialized in Renaissance",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "choral_conductor(x)",
+        "consequent": "Not(specializes_in(x, renaissance))"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

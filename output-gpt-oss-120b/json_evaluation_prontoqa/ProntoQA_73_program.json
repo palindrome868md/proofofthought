@@ -1,0 +1,131 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(rompus(x), bitter(x)))",
+    "ForAll([x], Implies(rompus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), nervous(x)))",
+    "ForAll([x], Implies(yumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), Not(blue(x))))",
+    "ForAll([x], Implies(dumpus(x), Not(earthy(x))))",
+    "ForAll([x], Implies(jompus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), bright(x)))",
+    "ForAll([x], Implies(impus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), earthy(x)))",
+    "ForAll([x], Implies(numpus(x), vumpus(x)))",
+    "rompus(Wren)"
+  ],
+  "verifications": [
+    {
+      "name": "Wren_not_earthy",
+      "constraint": "Not(earthy(Wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

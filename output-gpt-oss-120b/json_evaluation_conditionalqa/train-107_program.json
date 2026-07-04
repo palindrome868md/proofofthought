@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "stopped_income_support",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "received_income_support_26_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "work_full_time",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "work_expected_at_least_5",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claimed_mortgage_interest",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_miro",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "stopped_income_support(applicant)",
+    "received_income_support_26_weeks(applicant)",
+    "work_full_time(applicant)",
+    "work_expected_at_least_5(applicant)",
+    "claimed_mortgage_interest(applicant)"
+  ],
+  "rules": [
+    {
+      "name": "MortgageInterestRunOnEligibility",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(stopped_income_support(p), received_income_support_26_weeks(p), work_full_time(p), work_expected_at_least_5(p), claimed_mortgage_interest(p))",
+        "consequent": "eligible_for_miro(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "EligibilityForMortgageInterestRunOn",
+      "constraint": "eligible_for_miro(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

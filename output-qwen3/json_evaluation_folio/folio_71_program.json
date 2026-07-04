@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_easy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_hard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "recommended_novice",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starred_1000",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate",
+      "domain": [
+        "Problem"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "problem_2sum",
+        "problem_4sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_easy(p), ac_rate(p) < 20))",
+    "ForAll([p], Implies(recommended_novice(p), is_easy(p)))",
+    "ForAll([p], Or(is_easy(p), is_hard(p)))",
+    "ForAll([p], Implies(starred_1000(p), is_hard(p)))",
+    "recommended_novice(problem_2sum)",
+    "starred_1000(problem_4sum)"
+  ],
+  "verifications": [
+    {
+      "name": "2Sum AC Rate Check",
+      "constraint": "ac_rate(problem_2sum) > 20"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_24",
+  "question": "Every numpus is floral. Numpuses are jompuses. Jompuses are not nervous. Each jompus is an impus. Every impus is brown. Every dumpus is not amenable. Each impus is a wumpus. Wumpuses are not bitter. Each wumpus is a zumpus. Every zumpus is not small. Zumpuses are vumpuses. Vumpuses are hot. Vumpuses are rompuses. Rompuses are amenable. Every rompus is a tumpus. Every tumpus is bright. Every tumpus is a yumpus. Alex is an impus.\n\nIs the following statement true or false? Alex is amenable.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(numpus(p), floral(p)))': name 'p' is not defined"
+}

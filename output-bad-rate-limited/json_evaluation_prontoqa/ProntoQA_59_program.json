@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impuse",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "nervous",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "DumpusPred",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "VumpusPred",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Vumpus",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "VumpusPred(Max)",
+    "DumpusPred(Max)",
+    "ForAll([x], Implies(DumpusPred(x), Not(nervous(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Max not nervous",
+      "constraint": "Not(nervous(Max))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

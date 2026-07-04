@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D3-648",
+  "question": "The cow is round. All kind people are young. If someone is round and red then they are young. If someone is young then they are round. If the cow is round and the cow is young then the cow is kind. Round people are red. All round, kind people are young.\n\nQuestion: The cow is round.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

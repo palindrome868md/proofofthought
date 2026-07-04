@@ -1,0 +1,119 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_working_part_time",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_qualifying_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_student_finance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_permanent_resident_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_getting_postgraduate_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "children_financially_dependent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "childcare_provider_registered",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_claiming_tax_free_childcare",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_receiving_nhs_childcare_help",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_childcare_grant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "eligible_for_childcare_grant(applicant) == And(is_full_time_student(applicant), has_qualifying_child(applicant), eligible_for_student_finance(applicant), is_permanent_resident_england(applicant), not_getting_postgraduate_loan(applicant), children_financially_dependent(applicant), childcare_provider_registered(applicant), not_claiming_tax_free_childcare(applicant), not_receiving_nhs_childcare_help(applicant))",
+    "is_full_time_student(applicant) == True",
+    "is_working_part_time(applicant) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Can applicant be eligible for childcare grant",
+      "constraint": "eligible_for_childcare_grant(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

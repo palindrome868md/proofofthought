@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_furry",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Thing",
+      "members": [
+        "Dave",
+        "Gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "is_furry(Dave)",
+    "is_cold(Gary)",
+    "is_furry(Gary)",
+    "is_rough(Gary)",
+    "is_smart(Gary)",
+    "is_white(Gary)",
+    "is_young(Gary)",
+    "Implies(And(is_furry(Gary), is_round(Gary)), is_young(Gary))",
+    "ForAll([x], Implies(is_furry(x), is_white(x)))",
+    "ForAll([x], Implies(is_smart(x), is_cold(x)))",
+    "ForAll([x], Implies(And(is_smart(x), is_white(x)), is_cold(x)))",
+    "ForAll([x], Implies(is_white(x), is_smart(x)))",
+    "ForAll([x], Implies(And(is_white(x), is_smart(x)), is_cold(x)))",
+    "ForAll([x], Implies(And(is_round(x), is_rough(x)), is_white(x)))",
+    "ForAll([x], Implies(And(is_young(x), is_cold(x)), is_furry(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dave is white",
+      "constraint": "is_white(Dave)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

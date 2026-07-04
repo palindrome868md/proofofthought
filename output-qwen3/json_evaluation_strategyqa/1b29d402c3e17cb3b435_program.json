@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Currency",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_valuable",
+      "domain": [
+        "Currency"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_widely_used",
+      "domain": [
+        "Currency"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_stable_economy",
+      "domain": [
+        "Currency"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "currencies": {
+      "sort": "Currency",
+      "members": [
+        "pound_sterling"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Currency"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([c], Implies(And(is_widely_used(c), has_stable_economy(c)), is_valuable(c)))",
+    "is_widely_used(pound_sterling)",
+    "has_stable_economy(pound_sterling)"
+  ],
+  "verifications": [
+    {
+      "name": "Is pound sterling valuable",
+      "constraint": "is_valuable(pound_sterling)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

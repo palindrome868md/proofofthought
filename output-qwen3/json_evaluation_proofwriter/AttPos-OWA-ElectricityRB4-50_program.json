@@ -1,0 +1,137 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "includes",
+      "domain": [
+        "Thing",
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_on",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_metal",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_plastic",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_flat",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_powered",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_complete",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_conducting",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_runs_through",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_glowing",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ringing",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_playing",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "components": {
+      "sort": "Thing",
+      "members": [
+        "circuit",
+        "switch",
+        "wire",
+        "light_bulb",
+        "battery",
+        "bell",
+        "radio"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "includes(circuit, switch)",
+    "is_on(switch)",
+    "is_metal(wire)",
+    "includes(circuit, light_bulb)",
+    "Implies(And(includes(circuit, battery), Not(is_flat(battery))), is_powered(circuit))",
+    "Implies(And(includes(circuit, switch), is_on(switch)), is_complete(circuit))",
+    "Implies(Not(includes(circuit, switch)), is_complete(circuit))",
+    "Implies(is_metal(wire), is_conducting(wire))",
+    "Implies(is_plastic(wire), Not(is_conducting(wire)))",
+    "Implies(And(is_powered(circuit), is_complete(circuit), is_conducting(wire)), current_runs_through(circuit))",
+    "Implies(And(current_runs_through(circuit), includes(circuit, light_bulb)), current_runs_through(light_bulb))",
+    "Implies(And(current_runs_through(circuit), includes(circuit, bell)), current_runs_through(bell))",
+    "Implies(And(current_runs_through(circuit), includes(circuit, radio)), current_runs_through(radio))",
+    "Implies(current_runs_through(light_bulb), is_glowing(light_bulb))",
+    "Implies(current_runs_through(bell), is_ringing(bell))",
+    "Implies(current_runs_through(radio), is_playing(radio))"
+  ],
+  "verifications": [
+    {
+      "name": "Circuit includes light bulb",
+      "constraint": "includes(circuit, light_bulb)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

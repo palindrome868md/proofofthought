@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BankAccount",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_probate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deceased_account",
+      "domain": [
+        "BankAccount"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_pay_inheritance_tax_from",
+      "domain": [
+        "Person",
+        "BankAccount"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "father"
+      ]
+    },
+    "accounts": {
+      "sort": "BankAccount",
+      "members": [
+        "father_account"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "BankAccount"
+    }
+  ],
+  "knowledge_base": [
+    "has_probate(applicant)",
+    "is_deceased_account(father_account)",
+    "ForAll([p, a], Implies(And(has_probate(p), is_deceased_account(a)), can_pay_inheritance_tax_from(p, a)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can pay inheritance tax from deceased father's account with probate",
+      "constraint": "can_pay_inheritance_tax_from(applicant, father_account)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

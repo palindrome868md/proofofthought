@@ -1,0 +1,202 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "y",
+      "sort": "Person"
+    },
+    {
+      "name": "r",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Person"
+    },
+    {
+      "name": "n",
+      "sort": "Person"
+    },
+    {
+      "name": "t",
+      "sort": "Person"
+    },
+    {
+      "name": "w",
+      "sort": "Person"
+    },
+    {
+      "name": "v",
+      "sort": "Person"
+    },
+    {
+      "name": "j",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([y], Implies(yumpus(y), rompus(y)))",
+    "ForAll([r], Implies(rompus(r), happy(r)))",
+    "ForAll([r], Implies(rompus(r), impus(r)))",
+    "ForAll([i], Implies(impus(i), Not(amenable(i))))",
+    "ForAll([i], Implies(impus(i), dumpus(i)))",
+    "ForAll([d], Implies(dumpus(d), opaque(d)))",
+    "ForAll([d], Implies(dumpus(d), tumpus(d)))",
+    "ForAll([n], Implies(numpus(n), small(n)))",
+    "ForAll([t], Implies(tumpus(t), orange(t)))",
+    "ForAll([t], Implies(tumpus(t), wumpus(t)))",
+    "ForAll([w], Implies(wumpus(w), Not(small(w))))",
+    "ForAll([v], Implies(vumpus(v), fruity(v)))",
+    "ForAll([v], Implies(vumpus(v), jompus(v)))",
+    "ForAll([j], Implies(jompus(j), Not(dull(j))))",
+    "ForAll([j], Implies(jompus(j), zumpus(j)))",
+    "rompus(sally)"
+  ],
+  "verifications": [
+    {
+      "name": "Sally is small",
+      "constraint": "small(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

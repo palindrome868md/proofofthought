@@ -1,0 +1,11 @@
+{
+  "sample_id": "88b682482647a80a080d",
+  "question": "If you add water to rice pudding is it horchata?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

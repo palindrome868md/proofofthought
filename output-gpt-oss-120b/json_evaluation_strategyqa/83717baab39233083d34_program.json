@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Broadcast",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "source",
+      "domain": [
+        "Broadcast",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "year",
+      "domain": [
+        "Broadcast",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "makes_news",
+      "domain": [
+        "Broadcast"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "spirit"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Spirit broadcast makes news in 2020",
+      "exists": [
+        {
+          "name": "b",
+          "sort": "Broadcast"
+        }
+      ],
+      "constraint": "And(source(b, spirit), year(b, 2020), makes_news(b))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

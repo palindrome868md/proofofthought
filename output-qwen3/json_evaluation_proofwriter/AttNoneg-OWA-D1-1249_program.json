@@ -1,0 +1,110 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Entity",
+      "members": [
+        "anne",
+        "bob",
+        "charlie",
+        "fiona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_blue(anne)",
+    "is_quiet(anne)",
+    "is_white(anne)",
+    "is_blue(bob)",
+    "is_kind(bob)",
+    "is_nice(bob)",
+    "is_red(bob)",
+    "is_young(bob)",
+    "is_blue(charlie)",
+    "is_quiet(charlie)",
+    "is_blue(fiona)",
+    "is_kind(fiona)",
+    "is_nice(fiona)",
+    "is_quiet(fiona)",
+    "is_young(fiona)",
+    "ForAll([x], Implies(is_kind(x), is_red(x)))",
+    "ForAll([x], Implies(And(is_red(x), is_nice(x)), is_white(x)))",
+    "ForAll([x], Implies(And(is_blue(x), is_white(x)), is_red(x)))",
+    "ForAll([x], Implies(And(is_quiet(x), is_red(x)), is_nice(x)))",
+    "ForAll([x], Implies(is_blue(x), is_white(x)))",
+    "ForAll([x], Implies(is_red(x), is_young(x)))",
+    "Implies(And(is_quiet(fiona), is_nice(fiona)), is_kind(fiona))",
+    "ForAll([x], Implies(And(is_young(x), is_white(x)), is_kind(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fiona is not white",
+      "constraint": "Not(is_white(fiona))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

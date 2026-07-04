@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D1-2162",
+  "question": "The bald eagle sees the cat. The cat sees the bald eagle. The mouse does not eat the cat. The rabbit does not see the mouse. If someone is red then they do not eat the bald eagle. If someone sees the bald eagle and the bald eagle does not see the rabbit then they eat the cat. If the mouse is not rough then the mouse does not eat the cat. If someone eats the bald eagle and they do not see the bald eagle then they do not visit the rabbit. If someone sees the cat then the cat is rough. If someone sees the mouse then they are not blue.\n\nQuestion: The cat is rough.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

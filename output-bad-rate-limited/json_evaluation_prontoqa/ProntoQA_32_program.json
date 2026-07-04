@@ -1,0 +1,140 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "aggressive",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "numpuses": {
+      "sort": "Entity",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "numpus(sally)",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(numpus(x), vumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(vumpus(x), transparent(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(vumpus(x), tumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(tumpus(x), dumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(dumpus(x), Not(aggressive(x))))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(dumpus(x), wumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(wumpus(x), Not(wooden(x))))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(wumpus(x), jompus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(jompus(x), zumpus(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(zumpus(x), temperate(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(rompus(x), wooden(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sally not wooden",
+      "constraint": "Not(wooden(sally))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

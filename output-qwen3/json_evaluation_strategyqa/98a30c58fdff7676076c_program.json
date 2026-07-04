@@ -1,0 +1,81 @@
+{
+  "sorts": [
+    {
+      "name": "FieldOfStudy",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Subject",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "studies",
+      "domain": [
+        "FieldOfStudy",
+        "Subject"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_biological",
+      "domain": [
+        "Subject"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_elementary_particle",
+      "domain": [
+        "Subject"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fields": {
+      "sort": "FieldOfStudy",
+      "members": [
+        "biochemistry",
+        "particle_physics"
+      ]
+    },
+    "subjects": {
+      "sort": "Subject",
+      "members": [
+        "gluons",
+        "proteins",
+        "dna",
+        "enzymes"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Subject"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([s], Implies(studies(biochemistry, s), is_biological(s)))",
+    "is_elementary_particle(gluons) == True",
+    "is_biological(gluons) == False",
+    "is_biological(proteins) == True",
+    "is_biological(dna) == True",
+    "is_biological(enzymes) == True",
+    "studies(biochemistry, proteins) == True",
+    "studies(biochemistry, dna) == True",
+    "studies(particle_physics, gluons) == True"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Does Biochemistry Study Gluons",
+      "constraint": "studies(biochemistry, gluons)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

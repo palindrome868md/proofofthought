@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Issue",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "publicly_denounce",
+      "domain": [
+        "Person",
+        "Issue"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "nancy_pelosi"
+      ]
+    },
+    "issues": {
+      "sort": "Issue",
+      "members": [
+        "abortion"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(publicly_denounce(nancy_pelosi, abortion))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Would Nancy Pelosi publicly denounce abortion",
+      "constraint": "publicly_denounce(nancy_pelosi, abortion)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

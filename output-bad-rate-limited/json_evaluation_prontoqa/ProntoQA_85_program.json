@@ -1,0 +1,109 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "vumpus(sam)",
+    "Implies(vumpus(sam), tumpus(sam))",
+    "Implies(tumpus(sam), yumpus(sam))",
+    "Implies(yumpus(sam), dumpus(sam))",
+    "Implies(dumpus(sam), wumpus(sam))",
+    "Implies(wumpus(sam), transparent(sam))",
+    "Implies(vumpus(sam), Not(kind(sam)))",
+    "Implies(dumpus(sam), liquid(sam))",
+    "Implies(wumpus(sam), impus(sam))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam not transparent",
+      "constraint": "Not(transparent(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sweet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "jompus(fae)",
+    "ForAll([x], Implies(jompus(x), large(x)))",
+    "ForAll([x], Implies(jompus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), sweet(x)))",
+    "ForAll([x], Implies(zumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), hot(x)))",
+    "ForAll([x], Implies(tumpus(x), opaque(x)))",
+    "ForAll([x], Implies(numpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), brown(x)))",
+    "ForAll([x], Implies(yumpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), Not(opaque(x))))",
+    "ForAll([x], Implies(wumpus(x), impus(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fae opaque",
+      "constraint": "opaque(fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

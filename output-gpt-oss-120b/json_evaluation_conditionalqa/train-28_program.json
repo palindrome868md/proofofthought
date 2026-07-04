@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_will",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sole_owner",
+      "domain": [
+        "Property",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "beneficiary_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "need_probate",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "uncle",
+        "me"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "house"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "has_will(uncle) == True",
+    "sole_owner(house, uncle) == True",
+    "beneficiary_of(uncle, me) == True"
+  ],
+  "rules": [
+    {
+      "name": "ProbateNeededRule",
+      "forall": [
+        {
+          "name": "d",
+          "sort": "Person"
+        },
+        {
+          "name": "b",
+          "sort": "Person"
+        },
+        {
+          "name": "h",
+          "sort": "Property"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(has_will(d), sole_owner(h, d), beneficiary_of(d, b))",
+        "consequent": "need_probate(b, h)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "NeedProbateToSellHouse",
+      "constraint": "need_probate(me, house)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_ex_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualified_for_ncfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_widow_of_qualified_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible_for_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "was_getting_fuel",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deceased",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "mother"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "was_getting_fuel(father) == True",
+    "qualified_for_ncfs(father) == True",
+    "is_deceased(father) == True",
+    "is_widow_of_qualified_employee(mother) == True",
+    "ForAll([p], Implies(is_widow_of_qualified_employee(p), is_eligible_for_allowance(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is mother eligible for allowance",
+      "constraint": "is_eligible_for_allowance(mother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "cat",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "blue(bear)",
+    "nice(bear)",
+    "likes(bear, cat)",
+    "likes(bear, tiger)",
+    "chases(cat, tiger)",
+    "blue(cat)",
+    "nice(cat)",
+    "rough(cat)",
+    "needs(cat, tiger)",
+    "chases(tiger, cat)",
+    "blue(tiger)",
+    "rough(tiger)",
+    "likes(tiger, bear)",
+    "likes(tiger, cat)",
+    "needs(tiger, bear)",
+    "needs(tiger, cat)",
+    "ForAll([x], Implies(needs(x, cat), likes(cat, tiger)))",
+    "ForAll([x], Implies(red(x), blue(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "CatNeedsTiger",
+      "constraint": "needs(cat, tiger)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

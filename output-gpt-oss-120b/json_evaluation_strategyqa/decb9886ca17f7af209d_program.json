@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "official_language",
+      "domain": [
+        "Country"
+      ],
+      "range": "Language"
+    },
+    {
+      "name": "rooted_in",
+      "domain": [
+        "Language",
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "saint_vincent_and_the_grenadines"
+      ]
+    },
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "english",
+        "vincentian_creole"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "official_language(saint_vincent_and_the_grenadines) == english",
+    "rooted_in(english, english)"
+  ],
+  "verifications": [
+    {
+      "name": "Is language of Saint Vincent and the Grenadines rooted in English",
+      "constraint": "rooted_in(official_language(saint_vincent_and_the_grenadines), english)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

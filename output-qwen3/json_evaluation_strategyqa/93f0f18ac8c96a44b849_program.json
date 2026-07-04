@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Song",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Group",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_member",
+      "domain": [
+        "Person",
+        "Group"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "top_song",
+      "domain": [
+        "Person"
+      ],
+      "range": "Song"
+    },
+    {
+      "name": "is_collaboration_with",
+      "domain": [
+        "Song",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "billboard_rank",
+      "domain": [
+        "Song"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lil_jon",
+        "jadakiss",
+        "styles_p",
+        "sheek_louch",
+        "usher",
+        "ludacris"
+      ]
+    },
+    "groups": {
+      "sort": "Group",
+      "members": [
+        "the_lox"
+      ]
+    },
+    "songs": {
+      "sort": "Song",
+      "members": [
+        "yeah_song"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_member(jadakiss, the_lox) == True",
+    "is_member(styles_p, the_lox) == True",
+    "is_member(sheek_louch, the_lox) == True",
+    "top_song(lil_jon) == yeah_song",
+    "billboard_rank(yeah_song) == 1",
+    "is_collaboration_with(yeah_song, usher) == True",
+    "is_collaboration_with(yeah_song, ludacris) == True",
+    "is_collaboration_with(yeah_song, jadakiss) == False",
+    "is_collaboration_with(yeah_song, styles_p) == False",
+    "is_collaboration_with(yeah_song, sheek_louch) == False"
+  ],
+  "verifications": [
+    {
+      "name": "Lil Jon top song collaboration with Lox member",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_member(p, the_lox), is_collaboration_with(top_song(lil_jon), p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

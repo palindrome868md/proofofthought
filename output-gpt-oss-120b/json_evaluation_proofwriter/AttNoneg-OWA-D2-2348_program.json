@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "dave"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "cold(dave)",
+    "ForAll([x], Implies(cold(x), quiet(x)))",
+    "ForAll([x], Implies(quiet(x), green(x)))",
+    "Implies(And(cold(dave), kind(dave)), furry(dave))",
+    "Implies(And(kind(dave), cold(dave)), big(dave))",
+    "ForAll([x], Implies(And(cold(x), green(x)), blue(x)))",
+    "ForAll([x], Implies(kind(x), big(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dave is quiet",
+      "constraint": "quiet(dave)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

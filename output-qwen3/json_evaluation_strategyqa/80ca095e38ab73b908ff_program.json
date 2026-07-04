@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_wild",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_good_pet_for_children",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "northern_fur_seal"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "is_wild(northern_fur_seal)",
+    "ForAll([a], Implies(is_wild(a), Not(is_good_pet_for_children(a))))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Northern Fur Seal Good Pet",
+      "constraint": "is_good_pet_for_children(northern_fur_seal)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

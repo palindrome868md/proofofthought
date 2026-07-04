@@ -1,0 +1,129 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_disabled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns_property",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_property",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "resides_in_country",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "grant_available_in_country",
+      "domain": [
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_grant",
+      "domain": [
+        "Person",
+        "Property",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "England",
+        "Wales",
+        "Scotland",
+        "Northern_Ireland"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "home"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "prop",
+      "sort": "Property"
+    },
+    {
+      "name": "c",
+      "sort": "Country"
+    }
+  ],
+  "knowledge_base": [
+    "is_disabled(wife) == True",
+    "owns_property(husband, home) == True",
+    "lives_in_property(wife, home) == True",
+    "lives_in_property(husband, home) == True",
+    "resides_in_country(wife, England) == True",
+    "resides_in_country(husband, England) == True",
+    "grant_available_in_country(England) == True",
+    "grant_available_in_country(Scotland) == False",
+    "ForAll([p, prop, c], Implies(And(is_disabled(p), Or(owns_property(p, prop), lives_in_property(p, prop)), resides_in_country(p, c), grant_available_in_country(c)), eligible_for_grant(p, prop, c)))"
+  ],
+  "rules": [
+    {
+      "name": "Savings Threshold Rule",
+      "constraint": "True"
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can couple apply for Disabled Facilities Grant",
+      "constraint": "eligible_for_grant(wife, home, England)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

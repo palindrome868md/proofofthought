@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "injured_when_serving",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "injury_date",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "illness_progressed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_compensation",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "claimant"
+      ]
+    },
+    "globals": {
+      "sort": "IntSort",
+      "members": [
+        "current_year"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "injured_when_serving(claimant)",
+    "injury_date(claimant) == 2016",
+    "illness_progressed(claimant)",
+    "current_year == 2026"
+  ],
+  "rules": [
+    {
+      "name": "EligibilityAfter2005",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(injured_when_serving(p), injury_date(p) >= 2005, Or(current_year - injury_date(p) <= 7, illness_progressed(p)))",
+        "consequent": "can_claim_compensation(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CanClaimCompensation",
+      "constraint": "can_claim_compensation(claimant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

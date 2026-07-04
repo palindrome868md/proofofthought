@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Institution",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "attends",
+      "domain": [
+        "Person",
+        "Institution"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "blossom",
+        "bubbles",
+        "buttercup"
+      ]
+    },
+    "institutions": {
+      "sort": "Institution",
+      "members": [
+        "camden_military_academy"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Powerpuff Girls attend Camden Military Academy",
+      "constraint": "And(attends(blossom, camden_military_academy), attends(bubbles, camden_military_academy), attends(buttercup, camden_military_academy))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

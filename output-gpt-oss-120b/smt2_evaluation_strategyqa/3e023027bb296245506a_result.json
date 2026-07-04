@@ -1,0 +1,11 @@
+{
+  "sample_id": "3e023027bb296245506a",
+  "question": "If you were on a diet, would you have to skip lunch at McDonald's?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

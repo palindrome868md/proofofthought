@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1385",
+  "question": "Given the following premises:\n\nAll social media applications containing chat features are software. \nAll social media applications that allow users to send messages to each other have chat features. \nAll social media applications have chat features or video features. \nAll social media applications that have video features allow users to upload videos. \nAll software that is social media applications are computer programs. \nAll social media applications that have high engagement metrics are addictive. \nIf a social media application is addictive, then it is not ideal for preteens. \nTikTok is a social media application, and it is not ideal for preteens. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: TikTok is a computer program.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

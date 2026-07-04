@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Technology",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "born_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "died_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "invention_year",
+      "domain": [
+        "Technology"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_record_live_to",
+      "domain": [
+        "Person",
+        "Technology"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "george_washington"
+      ]
+    },
+    "technologies": {
+      "sort": "Technology",
+      "members": [
+        "compact_disc"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "born_year(george_washington) == 1732",
+    "died_year(george_washington) == 1799",
+    "invention_year(compact_disc) == 1979"
+  ],
+  "rules": [
+    {
+      "name": "Impossibility After Death",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "t",
+          "sort": "Technology"
+        }
+      ],
+      "implies": {
+        "antecedent": "invention_year(t) > died_year(p)",
+        "consequent": "Not(can_record_live_to(p, t))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can George Washington's speeches be recorded live to a compact disc",
+      "constraint": "can_record_live_to(george_washington, compact_disc)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

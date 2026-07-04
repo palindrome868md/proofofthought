@@ -1,0 +1,11 @@
+{
+  "sample_id": "db70d15b07a9f288ffdc",
+  "question": "Do manta rays live in water above the safe temperature for cold food storage?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

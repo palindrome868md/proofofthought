@@ -1,0 +1,41 @@
+{
+  "sorts": [
+    {
+      "name": "Being",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height",
+      "domain": [
+        "Being"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "beings": {
+      "sort": "Being",
+      "members": [
+        "andre_the_giant",
+        "hypothetical_yeti"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "height(andre_the_giant) == 224",
+    "height(hypothetical_yeti) == 180"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Andre Towers Over Yeti",
+      "constraint": "height(andre_the_giant) > height(hypothetical_yeti)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

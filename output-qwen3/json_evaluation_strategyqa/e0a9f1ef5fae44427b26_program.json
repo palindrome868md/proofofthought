@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Object",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "density",
+      "domain": [
+        "Object"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "substance_density",
+      "domain": [
+        "Substance"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "sinks_in",
+      "domain": [
+        "Object",
+        "Substance"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "objects": {
+      "sort": "Object",
+      "members": [
+        "pear"
+      ]
+    },
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "water"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "o",
+      "sort": "Object"
+    },
+    {
+      "name": "s",
+      "sort": "Substance"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([o, s], Implies(density(o) > substance_density(s), sinks_in(o, s)))",
+    "ForAll([o, s], Implies(density(o) <= substance_density(s), Not(sinks_in(o, s))))",
+    "density(pear) == 0.6",
+    "substance_density(water) == 1.0"
+  ],
+  "verifications": [
+    {
+      "name": "Would pear sink in water",
+      "constraint": "sinks_in(pear, water)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

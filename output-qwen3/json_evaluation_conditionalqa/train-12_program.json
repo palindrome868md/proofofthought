@@ -1,0 +1,123 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Grant",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_disabled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns_property",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_heating_repair",
+      "domain": [
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_lighting_repair",
+      "domain": [
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "work_is_necessary",
+      "domain": [
+        "Property",
+        "Grant"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "work_is_reasonable",
+      "domain": [
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_grant",
+      "domain": [
+        "Person",
+        "Property",
+        "Grant"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "aunt"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "her_home"
+      ]
+    },
+    "grants": {
+      "sort": "Grant",
+      "members": [
+        "disabled_facilities_grant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "prop",
+      "sort": "Property"
+    },
+    {
+      "name": "g",
+      "sort": "Grant"
+    }
+  ],
+  "knowledge_base": [
+    "is_disabled(aunt) == True",
+    "owns_property(aunt, her_home) == True",
+    "needs_heating_repair(her_home) == True",
+    "needs_lighting_repair(her_home) == True",
+    "ForAll([p, prop, g], Implies(And(is_disabled(p), owns_property(p, prop), work_is_necessary(prop, g), work_is_reasonable(prop)), eligible_for_grant(p, prop, g)))",
+    "ForAll([prop, g], Implies(Or(needs_heating_repair(prop), needs_lighting_repair(prop)), work_is_necessary(prop, g)))",
+    "work_is_reasonable(her_home) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Is aunt eligible for disabled facilities grant",
+      "constraint": "eligible_for_grant(aunt, her_home, disabled_facilities_grant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

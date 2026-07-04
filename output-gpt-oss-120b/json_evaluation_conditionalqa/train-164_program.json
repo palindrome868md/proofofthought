@@ -1,0 +1,127 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_child",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_age",
+      "domain": [
+        "Child"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_twin",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "expecting_multiple_birth",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "England",
+        "Scotland"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "UniversalCredit"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "child_a",
+        "child_b",
+        "child_c",
+        "child_d"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Child"
+    }
+  ],
+  "knowledge_base": [
+    "lives_in(me, England)",
+    "receives(me, UniversalCredit)",
+    "expecting_multiple_birth(me)",
+    "has_child(me, child_a)",
+    "has_child(me, child_b)",
+    "has_child(me, child_c)",
+    "has_child(me, child_d)",
+    "child_age(child_a) == 0",
+    "child_age(child_b) == 0",
+    "child_age(child_c) == 2",
+    "child_age(child_d) == 4",
+    "is_twin(child_a)",
+    "is_twin(child_b)"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for Sure Start Maternity Grant",
+      "constraint": "And(lives_in(me, England), receives(me, UniversalCredit), expecting_multiple_birth(me), Exists([c], And(has_child(me, c), child_age(c) < 16)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

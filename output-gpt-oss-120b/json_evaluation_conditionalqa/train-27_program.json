@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_spouse",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_include_in_will",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "sound_mind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_make_will",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "q",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_spouse(me, partner)",
+    "age(me) == 45",
+    "sound_mind(me) == True",
+    "ForAll([p, q], Implies(is_spouse(p, q), can_include_in_will(p, q)))",
+    "ForAll([p], Implies(And(age(p) >= 18, sound_mind(p)), can_make_will(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Include partner in will",
+      "constraint": "can_include_in_will(me, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

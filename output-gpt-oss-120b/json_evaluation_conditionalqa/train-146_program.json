@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Deputy",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_power",
+      "domain": [
+        "Deputy",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dead",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "uncle"
+      ]
+    },
+    "deputies": {
+      "sort": "Deputy",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "d",
+      "sort": "Deputy"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "has_power(me, uncle)",
+    "dead(uncle)",
+    "ForAll([d, p], Implies(dead(p), Not(has_power(d, p))))"
+  ],
+  "verifications": [
+    {
+      "name": "DeputyPowerAfterDeath",
+      "constraint": "has_power(me, uncle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

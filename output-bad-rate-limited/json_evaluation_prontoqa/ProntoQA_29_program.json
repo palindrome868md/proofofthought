@@ -1,0 +1,160 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_feisty",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "z",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_jompus(Max)",
+    "ForAll([z], Implies(is_jompus(z), liquid(z)))",
+    "ForAll([z], Implies(is_jompus(z), is_rompus(z)))",
+    "ForAll([z], Implies(is_rompus(z), is_mean(z)))",
+    "ForAll([z], Implies(is_rompus(z), is_zumpus(z)))",
+    "ForAll([z], Implies(is_zumpus(z), is_transparent(z)))",
+    "ForAll([z], Implies(is_zumpus(z), is_tumpus(z)))",
+    "ForAll([z], Implies(is_tumpus(z), Not(earthy(z))))",
+    "ForAll([z], Implies(is_dumpus(z), bright(z)))",
+    "ForAll([z], Implies(is_tumpus(z), is_yumpus(z)))",
+    "ForAll([z], Implies(is_yumpus(z), Not(bright(z))))",
+    "ForAll([z], Implies(is_yumpus(z), is_impuse(z)))",
+    "ForAll([z], Implies(is_impuse(z), is_temperate(z)))",
+    "ForAll([z], Implies(is_impuse(z), is_numpuse(z)))",
+    "ForAll([z], Implies(is_numpuse(z), is_feisty(z)))",
+    "ForAll([z], Implies(is_numpuse(z), is_wumpus(z)))"
+  ],
+  "verifications": [
+    {
+      "name": "Max is bright",
+      "constraint": "bright(Max)"
+    }
+  ]
+}

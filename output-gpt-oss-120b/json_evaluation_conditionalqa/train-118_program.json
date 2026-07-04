@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Allowance",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "first_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "location_scotland",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply",
+      "domain": [
+        "Person",
+        "Allowance"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "asker"
+      ]
+    },
+    "allowances": {
+      "sort": "Allowance",
+      "members": [
+        "SureStartGrant",
+        "PregnancyBabyPayment"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "first_child(asker) == True",
+    "location_scotland(asker) == False",
+    "ForAll([p], Implies(And(first_child(p), Not(location_scotland(p))), can_apply(p, SureStartGrant)))",
+    "ForAll([p], Implies(And(first_child(p), location_scotland(p)), can_apply(p, PregnancyBabyPayment)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can apply for maternity allowance",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Allowance"
+        }
+      ],
+      "constraint": "can_apply(asker, a)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

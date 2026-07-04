@@ -1,0 +1,113 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_parent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_main_carer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_legal_status",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_university_course",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_public_funded",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "niece"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "bath_pharmacy"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Course"
+    }
+  ],
+  "knowledge_base": [
+    "age(p) == 19",
+    "is_parent(p) == True",
+    "is_main_carer(p) == True",
+    "lives_in_england(p) == True",
+    "has_legal_status(p) == True",
+    "is_university_course(c) == True",
+    "is_public_funded(c) == True",
+    {
+      "assertion": "p == niece",
+      "value": true
+    },
+    {
+      "assertion": "c == bath_pharmacy",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can niece qualify for Care to Learn",
+      "constraint": "And(age(p) < 20, is_parent(p), is_main_carer(p), lives_in_england(p), has_legal_status(p), is_public_funded(c), Not(is_university_course(c)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

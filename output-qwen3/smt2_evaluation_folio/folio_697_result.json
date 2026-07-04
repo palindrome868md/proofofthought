@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_697",
+  "question": "Given the following premises:\n\nNo reptile has fur.\nAll snakes are reptiles.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Some snake has fur.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

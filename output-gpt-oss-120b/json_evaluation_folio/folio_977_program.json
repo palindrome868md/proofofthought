@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "went_to_clay",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "makes_matcha",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wake_late",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_ca",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attends_yoga",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_ent_high",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "regular_9to5",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_home",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bunny"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(went_to_clay(p), makes_matcha(p)), Not(wake_late(p))))",
+    "ForAll([p], Implies(And(went_to_clay(p), lives_in_ca(p), attends_yoga(p)), makes_matcha(p)))",
+    "ForAll([p], Implies(And(went_to_clay(p), works_ent_high(p)), wake_late(p)))",
+    "ForAll([p], Implies(And(went_to_clay(p), Not(regular_9to5(p))), works_ent_high(p)))",
+    "ForAll([p], Implies(And(went_to_clay(p), prefers_home(p)), Not(regular_9to5(p))))",
+    "And(went_to_clay(bunny), Or(And(prefers_home(bunny), makes_matcha(bunny)), And(Not(prefers_home(bunny)), Not(makes_matcha(bunny)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Bunny lives in California and attends yoga",
+      "constraint": "And(went_to_clay(bunny), lives_in_ca(bunny), attends_yoga(bunny))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

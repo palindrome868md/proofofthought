@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GoodAtMath",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GoodAtChemistry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "EnjoysExperiments",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GoodAtPlanning",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "FailedClass",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "james"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([x], And(Student(x), GoodAtMath(x), GoodAtChemistry(x)))",
+    "ForAll([x], Implies(And(Student(x), GoodAtChemistry(x)), EnjoysExperiments(x)))",
+    "ForAll([x], Implies(And(Student(x), EnjoysExperiments(x)), GoodAtPlanning(x)))",
+    "ForAll([x], Implies(And(Student(x), GoodAtPlanning(x)), Not(FailedClass(x))))",
+    "Student(james)",
+    "Or(And(GoodAtChemistry(james), FailedClass(james)), And(Not(GoodAtChemistry(james)), Not(FailedClass(james))))"
+  ],
+  "verifications": [
+    {
+      "name": "James Statement Verification",
+      "constraint": "Implies(Or(GoodAtChemistry(james), FailedClass(james)), Or(GoodAtPlanning(james), GoodAtMath(james)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

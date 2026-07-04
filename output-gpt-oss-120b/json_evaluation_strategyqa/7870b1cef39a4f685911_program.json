@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Item",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "gets",
+      "domain": [
+        "Person",
+        "Item"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "adam_sandler",
+        "cole_spouse"
+      ]
+    },
+    "items": {
+      "sort": "Item",
+      "members": [
+        "cole_spouse_reference",
+        "scuba_man_doll"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Adam Sandler gets both items",
+      "constraint": "And(gets(adam_sandler, cole_spouse_reference), gets(adam_sandler, scuba_man_doll))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

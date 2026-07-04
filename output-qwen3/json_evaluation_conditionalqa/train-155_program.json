@@ -1,0 +1,112 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CTFAccount",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_registered_contact",
+      "domain": [
+        "Person",
+        "CTFAccount"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_child_owner",
+      "domain": [
+        "Person",
+        "CTFAccount"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_withdraw_money",
+      "domain": [
+        "Person",
+        "CTFAccount"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_decide_investment",
+      "domain": [
+        "Person",
+        "CTFAccount"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_mental_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "parent_can_control_withdrawal_time",
+      "domain": [
+        "Person",
+        "CTFAccount"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "richard",
+        "parent"
+      ]
+    },
+    "accounts": {
+      "sort": "CTFAccount",
+      "members": [
+        "ctf_account"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "a",
+      "sort": "CTFAccount"
+    }
+  ],
+  "knowledge_base": [
+    "is_registered_contact(parent, ctf_account)",
+    "is_child_owner(richard, ctf_account)",
+    "child_age(richard) == 0",
+    "ForAll([p, a], Implies(And(is_child_owner(p, a), child_age(p) >= 18), can_withdraw_money(p, a)))",
+    "ForAll([p, a], Implies(And(is_child_owner(p, a), child_age(p) >= 16), can_decide_investment(p, a)))",
+    "ForAll([p, a], Implies(And(is_registered_contact(p, a), is_child_owner(richard, a), child_age(richard) < 16), can_decide_investment(p, a)))",
+    "ForAll([p, a], Implies(And(is_registered_contact(p, a), child_age(richard) >= 18), Not(parent_can_control_withdrawal_time(p, a))))",
+    "ForAll([p], Implies(Not(has_mental_capacity(p)), Not(can_withdraw_money(p, a))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can parent control when child receives money at 18",
+      "constraint": "parent_can_control_withdrawal_time(parent, ctf_account)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

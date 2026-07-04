@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Concept",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_metric_of_effect",
+      "domain": [
+        "Concept"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "concepts": {
+      "sort": "Concept",
+      "members": [
+        "p_values"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(is_metric_of_effect(p_values))"
+  ],
+  "verifications": [
+    {
+      "name": "P values don't represent metrics of effect",
+      "constraint": "Not(is_metric_of_effect(p_values))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

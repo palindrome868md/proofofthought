@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Document",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_attorney_on",
+      "domain": [
+        "Person",
+        "Document"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "name_changed_by_marriage",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "must_notify_opg",
+      "domain": [
+        "Person",
+        "Document"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_modify_lpa_document",
+      "domain": [
+        "Document"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user",
+        "sister"
+      ]
+    },
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "opg"
+      ]
+    },
+    "documents": {
+      "sort": "Document",
+      "members": [
+        "lpa"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Document"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, d], Implies(And(is_attorney_on(p, d), name_changed_by_marriage(p)), must_notify_opg(p, d)))",
+    "ForAll([d], Not(can_modify_lpa_document(d)))",
+    "is_attorney_on(sister, lpa)",
+    "name_changed_by_marriage(sister)"
+  ],
+  "verifications": [
+    {
+      "name": "Need to notify OPG about sister's name change",
+      "constraint": "must_notify_opg(sister, lpa)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

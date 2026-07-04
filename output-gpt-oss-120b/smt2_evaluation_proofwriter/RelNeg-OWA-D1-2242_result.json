@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D1-2242",
+  "question": "The cow does not eat the lion. The cow is green. The cow does not need the lion. The cow visits the lion. The lion eats the cow. The lion is big. The lion is cold. The lion is green. The lion needs the cow. The lion does not visit the cow. If the lion is blue and the lion does not need the cow then the lion visits the cow. If something visits the lion and it is not cold then it needs the lion. If something is green then it is big. If something needs the lion then the lion is not green. If the lion is rough and the lion does not visit the cow then the cow does not need the lion. If something visits the cow and the cow does not need the lion then it eats the lion.\n\nQuestion: The cow is big.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

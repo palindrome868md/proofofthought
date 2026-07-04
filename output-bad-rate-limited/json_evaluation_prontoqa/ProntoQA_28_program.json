@@ -1,0 +1,380 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "alex"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_rompus(alex)"
+  ],
+  "rules": [
+    {
+      "name": "All Impus Are Small",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_impus(x)",
+        "consequent": "is_small(x)"
+      }
+    },
+    {
+      "name": "All Zumpuses Not Fruity",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_zumpus(x)",
+        "consequent": "Not(is_fruity(x))"
+      }
+    },
+    {
+      "name": "All Zumpuses Are Numpuses",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_zumpus(x)",
+        "consequent": "is_numpus(x)"
+      }
+    },
+    {
+      "name": "All Numpuses Are Rompus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_numpus(x)",
+        "consequent": "is_rompus(x)"
+      }
+    },
+    {
+      "name": "All Numpuses Are Bitter",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_numpus(x)",
+        "consequent": "is_bitter(x)"
+      }
+    },
+    {
+      "name": "All Rompus Are Kind",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_rompus(x)",
+        "consequent": "is_kind(x)"
+      }
+    },
+    {
+      "name": "All Rompus Are Wumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_rompus(x)",
+        "consequent": "is_wumpus(x)"
+      }
+    },
+    {
+      "name": "Wumpus Not Wooden",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_wumpus(x)",
+        "consequent": "Not(is_wooden(x))"
+      }
+    },
+    {
+      "name": "Wumpus -> Yumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_wumpus(x)",
+        "consequent": "is_yumpus(x)"
+      }
+    },
+    {
+      "name": "Yumpus Not Temperate",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_yumpus(x)",
+        "consequent": "Not(is_temperate(x))"
+      }
+    },
+    {
+      "name": "Yumpus -> Dumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_yumpus(x)",
+        "consequent": "is_dumpus(x)"
+      }
+    },
+    {
+      "name": "Dumpus -> Dull",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_dumpus(x)",
+        "consequent": "is_dull(x)"
+      }
+    },
+    {
+      "name": "Dumpus -> Tumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_dumpus(x)",
+        "consequent": "is_tumpus(x)"
+      }
+    },
+    {
+      "name": "Tumpus -> Not Small",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_tumpus(x)",
+        "consequent": "Not(is_small(x))"
+      }
+    },
+    {
+      "name": "Tumpus -> Jompus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_tumpus(x)",
+        "consequent": "is_jompus(x)"
+      }
+    },
+    {
+      "name": "Jompus -> Nervous",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_jompus(x)",
+        "consequent": "is_nervous(x)"
+      }
+    },
+    {
+      "name": "Jompus -> Vumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_jompus(x)",
+        "consequent": "is_vumpus(x)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Alex is small",
+      "constraint": "is_small(alex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

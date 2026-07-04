@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "healthy_lungs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lung_disease",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "jp_morgan"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "lung_disease(jp_morgan)",
+    "ForAll([p], Implies(lung_disease(p), Not(healthy_lungs(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "JPMorganHealthyLungs",
+      "constraint": "healthy_lungs(jp_morgan)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

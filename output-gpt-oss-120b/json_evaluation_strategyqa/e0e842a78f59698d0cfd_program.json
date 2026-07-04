@@ -1,0 +1,40 @@
+{
+  "sorts": [
+    {
+      "name": "Text",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "length",
+      "domain": [
+        "Text"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_haiku",
+      "domain": [
+        "Text"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Can a whole Haiku fit in a single tweet",
+      "exists": [
+        {
+          "name": "h",
+          "sort": "Text"
+        }
+      ],
+      "constraint": "And(is_haiku(h), length(h) <= 280)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

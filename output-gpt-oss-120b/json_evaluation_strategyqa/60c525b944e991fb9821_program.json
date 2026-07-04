@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "EthnicGroup",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "speaks",
+      "domain": [
+        "EthnicGroup",
+        "Language"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "confused_by",
+      "domain": [
+        "EthnicGroup",
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "groups": {
+      "sort": "EthnicGroup",
+      "members": [
+        "pict"
+      ]
+    },
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "old_english",
+        "pictish"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "g",
+      "sort": "EthnicGroup"
+    },
+    {
+      "name": "l",
+      "sort": "Language"
+    }
+  ],
+  "knowledge_base": [
+    "Not(speaks(pict, old_english))",
+    "ForAll([g, l], Implies(Not(speaks(g, l)), confused_by(g, l)))"
+  ],
+  "verifications": [
+    {
+      "name": "PictConfusedByOldEnglish",
+      "constraint": "confused_by(pict, old_english)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "DisneyResort",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "resort_size",
+      "domain": [
+        "DisneyResort"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "resorts": {
+      "sort": "DisneyResort",
+      "members": [
+        "disneyland_paris",
+        "walt_disney_world",
+        "disneyland_california",
+        "tokyo_disney_resort",
+        "hong_kong_disneyland",
+        "shanghai_disney_resort"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "resort_size(walt_disney_world) > resort_size(disneyland_paris)",
+    "resort_size(walt_disney_world) > resort_size(disneyland_california)",
+    "resort_size(walt_disney_world) > resort_size(tokyo_disney_resort)",
+    "resort_size(walt_disney_world) > resort_size(hong_kong_disneyland)",
+    "resort_size(walt_disney_world) > resort_size(shanghai_disney_resort)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is Disneyland Paris the largest Disney resort",
+      "constraint": "And(resort_size(disneyland_paris) > resort_size(walt_disney_world), resort_size(disneyland_paris) > resort_size(disneyland_california), resort_size(disneyland_paris) > resort_size(tokyo_disney_resort), resort_size(disneyland_paris) > resort_size(hong_kong_disneyland), resort_size(disneyland_paris) > resort_size(shanghai_disney_resort))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

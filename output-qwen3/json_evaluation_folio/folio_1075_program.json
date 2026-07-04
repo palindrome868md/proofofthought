@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Lipstick",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_in_set",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_velvet",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_satin",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_refillable",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_rosewood",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "products": {
+      "sort": "Lipstick",
+      "members": [
+        "lipstick_999"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Lipstick"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(is_in_set(x), is_velvet(x)), is_refillable(x)))",
+    "ForAll([x], Implies(is_in_set(x), Or(is_velvet(x), is_satin(x))))",
+    "ForAll([x], Implies(And(is_in_set(x), is_satin(x)), has_rosewood(x)))",
+    "ForAll([x], Implies(is_in_set(x), Or(Not(has_rosewood(x)), has_rosewood(x))))",
+    "And(is_in_set(lipstick_999), Or(has_rosewood(lipstick_999), is_velvet(lipstick_999)))"
+  ],
+  "verifications": [
+    {
+      "name": "Verify Statement",
+      "constraint": "Implies(Or(is_refillable(lipstick_999), has_rosewood(lipstick_999)), Or(is_refillable(lipstick_999), has_rosewood(lipstick_999)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

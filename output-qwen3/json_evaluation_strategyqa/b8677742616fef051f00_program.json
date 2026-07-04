@@ -1,0 +1,40 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "num_descendants",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "genghis_khan",
+        "julius_caesar"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "num_descendants(genghis_khan) >= 1000000",
+    "num_descendants(julius_caesar) <= 100"
+  ],
+  "verifications": [
+    {
+      "name": "More descendants Genghis Khan than Caesar",
+      "constraint": "num_descendants(genghis_khan) > num_descendants(julius_caesar)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

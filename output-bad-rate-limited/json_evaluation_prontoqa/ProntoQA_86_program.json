@@ -1,0 +1,199 @@
+{
+  "sorts": [
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "luminous",
+      "domain": [
+        "Zumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Impus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Jompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Wumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Zumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Impus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Jompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Wumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "impus": {
+      "sort": "Impus",
+      "members": [
+        "Stella"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_impus(Stella)",
+    "ForAll([p], Implies(is_zumpus(p), luminous(p)))",
+    "ForAll([p], Implies(is_tumpus(p), Not(spicy(p))))",
+    "ForAll([p], Implies(is_vumpus(p), Not(fruity(p))))",
+    "ForAll([p], Implies(is_vumpus(p), is_impus(p)))",
+    "ForAll([p], Implies(is_impus(p), small(p)))",
+    "ForAll([p], Implies(is_yumpus(p), temperate(p)))",
+    "ForAll([p], Implies(is_yumpus(p), is_jompus(p)))",
+    "ForAll([p], Implies(is_jompus(p), bright(p)))",
+    "ForAll([p], Implies(is_jompus(p), is_wumpus(p)))",
+    "ForAll([p], Implies(is_wumpus(p), amenable(p)))",
+    "ForAll([p], Implies(is_wumpus(p), is_dumpus(p)))",
+    "ForAll([p], Implies(is_dumpus(p), shy(p)))",
+    "ForAll([p], Implies(is_dumpus(p), numpus(p)))",
+    "ForAll([p], Implies(is_impus(p), is_yumpus(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Stella not shy",
+      "constraint": "Not(shy(Stella))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

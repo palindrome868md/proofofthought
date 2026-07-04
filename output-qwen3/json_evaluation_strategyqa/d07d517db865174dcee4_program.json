@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Soup",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Diet",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_liquid",
+      "domain": [
+        "Soup"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_eat",
+      "domain": [
+        "Soup",
+        "Diet"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_chunky",
+      "domain": [
+        "Soup"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "soups": {
+      "sort": "Soup",
+      "members": [
+        "chicken_noodle",
+        "broth",
+        "clam_chowder",
+        "vegetable_chunk",
+        "puree"
+      ]
+    },
+    "diets": {
+      "sort": "Diet",
+      "members": [
+        "liquid_diet"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Soup"
+    },
+    {
+      "name": "d",
+      "sort": "Diet"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([s], Implies(is_chunky(s), Not(is_liquid(s))))",
+    "ForAll([s], Implies(Not(is_liquid(s)), Not(can_eat(s, liquid_diet))))",
+    "is_chunky(chicken_noodle) == True",
+    "is_chunky(clam_chowder) == True",
+    "is_chunky(vegetable_chunk) == True",
+    "is_liquid(broth) == True",
+    "is_liquid(puree) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Some soups cannot be eaten on liquid diet",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Soup"
+        }
+      ],
+      "constraint": "Not(can_eat(s, liquid_diet))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

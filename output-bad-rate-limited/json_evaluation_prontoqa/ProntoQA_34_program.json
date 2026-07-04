@@ -1,0 +1,214 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_floral",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_shy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    },
+    {
+      "name": "r",
+      "sort": "Entity"
+    },
+    {
+      "name": "y",
+      "sort": "Entity"
+    },
+    {
+      "name": "n",
+      "sort": "Entity"
+    },
+    {
+      "name": "d",
+      "sort": "Entity"
+    },
+    {
+      "name": "v",
+      "sort": "Entity"
+    },
+    {
+      "name": "t",
+      "sort": "Entity"
+    },
+    {
+      "name": "w",
+      "sort": "Entity"
+    },
+    {
+      "name": "z",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_impus(x), is_rompus(x)))",
+    "ForAll([x], Implies(is_impus(x), is_bright(x)))",
+    "ForAll([r], Implies(is_rompus(r), is_floral(r)))",
+    "ForAll([r], Implies(is_rompus(r), is_yumpus(r)))",
+    "ForAll([y], Implies(is_yumpus(y), is_opaque(y)))",
+    "ForAll([y], Implies(is_yumpus(y), is_numpus(y)))",
+    "ForAll([n], Implies(is_numpus(n), is_red(n)))",
+    "ForAll([n], Implies(is_numpus(n), is_dumpus(n)))",
+    "ForAll([d], Implies(is_dumpus(d), is_bitter(d)))",
+    "ForAll([d], Implies(is_dumpus(d), is_vumpus(d)))",
+    "ForAll([v], Implies(is_vumpus(v), Not(is_mean(v))))",
+    "ForAll([v], Implies(is_vumpus(v), is_tumpus(v)))",
+    "ForAll([t], Implies(is_tumpus(t), Not(is_shy(t))))",
+    "ForAll([w], Implies(is_wumpus(w), is_shy(w)))",
+    "ForAll([t], Implies(is_tumpus(t), is_zumpus(t)))",
+    "ForAll([z], Implies(is_zumpus(z), is_temperate(z)))",
+    "ForAll([z], Implies(is_zumpus(z), is_jompus(z)))",
+    {
+      "assertion": "is_yumpus(sam)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Sam shy",
+      "constraint": "is_shy(sam)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

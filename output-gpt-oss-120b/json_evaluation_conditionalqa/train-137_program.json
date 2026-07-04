@@ -1,0 +1,36 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "tax_waived",
+      "domain": [
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "inc",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([inc], Implies(inc > 50000, Not(tax_waived(inc))))"
+  ],
+  "verifications": [
+    {
+      "name": "Tax waiver possible over 50k",
+      "exists": [
+        {
+          "name": "inc",
+          "sort": "IntSort"
+        }
+      ],
+      "constraint": "And(inc > 50000, tax_waived(inc))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

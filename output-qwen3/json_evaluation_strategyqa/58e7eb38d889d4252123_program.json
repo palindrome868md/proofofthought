@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_chinese_calendar",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_chordata",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "chinese_animals": {
+      "sort": "Animal",
+      "members": [
+        "rat",
+        "ox",
+        "tiger",
+        "rabbit",
+        "dragon",
+        "snake",
+        "horse",
+        "goat",
+        "monkey",
+        "rooster",
+        "dog",
+        "pig"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "in_chinese_calendar(rat) == True",
+    "in_chinese_calendar(ox) == True",
+    "in_chinese_calendar(tiger) == True",
+    "in_chinese_calendar(rabbit) == True",
+    "in_chinese_calendar(dragon) == True",
+    "in_chinese_calendar(snake) == True",
+    "in_chinese_calendar(horse) == True",
+    "in_chinese_calendar(goat) == True",
+    "in_chinese_calendar(monkey) == True",
+    "in_chinese_calendar(rooster) == True",
+    "in_chinese_calendar(dog) == True",
+    "in_chinese_calendar(pig) == True",
+    "is_chordata(rat) == True",
+    "is_chordata(ox) == True",
+    "is_chordata(tiger) == True",
+    "is_chordata(rabbit) == True",
+    "is_chordata(snake) == True",
+    "is_chordata(horse) == True",
+    "is_chordata(goat) == True",
+    "is_chordata(monkey) == True",
+    "is_chordata(rooster) == True",
+    "is_chordata(dog) == True",
+    "is_chordata(pig) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Any Chinese Calendar Animal is Chordata",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(in_chinese_calendar(a), is_chordata(a))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

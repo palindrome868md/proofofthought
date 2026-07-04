@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "marriage_years",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "consent_given",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "abusive",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_annul",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "questioner",
+        "husband"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "q",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "married(questioner, husband)",
+    "marriage_years(questioner, husband) == 1",
+    "Not(consent_given(questioner, husband))",
+    "abusive(husband)"
+  ],
+  "rules": [
+    {
+      "name": "Annulment due to lack of consent within first year",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "q",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(married(p, q), marriage_years(p, q) <= 1, Not(consent_given(p, q)))",
+        "consequent": "can_annul(p, q)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can I get an annulment",
+      "constraint": "can_annul(questioner, husband)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

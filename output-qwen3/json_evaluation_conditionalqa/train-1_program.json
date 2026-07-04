@@ -1,0 +1,137 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_gender_certificate_from",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_approved_country",
+      "domain": [
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_in_acquired_gender_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "resides_in_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "intends_to_live_in_acquired_gender",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_gender_dysphoria_diagnosis",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_overseas_route",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_standard_route",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_alternative_route",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_grc",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "australia",
+        "uk"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Country"
+    }
+  ],
+  "knowledge_base": [
+    "age(applicant) == 30",
+    "has_gender_certificate_from(applicant, australia)",
+    "is_approved_country(australia)",
+    "lived_in_acquired_gender_years(applicant) == 3",
+    "resides_in_uk(applicant)",
+    "intends_to_live_in_acquired_gender(applicant)",
+    "ForAll([p], Implies(And(age(p) >= 18, Exists([c], And(has_gender_certificate_from(p, c), is_approved_country(c)))), eligible_for_overseas_route(p)))",
+    "ForAll([p], Implies(And(age(p) >= 18, has_gender_dysphoria_diagnosis(p), lived_in_acquired_gender_years(p) >= 2, intends_to_live_in_acquired_gender(p)), eligible_for_standard_route(p)))",
+    "ForAll([p], Implies(eligible_for_overseas_route(p), eligible_for_grc(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Applicant Eligible for GRC via Overseas Route",
+      "constraint": "eligible_for_grc(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

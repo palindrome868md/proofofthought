@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_59",
+  "question": "Each rompus is mean. Every rompus is a wumpus. Each tumpus is nervous. Wumpuses are brown. Wumpuses are yumpuses. Every yumpus is large. Yumpuses are vumpuses. Each vumpus is dull. Vumpuses are zumpuses. Zumpuses are earthy. Every zumpus is a numpus. Numpuses are not sour. Numpuses are impuses. Impuses are transparent. Each impus is a dumpus. Dumpuses are not nervous. Dumpuses are jompuses. Max is a vumpus.\n\nIs the following statement true or false? Max is not nervous.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([x], Implies(DumpusPred(x), Not(nervous(x))))': name 'x' is not defined"
+}

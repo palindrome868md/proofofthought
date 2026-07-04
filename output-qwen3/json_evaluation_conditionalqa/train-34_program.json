@@ -1,0 +1,150 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "MedicalCondition",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_citizen",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_in_gb_months",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_medical_condition",
+      "domain": [
+        "Person",
+        "MedicalCondition"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requires_extra_care",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_walking_difficulties",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_terminally_ill",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "condition_duration_months",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "resides_in_gb",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subject_to_immigration_control",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_dla",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "emily"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "uk",
+        "great_britain"
+      ]
+    },
+    "medical_conditions": {
+      "sort": "MedicalCondition",
+      "members": [
+        "aml"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "emily",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(emily) == 9",
+    "is_citizen(emily, uk) == True",
+    "lived_in_gb_months(emily) == 108",
+    "has_medical_condition(emily, aml) == True",
+    "requires_extra_care(emily) == True",
+    "has_walking_difficulties(emily) == False",
+    "resides_in_gb(emily) == True",
+    "subject_to_immigration_control(emily) == False",
+    "condition_duration_months(emily) == 1",
+    "is_terminally_ill(emily) == False",
+    "ForAll([p], Implies(And(age(p) < 16, Or(requires_extra_care(p), has_walking_difficulties(p)), resides_in_gb(p), lived_in_gb_months(p) >= 6, Not(subject_to_immigration_control(p))), eligible_for_dla(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can parent claim DLA for daughter with AML",
+      "constraint": "eligible_for_dla(emily)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

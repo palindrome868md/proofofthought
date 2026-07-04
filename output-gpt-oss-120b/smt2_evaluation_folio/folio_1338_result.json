@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1338",
+  "question": "Given the following premises:\n\nAll eels are fish. \nNo fish are plants. \nEverything displayed in the collection is either a plant or an animal.\nAll multicellular animals are not bacteria.\nAll animals displayed in the collection are multicellular.\nA sea eel is displayed in the collection.\nThe sea eel is an eel or an animal or not a plant.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: The sea eel is multicellular or is bacteria.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

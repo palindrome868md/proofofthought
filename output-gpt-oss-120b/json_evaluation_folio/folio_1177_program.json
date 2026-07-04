@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "made_by",
+      "domain": [
+        "Monitor",
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_typec",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_before_2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "lg"
+      ]
+    },
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "l2021"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Monitor"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([m], And(made_by(m, lg), has_typec(m)))",
+    "ForAll([m], Implies(has_typec(m), Not(made_before_2010(m))))",
+    "ForAll([m], Implies(in_library(m), made_before_2010(m)))",
+    "Or(in_library(l2021), has_typec(l2021))",
+    "Or(And(made_before_2010(l2021), made_by(l2021, lg)), And(Not(made_before_2010(l2021)), Not(made_by(l2021, lg))))"
+  ],
+  "verifications": [
+    {
+      "name": "ImplicationValidity",
+      "constraint": "Not(Or(in_library(l2021), made_by(l2021, lg)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

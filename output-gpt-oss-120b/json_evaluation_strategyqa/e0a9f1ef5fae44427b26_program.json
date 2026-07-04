@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Fruit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sinks",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fruits": {
+      "sort": "Fruit",
+      "members": [
+        "pear"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(sinks(pear))"
+  ],
+  "verifications": [
+    {
+      "name": "PearSinkCheck",
+      "constraint": "sinks(pear)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

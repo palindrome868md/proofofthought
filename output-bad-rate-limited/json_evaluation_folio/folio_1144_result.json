@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1144",
+  "question": "Given the following premises:\n\nAll red fruits that grow in Ben's yard contain some Vitamin C.\nAll apples that grow in Ben's yard are red fruits.\nAll fruits that grow in Ben's yard and contain some Vitamin C are healthy. \nNo fruits that grow in Ben's yard and are healthy are on a warning list.\nThe cherries grow in Ben's yard.\nIf cherries are not apples and are not healthy, then they are red fruits.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: The cherries are either on a warning list or are red.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

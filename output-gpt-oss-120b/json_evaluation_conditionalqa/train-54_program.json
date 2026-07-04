@@ -1,0 +1,81 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "ex_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receiving_fuel",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "widow_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "mother"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ex_employee(father)",
+    "receiving_fuel(father)",
+    "widow_of(mother, father)"
+  ],
+  "rules": [
+    {
+      "name": "WidowEligibility",
+      "forall": [
+        {
+          "name": "w",
+          "sort": "Person"
+        },
+        {
+          "name": "e",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(widow_of(w, e), ex_employee(e))",
+        "consequent": "eligible_allowance(w)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "MotherEligibility",
+      "constraint": "eligible_allowance(mother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Network",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "anchor_of",
+      "domain": [
+        "Person",
+        "Network"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "speaks",
+      "domain": [
+        "Person",
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "networks": {
+      "sort": "Network",
+      "members": [
+        "rede_globo"
+      ]
+    },
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "chinese"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(anchor_of(p, rede_globo), Not(speaks(p, chinese))))"
+  ],
+  "verifications": [
+    {
+      "name": "AnchorsSpeakChinese",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "anchor_of(p, rede_globo)",
+        "consequent": "speaks(p, chinese)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

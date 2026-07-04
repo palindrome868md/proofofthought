@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Container",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Int",
+      "type": "IntSort"
+    },
+    {
+      "name": "Bool",
+      "type": "BoolSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_dog",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_great_dane",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "animal_size",
+      "domain": [
+        "Animal"
+      ],
+      "range": "Int"
+    },
+    {
+      "name": "container_capacity",
+      "domain": [
+        "Container"
+      ],
+      "range": "Int"
+    },
+    {
+      "name": "fits_in",
+      "domain": [
+        "Animal",
+        "Container"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "scooby_doo"
+      ]
+    },
+    "containers": {
+      "sort": "Container",
+      "members": [
+        "kangaroo_pouch"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Animal"
+    },
+    {
+      "name": "c",
+      "sort": "Container"
+    }
+  ],
+  "knowledge_base": [
+    "is_dog(scooby_doo) == True",
+    "is_great_dane(scooby_doo) == True",
+    "animal_size(scooby_doo) == 80",
+    "container_capacity(kangaroo_pouch) == 15",
+    "ForAll([a, c], Implies(animal_size(a) > container_capacity(c), Not(fits_in(a, c))))",
+    "ForAll([a], Implies(is_great_dane(a), animal_size(a) > 50))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Could Scooby Doo fit in kangaroo pouch",
+      "constraint": "fits_in(scooby_doo, kangaroo_pouch)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

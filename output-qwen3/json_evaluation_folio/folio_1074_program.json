@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Lipstick",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "InSet",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "VelvetFinish",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "SatinFinish",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Refillable",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HasRosewood",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "lipsticks": {
+      "sort": "Lipstick",
+      "members": [
+        "rouge_999"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Lipstick"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(InSet(x), VelvetFinish(x)), Refillable(x)))",
+    "ForAll([x], Implies(InSet(x), Or(VelvetFinish(x), SatinFinish(x))))",
+    "ForAll([x], Implies(And(InSet(x), SatinFinish(x)), HasRosewood(x)))",
+    "InSet(rouge_999)",
+    "Or(HasRosewood(rouge_999), VelvetFinish(rouge_999))",
+    "ForAll([x], Implies(InSet(x), Not(And(VelvetFinish(x), SatinFinish(x)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Statement Verification",
+      "constraint": "Implies(Or(Not(HasRosewood(rouge_999)), Refillable(rouge_999)), And(Not(SatinFinish(rouge_999)), Not(HasRosewood(rouge_999))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

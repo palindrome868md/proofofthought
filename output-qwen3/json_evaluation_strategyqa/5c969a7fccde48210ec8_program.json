@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Clothing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wears",
+      "domain": [
+        "Person",
+        "Clothing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_amish",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shunned_by",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "are_cousins",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_designer",
+      "domain": [
+        "Clothing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "clothing_items": {
+      "sort": "Clothing",
+      "members": [
+        "dolce_gabbana_suit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_designer(dolce_gabbana_suit) == True",
+    "ForAll([p, c], Implies(And(is_amish(c), are_cousins(p, c), wears(p, dolce_gabbana_suit)), shunned_by(p, c)))"
+  ],
+  "verifications": [
+    {
+      "name": "D&G wearer shunned by Amish cousins",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(wears(p, dolce_gabbana_suit), is_amish(c), are_cousins(p, c), shunned_by(p, c))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

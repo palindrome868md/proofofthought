@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BoolSort",
+      "type": "BoolSort"
+    },
+    {
+      "name": "IntSort",
+      "type": "IntSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_pregnant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_first_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pregnancy_months",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "receives_qualifying_benefits",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_scotland",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_sure_start_grant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_pregnancy_baby_payment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_maternity_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_pregnant(applicant) == True",
+    "is_first_child(applicant) == True",
+    "pregnancy_months(applicant) == 6",
+    "ForAll([p], Implies(And(is_pregnant(p), is_first_child(p), pregnancy_months(p) >= 3, pregnancy_months(p) <= 9), can_apply_for_sure_start_grant(p)))",
+    "ForAll([p], Implies(And(is_pregnant(p), is_first_child(p), Not(lives_in_scotland(p)), receives_qualifying_benefits(p)), eligible_for_maternity_allowance(p)))",
+    "ForAll([p], Implies(lives_in_scotland(p), can_apply_for_pregnancy_baby_payment(p)))",
+    "ForAll([p], Implies(can_apply_for_sure_start_grant(p), Or(can_apply_for_pregnancy_baby_payment(p), eligible_for_maternity_allowance(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can applicant apply for maternity allowances",
+      "constraint": "Or(can_apply_for_sure_start_grant(applicant), can_apply_for_pregnancy_baby_payment(applicant), eligible_for_maternity_allowance(applicant))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

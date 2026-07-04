@@ -1,0 +1,163 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "luminous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "individuals": {
+      "sort": "Entity",
+      "members": [
+        "Stella"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "e",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([e], Implies(yumpus(e), Not(small(e))))",
+    "ForAll([e], Implies(yumpus(e), dumpus(e)))",
+    "ForAll([e], Implies(dumpus(e), opaque(e)))",
+    "ForAll([e], Implies(dumpus(e), jompus(e)))",
+    "ForAll([e], Implies(jompus(e), shy(e)))",
+    "ForAll([e], Implies(numpus(e), sour(e)))",
+    "ForAll([e], Implies(jompus(e), tumpus(e)))",
+    "ForAll([e], Implies(tumpus(e), brown(e)))",
+    "ForAll([e], Implies(tumpus(e), vumpus(e)))",
+    "ForAll([e], Implies(vumpus(e), dull(e)))",
+    "ForAll([e], Implies(vumpus(e), wumpus(e)))",
+    "ForAll([e], Implies(wumpus(e), Not(sour(e))))",
+    "ForAll([e], Implies(wumpus(e), rompus(e)))",
+    "ForAll([e], Implies(rompus(e), Not(luminous(e))))",
+    "ForAll([e], Implies(rompus(e), impus(e)))",
+    "dumpus(Stella)"
+  ],
+  "verifications": [
+    {
+      "name": "Stella is sour",
+      "constraint": "sour(Stella)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

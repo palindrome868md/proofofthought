@@ -1,0 +1,125 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Project",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Device",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Song",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "doing_project",
+      "domain": [
+        "Person",
+        "Project"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "project_written_in",
+      "domain": [
+        "Project",
+        "Language"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_device",
+      "domain": [
+        "Person",
+        "Device"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "play_song",
+      "domain": [
+        "Person",
+        "Song"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_perfect",
+      "domain": [
+        "Song"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Sam"
+      ]
+    },
+    "devices": {
+      "sort": "Device",
+      "members": [
+        "mac"
+      ]
+    },
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "cpp",
+        "python"
+      ]
+    },
+    "projects": {
+      "sort": "Project",
+      "members": [
+        "proj"
+      ]
+    },
+    "songs": {
+      "sort": "Song",
+      "members": [
+        "song1"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Project"
+    },
+    {
+      "name": "s",
+      "sort": "Song"
+    }
+  ],
+  "knowledge_base": [
+    "doing_project(Sam, proj)",
+    "ForAll([p], Implies(doing_project(Sam, p), Or(project_written_in(p, cpp), project_written_in(p, python))))",
+    "ForAll([p], Implies(And(doing_project(Sam, p), project_written_in(p, python)), Not(uses_device(Sam, mac))))",
+    "uses_device(Sam, mac)",
+    "Implies(uses_device(Sam, mac), Exists([s], play_song(Sam, s)))",
+    "ForAll([s], Implies(Not(is_perfect(s)), Not(play_song(Sam, s))))"
+  ],
+  "verifications": [
+    {
+      "name": "Negation of C++ Project",
+      "constraint": "Not(project_written_in(proj, cpp))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

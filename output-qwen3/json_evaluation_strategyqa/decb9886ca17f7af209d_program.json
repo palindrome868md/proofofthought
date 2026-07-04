@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "official_language",
+      "domain": [
+        "Country"
+      ],
+      "range": "Language"
+    },
+    {
+      "name": "language_root",
+      "domain": [
+        "Language"
+      ],
+      "range": "Language"
+    },
+    {
+      "name": "is_rooted_in",
+      "domain": [
+        "Language",
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "saint_vincent_grenadines"
+      ]
+    },
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "english"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "official_language(saint_vincent_grenadines) == english",
+    "language_root(english) == english",
+    "is_rooted_in(english, english)"
+  ],
+  "verifications": [
+    {
+      "name": "SVG Language Rooted in English",
+      "constraint": "is_rooted_in(official_language(saint_vincent_grenadines), english)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

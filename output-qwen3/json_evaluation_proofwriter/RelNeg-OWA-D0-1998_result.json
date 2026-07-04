@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D0-1998",
+  "question": "The cow is not round. The cow needs the lion. The cow needs the squirrel. The cow does not see the lion. The cow does not see the squirrel. The lion is not red. The lion needs the squirrel. The lion sees the cow. The lion does not see the squirrel. The squirrel is cold. The squirrel is not red. The squirrel likes the cow. The squirrel does not like the lion. The squirrel needs the cow. The squirrel sees the cow. If someone is blue then they do not see the squirrel. If someone is round and not blue then they see the squirrel. If someone is blue then they do not like the lion. If someone is blue then they like the lion. If someone sees the lion then the lion does not see the cow. If the lion is round and the lion needs the cow then the cow is nice.\n\nQuestion: The squirrel likes the cow.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Estate",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "estate_value",
+      "domain": [
+        "Estate"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_spouse",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_beneficiary",
+      "domain": [
+        "Person",
+        "Estate"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "inherited_from_spouse",
+      "domain": [
+        "Person",
+        "Estate"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "inheritance_tax_required",
+      "domain": [
+        "Person",
+        "Estate"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "widow",
+        "deceased_husband"
+      ]
+    },
+    "estates": {
+      "sort": "Estate",
+      "members": [
+        "family_home_estate"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "e",
+      "sort": "Estate"
+    }
+  ],
+  "knowledge_base": [
+    "estate_value(family_home_estate) == 300000",
+    "is_spouse(widow, deceased_husband) == True",
+    "is_beneficiary(widow, family_home_estate) == True",
+    "inherited_from_spouse(widow, family_home_estate) == True",
+    "ForAll([e], Implies(estate_value(e) < 325000, Not(inheritance_tax_required(p, e))))",
+    "ForAll([p, e], Implies(inherited_from_spouse(p, e), Not(inheritance_tax_required(p, e))))",
+    "ForAll([p, e], Implies(is_beneficiary(p, e), Not(inheritance_tax_required(p, e))))"
+  ],
+  "verifications": [
+    {
+      "name": "Check if widow must pay inheritance tax",
+      "constraint": "inheritance_tax_required(widow, family_home_estate)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

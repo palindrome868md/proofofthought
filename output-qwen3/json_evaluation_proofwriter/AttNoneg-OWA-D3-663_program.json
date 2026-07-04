@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "charlie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_red(anne)",
+    "is_young(charlie)",
+    "ForAll([p], Implies(And(is_red(p), is_young(p)), is_smart(p)))",
+    "ForAll([p], Implies(is_young(p), is_cold(p)))",
+    "Implies(is_red(anne), is_cold(anne))",
+    "ForAll([p], Implies(is_red(p), is_young(p)))",
+    "ForAll([p], Implies(And(is_young(p), is_cold(p)), is_quiet(p)))",
+    "ForAll([p], Implies(And(is_cold(p), is_young(p)), is_red(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Anne is red",
+      "constraint": "is_red(anne)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

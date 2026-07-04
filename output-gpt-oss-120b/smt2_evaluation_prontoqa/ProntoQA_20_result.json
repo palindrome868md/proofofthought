@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_20",
+  "question": "Each yumpus is not small. Each yumpus is a dumpus. Each dumpus is opaque. Every dumpus is a jompus. Each jompus is shy. Each numpus is sour. Every jompus is a tumpus. Each tumpus is brown. Each tumpus is a vumpus. Vumpuses are dull. Vumpuses are wumpuses. Every wumpus is not sour. Wumpuses are rompuses. Each rompus is not luminous. Rompuses are impuses. Stella is a dumpus.\n\nIs the following statement true or false? Stella is sour.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

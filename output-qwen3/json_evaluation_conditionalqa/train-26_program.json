@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_beneficiary",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pays_installments",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "interest_payable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_beneficiary(me)",
+    "pays_installments(me)",
+    "ForAll([p], Implies(pays_installments(p), interest_payable(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is interest payable on installments",
+      "constraint": "interest_payable(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_39",
+  "question": "Each rompus is amenable. Each rompus is an impus. Impuses are happy. Every impus is a wumpus. Wumpuses are sour. Each wumpus is a zumpus. Zumpuses are fruity. Zumpuses are tumpuses. Each tumpus is not large. Every tumpus is a vumpus. Yumpuses are not hot. Every vumpus is liquid. Every vumpus is a jompus. Jompuses are hot. Jompuses are dumpuses. Stella is a wumpus.\n\nIs the following statement true or false? Stella is not hot.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

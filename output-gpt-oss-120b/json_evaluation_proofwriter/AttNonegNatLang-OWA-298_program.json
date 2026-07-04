@@ -1,0 +1,128 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alan",
+        "dave",
+        "gary",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "round(alan)",
+    "kind(alan)",
+    "round(dave)",
+    "kind(dave)",
+    "young(gary)",
+    "round(gary)",
+    "cold(gary)",
+    "young(harry)",
+    "rough(harry)",
+    "green(harry)",
+    "cold(harry)",
+    "nice(harry)",
+    "ForAll([p], Implies(red(p), kind(p)))",
+    "ForAll([p], Implies(red(p), young(p)))",
+    "ForAll([p], Implies(And(young(p), rough(p), round(p)), kind(p)))",
+    "ForAll([p], Implies(And(nice(p), rough(p)), big(p)))",
+    "ForAll([p], Implies(And(big(p), round(p)), red(p)))",
+    "ForAll([p], Implies(And(red(p), nice(p)), blue(p)))",
+    "ForAll([p], Implies(And(cold(p), rough(p), red(p)), kind(p)))",
+    "ForAll([p], Implies(And(young(p), big(p), rough(p)), round(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is big",
+      "constraint": "big(harry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

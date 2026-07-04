@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Rover",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Year",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_operational",
+      "domain": [
+        "Rover",
+        "Year"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "would_make_news",
+      "domain": [
+        "Rover",
+        "Year"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "rovers": {
+      "sort": "Rover",
+      "members": [
+        "spirit"
+      ]
+    },
+    "years": {
+      "sort": "Year",
+      "members": [
+        "year_2020"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "r",
+      "sort": "Rover"
+    },
+    {
+      "name": "y",
+      "sort": "Year"
+    }
+  ],
+  "knowledge_base": [
+    "is_operational(spirit, year_2020) == False",
+    "ForAll([r, y], Implies(Not(is_operational(r, y)), Not(would_make_news(r, y))))"
+  ],
+  "verifications": [
+    {
+      "name": "Would Spirit broadcast make news in 2020",
+      "constraint": "would_make_news(spirit, year_2020)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

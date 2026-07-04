@@ -1,0 +1,80 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BodyPart",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_body_part",
+      "domain": [
+        "Person",
+        "BodyPart"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wins_stanley_cup",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_play_hockey",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_functional_legs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "body_parts": {
+      "sort": "BodyPart",
+      "members": [
+        "tibia"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(wins_stanley_cup(p), can_play_hockey(p)))",
+    "ForAll([p], Implies(can_play_hockey(p), has_functional_legs(p)))",
+    "ForAll([p], Implies(has_functional_legs(p), has_body_part(p, tibia)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is tibia necessary for Stanley Cup",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "wins_stanley_cup(p)",
+        "consequent": "has_body_part(p, tibia)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

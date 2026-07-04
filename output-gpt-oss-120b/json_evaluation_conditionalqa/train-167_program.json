@@ -1,0 +1,40 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "assesses_health",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "aunt_dina",
+        "tribunal"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "assesses_health(tribunal, aunt_dina)"
+  ],
+  "verifications": [
+    {
+      "name": "Will tribunal assess her health",
+      "constraint": "assesses_health(tribunal, aunt_dina)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Organism",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eel",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fish",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plant",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "animal",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "multicellular",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bacteria",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "displayed",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organisms": {
+      "sort": "Organism",
+      "members": [
+        "sea_eel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Organism"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(eel(x), fish(x)))",
+    "ForAll([x], Implies(fish(x), Not(plant(x))))",
+    "ForAll([x], Implies(displayed(x), Or(plant(x), animal(x))))",
+    "ForAll([x], Implies(And(multicellular(x), animal(x)), Not(bacteria(x))))",
+    "ForAll([x], Implies(And(animal(x), displayed(x)), multicellular(x)))",
+    "displayed(sea_eel)",
+    "Or(eel(sea_eel), animal(sea_eel), Not(plant(sea_eel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sea eel is bacteria",
+      "constraint": "bacteria(sea_eel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

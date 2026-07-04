@@ -1,0 +1,103 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "spouse",
+      "domain": [
+        "Person"
+      ],
+      "range": "Person"
+    },
+    {
+      "name": "cousin",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "void_marriage",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_one_year_EW",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_file_annulment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alice",
+        "bob"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "spouse(alice) == bob",
+    "cousin(alice, bob) == True",
+    "lived_one_year_EW(alice) == True"
+  ],
+  "rules": [
+    {
+      "name": "VoidIfCousin",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "q",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "cousin(p, q)",
+        "consequent": "void_marriage(p, q)"
+      }
+    },
+    {
+      "name": "CanAnnulIfResidencyAndVoid",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(lived_one_year_EW(p), void_marriage(p, spouse(p)))",
+        "consequent": "can_file_annulment(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can Alice file annulment petition",
+      "constraint": "can_file_annulment(alice)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

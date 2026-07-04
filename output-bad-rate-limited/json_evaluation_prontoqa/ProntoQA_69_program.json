@@ -1,0 +1,119 @@
+{
+  "sorts": [
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Vumpus"
+    }
+  ],
+  "functions": [
+    {
+      "name": "vumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "vumpuses": {
+      "sort": "Vumpus",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "vumpus(wren)",
+    "ForAll([x], Implies(vumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), Not(cold(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Wren not cold",
+      "constraint": "Not(cold(wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

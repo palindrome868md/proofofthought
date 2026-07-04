@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "subscribe_A",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribe_H",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_three",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "go_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefer_tv",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watch_tv_in_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(subscribe_A(p), eligible_three(p)))",
+    "Exists([p], go_weekly(p))",
+    "ForAll([p], Or(subscribe_A(p), subscribe_H(p)))",
+    "ForAll([p], Implies(prefer_tv(p), Not(watch_tv_in_cinema(p))))",
+    "ForAll([p], Implies(subscribe_H(p), prefer_tv(p)))",
+    "watch_tv_in_cinema(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "LilyStatement",
+      "constraint": "Implies(Not(And(go_weekly(lily), subscribe_H(lily))), Or(eligible_three(lily), prefer_tv(lily)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

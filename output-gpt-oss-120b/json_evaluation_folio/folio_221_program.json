@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Genus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_bird_genus",
+      "domain": [
+        "Genus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "discovered",
+      "domain": [
+        "Person",
+        "Genus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Yevgeny_Kurochkin"
+      ]
+    },
+    "genera": {
+      "sort": "Genus",
+      "members": [
+        "Ambiortus"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "g",
+      "sort": "Genus"
+    }
+  ],
+  "knowledge_base": [
+    "is_bird_genus(Ambiortus)",
+    "discovered(Yevgeny_Kurochkin, Ambiortus)"
+  ],
+  "verifications": [
+    {
+      "name": "Yevgeny discovered a new bird genus",
+      "exists": [
+        {
+          "name": "g",
+          "sort": "Genus"
+        }
+      ],
+      "constraint": "And(is_bird_genus(g), discovered(Yevgeny_Kurochkin, g))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

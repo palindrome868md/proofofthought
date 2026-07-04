@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Food",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "contains_plastic",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_shrimp_scampi",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_properly_prepared_dish",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "foods": {
+      "sort": "Food",
+      "members": [
+        "shrimp_scampi"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "f",
+      "sort": "Food"
+    }
+  ],
+  "knowledge_base": [
+    "is_shrimp_scampi(shrimp_scampi) == True",
+    "is_properly_prepared_dish(shrimp_scampi) == True",
+    "ForAll([f], Implies(is_properly_prepared_dish(f), Not(contains_plastic(f))))"
+  ],
+  "verifications": [
+    {
+      "name": "Shrimp Scampi Contains Plastic",
+      "constraint": "contains_plastic(shrimp_scampi)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D3-1028",
+  "question": "Bob is blue. Erin is quiet. Fiona is cold. Harry is cold. All quiet things are blue. If Harry is blue then Harry is not young. Blue things are young. Blue, round things are cold. If something is blue and not red then it is round. If something is young then it is white. If Erin is red and Erin is not round then Erin is young. If Erin is red and Erin is not cold then Erin is white.\n\nQuestion: Erin is not blue.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

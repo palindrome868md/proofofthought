@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Book",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_czech_person",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "published_by",
+      "domain": [
+        "Book",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "year_of_publication",
+      "domain": [
+        "Book"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "miroslav_venhoda"
+      ]
+    },
+    "books": {
+      "sort": "Book",
+      "members": [
+        "gregorian_chant_method"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_czech_person(miroslav_venhoda)",
+    "published_by(gregorian_chant_method, miroslav_venhoda)",
+    "year_of_publication(gregorian_chant_method) == 1946"
+  ],
+  "verifications": [
+    {
+      "name": "Exists a Czech who published a book in 1946",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "b",
+          "sort": "Book"
+        }
+      ],
+      "constraint": "And(is_czech_person(p), published_by(b, p), year_of_publication(b) == 1946)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

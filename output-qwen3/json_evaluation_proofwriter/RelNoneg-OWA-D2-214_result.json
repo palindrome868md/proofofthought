@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D2-214",
+  "question": "The cat chases the rabbit. The cat is kind. The cat is red. The cat is rough. The cat visits the mouse. The mouse chases the cat. The mouse chases the rabbit. The mouse eats the rabbit. The mouse is red. The mouse is rough. The mouse visits the cat. The mouse visits the rabbit. The rabbit chases the mouse. The rabbit eats the cat. The rabbit eats the mouse. The rabbit is red. If something visits the rabbit and it visits the cat then the rabbit chases the cat. If something chases the cat then it visits the mouse.\n\nQuestion: The rabbit chases the cat.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

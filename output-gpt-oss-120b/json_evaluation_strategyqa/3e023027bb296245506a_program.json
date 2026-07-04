@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "on_diet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "skip_lunch",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    },
+    "places": {
+      "sort": "Place",
+      "members": [
+        "mcdonalds"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(on_diet(p), skip_lunch(p, mcdonalds)))",
+    "on_diet(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Must_skip_McDonalds_lunch_when_on_diet",
+      "constraint": "skip_lunch(you, mcdonalds)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

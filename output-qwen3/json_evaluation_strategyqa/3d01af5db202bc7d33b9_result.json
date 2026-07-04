@@ -1,0 +1,11 @@
+{
+  "sample_id": "3d01af5db202bc7d33b9",
+  "question": "Would someone in Mumbai refer to Solanum melongena as an eggplant?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

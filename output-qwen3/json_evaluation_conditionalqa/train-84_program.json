@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Marriage",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "applied_for_grc",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spouse_agrees_to_stay_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "gets_interim_certificate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "marriage_status_changes",
+      "domain": [
+        "Marriage"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "spouse"
+      ]
+    },
+    "marriages": {
+      "sort": "Marriage",
+      "members": [
+        "current_marriage"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "s",
+      "sort": "Person"
+    },
+    {
+      "name": "m",
+      "sort": "Marriage"
+    }
+  ],
+  "knowledge_base": [
+    "is_married(applicant, spouse)",
+    "applied_for_grc(applicant)",
+    "ForAll([p, s], Implies(And(applied_for_grc(p), is_married(p, s), spouse_agrees_to_stay_married(p), spouse_agrees_to_stay_married(s)), Not(gets_interim_certificate(p))))",
+    "ForAll([p, s], Implies(And(applied_for_grc(p), is_married(p, s), Or(Not(spouse_agrees_to_stay_married(p)), Not(spouse_agrees_to_stay_married(s)))), gets_interim_certificate(p)))",
+    "ForAll([p, m], Implies(And(applied_for_grc(p), gets_interim_certificate(p)), marriage_status_changes(m)))",
+    "ForAll([p, m], Implies(And(applied_for_grc(p), Not(gets_interim_certificate(p)), is_married(p, spouse)), Not(marriage_status_changes(m))))"
+  ],
+  "verifications": [
+    {
+      "name": "Marriage status can remain unchanged with spouse agreement",
+      "constraint": "And(spouse_agrees_to_stay_married(applicant), spouse_agrees_to_stay_married(spouse), Not(marriage_status_changes(current_marriage)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

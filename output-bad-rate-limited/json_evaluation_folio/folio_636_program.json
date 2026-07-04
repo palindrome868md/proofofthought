@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Party",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sat_in_parliament",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "supported_party",
+      "domain": [
+        "Person"
+      ],
+      "range": "Party"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    },
+    "parties": {
+      "sort": "Party",
+      "members": [
+        "Portland_Whigs"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "sat_in_parliament(william_dickinson)",
+    "supported_party(william_dickinson) == Portland_Whigs",
+    "ForAll([p], Implies(supported_party(p) == Portland_Whigs, Not(sat_in_parliament(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson did not get a seat in Parliament",
+      "constraint": "Not(sat_in_parliament(william_dickinson))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

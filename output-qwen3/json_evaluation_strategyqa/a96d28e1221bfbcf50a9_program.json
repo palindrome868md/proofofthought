@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_uninsured",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_insured",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "declines_ct_scan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cost_barrier_score",
+      "domain": [
+        "Person"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {
+    "insurance_statuses": {
+      "sort": "Person",
+      "members": [
+        "typical_uninsured",
+        "typical_insured"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_uninsured(p), cost_barrier_score(p) > 0.7))",
+    "ForAll([p], Implies(is_insured(p), cost_barrier_score(p) < 0.3))",
+    "ForAll([p], Implies(cost_barrier_score(p) > 0.5, declines_ct_scan(p)))",
+    "is_uninsured(typical_uninsured) == True",
+    "is_insured(typical_insured) == True",
+    "ForAll([p], Implies(is_uninsured(p), Not(is_insured(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Uninsured More Likely to Decline CT Scan Than Insured",
+      "forall": [
+        {
+          "name": "p1",
+          "sort": "Person"
+        },
+        {
+          "name": "p2",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_uninsured(p1), is_insured(p2))",
+        "consequent": "cost_barrier_score(p1) > cost_barrier_score(p2)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

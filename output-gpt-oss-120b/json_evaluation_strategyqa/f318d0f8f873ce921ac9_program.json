@@ -1,0 +1,45 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lie_under_oath",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ok_to_lie",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(lie_under_oath(p), Not(ok_to_lie(p))))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is it okay to lie after taking an oath in a court of law?",
+      "constraint": "ok_to_lie(p)"
+    }
+  ],
+  "optimization": null,
+  "actions": [
+    "verify_conditions"
+  ]
+}

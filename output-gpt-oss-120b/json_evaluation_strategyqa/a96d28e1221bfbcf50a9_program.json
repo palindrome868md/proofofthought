@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_insurance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "declines_ct",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alice",
+        "bob"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "u",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Not(has_insurance(alice))",
+    "has_insurance(bob)",
+    "ForAll([p], Implies(Not(has_insurance(p)), declines_ct(p)))",
+    "ForAll([p], Implies(has_insurance(p), Not(declines_ct(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Uninsured more likely to decline CT than insured",
+      "exists": [
+        {
+          "name": "u",
+          "sort": "Person"
+        },
+        {
+          "name": "i",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(Not(has_insurance(u)), declines_ct(u), has_insurance(i), Not(declines_ct(i)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D2-1963",
+  "question": "Bob is smart. Erin is cold. Erin is young. If Bob is white and Bob is cold then Bob is kind. Furry things are cold. All furry things are white. All cold, smart things are rough. Young things are smart. If Bob is white then Bob is young.\n\nQuestion: Erin is not rough.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

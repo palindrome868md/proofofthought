@@ -1,0 +1,158 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organisation",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CourtOrder",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_british",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_parent_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_for_british_org",
+      "domain": [
+        "Person",
+        "Organisation"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_remo_country",
+      "domain": [
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_maintenance_agreement",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_obtain_court_order",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "married_abroad",
+      "domain": [
+        "Person",
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_lives_with",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "mother",
+        "father",
+        "child"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "ghana",
+        "uk"
+      ]
+    },
+    "organisations": {
+      "sort": "Organisation",
+      "members": [
+        "british_org"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Country"
+    },
+    {
+      "name": "o",
+      "sort": "Organisation"
+    }
+  ],
+  "knowledge_base": [
+    "lives_in(mother, ghana) == True",
+    "lives_in(father, uk) == True",
+    "lives_in(child, ghana) == True",
+    "is_british(father) == True",
+    "is_parent_of(father, child) == True",
+    "is_parent_of(mother, child) == True",
+    "child_lives_with(child, mother) == True",
+    "married_abroad(mother, father, ghana) == True",
+    "has_maintenance_agreement(mother, father) == False",
+    "is_remo_country(uk) == True",
+    "ForAll([p1, p2, c], Implies(And(is_parent_of(p1, p2), lives_in(p1, uk), lives_in(p2, c), is_remo_country(c)), can_obtain_court_order(p2, p1)))",
+    "ForAll([p1, p2, o], Implies(And(is_parent_of(p1, p2), is_british(p1), works_for_british_org(p1, o)), can_obtain_court_order(p2, p1)))",
+    "ForAll([p1, p2], Implies(And(is_parent_of(p1, p2), Not(has_maintenance_agreement(p1, p2)), lives_in(p1, uk), lives_in(p2, ghana)), can_obtain_court_order(p2, p1)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can mother obtain court order for child maintenance against father",
+      "constraint": "can_obtain_court_order(mother, father)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

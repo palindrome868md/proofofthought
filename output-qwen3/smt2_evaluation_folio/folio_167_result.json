@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_167",
+  "question": "Given the following premises:\n\nIf a person is the leader of a country for life, that person has power.\nLeaders of a country for life are either a king or a queen.\nQueens are female.\nKings are male. \nElizabeth is a queen.\nElizabeth is a leader of a country for life.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Elizabeth is a leader of a country for life.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

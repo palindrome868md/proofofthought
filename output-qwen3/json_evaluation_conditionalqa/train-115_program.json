@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Document",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_adult",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_mental_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "willing_to_serve",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_sign_forms",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_be_appointed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_appoint_attorney",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "donor",
+        "daughter"
+      ]
+    },
+    "documents": {
+      "sort": "Document",
+      "members": [
+        "lpa_form"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(can_be_appointed(p), And(is_adult(p), has_mental_capacity(p), can_sign_forms(p))))",
+    "ForAll([p], Implies(can_sign_forms(p), willing_to_serve(p)))",
+    "ForAll([p], Implies(Not(willing_to_serve(p)), Not(can_sign_forms(p))))",
+    "ForAll([p], Implies(Not(can_sign_forms(p)), Not(can_be_appointed(p))))",
+    "ForAll([d, p], Implies(can_appoint_attorney(d, p), And(has_mental_capacity(d), can_be_appointed(p))))",
+    "has_mental_capacity(donor) == True",
+    "is_adult(daughter) == True",
+    "has_mental_capacity(daughter) == True",
+    "willing_to_serve(daughter) == False"
+  ],
+  "verifications": [
+    {
+      "name": "Can appoint unwilling daughter as attorney",
+      "constraint": "can_appoint_attorney(donor, daughter)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

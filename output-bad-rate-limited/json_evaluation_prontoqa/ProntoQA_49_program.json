@@ -1,0 +1,180 @@
+{
+  "sorts": [
+    {
+      "name": "Creature",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompuse",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Creature",
+      "members": [
+        "Wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Creature"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(wumpus(x), rompuse(x)))",
+    "ForAll([x], Implies(wumpus(x), dull(x)))",
+    "ForAll([x], Implies(rompuse(x), Not(cold(x))))",
+    "ForAll([x], Implies(rompuse(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), feisty(x)))",
+    "ForAll([x], Implies(dumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), mean(x)))",
+    "ForAll([x], Implies(numpus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), Not(earthy(x))))",
+    "ForAll([x], Implies(zumpus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), opaque(x)))",
+    "ForAll([x], Implies(impuse(x), liquid(x)))",
+    "ForAll([x], Implies(tumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), Not(liquid(x))))",
+    "ForAll([x], Implies(vumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), Not(spicy(x))))",
+    "ForAll([x], Implies(jompus(x), yumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), Not(rompuse(x))))",
+    "dumpus(Wren)"
+  ],
+  "verifications": [
+    {
+      "name": "Wren is liquid",
+      "constraint": "liquid(Wren)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

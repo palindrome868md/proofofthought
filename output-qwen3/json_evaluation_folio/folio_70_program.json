@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "IsEasy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsHard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsRecommendedToNovice",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "StarredByMoreThan1000",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ACRateLow",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "TwoSum",
+        "FourSum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(IsEasy(p), ACRateLow(p)))",
+    "ForAll([p], Implies(IsRecommendedToNovice(p), IsEasy(p)))",
+    "ForAll([p], Implies(IsHard(p), Not(IsEasy(p))))",
+    "ForAll([p], Implies(StarredByMoreThan1000(p), IsHard(p)))",
+    "IsRecommendedToNovice(TwoSum)",
+    "StarredByMoreThan1000(FourSum)"
+  ],
+  "verifications": [
+    {
+      "name": "Is FourSum Recommended to Novice",
+      "constraint": "IsRecommendedToNovice(FourSum)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

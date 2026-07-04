@@ -1,0 +1,147 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_shy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_metallic",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_vumpus(Fae)",
+    "ForAll([x], Implies(is_vumpus(x), is_transparent(x)))",
+    "ForAll([x], Implies(is_vumpus(x), is_tumpus(x)))",
+    "ForAll([x], Implies(is_tumpus(x), is_shy(x)))",
+    "ForAll([x], Implies(is_tumpus(x), is_numpus(x)))",
+    "ForAll([x], Implies(is_numpus(x), Not(is_blue(x))))",
+    "ForAll([x], Implies(is_numpus(x), is_dumpus(x)))",
+    "ForAll([x], Implies(is_dumpus(x), Not(is_fruity(x))))",
+    "ForAll([x], Implies(is_dumpus(x), is_wumpus(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_temperate(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_rompus(x)))",
+    "ForAll([x], Implies(is_rompus(x), is_metallic(x)))",
+    "ForAll([x], Implies(is_rompus(x), is_yumpus(x)))",
+    "ForAll([x], Implies(is_zumpus(x), Not(is_temperate(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is temperate",
+      "constraint": "is_temperate(Fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

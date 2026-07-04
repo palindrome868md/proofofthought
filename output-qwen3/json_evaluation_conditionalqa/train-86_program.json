@@ -1,0 +1,130 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_child",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sibling",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "missing_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "from_england_wales",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "natural_disaster_case",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_claimant",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_time_requirement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_location_requirement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_get_declaration",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sibling_objection_prevents",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user",
+        "father",
+        "sister"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Person"
+    },
+    {
+      "name": "m",
+      "sort": "Person"
+    },
+    {
+      "name": "s",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_child(user, father)",
+    "is_sibling(sister, father)",
+    "missing_years(father) == 5",
+    "from_england_wales(father)",
+    "Not(natural_disaster_case(father))",
+    "ForAll([c, m], Implies(Or(is_child(c, m), is_sibling(c, m)), eligible_claimant(c, m)))",
+    "ForAll([m], Implies(Or(missing_years(m) >= 7, And(missing_years(m) < 7, natural_disaster_case(m))), meets_time_requirement(m)))",
+    "ForAll([m], Implies(from_england_wales(m), meets_location_requirement(m)))",
+    "ForAll([c, m], Implies(And(eligible_claimant(c, m), meets_time_requirement(m), meets_location_requirement(m)), can_get_declaration(c, m)))",
+    "ForAll([s, m], Implies(is_sibling(s, m), Not(sibling_objection_prevents(s, m))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can user get death certificate for father",
+      "constraint": "can_get_declaration(user, father)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

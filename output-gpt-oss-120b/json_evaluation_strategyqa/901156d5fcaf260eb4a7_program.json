@@ -1,0 +1,37 @@
+{
+  "sorts": [
+    {
+      "name": "Temperature",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "num_anchovy_in_temp",
+      "domain": [
+        "Temperature"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "temperatures": {
+      "sort": "Temperature",
+      "members": [
+        "cold",
+        "warm"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "More anchovy in colder water than warmer water",
+      "constraint": "num_anchovy_in_temp(cold) > num_anchovy_in_temp(warm)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

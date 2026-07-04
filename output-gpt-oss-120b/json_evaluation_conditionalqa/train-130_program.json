@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_long_term_physical_disability",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_in_England_last_2_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_PIP",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "my_kid"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(my_kid) == 16",
+    "has_long_term_physical_disability(my_kid)",
+    "lived_in_England_last_2_years(my_kid)",
+    "ForAll([p], Implies(And(age(p) >= 16, has_long_term_physical_disability(p), lived_in_England_last_2_years(p)), eligible_for_PIP(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Kid eligible for PIP",
+      "constraint": "eligible_for_PIP(my_kid)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

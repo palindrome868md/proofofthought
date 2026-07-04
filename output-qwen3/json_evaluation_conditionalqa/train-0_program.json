@@ -1,0 +1,99 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_child_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sibling_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entitlement_order",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "died_intestate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_greater_probate_right",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "deceased_father",
+        "claimant_child",
+        "paternal_uncle"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    },
+    {
+      "name": "x",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "died_intestate(deceased_father) == True",
+    "is_child_of(claimant_child, deceased_father) == True",
+    "is_sibling_of(paternal_uncle, deceased_father) == True",
+    "age(claimant_child) >= 18",
+    "age(paternal_uncle) >= 18",
+    "ForAll([p1, p2], Implies(And(is_child_of(p1, deceased_father), is_sibling_of(p2, deceased_father)), entitlement_order(p1) < entitlement_order(p2)))",
+    "ForAll([p1, p2], Implies(entitlement_order(p1) < entitlement_order(p2), has_greater_probate_right(p1, p2)))",
+    "entitlement_order(claimant_child) == 2",
+    "entitlement_order(paternal_uncle) == 6"
+  ],
+  "verifications": [
+    {
+      "name": "Claimant has greater probate right than uncle",
+      "constraint": "has_greater_probate_right(claimant_child, paternal_uncle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

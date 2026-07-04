@@ -1,0 +1,69 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Easy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Hard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Recommended",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Starred",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(Recommended(p), Easy(p)))",
+    "ForAll([p], Or(Easy(p), Hard(p)))",
+    "ForAll([p], Implies(Starred(p), Hard(p)))",
+    "Recommended(two_sum)",
+    "Starred(four_sum)"
+  ],
+  "verifications": [
+    {
+      "name": "4Sum recommended to novice",
+      "constraint": "Recommended(four_sum)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

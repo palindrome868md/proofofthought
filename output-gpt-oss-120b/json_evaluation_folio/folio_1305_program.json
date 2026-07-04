@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "bird",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "penguin",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cat",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "animal",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ectothermic",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "endothermic",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "produce_heat",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "ron",
+        "henry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(bird(x), Not(ectothermic(x))))",
+    "ForAll([x], Implies(penguin(x), bird(x)))",
+    "ForAll([x], Implies(animal(x), Or(ectothermic(x), endothermic(x))))",
+    "ForAll([x], Implies(And(animal(x), endothermic(x)), produce_heat(x)))",
+    "animal(ron)",
+    "animal(henry)",
+    "Not(bird(ron))",
+    "Not(produce_heat(ron))",
+    "Not(cat(henry))",
+    "Not(produce_heat(henry))"
+  ],
+  "verifications": [
+    {
+      "name": "HenryPenguinOrEndothermic",
+      "constraint": "Or(penguin(henry), endothermic(henry))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

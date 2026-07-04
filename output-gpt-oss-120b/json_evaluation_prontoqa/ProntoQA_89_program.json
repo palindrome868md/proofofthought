@@ -1,0 +1,131 @@
+{
+  "sorts": [
+    {
+      "name": "Obj",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "tumpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Obj"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "objects": {
+      "sort": "Obj",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Obj"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(tumpus(x), sour(x)))",
+    "ForAll([x], Implies(tumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), bright(x)))",
+    "ForAll([x], Implies(vumpus(x), numpus(x)))",
+    "ForAll([x], Implies(rompus(x), Not(brown(x))))",
+    "ForAll([x], Implies(numpus(x), liquid(x)))",
+    "ForAll([x], Implies(numpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), Not(small(x))))",
+    "ForAll([x], Implies(impus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), brown(x)))",
+    "ForAll([x], Implies(jompus(x), yumpus(x)))",
+    "tumpus(Max)"
+  ],
+  "verifications": [
+    {
+      "name": "Max not brown",
+      "constraint": "Not(brown(Max))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

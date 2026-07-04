@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Illness",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_claim",
+      "domain": [
+        "Person",
+        "Illness"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "self"
+      ]
+    },
+    "illnesses": {
+      "sort": "Illness",
+      "members": [
+        "ptsd"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "can_claim(self, ptsd)"
+  ],
+  "verifications": [
+    {
+      "name": "Can claim for PTSD (late onset)",
+      "constraint": "can_claim(self, ptsd)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "associated_with",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "substances": {
+      "sort": "Entity",
+      "members": [
+        "menthol"
+      ]
+    },
+    "holidays": {
+      "sort": "Entity",
+      "members": [
+        "thanksgiving"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(associated_with(menthol, thanksgiving))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "MentholAssociatedWithThanksgiving",
+      "constraint": "associated_with(menthol, thanksgiving)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

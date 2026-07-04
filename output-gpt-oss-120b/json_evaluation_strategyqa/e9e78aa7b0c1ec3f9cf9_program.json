@@ -1,0 +1,37 @@
+{
+  "functions": [
+    {
+      "name": "avg_peas_per_pod",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "commas_needed_for",
+      "domain": [
+        "IntSort"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "numbers": {
+      "sort": "IntSort",
+      "members": [
+        "billion"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "avg_peas_per_pod() == 5",
+    "commas_needed_for(billion) == 3"
+  ],
+  "verifications": [
+    {
+      "name": "Enough commas for a billion",
+      "constraint": "avg_peas_per_pod() >= commas_needed_for(billion)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

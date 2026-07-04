@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "estate_value",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "gift_value",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "gift_threshold",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "home_threshold",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_beneficiary",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_gift_recipient",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "death_within_7_years",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "home_left_to_children",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "beneficiary_pays_tax",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "gift_recipient_pays_tax",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "father"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "estate_value() == 400000",
+    "gift_value() == 250000",
+    "gift_threshold() == 325000",
+    "home_threshold() == 500000",
+    "death_within_7_years() == True",
+    "home_left_to_children() == True",
+    "is_beneficiary(me) == True",
+    "is_gift_recipient(me) == True",
+    "ForAll([p], Implies(is_beneficiary(p), Not(beneficiary_pays_tax(p))))",
+    "ForAll([p], Implies(And(is_gift_recipient(p), death_within_7_years(), gift_value() > gift_threshold()), gift_recipient_pays_tax(p)))",
+    "ForAll([p], Implies(And(is_gift_recipient(p), gift_value() <= gift_threshold()), Not(gift_recipient_pays_tax(p))))",
+    "ForAll([p], Implies(is_beneficiary(p), Implies(estate_value() <= home_threshold(), Not(beneficiary_pays_tax(p)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Do beneficiaries pay inheritance tax on property or gifts",
+      "constraint": "Or(beneficiary_pays_tax(me), gift_recipient_pays_tax(me))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

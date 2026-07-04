@@ -1,0 +1,166 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "metallic",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "individuals": {
+      "sort": "Entity",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "wumpus(sally)",
+    "Implies(wumpus(sally), dumpus(sally))",
+    "Implies(dumpus(sally), shy(sally))",
+    "Implies(dumpus(sally), zumpus(sally))",
+    "Implies(zumpus(sally), cold(sally))",
+    "Implies(zumpus(sally), rompus(sally))",
+    "Implies(rompus(sally), Not(red(sally)))",
+    "Implies(rompus(sally), impus(sally))",
+    "Implies(impus(sally), metallic(sally))",
+    "Implies(impus(sally), numpus(sally))",
+    "Implies(numpus(sally), fruity(sally))",
+    "Implies(numpus(sally), jompus(sally))",
+    "Implies(jompus(sally), dull(sally))",
+    "Implies(jompus(sally), vumpus(sally))",
+    "Implies(vumpus(sally), yumpus(sally))",
+    "Implies(vumpus(sally), spicy(sally))",
+    "Implies(tumpus(sally), Not(metallic(sally)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sally metallic",
+      "constraint": "metallic(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

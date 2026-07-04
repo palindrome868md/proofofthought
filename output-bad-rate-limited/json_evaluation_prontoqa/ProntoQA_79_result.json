@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_79",
+  "question": "Each impus is earthy. Impuses are rompuses. Rompuses are kind. Rompuses are wumpuses. Each wumpus is temperate. Each wumpus is a dumpus. Dumpuses are wooden. Each dumpus is a numpus. Each numpus is not blue. Each numpus is a yumpus. Each yumpus is large. Every yumpus is a vumpus. Vumpuses are dull. Tumpuses are blue. Vumpuses are jompuses. Each jompus is nervous. Jompuses are zumpuses. Stella is an impus.\n\nIs the following statement true or false? Stella is blue.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Ambiguous verification result: SAT=0, UNSAT=0\nOutput:\n"
+}

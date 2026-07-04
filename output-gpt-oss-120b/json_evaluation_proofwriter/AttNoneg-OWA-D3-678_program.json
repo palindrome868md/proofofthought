@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "fiona",
+        "gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "green(fiona)",
+    "rough(fiona)",
+    "smart(fiona)",
+    "blue(gary)",
+    "furry(gary)",
+    "nice(gary)",
+    "red(gary)",
+    "ForAll([x], Implies(And(rough(x), green(x)), nice(x)))",
+    "ForAll([x], Implies(nice(x), rough(x)))",
+    "ForAll([x], Implies(blue(x), red(x)))",
+    "ForAll([x], Implies(And(green(x), blue(x)), nice(x)))",
+    "ForAll([x], Implies(And(blue(x), red(x)), furry(x)))",
+    "ForAll([x], Implies(And(red(x), rough(x)), blue(x)))",
+    "ForAll([x], Implies(And(green(x), furry(x)), blue(x)))",
+    "Implies(green(fiona), red(fiona))"
+  ],
+  "verifications": [
+    {
+      "name": "Fiona not blue",
+      "constraint": "Not(blue(fiona))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

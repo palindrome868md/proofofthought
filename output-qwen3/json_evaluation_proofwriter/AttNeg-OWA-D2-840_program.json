@@ -1,0 +1,172 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "Bob",
+        "Gary"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(is_big(Bob))",
+    "is_blue(Bob)",
+    "is_green(Bob)",
+    "is_red(Bob)",
+    "is_rough(Bob)",
+    "is_round(Bob)",
+    "Not(is_white(Bob))",
+    "is_big(Gary)",
+    "is_green(Gary)",
+    "is_rough(Gary)",
+    "is_round(Gary)",
+    "is_white(Gary)"
+  ],
+  "rules": [
+    {
+      "name": "Red Rough Round",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_red(p), is_rough(p))",
+        "consequent": "is_round(p)"
+      }
+    },
+    {
+      "name": "Green Round",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_green(p)",
+        "consequent": "is_round(p)"
+      }
+    },
+    {
+      "name": "Red White Round",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_red(p), is_white(p))",
+        "consequent": "is_round(p)"
+      }
+    },
+    {
+      "name": "Blue Round Red",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_blue(p), is_round(p))",
+        "consequent": "is_red(p)"
+      }
+    },
+    {
+      "name": "Round White Big",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_round(p), is_white(p))",
+        "consequent": "is_big(p)"
+      }
+    },
+    {
+      "name": "Round Blue",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_round(p)",
+        "consequent": "is_blue(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Bob is green",
+      "constraint": "is_green(Bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

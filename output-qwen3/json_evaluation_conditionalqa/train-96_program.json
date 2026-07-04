@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "receives",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_core_group",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_warm_home_discount",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "guarantee_credit",
+        "savings_credit"
+      ]
+    },
+    "people": {
+      "sort": "Person",
+      "members": [
+        "couple"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(receives(p, guarantee_credit), eligible_for_core_group(p)))",
+    "ForAll([p], Implies(eligible_for_core_group(p), eligible_for_warm_home_discount(p)))",
+    "receives(couple, guarantee_credit)",
+    "receives(couple, savings_credit)"
+  ],
+  "verifications": [
+    {
+      "name": "Couple eligible for warm home discount with savings credit",
+      "constraint": "eligible_for_warm_home_discount(couple)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

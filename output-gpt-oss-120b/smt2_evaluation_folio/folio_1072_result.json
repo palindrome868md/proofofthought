@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1072",
+  "question": "Given the following premises:\n\nAll velvet-finish lipsticks in the Rouge Dior set, Lunar New Year Limited Edition are refillable.\nLipsticks in the Rouge Dior set, Lunar New Year Limited Edition have either a velvet-finish or a satin-finish.\nNo satin-finish lipsticks in the set do not have \"rosewood\" in its offical description. \nLipstcks in the Rouge Dior set, Lunar New Year Limited Edition either does not have \"rosewood\" in its offical description or it has \"rosewood\" in its official description. \nROUGE Dior Colored Lip Balm 999 is a lipstick in the set, and it either has \"rosewood\" in its official description or has a velvet finish.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: If ROUGE Dior Colored Lip Balm 999 is refillable and has \"rosewood\" in its official description, then it either has a velvet-finish or has \"rosewood\" in its official description.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

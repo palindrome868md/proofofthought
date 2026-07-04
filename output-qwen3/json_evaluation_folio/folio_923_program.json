@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "at_event",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young_adult",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes_independence",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_college_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yale_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_harvard_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_diligent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "susan"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(at_event(p), is_young_adult(p)), likes_independence(p)))",
+    "ForAll([p], Implies(And(at_event(p), is_college_student(p)), is_young_adult(p)))",
+    "ForAll([p], Implies(And(at_event(p), is_yale_student(p)), is_college_student(p)))",
+    "ForAll([p], Implies(at_event(p), Or(is_yale_student(p), is_harvard_student(p))))",
+    "ForAll([p], Implies(And(at_event(p), is_harvard_student(p)), is_diligent(p)))",
+    "And(at_event(susan), Implies(is_harvard_student(susan), is_young_adult(susan)))",
+    "Implies(is_yale_student(susan), Not(likes_independence(susan)))"
+  ],
+  "verifications": [
+    {
+      "name": "Susan Not Both Diligent And Likes Independence",
+      "constraint": "Not(And(is_diligent(susan), likes_independence(susan)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

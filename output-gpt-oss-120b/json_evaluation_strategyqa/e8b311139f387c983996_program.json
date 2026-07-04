@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Species",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "species_of",
+      "domain": [
+        "Animal"
+      ],
+      "range": "Species"
+    },
+    {
+      "name": "location_of",
+      "domain": [
+        "Animal"
+      ],
+      "range": "Location"
+    },
+    {
+      "name": "takes_photo",
+      "domain": [
+        "Person",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "species": {
+      "sort": "Species",
+      "members": [
+        "saltwater_crocodile"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "memphis"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([a], Implies(species_of(a) == saltwater_crocodile, location_of(a) != memphis))"
+  ],
+  "verifications": [
+    {
+      "name": "Take Photo of Saltwater Crocodile in Memphis",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(species_of(a) == saltwater_crocodile, location_of(a) == memphis, takes_photo(you, a))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

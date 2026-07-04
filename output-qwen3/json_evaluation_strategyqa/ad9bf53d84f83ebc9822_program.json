@@ -1,0 +1,41 @@
+{
+  "sorts": [
+    {
+      "name": "Franchise",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "num_projects",
+      "domain": [
+        "Franchise"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "franchises": {
+      "sort": "Franchise",
+      "members": [
+        "dragon_ball",
+        "friday_the_13th"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "num_projects(dragon_ball) == 24",
+    "num_projects(friday_the_13th) == 13"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Dragon Ball falls short of Friday 13th",
+      "constraint": "num_projects(dragon_ball) < num_projects(friday_the_13th)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

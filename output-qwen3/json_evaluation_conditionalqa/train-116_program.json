@@ -1,0 +1,194 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BenefitType",
+      "type": "EnumSort",
+      "values": [
+        "IncomeSupport",
+        "JSA",
+        "ESA",
+        "PensionCredit",
+        "UniversalCredit"
+      ]
+    },
+    {
+      "name": "ItemType",
+      "type": "EnumSort",
+      "values": [
+        "Furniture",
+        "WhiteGoods",
+        "Clothes",
+        "Rent",
+        "Moving",
+        "Maintenance",
+        "Travel",
+        "Job",
+        "Maternity",
+        "Funeral",
+        "HirePurchase",
+        "LoanRepayment"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "claims",
+      "domain": [
+        "Person",
+        "BenefitType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Person",
+        "ItemType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "moved",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "savings",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "debt",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "on_industrial_action",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_valid_reason",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_qualifying_benefit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_excluded",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_ok_savings",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user"
+      ]
+    },
+    "benefits": {
+      "sort": "BenefitType",
+      "members": [
+        "IncomeSupport",
+        "JSA",
+        "ESA",
+        "PensionCredit",
+        "UniversalCredit"
+      ]
+    },
+    "items": {
+      "sort": "ItemType",
+      "members": [
+        "Furniture",
+        "WhiteGoods",
+        "Clothes",
+        "Rent",
+        "Moving",
+        "Maintenance",
+        "Travel",
+        "Job",
+        "Maternity",
+        "Funeral",
+        "HirePurchase",
+        "LoanRepayment"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "b",
+      "sort": "BenefitType"
+    },
+    {
+      "name": "i",
+      "sort": "ItemType"
+    }
+  ],
+  "knowledge_base": [
+    "needs(user, Furniture)",
+    "needs(user, WhiteGoods)",
+    "moved(user)",
+    "savings(user) == 500",
+    "debt(user) == 0",
+    "on_industrial_action(user) == False",
+    "Not(claims(user, IncomeSupport))",
+    "Not(claims(user, JSA))",
+    "Not(claims(user, ESA))",
+    "Not(claims(user, PensionCredit))",
+    "Not(claims(user, UniversalCredit))",
+    "ForAll([p], has_valid_reason(p) == Or(needs(p, Furniture), needs(p, WhiteGoods), needs(p, Clothes), needs(p, Rent), needs(p, Moving), needs(p, Maintenance), needs(p, Travel), needs(p, Job), needs(p, Maternity), needs(p, Funeral), needs(p, HirePurchase), needs(p, LoanRepayment), moved(p)))",
+    "ForAll([p], has_qualifying_benefit(p) == Or(claims(p, IncomeSupport), claims(p, JSA), claims(p, ESA), claims(p, PensionCredit)))",
+    "ForAll([p], is_excluded(p) == Or(claims(p, UniversalCredit), on_industrial_action(p), debt(p) > 1500))",
+    "ForAll([p], has_ok_savings(p) == savings(p) <= 1000)",
+    "ForAll([p], eligible(p) == And(has_valid_reason(p), has_qualifying_benefit(p), Not(is_excluded(p)), has_ok_savings(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Check Eligibility",
+      "constraint": "eligible(user)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

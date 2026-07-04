@@ -1,0 +1,111 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cow",
+        "lion"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "Not(eats(cow, lion))",
+    "green(cow)",
+    "Not(needs(cow, lion))",
+    "visits(cow, lion)",
+    "eats(lion, cow)",
+    "big(lion)",
+    "cold(lion)",
+    "green(lion)",
+    "needs(lion, cow)",
+    "Not(visits(lion, cow))",
+    "Implies(And(blue(lion), Not(needs(lion, cow))), visits(lion, cow))",
+    "ForAll([x], Implies(And(visits(x, lion), Not(cold(x))), needs(x, lion)))",
+    "ForAll([x], Implies(green(x), big(x)))",
+    "ForAll([x], Implies(needs(x, lion), Not(green(lion))))",
+    "Implies(And(rough(lion), Not(visits(lion, cow))), Not(needs(cow, lion)))",
+    "ForAll([x], Implies(And(visits(x, cow), Not(needs(cow, lion))), eats(x, lion)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cow is big",
+      "constraint": "big(cow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

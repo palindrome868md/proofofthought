@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "cat",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bald_eagle, cat)",
+    "sees(cat, bald_eagle)",
+    "Not(eats(mouse, cat))",
+    "Not(sees(rabbit, mouse))",
+    "ForAll([x], Implies(is_red(x), Not(eats(x, bald_eagle))))",
+    "ForAll([x], Implies(And(sees(x, bald_eagle), Not(sees(bald_eagle, rabbit))), eats(x, cat)))",
+    "Implies(Not(is_rough(mouse)), Not(eats(mouse, cat)))",
+    "ForAll([x], Implies(And(eats(x, bald_eagle), Not(sees(x, bald_eagle))), Not(visits(x, rabbit))))",
+    "ForAll([x], Implies(sees(x, cat), is_rough(cat)))",
+    "ForAll([x], Implies(sees(x, mouse), Not(is_blue(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Cat is rough",
+      "constraint": "is_rough(cat)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

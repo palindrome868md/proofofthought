@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Technology",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "death_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "invention_year",
+      "domain": [
+        "Technology"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_be_recorded_live_to",
+      "domain": [
+        "Person",
+        "Technology"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "george_washington"
+      ]
+    },
+    "technologies": {
+      "sort": "Technology",
+      "members": [
+        "compact_disc"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "t",
+      "sort": "Technology"
+    }
+  ],
+  "knowledge_base": [
+    "death_year(george_washington) == 1799",
+    "invention_year(compact_disc) == 1982",
+    "ForAll([p, t], Implies(can_be_recorded_live_to(p, t), death_year(p) >= invention_year(t)))"
+  ],
+  "verifications": [
+    {
+      "name": "Could Washington speeches be recorded to CD",
+      "constraint": "can_be_recorded_live_to(george_washington, compact_disc)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_bird",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_penguin",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ectothermic",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_endothermic",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "produces_heat",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cat",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "Ron",
+        "Henry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_bird(x), Not(is_ectothermic(x))))",
+    "ForAll([x], Implies(is_penguin(x), is_bird(x)))",
+    "ForAll([x], Or(is_ectothermic(x), is_endothermic(x)))",
+    "ForAll([x], Implies(is_endothermic(x), produces_heat(x)))",
+    "Not(is_bird(Ron))",
+    "Not(produces_heat(Ron))",
+    "Not(is_cat(Henry))",
+    "Not(produces_heat(Henry))"
+  ],
+  "verifications": [
+    {
+      "name": "Ron Penguin Endothermic Equivalence",
+      "constraint": "Or(And(is_penguin(Ron), is_endothermic(Ron)), And(Not(is_penguin(Ron)), Not(is_endothermic(Ron))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

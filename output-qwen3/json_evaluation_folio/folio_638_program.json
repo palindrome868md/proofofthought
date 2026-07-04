@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "University",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "PoliticalGroup",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_house_of_commons",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_parliament",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attended_university",
+      "domain": [
+        "Person"
+      ],
+      "range": "University"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "University"
+      ],
+      "range": "Country"
+    },
+    {
+      "name": "supported_group",
+      "domain": [
+        "Person"
+      ],
+      "range": "PoliticalGroup"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    },
+    "universities": {
+      "sort": "University",
+      "members": [
+        "university_of_edinburgh"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "united_kingdom"
+      ]
+    },
+    "political_groups": {
+      "sort": "PoliticalGroup",
+      "members": [
+        "portland_whigs"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "in_house_of_commons(william_dickinson)",
+    "attended_university(william_dickinson) == university_of_edinburgh",
+    "located_in(university_of_edinburgh) == united_kingdom",
+    "supported_group(william_dickinson) == portland_whigs",
+    "ForAll([p], Implies(supported_group(p) == portland_whigs, Not(in_parliament(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson attended university in the United Kingdom",
+      "constraint": "located_in(attended_university(william_dickinson)) == united_kingdom"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

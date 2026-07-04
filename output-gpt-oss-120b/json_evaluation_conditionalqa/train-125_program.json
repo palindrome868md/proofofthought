@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "needs_PAYE",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "kid"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(kid) == 10",
+    "ForAll([p], Implies(age(p) >= 16, needs_PAYE(p)))",
+    "ForAll([p], Implies(age(p) < 16, Not(needs_PAYE(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Need PAYE for kid",
+      "constraint": "needs_PAYE(kid)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

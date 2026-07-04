@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "furry",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "charlie",
+        "fiona",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "furry(charlie) == True",
+    "rough(charlie) == True",
+    "white(charlie) == True",
+    "young(charlie) == True",
+    "nice(fiona) == True",
+    "red(fiona) == True",
+    "round(fiona) == True",
+    "white(fiona) == True",
+    "young(fiona) == True",
+    "nice(harry) == True",
+    "red(harry) == True",
+    "round(harry) == True",
+    "ForAll([x], Implies(And(young(x), white(x)), rough(x)))",
+    "ForAll([x], Implies(round(x), white(x)))",
+    "ForAll([x], Implies(white(x), young(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "HarryIsYoung",
+      "constraint": "young(harry) == True"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

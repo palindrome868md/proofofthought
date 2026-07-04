@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_31",
+  "question": "Each jompus is not small. Each wumpus is angry. Each jompus is a zumpus. Zumpuses are temperate. Zumpuses are tumpuses. Tumpuses are brown. Tumpuses are yumpuses. Yumpuses are wooden. Yumpuses are dumpuses. Each dumpus is not angry. Every dumpus is a numpus. Numpuses are not dull. Every numpus is a vumpus. Wren is a jompus.\n\nIs the following statement true or false? Wren is not angry.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Mountain",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Sea",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height",
+      "domain": [
+        "Mountain"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "depth",
+      "domain": [
+        "Sea"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "mountains": {
+      "sort": "Mountain",
+      "members": [
+        "mount_fuji"
+      ]
+    },
+    "seas": {
+      "sort": "Sea",
+      "members": [
+        "sea_of_japan"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "height(mount_fuji) == 3776",
+    "depth(sea_of_japan) == 1350"
+  ],
+  "verifications": [
+    {
+      "name": "Mount Fuji sticks out of Sea of Japan",
+      "constraint": "height(mount_fuji) > depth(sea_of_japan)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

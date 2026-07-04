@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "normal_caring_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "break_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "eligible_for_carers_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_qualifying_benefit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "carer",
+        "dad"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "normal_caring_hours(carer) == 25",
+    "break_weeks(carer) == 6",
+    "receives_qualifying_benefit(dad) == True",
+    "ForAll([p], Implies(And(normal_caring_hours(p) >= 20, break_weeks(p) <= 12, receives_qualifying_benefit(dad)), eligible_for_carers_credit(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Carer eligible during 6 week holiday break",
+      "constraint": "eligible_for_carers_credit(carer)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_business_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "missing_duration_days",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "needs_to_continue_business",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_apply",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "friend"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Person"
+    },
+    {
+      "name": "m",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_business_partner(me, friend)",
+    "needs_to_continue_business(me)",
+    "missing_duration_days(friend) == 180",
+    "age(me) >= 18",
+    "ForAll([a, m], Implies(And(is_business_partner(a, m), needs_to_continue_business(a), missing_duration_days(m) >= 90, age(a) >= 18), can_apply(a, m)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can I apply to manage finances",
+      "constraint": "can_apply(me, friend)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

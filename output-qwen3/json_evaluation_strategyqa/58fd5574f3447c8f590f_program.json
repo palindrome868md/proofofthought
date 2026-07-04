@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "birth_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "event_year",
+      "domain": [
+        "Event"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "remembers",
+      "domain": [
+        "Person",
+        "Event"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_class_2017",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "events": {
+      "sort": "Event",
+      "members": [
+        "sept_11"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Person"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "event_year(sept_11) == 2001",
+    "ForAll([p], Implies(is_class_2017(p), birth_year(p) >= 1998))",
+    "ForAll([p], Implies(birth_year(p) >= 1998, Not(remembers(p, sept_11))))",
+    "is_class_2017(s)"
+  ],
+  "verifications": [
+    {
+      "name": "Student 2017 Amnesia Check",
+      "constraint": "Not(remembers(s, sept_11))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "works_abroad_for",
+      "domain": [
+        "Person",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_armed_forces",
+      "domain": [
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_british_org",
+      "domain": [
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_make_maintenance_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_absent_parent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_abroad",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_primary_care",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "ex_husband",
+        "mother",
+        "daughter"
+      ]
+    },
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "armed_forces"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "germany",
+        "uk"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "org",
+      "sort": "Organization"
+    }
+  ],
+  "knowledge_base": [
+    "is_absent_parent(ex_husband)",
+    "lives_abroad(ex_husband)",
+    "works_abroad_for(ex_husband, armed_forces)",
+    "is_armed_forces(armed_forces)",
+    "is_british_org(armed_forces)",
+    "has_primary_care(mother)",
+    "ForAll([p, org], Implies(And(works_abroad_for(p, org), is_british_org(org)), can_make_maintenance_claim(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can absent parent in army pay maintenance abroad",
+      "constraint": "And(is_absent_parent(ex_husband), lives_abroad(ex_husband), can_make_maintenance_claim(ex_husband))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

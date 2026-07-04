@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Claim",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rejected",
+      "domain": [
+        "Claim"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_appeal",
+      "domain": [
+        "Claim"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "claims": {
+      "sort": "Claim",
+      "members": [
+        "my_claim"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "rejected(my_claim)"
+  ],
+  "rules": [
+    {
+      "name": "Appeal Rule",
+      "forall": [
+        {
+          "name": "c",
+          "sort": "Claim"
+        }
+      ],
+      "implies": {
+        "antecedent": "rejected(c)",
+        "consequent": "can_appeal(c)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can appeal rejected claim",
+      "constraint": "can_appeal(my_claim)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

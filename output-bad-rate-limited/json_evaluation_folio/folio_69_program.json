@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "novice_recommend",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_easy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_hard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starred_over_1000",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate_percent",
+      "domain": [
+        "Problem"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "novice_recommend(two_sum)",
+    "ForAll([p], Implies(novice_recommend(p), is_easy(p)))",
+    "ForAll([p], Or(is_easy(p), is_hard(p)))",
+    "ForAll([p], Implies(is_easy(p), ac_rate_percent(p) < 20))",
+    "ForAll([p], Implies(starred_over_1000(p), is_hard(p)))",
+    "starred_over_1000(four_sum)"
+  ],
+  "verifications": [
+    {
+      "name": "Is 2Sum easy",
+      "constraint": "is_easy(two_sum)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

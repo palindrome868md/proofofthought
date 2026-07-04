@@ -1,0 +1,111 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_homeowner",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_qualifying_benefit",
+      "domain": [
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_mortgage_interest_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_smi",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "financially_struggling",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "income_support",
+        "jsa",
+        "esa",
+        "universal_credit",
+        "pension_credit"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "landlord"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "b",
+      "sort": "Benefit"
+    }
+  ],
+  "knowledge_base": [
+    "is_homeowner(landlord)",
+    "has_mortgage_interest_loan(landlord)",
+    "financially_struggling(landlord)",
+    "is_qualifying_benefit(income_support)",
+    "is_qualifying_benefit(jsa)",
+    "is_qualifying_benefit(esa)",
+    "is_qualifying_benefit(universal_credit)",
+    "is_qualifying_benefit(pension_credit)",
+    "ForAll([p], Implies(And(is_homeowner(p), has_mortgage_interest_loan(p), Exists([b], And(receives_benefit(p, b), is_qualifying_benefit(b)))), eligible_for_smi(p)))",
+    "ForAll([p], Implies(Not(Exists([b], And(receives_benefit(p, b), is_qualifying_benefit(b)))), Not(eligible_for_smi(p))))",
+    "Not(receives_benefit(landlord, income_support))",
+    "Not(receives_benefit(landlord, jsa))",
+    "Not(receives_benefit(landlord, esa))",
+    "Not(receives_benefit(landlord, universal_credit))",
+    "Not(receives_benefit(landlord, pension_credit))"
+  ],
+  "verifications": [
+    {
+      "name": "Can landlord get SMI financial help",
+      "constraint": "eligible_for_smi(landlord)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_person",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cow"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_round(cow)",
+    "ForAll([x], Implies(And(is_kind(x), is_person(x)), is_young(x)))",
+    "ForAll([x], Implies(And(is_person(x), is_round(x), is_red(x)), is_young(x)))",
+    "ForAll([x], Implies(And(is_person(x), is_young(x)), is_round(x)))",
+    "Implies(And(is_round(cow), is_young(cow)), is_kind(cow))",
+    "ForAll([x], Implies(And(is_person(x), is_round(x)), is_red(x)))",
+    "ForAll([x], Implies(And(is_person(x), is_round(x), is_kind(x)), is_young(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is the cow round",
+      "constraint": "is_round(cow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

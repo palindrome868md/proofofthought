@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Plant",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Disease",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "suffers_from",
+      "domain": [
+        "Plant",
+        "Disease"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "plants": {
+      "sort": "Plant",
+      "members": [
+        "dandelion"
+      ]
+    },
+    "diseases": {
+      "sort": "Disease",
+      "members": [
+        "hepatitis"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Plant"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Not(suffers_from(p, hepatitis)))"
+  ],
+  "verifications": [
+    {
+      "name": "Could dandelion suffer from hepatitis",
+      "constraint": "suffers_from(dandelion, hepatitis)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

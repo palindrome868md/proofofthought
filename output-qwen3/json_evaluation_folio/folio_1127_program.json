@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "DrinksCoffee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Dependent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "NotWantAddicted",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "UnawareDrug",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "Rina"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(DrinksCoffee(x), Dependent(x)))",
+    "ForAll([x], Or(DrinksCoffee(x), NotWantAddicted(x)))",
+    "ForAll([x], Implies(NotWantAddicted(x), Not(UnawareDrug(x))))",
+    "Or(And(Student(Rina), UnawareDrug(Rina)), And(Not(Student(Rina)), Not(UnawareDrug(Rina))))",
+    "Or(And(Student(Rina), Dependent(Rina)), And(Not(Student(Rina)), Not(Dependent(Rina))))"
+  ],
+  "verifications": [
+    {
+      "name": "Rina Statement Verification",
+      "constraint": "Or(NotWantAddicted(Rina), UnawareDrug(Rina))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

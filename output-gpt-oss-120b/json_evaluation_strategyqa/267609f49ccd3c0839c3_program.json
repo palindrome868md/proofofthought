@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_swiss_guard",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_fill_virginia_chair",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_swiss_guard(p), Not(can_fill_virginia_chair(p))))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Swiss Guard can fill Virginia Assembly chairs",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_swiss_guard(p), can_fill_virginia_chair(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

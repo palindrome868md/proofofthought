@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "InNewHaven",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ManagedByYale",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "InManhattan",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "OwnedByBloomberg",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HasBloombergLogo",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsHigh",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsLow",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "TowerA",
+        "TowerB"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Building"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([b], Implies(InNewHaven(b), Not(IsHigh(b))))",
+    "ForAll([b], Implies(ManagedByYale(b), InNewHaven(b)))",
+    "ForAll([b], Implies(InManhattan(b), IsHigh(b)))",
+    "ForAll([b], Implies(OwnedByBloomberg(b), InManhattan(b)))",
+    "ForAll([b], Implies(HasBloombergLogo(b), OwnedByBloomberg(b)))",
+    "ManagedByYale(TowerA)",
+    "HasBloombergLogo(TowerB)",
+    "ForAll([b], IsLow(b) == Not(IsHigh(b)))"
+  ],
+  "verifications": [
+    {
+      "name": "Tower A is low",
+      "constraint": "IsLow(TowerA)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

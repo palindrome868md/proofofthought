@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_birth_parent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shares_responsibility_at_birth",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "employed_continuously_26_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earns_minimum_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "baby_born",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_spl",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_shpp",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "gave_notice_to_employer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "parent1",
+        "parent2"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "baby_born() == True",
+    "is_birth_parent(parent1) == True",
+    "is_birth_parent(parent2) == True",
+    "shares_responsibility_at_birth(parent1, parent2) == True",
+    "is_employee(parent1) == True",
+    "is_employee(parent2) == True",
+    "employed_continuously_26_weeks(parent1) == True",
+    "employed_continuously_26_weeks(parent2) == True",
+    "earns_minimum_weekly(parent1) == True",
+    "earns_minimum_weekly(parent2) == True",
+    "gave_notice_to_employer(parent1) == True",
+    "gave_notice_to_employer(parent2) == True",
+    "ForAll([p1, p2], Implies(And(is_birth_parent(p1), is_birth_parent(p2), shares_responsibility_at_birth(p1, p2), baby_born()), eligible_for_spl(p1, p2)))",
+    "ForAll([p1, p2], Implies(And(eligible_for_spl(p1, p2), is_employee(p1), is_employee(p2), employed_continuously_26_weeks(p1), employed_continuously_26_weeks(p2), earns_minimum_weekly(p1), earns_minimum_weekly(p2), gave_notice_to_employer(p1), gave_notice_to_employer(p2), baby_born()), eligible_for_shpp(p1, p2)))"
+  ],
+  "verifications": [
+    {
+      "name": "Check SPL and ShPP Eligibility for Birth Parents",
+      "constraint": "And(eligible_for_spl(parent1, parent2), eligible_for_shpp(parent1, parent2))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

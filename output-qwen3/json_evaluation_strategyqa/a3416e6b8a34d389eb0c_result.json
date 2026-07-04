@@ -1,0 +1,11 @@
+{
+  "sample_id": "a3416e6b8a34d389eb0c",
+  "question": "Would a hypothetical Yeti be towered over by Andre the Giant?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

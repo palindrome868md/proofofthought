@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_mental_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_relative",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_one_off_decision",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wants_to_stop",
+      "domain": [
+        "Person",
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "sister",
+        "you"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(has_mental_capacity(father))",
+    "visits(sister, father)",
+    "is_relative(you, father)",
+    "wants_to_stop(you, sister, father)"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility for One\u2011Off Decision",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "Person"
+        },
+        {
+          "name": "t",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(Not(has_mental_capacity(t)), is_relative(a, t))",
+        "consequent": "can_apply_one_off_decision(a, t)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can someone stop sister from visiting father",
+      "exists": [
+        {
+          "name": "applicant",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(can_apply_one_off_decision(applicant, father), wants_to_stop(applicant, sister, father))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

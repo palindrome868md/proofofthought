@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_family_james",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_to_cinema_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribes_amc_alist",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribes_hbo",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watches_tv_series_in_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_tv_series",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_three_movies_week",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([x], Implies(in_family_james(x), Or(subscribes_amc_alist(x), subscribes_hbo(x))))",
+    "ForAll([x], Implies(And(in_family_james(x), subscribes_amc_alist(x)), eligible_three_movies_week(x)))",
+    "ForAll([x], Implies(And(in_family_james(x), prefers_tv_series(x)), Not(watches_tv_series_in_cinema(x))))",
+    "ForAll([x], Implies(And(in_family_james(x), subscribes_hbo(x)), prefers_tv_series(x)))",
+    "in_family_james(lily)",
+    "watches_tv_series_in_cinema(lily)",
+    "Exists([x], And(in_family_james(x), goes_to_cinema_weekly(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Lily implication holds",
+      "constraint": "Implies(Not(And(goes_to_cinema_weekly(lily), subscribes_hbo(lily))), Or(eligible_three_movies_week(lily), prefers_tv_series(lily)))"
+    }
+  ],
+  "Actions": [
+    "verify_conditions"
+  ]
+}

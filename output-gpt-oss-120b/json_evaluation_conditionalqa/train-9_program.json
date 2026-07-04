@@ -1,0 +1,39 @@
+{
+  "sorts": [
+    {
+      "name": "Pension",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_taxable",
+      "domain": [
+        "Pension"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "pensions": {
+      "sort": "Pension",
+      "members": [
+        "war_widow_pension"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(is_taxable(war_widow_pension))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Tax on War Widow Pension",
+      "constraint": "is_taxable(war_widow_pension)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

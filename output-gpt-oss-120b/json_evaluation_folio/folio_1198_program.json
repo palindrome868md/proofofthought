@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "at_conference",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "investor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entrepreneur",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoys_start_business",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_planned",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_state_ownership",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ardent_communist",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "ho"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(at_conference(p), Or(investor(p), entrepreneur(p))))",
+    "ForAll([p], Implies(enjoys_start_business(p), Not(prefers_planned(p))))",
+    "ForAll([p], Implies(entrepreneur(p), enjoys_start_business(p)))",
+    "ForAll([p], Implies(prefers_state_ownership(p), prefers_planned(p)))",
+    "ForAll([p], Implies(ardent_communist(p), prefers_state_ownership(p)))",
+    "And(at_conference(ho), prefers_state_ownership(ho))"
+  ],
+  "verifications": [
+    {
+      "name": "Ho is an investor or not an ardent communist (entailed)",
+      "constraint": "Not(Or(investor(ho), Not(ardent_communist(ho))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "needs",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cow",
+        "lion",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "Not(round(cow))",
+    "needs(cow, lion)",
+    "needs(cow, squirrel)",
+    "Not(sees(cow, lion))",
+    "Not(sees(cow, squirrel))",
+    "Not(red(lion))",
+    "needs(lion, squirrel)",
+    "sees(lion, cow)",
+    "Not(sees(lion, squirrel))",
+    "cold(squirrel)",
+    "Not(red(squirrel))",
+    "likes(squirrel, cow)",
+    "Not(likes(squirrel, lion))",
+    "needs(squirrel, cow)",
+    "sees(squirrel, cow)",
+    "ForAll([x], Implies(blue(x), Not(sees(x, squirrel))))",
+    "ForAll([x], Implies(And(round(x), Not(blue(x))), sees(x, squirrel)))",
+    "ForAll([x], Implies(blue(x), Not(likes(x, lion))))",
+    "ForAll([x], Implies(blue(x), likes(x, lion)))",
+    "ForAll([x], Implies(sees(x, lion), Not(sees(lion, cow))))",
+    "Implies(And(round(lion), needs(lion, cow)), nice(cow))"
+  ],
+  "verifications": [
+    {
+      "name": "Squirrel likes cow",
+      "constraint": "likes(squirrel, cow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_wbc",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dead",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(Not(has_wbc(p)), dead(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Will someone die without white blood cells",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "Not(has_wbc(p))",
+        "consequent": "dead(p)"
+      }
+    }
+  ],
+  "optimization": {},
+  "actions": [
+    "verify_conditions"
+  ]
+}

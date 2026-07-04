@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "round",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "charlie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "round(charlie)",
+    "Implies(rough(charlie), green(charlie))",
+    "ForAll([x], Implies(And(blue(x), smart(x)), red(x)))",
+    "ForAll([x], Implies(And(blue(x), rough(x)), round(x)))",
+    "ForAll([x], Implies(green(x), red(x)))",
+    "ForAll([x], Implies(round(x), smart(x)))",
+    "ForAll([x], Implies(And(smart(x), red(x)), blue(x)))",
+    "ForAll([x], Implies(And(blue(x), round(x)), smart(x)))",
+    "ForAll([x], Implies(smart(x), rough(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Charlie not green",
+      "constraint": "Not(green(charlie))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

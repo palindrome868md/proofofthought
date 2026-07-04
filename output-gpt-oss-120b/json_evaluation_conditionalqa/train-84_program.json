@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "apply_for_GRC",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spouse_agrees",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "marriage_status_change",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "applicant",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "apply_for_GRC(applicant)",
+    "spouse_agrees(applicant)"
+  ],
+  "rules": [
+    {
+      "name": "NoChangeIfBothAgree",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(apply_for_GRC(a), spouse_agrees(a))",
+        "consequent": "Not(marriage_status_change(a))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Will marriage's legal status change",
+      "constraint": "marriage_status_change(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

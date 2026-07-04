@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Child"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "needs_extra_support",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cannot_walk",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_wheelchair",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "highest_care",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "higher_mobility",
+      "domain": [
+        "Child"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "children": {
+      "sort": "Child",
+      "members": [
+        "my_child"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Child"
+    }
+  ],
+  "knowledge_base": [
+    "age(my_child) == 13",
+    "needs_extra_support(my_child)",
+    "cannot_walk(my_child)",
+    "uses_wheelchair(my_child)",
+    "ForAll([c], Implies(needs_extra_support(c), highest_care(c)))",
+    "ForAll([c], Implies(Or(cannot_walk(c), uses_wheelchair(c)), higher_mobility(c)))"
+  ],
+  "verifications": [
+    {
+      "name": "Maximum DLA Qualification",
+      "constraint": "And(highest_care(my_child), higher_mobility(my_child))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

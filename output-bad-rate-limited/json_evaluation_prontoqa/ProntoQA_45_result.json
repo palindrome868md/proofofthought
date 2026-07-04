@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_45",
+  "question": "Dumpuses are cold. Dumpuses are numpuses. Each numpus is not bitter. Every numpus is a zumpus. Zumpuses are fruity. Zumpuses are wumpuses. Wumpuses are large. Each tumpus is not wooden. Each wumpus is an impus. Every impus is wooden. Impuses are rompuses. Fae is a dumpus.\n\nIs the following statement true or false? Fae is wooden.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

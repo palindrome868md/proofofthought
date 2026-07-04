@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Stimulus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "response_time",
+      "domain": [
+        "Animal",
+        "Stimulus"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_dog",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_grey_seal",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_auditory_conditioning",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "dog",
+        "grey_seal"
+      ]
+    },
+    "stimuli": {
+      "sort": "Stimulus",
+      "members": [
+        "bell"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Animal"
+    },
+    {
+      "name": "s",
+      "sort": "Stimulus"
+    }
+  ],
+  "knowledge_base": [
+    "is_dog(dog)",
+    "is_grey_seal(grey_seal)",
+    "has_auditory_conditioning(dog)",
+    "Not(has_auditory_conditioning(grey_seal))",
+    "ForAll([a, s], Implies(And(is_dog(a), has_auditory_conditioning(a)), response_time(a, s) < 5))",
+    "ForAll([a, s], Implies(And(is_grey_seal(a), Not(has_auditory_conditioning(a))), response_time(a, s) >= 5))"
+  ],
+  "verifications": [
+    {
+      "name": "Dog responds to bell before grey seal",
+      "constraint": "response_time(dog, bell) < response_time(grey_seal, bell)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

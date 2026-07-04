@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D2-566",
+  "question": "The cat likes the squirrel. The squirrel is blue. If something visits the cat and the cat likes the squirrel then the squirrel is kind. If something visits the cat then the cat visits the squirrel. If something likes the cat and the cat is round then the cat visits the squirrel. If something sees the cat then it visits the cat. If something is kind and it visits the cat then the cat likes the squirrel. If something likes the squirrel then it sees the cat.\n\nQuestion: The cat likes the squirrel.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

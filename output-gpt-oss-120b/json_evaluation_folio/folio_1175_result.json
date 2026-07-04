@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1175",
+  "question": "Given the following premises:\n\nSome monitors made by LG have a type-c port.\nMonitors that have a type-c port were not made before 2010.\nAll monitors in the library are made before 2010. \nThe L-2021 monitor is either used in the library or has a type-c port.\nThe L-2021 monitor is either both produced before 2010 and made by LG, or neither is true.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: The L-2021 monitor either has a type-c port or is produced by LG.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

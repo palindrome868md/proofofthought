@@ -1,0 +1,166 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alex"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "impus(alex)",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(numpus(p), floral(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(numpus(p), jompus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(jompus(p), Not(nervous(p))))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(jompus(p), impus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(impus(p), wumpus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(wumpus(p), zumpus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(wumpus(p), Not(bitter(p))))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(zumpus(p), Not(small(p))))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(zumpus(p), vumpus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(vumpus(p), hot(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(vumpus(p), rompus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(rompus(p), amenable(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(rompus(p), tumpus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(tumpus(p), bright(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(tumpus(p), yumpus(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Person\"}], Implies(dumpus(p), Not(amenable(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Alex amenable",
+      "constraint": "amenable(alex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

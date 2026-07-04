@@ -1,0 +1,11 @@
+{
+  "sample_id": "d24514ae216c7a55f4f0",
+  "question": "Is Miami a city on the American West Coast?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

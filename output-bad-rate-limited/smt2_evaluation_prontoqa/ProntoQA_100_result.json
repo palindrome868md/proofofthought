@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_100",
+  "question": "Vumpuses are sour. Vumpuses are tumpuses. Tumpuses are bright. Each tumpus is a dumpus. Each dumpus is not large. Dumpuses are numpuses. Numpuses are metallic. Each numpus is a jompus. Every jompus is not angry. Jompuses are wumpuses. Wumpuses are not shy. Wumpuses are rompuses. Rompuses are not opaque. Rompuses are yumpuses. Every zumpus is not blue. Yumpuses are blue. Yumpuses are impuses. Alex is a numpus.\n\nIs the following statement true or false? Alex is blue.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Error: write() argument must be str, not None\nTraceback (most recent call last):\n  File \"/home/kyi/proofofthought/z3adapter/reasoning/proof_of_thought.py\", line 239, in query\n    f.write(gen_result.program)  # type: ignore\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: write() argument must be str, not None\n"
+}

@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "UnincorporatedCommunity",
+      "domain": [
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Within",
+      "domain": [
+        "Place",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "OnRoute",
+      "domain": [
+        "Place",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "NorthwestOf",
+      "domain": [
+        "Place",
+        "Place"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "places": {
+      "sort": "Place",
+      "members": [
+        "ordinary",
+        "elliot_county",
+        "sandy_hook",
+        "kentucky_route_32"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "UnincorporatedCommunity(ordinary)",
+    "Within(ordinary, elliot_county)",
+    "OnRoute(ordinary, kentucky_route_32)",
+    "NorthwestOf(ordinary, sandy_hook)"
+  ],
+  "verifications": [
+    {
+      "name": "ExistUnincCommunityInElliotCounty",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Place"
+        }
+      ],
+      "constraint": "And(UnincorporatedCommunity(x), Within(x, elliot_county))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

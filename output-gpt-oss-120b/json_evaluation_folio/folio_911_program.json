@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_kid",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_toddler",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_elderly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_pirate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_seafarer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "nancy"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_kid(x), is_young(x)))",
+    "ForAll([x], Implies(is_toddler(x), is_kid(x)))",
+    "ForAll([x], Implies(is_young(x), Not(is_elderly(x))))",
+    "ForAll([x], Implies(is_pirate(x), is_seafarer(x)))",
+    "Implies(Not(is_pirate(nancy)), is_young(nancy))",
+    "Implies(Not(is_toddler(nancy)), is_seafarer(nancy))"
+  ],
+  "verifications": [
+    {
+      "name": "Nancy both or neither pirate and toddler",
+      "constraint": "Or(And(is_pirate(nancy), is_toddler(nancy)), And(Not(is_pirate(nancy)), Not(is_toddler(nancy))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

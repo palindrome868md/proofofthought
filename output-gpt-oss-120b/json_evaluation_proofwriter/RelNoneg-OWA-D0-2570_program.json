@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "round(bald_eagle)",
+    "likes(bald_eagle, squirrel)",
+    "eats(squirrel, bald_eagle)",
+    "blue(squirrel)",
+    "kind(squirrel)",
+    "likes(squirrel, bald_eagle)",
+    "visits(squirrel, bald_eagle)",
+    "ForAll([x], Implies(kind(x), visits(x, squirrel)))",
+    "ForAll([x], Implies(And(eats(x, bald_eagle), blue(x)), likes(bald_eagle, squirrel)))",
+    "ForAll([x], Implies(And(round(x), blue(x)), kind(x)))",
+    "ForAll([x], Implies(visits(x, squirrel), visits(squirrel, bald_eagle)))",
+    "Implies(blue(squirrel), likes(squirrel, bald_eagle))",
+    "ForAll([x], Implies(round(x), eats(x, bald_eagle)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bald eagle does not like squirrel",
+      "constraint": "Not(likes(bald_eagle, squirrel))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

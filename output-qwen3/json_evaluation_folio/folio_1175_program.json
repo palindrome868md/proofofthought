@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "MadeByLG",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HasTypeC",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "MadeBefore2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "InLibrary",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "L_2021"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Monitor"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([m], And(MadeByLG(m), HasTypeC(m)))",
+    "ForAll([m], Implies(HasTypeC(m), Not(MadeBefore2010(m))))",
+    "ForAll([m], Implies(InLibrary(m), MadeBefore2010(m)))",
+    "Or(InLibrary(L_2021), HasTypeC(L_2021))",
+    "Or(And(MadeBefore2010(L_2021), MadeByLG(L_2021)), And(Not(MadeBefore2010(L_2021)), Not(MadeByLG(L_2021))))"
+  ],
+  "verifications": [
+    {
+      "name": "L_2021 Type-C or LG",
+      "constraint": "Or(HasTypeC(L_2021), MadeByLG(L_2021))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

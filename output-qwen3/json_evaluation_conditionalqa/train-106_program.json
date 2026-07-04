@@ -1,0 +1,113 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "gifted_entire_property",
+      "domain": [
+        "Person",
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "gifted_part_property",
+      "domain": [
+        "Person",
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "continues_living_in_property",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "new_owners_live_at_property",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "must_pay_rent",
+      "domain": [
+        "Person",
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rent_exemption_applies",
+      "domain": [
+        "Person",
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "couple",
+        "son"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "home"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    },
+    {
+      "name": "prop",
+      "sort": "Property"
+    }
+  ],
+  "knowledge_base": [
+    "gifted_entire_property(couple, son, home)",
+    "continues_living_in_property(couple, home)",
+    "new_owners_live_at_property(son, home)",
+    "ForAll([p1, p2, prop], Implies(And(gifted_entire_property(p1, p2, prop), continues_living_in_property(p1, prop)), must_pay_rent(p1, p2, prop)))",
+    "ForAll([p1, p2, prop], Implies(And(gifted_part_property(p1, p2, prop), new_owners_live_at_property(p2, prop)), rent_exemption_applies(p1, p2, prop)))",
+    "ForAll([p1, p2, prop], Implies(rent_exemption_applies(p1, p2, prop), Not(must_pay_rent(p1, p2, prop))))",
+    "Not(gifted_part_property(couple, son, home))"
+  ],
+  "verifications": [
+    {
+      "name": "Check if couple must pay rent to son for home",
+      "constraint": "must_pay_rent(couple, son, home)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

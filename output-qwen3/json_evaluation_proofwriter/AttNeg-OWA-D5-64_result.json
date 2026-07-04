@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D5-64",
+  "question": "Anne is quiet. Anne is smart. Anne is white. Anne is not young. Bob is young. Erin is not young. Fiona is big. Fiona is quiet. Fiona is red. Fiona is smart. White people are quiet. If someone is young then they are big. Young, smart people are round. Smart, quiet people are round. All quiet, big people are red. If Anne is big and Anne is young then Anne is round. Big people are smart. All smart people are white.\n\nQuestion: Bob is not quiet.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

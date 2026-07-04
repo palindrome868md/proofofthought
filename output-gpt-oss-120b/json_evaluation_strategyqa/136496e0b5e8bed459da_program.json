@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Scale",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Technique",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "usable_for",
+      "domain": [
+        "Scale",
+        "Technique"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "scales": {
+      "sort": "Scale",
+      "members": [
+        "iwato"
+      ]
+    },
+    "techniques": {
+      "sort": "Technique",
+      "members": [
+        "twelve_tone"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Possible to use Iwato scale with twelve\u2011tone technique",
+      "constraint": "usable_for(iwato, twelve_tone)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

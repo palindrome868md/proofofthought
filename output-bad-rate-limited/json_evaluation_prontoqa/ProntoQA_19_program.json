@@ -1,0 +1,172 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "sam_constants": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "u",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "dumpus(sam)",
+    "ForAll([u], Implies(numpus(u), wumpus(u)))",
+    "ForAll([u], Implies(wumpus(u), feisty(u)))",
+    "ForAll([u], Implies(wumpus(u), tumpus(u)))",
+    "ForAll([u], Implies(tumpus(u), fruity(u)))",
+    "ForAll([u], Implies(tumpus(u), dumpus(u)))",
+    "ForAll([u], Implies(dumpus(u), wooden(u)))",
+    "ForAll([u], Implies(dumpus(u), yumpus(u)))",
+    "ForAll([u], Implies(yumpus(u), blue(u)))",
+    "ForAll([u], Implies(yumpus(u), zumpus(u)))",
+    "ForAll([u], Implies(zumpus(u), spicy(u)))",
+    "ForAll([u], Implies(zumpus(u), impuse(u)))",
+    "ForAll([u], Implies(impuse(u), Not(kind(u))))",
+    "ForAll([u], Implies(impuse(u), rompus(u)))",
+    "ForAll([u], Implies(rompus(u), dull(u)))",
+    "ForAll([u], Implies(rompus(u), vumpus(u)))",
+    "ForAll([u], Implies(jompus(u), Not(dull(u))))",
+    "ForAll([u], Implies(tumpus(u), dumpus(u)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam not dull",
+      "constraint": "Not(dull(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

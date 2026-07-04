@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "pays_in_instalments",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "interest_payable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "beneficiary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(pays_in_instalments(p), interest_payable(p)))",
+    "pays_in_instalments(beneficiary)"
+  ],
+  "verifications": [
+    {
+      "name": "Interest payable if paying in instalments",
+      "constraint": "interest_payable(beneficiary)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

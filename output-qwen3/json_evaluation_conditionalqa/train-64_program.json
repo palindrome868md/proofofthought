@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_afcs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "years_since_injury",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_late_onset",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "claimants": {
+      "sort": "Person",
+      "members": [
+        "claimant"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_afcs(claimant)",
+    "years_since_injury(claimant) == 10",
+    "Not(is_late_onset(claimant))",
+    "ForAll([p], Implies(And(is_afcs(p), years_since_injury(p) > 7, Not(is_late_onset(p))), Not(can_claim(p))))",
+    "ForAll([p], Implies(And(is_afcs(p), years_since_injury(p) <= 7), can_claim(p)))",
+    "ForAll([p], Implies(is_late_onset(p), can_claim(p)))",
+    "ForAll([p], Implies(Not(is_afcs(p)), can_claim(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can claimant claim compensation",
+      "constraint": "can_claim(claimant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

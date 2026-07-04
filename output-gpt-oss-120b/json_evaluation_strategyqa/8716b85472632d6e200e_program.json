@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Resort",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "size",
+      "domain": [
+        "Resort"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "resorts": {
+      "sort": "Resort",
+      "members": [
+        "waltdisney_world",
+        "disneyland_paris",
+        "disneyland_california"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "size(waltdisney_world) == 100",
+    "size(disneyland_paris) == 30",
+    "size(disneyland_california) == 20"
+  ],
+  "verifications": [
+    {
+      "name": "DisneylandParisIsLargest",
+      "forall": [
+        {
+          "name": "r",
+          "sort": "Resort"
+        }
+      ],
+      "implies": {
+        "antecedent": "Not(r == disneyland_paris)",
+        "consequent": "size(disneyland_paris) >= size(r)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

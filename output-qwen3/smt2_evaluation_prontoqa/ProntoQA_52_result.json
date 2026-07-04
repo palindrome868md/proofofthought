@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_52",
+  "question": "Every jompus is spicy. Every jompus is a dumpus. Each dumpus is not transparent. Each dumpus is a zumpus. Zumpuses are feisty. Zumpuses are wumpuses. Each wumpus is not dull. Every wumpus is an impus. Every vumpus is not blue. Impuses are blue. Impuses are tumpuses. Tumpuses are not floral. Each tumpus is a numpus. Polly is a jompus.\n\nIs the following statement true or false? Polly is blue.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

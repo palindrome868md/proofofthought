@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Group",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "member_of",
+      "domain": [
+        "Person",
+        "Group"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_arrest",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "groups": {
+      "sort": "Group",
+      "members": [
+        "police"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "g",
+      "sort": "Group"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, g], Implies(And(member_of(p, g), g == police), can_arrest(p)))",
+    "Exists([p], member_of(p, police))"
+  ],
+  "verifications": [
+    {
+      "name": "PoliceMembersCanArrest",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(member_of(p, police), can_arrest(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

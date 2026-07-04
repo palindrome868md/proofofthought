@@ -1,0 +1,113 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "SocialMediaApplication",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ChatFeature",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Software",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ComputerProgram",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "AllowsSendMessages",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "VideoFeature",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "AllowsUploadVideos",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HighEngagementMetrics",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Addictive",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "NotIdealForPreteens",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "tiktok"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(SocialMediaApplication(x), ChatFeature(x)), Software(x)))",
+    "ForAll([x], Implies(And(SocialMediaApplication(x), AllowsSendMessages(x)), ChatFeature(x)))",
+    "ForAll([x], Implies(SocialMediaApplication(x), Or(ChatFeature(x), VideoFeature(x))))",
+    "ForAll([x], Implies(And(SocialMediaApplication(x), VideoFeature(x)), AllowsUploadVideos(x)))",
+    "ForAll([x], Implies(And(Software(x), SocialMediaApplication(x)), ComputerProgram(x)))",
+    "ForAll([x], Implies(And(SocialMediaApplication(x), HighEngagementMetrics(x)), Addictive(x)))",
+    "ForAll([x], Implies(And(SocialMediaApplication(x), Addictive(x)), NotIdealForPreteens(x)))",
+    "And(SocialMediaApplication(tiktok), NotIdealForPreteens(tiktok))"
+  ],
+  "verifications": [
+    {
+      "name": "TikTok is a computer program",
+      "constraint": "ComputerProgram(tiktok)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

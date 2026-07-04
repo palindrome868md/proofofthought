@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Group",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Memorial",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "first_responder",
+      "domain": [
+        "Group"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "included_in",
+      "domain": [
+        "Group",
+        "Memorial"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_911_memorial",
+      "domain": [
+        "Memorial"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "groups": {
+      "sort": "Group",
+      "members": [
+        "firefighters"
+      ]
+    },
+    "memorials": {
+      "sort": "Memorial",
+      "members": [
+        "september_11_memorial"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "first_responder(firefighters)",
+    "is_911_memorial(september_11_memorial)"
+  ],
+  "rules": [
+    {
+      "name": "FirstResponderIn911Memorial",
+      "forall": [
+        {
+          "name": "g",
+          "sort": "Group"
+        },
+        {
+          "name": "m",
+          "sort": "Memorial"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(first_responder(g), is_911_memorial(m))",
+        "consequent": "included_in(g, m)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "FirefightersIncludedInSept11Memorial",
+      "constraint": "included_in(firefighters, september_11_memorial)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_33",
+  "question": "Every yumpus is not temperate. Yumpuses are rompuses. Every rompus is large. Every rompus is an impus. Impuses are not blue. Impuses are tumpuses. Tumpuses are nervous. Tumpuses are wumpuses. Wumpuses are bright. Numpuses are not bright. Each wumpus is a zumpus. Every zumpus is not fruity. Zumpuses are dumpuses. Dumpuses are opaque. Dumpuses are vumpuses. Vumpuses are mean. Vumpuses are jompuses. Stella is a yumpus.\n\nIs the following statement true or false? Stella is not bright.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

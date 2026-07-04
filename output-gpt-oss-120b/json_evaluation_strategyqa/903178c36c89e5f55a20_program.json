@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_model",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "leila_george"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "height(leila_george) == 165"
+  ],
+  "rules": [
+    {
+      "name": "Model Height Positive",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "height(p) >= 170",
+        "consequent": "is_model(p)"
+      }
+    },
+    {
+      "name": "Model Height Negative",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "height(p) < 170",
+        "consequent": "Not(is_model(p))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Leila Lacks Height for Modeling",
+      "constraint": "Not(is_model(leila_george))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

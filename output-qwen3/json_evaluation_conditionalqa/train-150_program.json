@@ -1,0 +1,116 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_self_employed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "recovering_from_covid",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_working",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_under_16_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earns_under_143",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "under_pension_age",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_ni_contributions",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claims_jsa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claims_ssp",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_esa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "designer"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(under_pension_age(p), has_ni_contributions(p), Not(claims_jsa(p)), Not(claims_ssp(p)), recovering_from_covid(p)), eligible_for_esa(p)))",
+    "ForAll([p], Implies(And(eligible_for_esa(p), is_working(p)), And(works_under_16_hours(p), earns_under_143(p))))",
+    "is_self_employed(designer)",
+    "recovering_from_covid(designer)",
+    "is_working(designer)",
+    "works_under_16_hours(designer)",
+    "earns_under_143(designer)",
+    "under_pension_age(designer)",
+    "has_ni_contributions(designer)",
+    "Not(claims_jsa(designer))",
+    "Not(claims_ssp(designer))"
+  ],
+  "verifications": [
+    {
+      "name": "Can designer claim ESA while working after COVID recovery",
+      "constraint": "eligible_for_esa(designer)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

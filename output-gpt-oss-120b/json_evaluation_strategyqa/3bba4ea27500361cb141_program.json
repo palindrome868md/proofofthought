@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Vehicle",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tunnel",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_cruise_boat",
+      "domain": [
+        "Vehicle"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "traverses",
+      "domain": [
+        "Vehicle",
+        "Tunnel"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "boats": {
+      "sort": "Vehicle",
+      "members": [
+        "oasis"
+      ]
+    },
+    "tunnels": {
+      "sort": "Tunnel",
+      "members": [
+        "lincoln_tunnel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "v",
+      "sort": "Vehicle"
+    }
+  ],
+  "knowledge_base": [
+    {
+      "assertion": "is_cruise_boat(oasis)",
+      "value": true
+    },
+    "ForAll([v], Implies(is_cruise_boat(v), Not(traverses(v, lincoln_tunnel))))"
+  ],
+  "verifications": [
+    {
+      "name": "Oasis traverses Lincoln Tunnel",
+      "constraint": "traverses(oasis, lincoln_tunnel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

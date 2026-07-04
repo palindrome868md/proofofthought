@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "knows",
+      "domain": [
+        "Person",
+        "Language"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_communicate",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_universal_language",
+      "domain": [
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "LanguageA"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "katya",
+        "danil"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_universal_language(LanguageA)",
+    "knows(katya, LanguageA)",
+    "ForAll([p1, p2], Implies(And(knows(p1, LanguageA), knows(p2, LanguageA), is_universal_language(LanguageA)), can_communicate(p1, p2)))",
+    "Not(can_communicate(katya, danil))"
+  ],
+  "verifications": [
+    {
+      "name": "Danil knows LanguageA",
+      "constraint": "knows(danil, LanguageA)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

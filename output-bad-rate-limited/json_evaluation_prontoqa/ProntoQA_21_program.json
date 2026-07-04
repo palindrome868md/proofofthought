@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dumpuses": {
+      "sort": "Dumpus",
+      "members": [
+        "max"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "dumpus(max)",
+    "ForAll([d], Implies(dumpus(d), numpus(d)))",
+    "ForAll([d], Implies(numpus(d), rompus(d)))",
+    "ForAll([d], Implies(rompus(d), jompus(d)))",
+    "ForAll([d], Implies(jompus(d), yumpus(d)))",
+    "ForAll([d], Implies(yumpus(d), orange(d)))"
+  ],
+  "verifications": [
+    {
+      "name": "Max is orange",
+      "constraint": "orange(max)"
+    }
+  ]
+}

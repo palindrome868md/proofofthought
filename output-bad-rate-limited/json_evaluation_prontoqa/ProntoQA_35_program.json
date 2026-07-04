@@ -1,0 +1,178 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "aggressive",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(zumpus(p), Not(wooden(p))))",
+    "ForAll([p], Implies(zumpus(p), vumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), Not(sour(p))))",
+    "ForAll([p], Implies(vumpus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), floral(p)))",
+    "ForAll([p], Implies(jompus(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), transparent(p)))",
+    "ForAll([p], Implies(wumpus(p), impuse(p)))",
+    "ForAll([p], Implies(impuse(p), dull(p)))",
+    "ForAll([p], Implies(impuse(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), feisty(p)))",
+    "ForAll([p], Implies(yumpus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), orange(p)))",
+    "ForAll([p], Implies(dumpus(p), rompus(p)))",
+    "ForAll([p], Implies(rompus(p), Not(aggressive(p))))",
+    "ForAll([p], Implies(rompus(p), tumpus(p)))",
+    "jompus(Fae)"
+  ],
+  "verifications": [
+    {
+      "name": "Is Fae orange",
+      "constraint": "orange(Fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

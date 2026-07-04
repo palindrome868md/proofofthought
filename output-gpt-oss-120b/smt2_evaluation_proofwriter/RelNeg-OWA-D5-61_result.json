@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D5-61",
+  "question": "The bear sees the mouse. The bear does not see the tiger. The bear visits the squirrel. The bear visits the tiger. The mouse does not eat the tiger. The mouse is cold. The mouse is green. The mouse visits the squirrel. The squirrel is cold. The squirrel visits the bear. The squirrel visits the mouse. The tiger eats the mouse. The tiger is big. The tiger sees the bear. The tiger sees the mouse. The tiger does not visit the mouse. If something eats the squirrel then the squirrel is not green. If something sees the bear and the bear sees the mouse then it visits the tiger. If something sees the squirrel then it is not rough. If something is round and big then it sees the bear. If something visits the tiger then it sees the squirrel. If something visits the squirrel and it visits the tiger then the squirrel eats the mouse. If something visits the bear and it eats the mouse then the mouse sees the bear. If something eats the mouse and the mouse is not round then it is not cold.\n\nQuestion: The mouse does not visit the tiger.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

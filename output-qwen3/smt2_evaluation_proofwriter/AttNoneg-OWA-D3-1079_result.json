@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-1079",
+  "question": "Charlie is furry. Charlie is round. Charlie is young. Erin is furry. Erin is rough. Fiona is rough. Fiona is round. Kind people are cold. If someone is big then they are round. All rough, furry people are big. All kind, young people are cold. If Erin is round and Erin is furry then Erin is cold. If someone is big then they are kind. If Fiona is cold then Fiona is rough. If Fiona is furry and Fiona is rough then Fiona is round.\n\nQuestion: Erin is not cold.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

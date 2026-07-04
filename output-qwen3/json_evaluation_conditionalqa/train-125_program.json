@@ -1,0 +1,18 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is PAYE Mandatory for 10 Year Old",
+      "constraint": "Or(And(10 >= 16, (10000 / 26) > 120), And(10 < 16, 10000 > 12570))"
+    }
+  ],
+  "optimization": {},
+  "actions": [
+    "verify_conditions"
+  ]
+}

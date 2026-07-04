@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Item",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_reference_to_person",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_reference_to_item",
+      "domain": [
+        "Person",
+        "Item"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "actors": {
+      "sort": "Person",
+      "members": [
+        "adam_sandler",
+        "cole_spouse"
+      ]
+    },
+    "props": {
+      "sort": "Item",
+      "members": [
+        "scuba_man_doll"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "has_reference_to_person(adam_sandler, cole_spouse)",
+    "has_reference_to_item(adam_sandler, scuba_man_doll)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Adam Sandler Reference Verification",
+      "constraint": "And(has_reference_to_person(adam_sandler, cole_spouse), has_reference_to_item(adam_sandler, scuba_man_doll))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

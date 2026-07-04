@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "erin",
+        "fiona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "cold(bob)",
+    "rough(erin)",
+    "kind(fiona)",
+    "ForAll([x], Implies(blue(x), round(x)))",
+    "ForAll([x], Implies(nice(x), blue(x)))",
+    "ForAll([x], Implies(rough(x), nice(x)))",
+    "ForAll([x], Implies(And(rough(x), blue(x)), cold(x)))",
+    "Implies(Not(round(fiona)), cold(fiona))",
+    "ForAll([x], Implies(And(cold(x), rough(x)), kind(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Erin is not blue",
+      "constraint": "Not(blue(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

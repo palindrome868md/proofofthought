@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    },
+    {
+      "name": "y",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "visits(mouse, rabbit)",
+    "needs(rabbit, mouse)",
+    "Implies(visits(mouse, rabbit), needs(mouse, rabbit))",
+    "ForAll([x], Implies(And(visits(x, rabbit), sees(rabbit, mouse)), Not(sees(mouse, rabbit))))",
+    "ForAll([y], Implies(needs(y, rabbit), Not(rough(y))))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit does not need mouse",
+      "constraint": "Not(needs(rabbit, mouse))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "subscribe_AMC",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribe_HBO",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_3movies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "go_cinema_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefer_TV",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watch_TV_in_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(subscribe_AMC(x), eligible_3movies(x)))",
+    "Exists([x], go_cinema_weekly(x))",
+    "ForAll([x], Or(subscribe_AMC(x), subscribe_HBO(x)))",
+    "ForAll([x], Implies(prefer_TV(x), Not(watch_TV_in_cinema(x))))",
+    "ForAll([x], Implies(subscribe_HBO(x), prefer_TV(x)))",
+    "watch_TV_in_cinema(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Lily weekly cinema or eligible",
+      "constraint": "Or(go_cinema_weekly(lily), eligible_3movies(lily))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

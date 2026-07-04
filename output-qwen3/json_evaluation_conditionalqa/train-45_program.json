@@ -1,0 +1,136 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Charity",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dependant",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_living",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wants_to_make_will",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wants_to_leave_to_charity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_dependants",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dependants_cannot_care_for_themselves",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_overseas_property",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_business",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shares_property_with_non_spouse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_multiple_family_claimants",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "permanent_home_outside_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_legal_advice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_living(me) == True",
+    "wants_to_make_will(me) == True",
+    "wants_to_leave_to_charity(me) == True",
+    "has_dependants(me) == True",
+    "ForAll([p], Implies(Or(Or(Or(Or(Or(Or(dependants_cannot_care_for_themselves(p), has_overseas_property(p)), has_business(p)), shares_property_with_non_spouse(p)), has_multiple_family_claimants(p)), permanent_home_outside_uk(p)), False), needs_legal_advice(p)))",
+    "ForAll([p], Implies(dependants_cannot_care_for_themselves(p), needs_legal_advice(p)))",
+    "ForAll([p], Implies(has_overseas_property(p), needs_legal_advice(p)))",
+    "ForAll([p], Implies(has_business(p), needs_legal_advice(p)))",
+    "ForAll([p], Implies(shares_property_with_non_spouse(p), needs_legal_advice(p)))",
+    "ForAll([p], Implies(has_multiple_family_claimants(p), needs_legal_advice(p)))",
+    "ForAll([p], Implies(permanent_home_outside_uk(p), needs_legal_advice(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Does me need legal advice for will",
+      "constraint": "needs_legal_advice(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

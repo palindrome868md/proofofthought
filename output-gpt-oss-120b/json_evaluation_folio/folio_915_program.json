@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "professional_athlete",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spends_most_time_on_sports",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "olympic_gold_winner",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "full_time_scientist",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nobel_physics_laureate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "amy"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(professional_athlete(p), spends_most_time_on_sports(p)))",
+    "ForAll([p], Implies(olympic_gold_winner(p), professional_athlete(p)))",
+    "ForAll([p], Implies(full_time_scientist(p), Not(spends_most_time_on_sports(p))))",
+    "ForAll([p], Implies(nobel_physics_laureate(p), full_time_scientist(p)))",
+    "Or(spends_most_time_on_sports(amy), olympic_gold_winner(amy))",
+    "Implies(Not(nobel_physics_laureate(amy)), Not(olympic_gold_winner(amy)))"
+  ],
+  "verifications": [
+    {
+      "name": "If not Olympic then Nobel",
+      "constraint": "Implies(Not(olympic_gold_winner(amy)), nobel_physics_laureate(amy))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

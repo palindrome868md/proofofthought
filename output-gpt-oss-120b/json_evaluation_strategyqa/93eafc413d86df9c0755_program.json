@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "daily_req",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "calories",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "subsist",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "ocelot",
+        "bee_hummingbird"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "daily_req(ocelot) == 500",
+    "calories(bee_hummingbird) == 1"
+  ],
+  "rules": [
+    {
+      "name": "SufficientCaloriesImpliesSubsist",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "Animal"
+        },
+        {
+          "name": "f",
+          "sort": "Animal"
+        }
+      ],
+      "implies": {
+        "antecedent": "calories(f) >= daily_req(a)",
+        "consequent": "subsist(a, f)"
+      }
+    },
+    {
+      "name": "InsufficientCaloriesImpliesNotSubsist",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "Animal"
+        },
+        {
+          "name": "f",
+          "sort": "Animal"
+        }
+      ],
+      "implies": {
+        "antecedent": "calories(f) < daily_req(a)",
+        "consequent": "Not(subsist(a, f))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "OcelotSubsistOnBeeHummingbird",
+      "constraint": "subsist(ocelot, bee_hummingbird)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Issue",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Party",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "publicly_denounce",
+      "domain": [
+        "Person",
+        "Issue"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "supports",
+      "domain": [
+        "Person",
+        "Issue"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "party_affiliation",
+      "domain": [
+        "Person"
+      ],
+      "range": "Party"
+    },
+    {
+      "name": "party_supports_issue",
+      "domain": [
+        "Party",
+        "Issue"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "nancy_pelosi"
+      ]
+    },
+    "issues": {
+      "sort": "Issue",
+      "members": [
+        "abortion"
+      ]
+    },
+    "parties": {
+      "sort": "Party",
+      "members": [
+        "democratic_party"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Issue"
+    }
+  ],
+  "knowledge_base": [
+    "party_affiliation(nancy_pelosi) == democratic_party",
+    "party_supports_issue(democratic_party, abortion)",
+    "ForAll([p, i], Implies(And(party_affiliation(p) == democratic_party, party_supports_issue(democratic_party, i)), supports(p, i)))",
+    "ForAll([p, i], Implies(supports(p, i), Not(publicly_denounce(p, i))))"
+  ],
+  "verifications": [
+    {
+      "name": "Would Pelosi denounce abortion",
+      "constraint": "publicly_denounce(nancy_pelosi, abortion)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

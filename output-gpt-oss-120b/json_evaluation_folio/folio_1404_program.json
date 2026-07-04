@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "biodegradable",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "env_friendly",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "woodware",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "paper",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bad",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "worksheet"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(biodegradable(x), env_friendly(x)))",
+    "ForAll([x], Implies(woodware(x), biodegradable(x)))",
+    "ForAll([x], Implies(paper(x), woodware(x)))",
+    "ForAll([x], Not(And(good(x), bad(x))))",
+    "ForAll([x], Implies(env_friendly(x), good(x)))",
+    "Or(paper(worksheet), env_friendly(worksheet))"
+  ],
+  "verifications": [
+    {
+      "name": "WorksheetIsBad",
+      "constraint": "bad(worksheet)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

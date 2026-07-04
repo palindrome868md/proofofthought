@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "CivilPartnership",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "partnership_duration_years",
+      "domain": [
+        "CivilPartnership"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_cheating",
+      "domain": [
+        "CivilPartnership"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_duration_requirement",
+      "domain": [
+        "CivilPartnership"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_valid_grounds",
+      "domain": [
+        "CivilPartnership"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_dissolve",
+      "domain": [
+        "CivilPartnership"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "partnerships": {
+      "sort": "CivilPartnership",
+      "members": [
+        "my_partnership"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "cp",
+      "sort": "CivilPartnership"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([cp], Implies(partnership_duration_years(cp) > 1, meets_duration_requirement(cp)))",
+    "ForAll([cp], Implies(is_cheating(cp), has_valid_grounds(cp)))",
+    "ForAll([cp], Implies(And(meets_duration_requirement(cp), has_valid_grounds(cp)), can_dissolve(cp)))",
+    "partnership_duration_years(my_partnership) == 2",
+    "is_cheating(my_partnership) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Can dissolve civil partnership on grounds of cheating",
+      "constraint": "can_dissolve(my_partnership)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "Anne",
+        "Charlie",
+        "Dave",
+        "Erin"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "big(Anne)",
+    "Not(blue(Charlie))",
+    "kind(Dave)",
+    "Not(big(Erin))",
+    "ForAll([x], Implies(red(x), Not(young(x))))",
+    "ForAll([x], Implies(nice(x), blue(x)))",
+    "ForAll([x], Implies(And(kind(x), Not(round(x))), blue(x)))",
+    "ForAll([x], Implies(And(big(x), blue(x)), red(x)))",
+    "ForAll([x], Implies(big(x), red(x)))",
+    "ForAll([x], Implies(kind(x), big(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Anne is not big",
+      "constraint": "Not(big(Anne))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "erin"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_cold(bob)",
+    "is_furry(bob)",
+    "is_nice(bob)",
+    "is_red(bob)",
+    "is_round(bob)",
+    "is_smart(bob)",
+    "is_red(erin)",
+    "ForAll([x], Implies(is_furry(x), is_round(x)))",
+    "Implies(And(is_nice(bob), is_big(bob)), is_smart(bob))",
+    "ForAll([x], Implies(is_red(x), is_furry(x)))",
+    "ForAll([x], Implies(And(is_furry(x), is_big(x)), is_round(x)))",
+    "ForAll([x], Implies(And(is_red(x), is_round(x)), is_nice(x)))",
+    "ForAll([x], Implies(And(is_big(x), is_cold(x)), is_red(x)))",
+    "ForAll([x], Implies(is_furry(x), is_red(x)))",
+    "ForAll([x], Implies(is_big(x), is_cold(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Erin is not nice",
+      "constraint": "Not(is_nice(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

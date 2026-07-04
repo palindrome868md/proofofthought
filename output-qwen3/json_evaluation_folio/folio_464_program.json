@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Instrument",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "plays_in_concert",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_at",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "peter",
+        "oliver"
+      ]
+    },
+    "instruments": {
+      "sort": "Instrument",
+      "members": [
+        "piano",
+        "violin",
+        "saxophone"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "o",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Instrument"
+    },
+    {
+      "name": "j",
+      "sort": "Instrument"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, i], Implies(plays_in_concert(p, i), good_at(p, i)))",
+    "plays(peter, piano)",
+    "plays(peter, violin)",
+    "plays(peter, saxophone)",
+    "plays_in_concert(peter, piano)",
+    "Exists([i], plays_in_concert(oliver, i))",
+    "ForAll([i], Implies(plays_in_concert(peter, i), Not(plays_in_concert(oliver, i))))"
+  ],
+  "verifications": [
+    {
+      "name": "Oliver plays piano in concert",
+      "constraint": "plays_in_concert(oliver, piano)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_child",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_step_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_administer",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "alice",
+        "carol"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Person"
+    },
+    {
+      "name": "s",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_child(alice, bob)",
+    "is_step_parent(carol, bob)"
+  ],
+  "rules": [
+    {
+      "name": "ChildPrecedenceOverStepParent",
+      "forall": [
+        {
+          "name": "c",
+          "sort": "Person"
+        },
+        {
+          "name": "s",
+          "sort": "Person"
+        },
+        {
+          "name": "d",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_child(c, d), is_step_parent(s, d))",
+        "consequent": "Not(can_administer(s, d))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "StepParentCanAdminister",
+      "constraint": "can_administer(carol, bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

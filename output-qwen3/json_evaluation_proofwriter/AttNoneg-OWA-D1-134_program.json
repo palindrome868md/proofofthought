@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "dave",
+        "fiona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_green(bob)",
+    "is_rough(bob)",
+    "is_smart(bob)",
+    "is_big(dave)",
+    "is_blue(dave)",
+    "is_quiet(dave)",
+    "is_rough(dave)",
+    "is_smart(dave)",
+    "is_rough(fiona)",
+    "is_smart(fiona)",
+    "ForAll([x], Implies(And(is_smart(x), is_big(x)), is_blue(x)))",
+    "ForAll([x], Implies(is_smart(x), is_furry(x)))",
+    "ForAll([x], Implies(And(is_rough(x), is_green(x)), is_big(x)))",
+    "ForAll([x], Implies(And(is_green(x), is_rough(x)), is_smart(x)))",
+    "ForAll([x], Implies(And(is_blue(x), is_rough(x)), is_quiet(x)))",
+    "Implies(And(is_blue(bob), is_smart(bob)), is_big(bob))",
+    "ForAll([x], Implies(is_quiet(x), is_big(x)))",
+    "ForAll([x], Implies(is_big(x), is_furry(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bob is not furry",
+      "constraint": "Not(is_furry(bob))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

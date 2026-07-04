@@ -1,0 +1,111 @@
+{
+  "sorts": [
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Wumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Impus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "wumpuses": {
+      "sort": "Wumpus",
+      "members": [
+        "sam"
+      ]
+    },
+    "dumpuses": {
+      "sort": "Dumpus",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_wumpus(sam)",
+    "Not(mean(sam))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam is mean",
+      "constraint": "mean(sam)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

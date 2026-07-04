@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CarModel",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "num_children",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "seats",
+      "domain": [
+        "CarModel"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lil_wayne"
+      ]
+    },
+    "car_models": {
+      "sort": "CarModel",
+      "members": [
+        "chevrolet_corvette_zr1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "num_children(lil_wayne) == 3",
+    "seats(chevrolet_corvette_zr1) == 2"
+  ],
+  "verifications": [
+    {
+      "name": "Lil Wayne children ride in Corvette together",
+      "constraint": "num_children(lil_wayne) <= seats(chevrolet_corvette_zr1)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

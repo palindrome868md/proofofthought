@@ -1,0 +1,204 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alan",
+        "dave",
+        "fred"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "rough(alan)",
+    "kind(alan)",
+    "cold(alan)",
+    "blue(alan)",
+    "young(alan)",
+    "cold(dave)",
+    "nice(dave)",
+    "round(fred)",
+    "kind(fred)"
+  ],
+  "rules": [
+    {
+      "name": "RoundYoungRedImpliesCold",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(round(x), young(x), red(x))",
+        "consequent": "cold(x)"
+      }
+    },
+    {
+      "name": "NiceBlueRoughImpliesYoung",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(nice(x), blue(x), rough(x))",
+        "consequent": "young(x)"
+      }
+    },
+    {
+      "name": "YoungKindImpliesRed",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(young(x), kind(x))",
+        "consequent": "red(x)"
+      }
+    },
+    {
+      "name": "ColdRoughRedImpliesKind",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(cold(x), rough(x), red(x))",
+        "consequent": "kind(x)"
+      }
+    },
+    {
+      "name": "YoungBigBlueImpliesCold",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(young(x), big(x), blue(x))",
+        "consequent": "cold(x)"
+      }
+    },
+    {
+      "name": "RoundKindImpliesYoung",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(round(x), kind(x))",
+        "consequent": "young(x)"
+      }
+    },
+    {
+      "name": "ColdNiceGreenImpliesKind",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(cold(x), nice(x), green(x))",
+        "consequent": "kind(x)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "AlanIsRed",
+      "constraint": "red(alan)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

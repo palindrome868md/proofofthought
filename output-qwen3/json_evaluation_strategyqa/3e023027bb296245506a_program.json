@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_on_diet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "must_limit_calories",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats_mcdonalds_lunch",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "exceeds_calorie_limit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "skips_mcdonalds_lunch",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_on_diet(p), must_limit_calories(p)))",
+    "ForAll([p], Implies(eats_mcdonalds_lunch(p), exceeds_calorie_limit(p)))",
+    "ForAll([p], Implies(And(must_limit_calories(p), exceeds_calorie_limit(p)), skips_mcdonalds_lunch(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Check if diet requires skipping McDonald's",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_on_diet(x), eats_mcdonalds_lunch(x), Not(skips_mcdonalds_lunch(x)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

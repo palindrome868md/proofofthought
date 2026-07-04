@@ -1,0 +1,61 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Will",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "need_legal_advice",
+      "domain": [
+        "Will"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "straightforward",
+      "domain": [
+        "Will"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "wills": {
+      "sort": "Will",
+      "members": [
+        "my_will"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "w",
+      "sort": "Will"
+    }
+  ],
+  "knowledge_base": [
+    "straightforward(my_will) == True",
+    "ForAll([w], Implies(straightforward(w), Not(need_legal_advice(w))))"
+  ],
+  "verifications": [
+    {
+      "name": "Do I need legal advice to make my will?",
+      "constraint": "Not(need_legal_advice(my_will))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

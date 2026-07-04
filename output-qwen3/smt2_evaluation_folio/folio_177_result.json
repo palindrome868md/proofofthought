@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_177",
+  "question": "Given the following premises:\n\nAll buildings in New Haven are not high.\nAll buildings managed by Yale Housing are located in New Haven. \nAll buildings in Manhattans are high. \nAll buildings owned by Bloomberg are located in Manhattans. \nAll buildings with the Bloomberg logo are owned by Bloomberg. \nTower A is managed by Yale Housing.\nTower B is with the Bloomberg logo.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Tower A is low.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

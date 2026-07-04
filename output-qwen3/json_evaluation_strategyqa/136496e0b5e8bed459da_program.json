@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Scale",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Composition",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Technique",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "note_count",
+      "domain": [
+        "Scale"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "uses_scale",
+      "domain": [
+        "Composition",
+        "Scale"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_technique",
+      "domain": [
+        "Composition",
+        "Technique"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requires_pitch_count",
+      "domain": [
+        "Technique"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "scales": {
+      "sort": "Scale",
+      "members": [
+        "iwato_scale"
+      ]
+    },
+    "techniques": {
+      "sort": "Technique",
+      "members": [
+        "twelve_tone_technique"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Composition"
+    }
+  ],
+  "knowledge_base": [
+    "note_count(iwato_scale) == 5",
+    "requires_pitch_count(twelve_tone_technique) == 12",
+    "ForAll([c], Implies(And(uses_scale(c, iwato_scale), uses_technique(c, twelve_tone_technique)), note_count(iwato_scale) >= requires_pitch_count(twelve_tone_technique)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can use Iwato scale for twelve-tone composition",
+      "exists": [
+        {
+          "name": "c",
+          "sort": "Composition"
+        }
+      ],
+      "constraint": "And(uses_scale(c, iwato_scale), uses_technique(c, twelve_tone_technique))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

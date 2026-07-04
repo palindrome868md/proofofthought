@@ -1,0 +1,122 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "rabbit",
+        "cow",
+        "dog"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bear, rabbit)",
+    "likes(cow, rabbit)",
+    "needs(cow, rabbit)",
+    "sees(cow, rabbit)",
+    "is_green(dog)",
+    "is_red(dog)",
+    "likes(dog, cow)",
+    "likes(dog, rabbit)",
+    "needs(dog, bear)",
+    "sees(dog, cow)",
+    "sees(dog, rabbit)",
+    "is_blue(rabbit)",
+    "is_cold(rabbit)",
+    "needs(rabbit, bear)",
+    "needs(rabbit, cow)",
+    "sees(rabbit, dog)",
+    "Implies(is_cold(bear), is_red(bear))",
+    "ForAll([x], Implies(And(likes(x, rabbit), is_red(x)), likes(rabbit, dog)))",
+    "ForAll([x], Implies(And(sees(x, dog), needs(x, bear)), is_red(x)))",
+    "ForAll([x], Implies(is_green(x), is_red(x)))",
+    "ForAll([x], Implies(is_red(x), needs(x, cow)))",
+    "ForAll([x], Implies(And(sees(x, cow), needs(x, cow)), likes(x, bear)))",
+    "ForAll([x], Implies(And(is_cold(x), is_kind(x)), is_green(x)))",
+    "ForAll([x], Implies(And(sees(x, bear), is_cold(bear)), needs(bear, rabbit)))",
+    "ForAll([x], Implies(And(sees(x, dog), likes(dog, bear)), is_cold(bear)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bear is not cold",
+      "constraint": "Not(is_cold(bear))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

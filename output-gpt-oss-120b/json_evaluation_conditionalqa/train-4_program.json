@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eligible_shpp",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "takes_spl",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receive_shpp",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "parent1",
+        "parent2"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "eligible_shpp(parent1)",
+    "eligible_shpp(parent2)",
+    "Not(takes_spl(parent1))",
+    "Not(takes_spl(parent2))",
+    "ForAll([p], receive_shpp(p) == And(eligible_shpp(p), takes_spl(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "BenefitWhileWorkingFullTime",
+      "exists": [
+        {
+          "name": "q",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "receive_shpp(q)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

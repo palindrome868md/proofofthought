@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Competition",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Item",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "uses",
+      "domain": [
+        "Competition",
+        "Item"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "competitions": {
+      "sort": "Competition",
+      "members": [
+        "space_race"
+      ]
+    },
+    "items": {
+      "sort": "Item",
+      "members": [
+        "relay_baton"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(uses(space_race, relay_baton))"
+  ],
+  "verifications": [
+    {
+      "name": "Did Space Race use relay batons",
+      "constraint": "uses(space_race, relay_baton)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

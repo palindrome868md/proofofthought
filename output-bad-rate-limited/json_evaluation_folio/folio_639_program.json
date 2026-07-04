@@ -1,0 +1,139 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Parliament",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "School",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "University",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Party",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sat_in_parliament",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attended",
+      "domain": [
+        "Person",
+        "School"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attended_university",
+      "domain": [
+        "Person",
+        "University"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "University",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "supported",
+      "domain": [
+        "Person",
+        "Party"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "schools": {
+      "sort": "School",
+      "members": [
+        "westminster_school"
+      ]
+    },
+    "universities": {
+      "sort": "University",
+      "members": [
+        "edinburgh_university"
+      ]
+    },
+    "parliaments": {
+      "sort": "Parliament",
+      "members": [
+        "house_of_commons"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "united_kingdom"
+      ]
+    },
+    "parties": {
+      "sort": "Party",
+      "members": [
+        "portland_whigs"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "sat_in_parliament(william_dickinson)",
+      "value": true
+    },
+    {
+      "assertion": "attended(william_dickinson, westminster_school)",
+      "value": true
+    },
+    {
+      "assertion": "attended_university(william_dickinson, edinburgh_university)",
+      "value": true
+    },
+    {
+      "assertion": "located_in(edinburgh_university, united_kingdom)",
+      "value": true
+    },
+    {
+      "assertion": "supported(william_dickinson, portland_whigs)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson sat in the House of Commons",
+      "constraint": "sat_in_parliament(william_dickinson)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

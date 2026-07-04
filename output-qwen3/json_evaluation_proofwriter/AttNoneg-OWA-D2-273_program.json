@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Thing",
+      "members": [
+        "bob",
+        "charlie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "is_red(bob)",
+    "is_rough(bob)",
+    "is_smart(charlie)",
+    "ForAll([x], Implies(is_big(x), is_blue(x)))",
+    "Implies(is_big(charlie), is_rough(charlie))",
+    "Implies(And(is_kind(bob), is_big(bob)), is_young(bob))",
+    "Implies(is_young(bob), is_big(bob))",
+    "ForAll([x], Implies(is_blue(x), is_young(x)))",
+    "ForAll([x], Implies(is_red(x), is_blue(x)))",
+    "ForAll([x], Implies(is_smart(x), is_kind(x)))",
+    "Implies(is_smart(charlie), is_kind(charlie))"
+  ],
+  "verifications": [
+    {
+      "name": "Bob is rough",
+      "constraint": "is_rough(bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

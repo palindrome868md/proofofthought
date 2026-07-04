@@ -1,0 +1,11 @@
+{
+  "sample_id": "8e01fbec3b932a3252ef",
+  "question": "Is greed the most prevalent of the Seven Deadly Sins?",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: b'enumeration sort name is already declared'"
+}

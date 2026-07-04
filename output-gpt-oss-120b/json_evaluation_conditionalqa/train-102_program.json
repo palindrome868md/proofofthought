@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "apply_protection_order",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "informed_other_family",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "grandmother"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(apply_protection_order(p), informed_other_family(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can apply protection order without informing family",
+      "constraint": "And(apply_protection_order(grandmother), Not(informed_other_family(grandmother)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

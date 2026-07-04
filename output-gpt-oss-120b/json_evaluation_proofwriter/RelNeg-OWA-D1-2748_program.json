@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "dog",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "Not(chases(dog, rabbit))",
+    "Not(cold(dog))",
+    "Not(likes(dog, rabbit))",
+    "sees(dog, rabbit)",
+    "chases(rabbit, dog)",
+    "blue(rabbit)",
+    "cold(rabbit)",
+    "Not(young(rabbit))",
+    "Not(likes(rabbit, dog))",
+    "Not(sees(rabbit, dog))",
+    "ForAll([x], Implies(sees(x, rabbit), chases(x, dog)))",
+    "ForAll([x], Implies(sees(x, dog), red(dog)))",
+    "Implies(And(sees(rabbit, dog), cold(rabbit)), chases(dog, rabbit))",
+    "ForAll([x], Implies(And(red(x), Not(sees(x, rabbit))), Not(red(rabbit))))",
+    "Implies(sees(rabbit, dog), Not(chases(rabbit, dog)))",
+    "ForAll([x], Implies(And(chases(x, rabbit), sees(rabbit, dog)), cold(rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dog does not chase dog",
+      "constraint": "Not(chases(dog, dog))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

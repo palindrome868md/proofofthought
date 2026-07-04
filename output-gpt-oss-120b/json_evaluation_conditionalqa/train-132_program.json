@@ -1,0 +1,34 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [
+    {
+      "name": "income_self",
+      "sort": "IntSort"
+    },
+    {
+      "name": "income_partner",
+      "sort": "IntSort"
+    },
+    {
+      "name": "child_benefit_received",
+      "sort": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "income_self <= 50000",
+    "income_partner <= 50000",
+    "income_self + income_partner > 50000",
+    "child_benefit_received == True"
+  ],
+  "verifications": [
+    {
+      "name": "Must Pay High Income Child Benefit Tax Charge",
+      "constraint": "And(child_benefit_received, Or(income_self > 50000, income_partner > 50000))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

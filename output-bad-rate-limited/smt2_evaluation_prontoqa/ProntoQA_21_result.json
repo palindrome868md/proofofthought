@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_21",
+  "question": "Vumpuses are earthy. Vumpuses are dumpuses. Dumpuses are not wooden. Dumpuses are numpuses. Every numpus is kind. Each numpus is a rompus. Each rompus is small. Every rompus is a jompus. Every jompus is bright. Jompuses are yumpuses. Yumpuses are orange. Every yumpus is a zumpus. Zumpuses are sour. Zumpuses are impuses. Impuses are transparent. Tumpuses are not orange. Each impus is a wumpus. Max is a dumpus.\n\nIs the following statement true or false? Max is orange.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

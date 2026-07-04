@@ -1,0 +1,55 @@
+{
+  "sorts": [
+    {
+      "name": "Item",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Film",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cost",
+      "domain": [
+        "Item"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "box_office",
+      "domain": [
+        "Film"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {
+    "items": {
+      "sort": "Item",
+      "members": [
+        "boeing_737"
+      ]
+    },
+    "films": {
+      "sort": "Film",
+      "members": [
+        "wonder_woman"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "cost(boeing_737) == 100000000",
+    "box_office(wonder_woman) == 821000000"
+  ],
+  "verifications": [
+    {
+      "name": "Boeing 737 cost covered by Wonder Woman box office",
+      "constraint": "cost(boeing_737) <= box_office(wonder_woman)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

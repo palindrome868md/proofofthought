@@ -1,0 +1,42 @@
+{
+  "sorts": [
+    {
+      "name": "Sin",
+      "type": "EnumSort",
+      "values": [
+        "pride",
+        "greed",
+        "wrath",
+        "sloth",
+        "lust",
+        "gluttony",
+        "envy"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "prevalence",
+      "domain": [
+        "Sin"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Sin"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "GreedIsMostPrevalent",
+      "constraint": "ForAll([s], Implies(s != greed, prevalence(greed) > prevalence(s)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "School",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "min_age_for",
+      "domain": [
+        "School"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_attend",
+      "domain": [
+        "Person",
+        "School"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "blossom",
+        "bubbles",
+        "buttercup"
+      ]
+    },
+    "schools": {
+      "sort": "School",
+      "members": [
+        "camden_military_academy"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "s",
+      "sort": "School"
+    }
+  ],
+  "knowledge_base": [
+    "age_of(blossom) == 5",
+    "age_of(bubbles) == 5",
+    "age_of(buttercup) == 5",
+    "min_age_for(camden_military_academy) == 14",
+    "ForAll([p, s], Implies(age_of(p) < min_age_for(s), Not(can_attend(p, s))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can Powerpuff Girls Attend Camden Military Academy",
+      "constraint": "Or(can_attend(blossom, camden_military_academy), can_attend(bubbles, camden_military_academy), can_attend(buttercup, camden_military_academy))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

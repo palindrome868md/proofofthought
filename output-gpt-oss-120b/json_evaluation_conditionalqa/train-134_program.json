@@ -1,0 +1,81 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Condition",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_condition",
+      "domain": [
+        "Person",
+        "Condition"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_mental_health",
+      "domain": [
+        "Condition"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_ESA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john"
+      ]
+    },
+    "conditions": {
+      "sort": "Condition",
+      "members": [
+        "depression"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Condition"
+    }
+  ],
+  "knowledge_base": [
+    "has_condition(john, depression)",
+    "is_mental_health(depression)",
+    {
+      "assertion": "ForAll([p, c], Implies(And(has_condition(p, c), is_mental_health(c)), eligible_for_ESA(p)))",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Mental health eligibility for ESA",
+      "constraint": "eligible_for_ESA(john)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

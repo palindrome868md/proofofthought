@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "five_story",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "built_in_year",
+      "domain": [
+        "Building",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "added_to_nrhp",
+      "domain": [
+        "Building",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_at",
+      "domain": [
+        "Person",
+        "Building"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "emmet_building",
+        "blake_mcfall_company_building"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "five_story(emmet_building)",
+    "built_in_year(emmet_building, 1915)",
+    "added_to_nrhp(blake_mcfall_company_building, 1990)",
+    "emmet_building == blake_mcfall_company_building",
+    "works_at(john, emmet_building)"
+  ],
+  "verifications": [
+    {
+      "name": "Existence of five-story building built in 1915",
+      "exists": [
+        {
+          "name": "b",
+          "sort": "Building"
+        }
+      ],
+      "constraint": "And(five_story(b), built_in_year(b, 1915))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

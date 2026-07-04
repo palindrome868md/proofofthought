@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Character",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_disney",
+      "domain": [
+        "Character"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_princess",
+      "domain": [
+        "Character"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_ice_power",
+      "domain": [
+        "Character"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "characters": {
+      "sort": "Character",
+      "members": [
+        "elsa",
+        "anna",
+        "cinderella",
+        "ariel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Character"
+    }
+  ],
+  "knowledge_base": [
+    "is_disney(elsa) == True",
+    "is_princess(elsa) == True",
+    "has_ice_power(elsa) == True",
+    "is_disney(anna) == True",
+    "is_princess(anna) == True",
+    "has_ice_power(anna) == False",
+    "is_disney(cinderella) == True",
+    "is_princess(cinderella) == True",
+    "has_ice_power(cinderella) == False",
+    "is_disney(ariel) == True",
+    "is_princess(ariel) == True",
+    "has_ice_power(ariel) == False"
+  ],
+  "verifications": [
+    {
+      "name": "Disney has an ice princess",
+      "exists": [
+        {
+          "name": "c",
+          "sort": "Character"
+        }
+      ],
+      "constraint": "And(is_disney(c), is_princess(c), has_ice_power(c))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

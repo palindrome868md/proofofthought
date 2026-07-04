@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_furry",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "charlie",
+        "fiona",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "is_furry(charlie)",
+    "is_rough(charlie)",
+    "is_white(charlie)",
+    "is_young(charlie)",
+    "is_nice(fiona)",
+    "is_red(fiona)",
+    "is_round(fiona)",
+    "is_white(fiona)",
+    "is_young(fiona)",
+    "is_nice(harry)",
+    "is_red(harry)",
+    "is_round(harry)",
+    "ForAll([x], Implies(And(is_young(x), is_white(x)), is_rough(x)))",
+    "ForAll([x], Implies(is_round(x), is_white(x)))",
+    "ForAll([x], Implies(is_white(x), is_young(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is young",
+      "constraint": "is_young(harry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

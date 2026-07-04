@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_41",
+  "question": "Rompuses are transparent. Every rompus is a yumpus. Yumpuses are earthy. Yumpuses are jompuses. Every jompus is not large. Each jompus is a wumpus. Each wumpus is not brown. Tumpuses are hot. Wumpuses are zumpuses. Every zumpus is dull. Zumpuses are numpuses. Numpuses are bitter. Every numpus is a dumpus. Dumpuses are not shy. Each dumpus is an impus. Impuses are not hot. Impuses are vumpuses. Max is a wumpus.\n\nIs the following statement true or false? Max is not hot.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([{\"name\":\"p\",\"sort\":\"Wumpus\"}], zumpus(p))': name 'p' is not defined"
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D2-1617",
+  "question": "Gary is big. Gary is green. Gary is round. If Gary is big and Gary is green then Gary is quiet. If someone is blue and big then they are not rough. If someone is round and green then they are rough. If someone is big and round then they are rough. If Gary is green and Gary is blue then Gary is red. If Gary is rough then Gary is round. Round, quiet people are not red. If Gary is round and Gary is blue then Gary is green.\n\nQuestion: Gary is not round.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Claim",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Decision",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "was_injured_in_service",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claim_rejected",
+      "domain": [
+        "Claim"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_appeal",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "served_in_armed_forces",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_disability",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "applied_for_lump_sum",
+      "domain": [
+        "Person",
+        "Claim"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "claimant"
+      ]
+    },
+    "claims": {
+      "sort": "Claim",
+      "members": [
+        "lump_sum_claim"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Claim"
+    }
+  ],
+  "knowledge_base": [
+    "served_in_armed_forces(claimant)",
+    "was_injured_in_service(claimant)",
+    "has_disability(claimant)",
+    "applied_for_lump_sum(claimant, lump_sum_claim)",
+    "claim_rejected(lump_sum_claim)",
+    "ForAll([p, c], Implies(And(served_in_armed_forces(p), was_injured_in_service(p), claim_rejected(c), applied_for_lump_sum(p, c)), can_appeal(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can claimant appeal rejected lump sum claim",
+      "constraint": "can_appeal(claimant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

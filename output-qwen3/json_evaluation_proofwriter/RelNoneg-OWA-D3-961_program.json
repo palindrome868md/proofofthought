@@ -1,0 +1,117 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "tiger",
+        "cow"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "chases(bald_eagle, tiger)",
+    "needs(bald_eagle, tiger)",
+    "sees(bald_eagle, cow)",
+    "sees(bald_eagle, tiger)",
+    "chases(cow, tiger)",
+    "kind(cow)",
+    "red(cow)",
+    "sees(cow, bald_eagle)",
+    "sees(cow, tiger)",
+    "chases(tiger, bald_eagle)",
+    "chases(tiger, cow)",
+    "blue(tiger)",
+    "kind(tiger)",
+    "red(tiger)",
+    "needs(tiger, bald_eagle)",
+    "ForAll([x], Implies(And(young(x), kind(x)), green(x)))",
+    "ForAll([x], Implies(And(needs(x, tiger), needs(tiger, cow)), young(cow)))",
+    "ForAll([x], Implies(And(chases(x, tiger), chases(x, bald_eagle)), sees(bald_eagle, tiger)))",
+    "ForAll([x], Implies(sees(x, tiger), needs(tiger, cow)))",
+    "ForAll([x], Implies(And(needs(x, bald_eagle), chases(bald_eagle, tiger)), sees(bald_eagle, cow)))",
+    "ForAll([x], Implies(And(red(x), needs(x, tiger)), blue(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cow is not young",
+      "constraint": "Not(young(cow))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

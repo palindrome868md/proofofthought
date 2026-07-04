@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Group",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "presidency_end",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "birth_year",
+      "domain": [
+        "Group"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "nixon"
+      ]
+    },
+    "groups": {
+      "sort": "Group",
+      "members": [
+        "hs_class_2010"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "presidency_end(nixon) == 1974",
+    "birth_year(hs_class_2010) == 1992"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "HS 2010 Lived Through Nixon Presidency",
+      "constraint": "birth_year(hs_class_2010) <= presidency_end(nixon)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

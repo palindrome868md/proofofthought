@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "dog",
+        "squirrel",
+        "mouse"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "is_cold(bear)",
+    "Not(likes(dog, bear))",
+    "likes(dog, squirrel)",
+    "is_blue(mouse)",
+    "is_rough(mouse)",
+    "likes(mouse, dog)",
+    "Not(needs(mouse, bear))",
+    "is_cold(squirrel)",
+    "likes(squirrel, dog)",
+    "likes(squirrel, mouse)",
+    "ForAll([x], Implies(And(likes(x, bear), likes(x, dog)), likes(x, squirrel)))",
+    "ForAll([x], Implies(is_blue(x), chases(x, bear)))",
+    "ForAll([x], Implies(And(needs(x, squirrel), is_cold(squirrel)), chases(x, bear)))",
+    "Implies(Not(needs(dog, bear)), Not(chases(dog, squirrel)))",
+    "ForAll([x], Implies(And(likes(x, mouse), needs(mouse, dog)), chases(x, dog)))",
+    "ForAll([x], Implies(chases(x, dog), needs(dog, squirrel)))",
+    "ForAll([x], Implies(And(chases(x, bear), Not(needs(x, bear))), needs(x, dog)))",
+    "ForAll([x], Implies(And(likes(x, mouse), is_cold(x)), needs(x, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Mouse is not rough",
+      "constraint": "Not(is_rough(mouse))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

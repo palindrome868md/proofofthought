@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_missing",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "send_to_civil_partner",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_missing(father) == True",
+    "ForAll([p], Implies(is_missing(p), send_to_civil_partner(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Must send copy to father's civil partner",
+      "constraint": "send_to_civil_partner(father)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

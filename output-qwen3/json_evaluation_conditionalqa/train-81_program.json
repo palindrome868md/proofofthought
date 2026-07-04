@@ -1,0 +1,108 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_step_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_biological_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "looks_after_as_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_dla",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_walking_difficulty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_residence",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "meets_disability_duration",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "step_father",
+        "child"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(child) == 14",
+    "has_walking_difficulty(child)",
+    "meets_residence(child)",
+    "meets_disability_duration(child)",
+    "is_step_parent(step_father, child)",
+    "Not(is_biological_parent(step_father, child))",
+    "ForAll([p, c], Implies(is_step_parent(p, c), looks_after_as_parent(p, c)))",
+    "ForAll([p, c], Implies(And(age(c) < 16, has_walking_difficulty(c), meets_residence(c), meets_disability_duration(c), Or(is_biological_parent(p, c), looks_after_as_parent(p, c))), can_claim_dla(p, c)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can step-father claim DLA",
+      "constraint": "can_claim_dla(step_father, child)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

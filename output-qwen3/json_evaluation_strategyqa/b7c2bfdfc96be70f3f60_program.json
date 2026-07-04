@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_powerpuff_girl",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "count_powerpuff_girls",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "min_wrestlers_for_tag_match",
+      "domain": [],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "blossom",
+        "bubbles",
+        "buttercup"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "count_powerpuff_girls() == 3",
+    "min_wrestlers_for_tag_match() == 4",
+    "ForAll([p], Implies(is_powerpuff_girl(p), Or(p == blossom, p == bubbles, p == buttercup)))",
+    "is_powerpuff_girl(blossom)",
+    "is_powerpuff_girl(bubbles)",
+    "is_powerpuff_girl(buttercup)"
+  ],
+  "verifications": [
+    {
+      "name": "Can Powerpuff Girls form complete tag team match",
+      "constraint": "count_powerpuff_girls() >= min_wrestlers_for_tag_match()"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

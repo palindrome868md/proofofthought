@@ -1,0 +1,37 @@
+{
+  "sorts": [
+    {
+      "name": "Grant",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "grant_repayable",
+      "domain": [
+        "Grant"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "grants": {
+      "sort": "Grant",
+      "members": [
+        "childcare_grant"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(grant_repayable(childcare_grant))"
+  ],
+  "verifications": [
+    {
+      "name": "Will Childcare Grant Need to Be Repaid",
+      "constraint": "grant_repayable(childcare_grant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

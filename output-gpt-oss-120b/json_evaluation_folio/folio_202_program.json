@@ -1,0 +1,145 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Film",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Directed",
+      "domain": [
+        "Person",
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsFilmmaker",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Documentary",
+      "domain": [
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Film",
+      "domain": [
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "From",
+      "domain": [
+        "Person",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "CityInCountry",
+      "domain": [
+        "City",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Lana_Wilson"
+      ]
+    },
+    "films": {
+      "sort": "Film",
+      "members": [
+        "After_Tiller",
+        "The_Departure",
+        "Miss_Americana"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "Kirkland"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "US"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Directed(Lana_Wilson, After_Tiller)",
+    "Directed(Lana_Wilson, The_Departure)",
+    "Directed(Lana_Wilson, Miss_Americana)",
+    "Documentary(After_Tiller)",
+    "From(Lana_Wilson, Kirkland)",
+    "CityInCountry(Kirkland, US)"
+  ],
+  "rules": [
+    {
+      "name": "Filmmaker rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "f",
+          "sort": "Film"
+        }
+      ],
+      "implies": {
+        "antecedent": "Directed(p, f)",
+        "consequent": "IsFilmmaker(p)"
+      }
+    },
+    {
+      "name": "Documentary is a Film",
+      "forall": [
+        {
+          "name": "f",
+          "sort": "Film"
+        }
+      ],
+      "implies": {
+        "antecedent": "Documentary(f)",
+        "consequent": "Film(f)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Miss Americana not directed by a filmmaker from Kirkland",
+      "constraint": "Not(And(Directed(Lana_Wilson, Miss_Americana), IsFilmmaker(Lana_Wilson), From(Lana_Wilson, Kirkland)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

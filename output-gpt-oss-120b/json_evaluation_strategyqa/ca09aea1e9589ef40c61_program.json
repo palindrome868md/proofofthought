@@ -1,0 +1,98 @@
+{
+  "sorts": [
+    {
+      "name": "Ship",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "depth",
+      "domain": [
+        "Location"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "temperature",
+      "domain": [
+        "Location"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "oxygen_level",
+      "domain": [
+        "Location"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "presence_of_decay_organisms",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "well_preserved",
+      "domain": [
+        "Ship",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "ships": {
+      "sort": "Ship",
+      "members": [
+        "titanic"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "gulf_of_finland"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "depth(gulf_of_finland) == 50",
+    "temperature(gulf_of_finland) == 6.0",
+    "oxygen_level(gulf_of_finland) == 8.0",
+    "presence_of_decay_organisms(gulf_of_finland) == True"
+  ],
+  "rules": [
+    {
+      "name": "Preservation Rule",
+      "forall": [
+        {
+          "name": "s",
+          "sort": "Ship"
+        },
+        {
+          "name": "l",
+          "sort": "Location"
+        }
+      ],
+      "implies": {
+        "antecedent": "Or(depth(l) <= 3000, temperature(l) >= 4, oxygen_level(l) >= 2, presence_of_decay_organisms(l))",
+        "consequent": "Not(well_preserved(s, l))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Titanic preservation in Gulf of Finland",
+      "constraint": "well_preserved(titanic, gulf_of_finland)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

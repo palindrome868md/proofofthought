@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "KeyboardLayout",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_fine_motor_issue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "benefits",
+      "domain": [
+        "Person",
+        "KeyboardLayout"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "comfortable_with",
+      "domain": [
+        "Person",
+        "KeyboardLayout"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "layouts": {
+      "sort": "KeyboardLayout",
+      "members": [
+        "standard_layout",
+        "altered_layout"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(has_fine_motor_issue(p), Not(comfortable_with(p, standard_layout))))",
+    "ForAll([p], Implies(has_fine_motor_issue(p), benefits(p, altered_layout)))",
+    "ForAll([p], Implies(has_fine_motor_issue(p), comfortable_with(p, altered_layout)))"
+  ],
+  "verifications": [
+    {
+      "name": "Possible Benefit of Altered Layout",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(has_fine_motor_issue(p), benefits(p, altered_layout))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

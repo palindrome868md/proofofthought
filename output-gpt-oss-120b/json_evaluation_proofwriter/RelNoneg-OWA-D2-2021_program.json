@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "mouse",
+        "rabbit",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    },
+    {
+      "name": "y",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "rough(mouse)",
+    "likes(mouse, rabbit)",
+    "likes(mouse, tiger)",
+    "visits(mouse, rabbit)",
+    "red(rabbit)",
+    "round(rabbit)",
+    "likes(rabbit, tiger)",
+    "visits(rabbit, tiger)",
+    "nice(tiger)",
+    "rough(tiger)",
+    "ForAll([x], Implies(And(red(x), nice(x)), kind(x)))",
+    "ForAll([y], Implies(likes(y, rabbit), nice(rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit is kind",
+      "constraint": "kind(rabbit)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

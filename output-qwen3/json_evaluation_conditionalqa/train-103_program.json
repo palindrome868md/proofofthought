@@ -1,0 +1,137 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CourseType",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_parent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_main_carer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_legal_right_to_study",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "course_type",
+      "domain": [
+        "Course"
+      ],
+      "range": "CourseType"
+    },
+    {
+      "name": "is_publicly_funded",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualifies_for_care_to_learn",
+      "domain": [
+        "Person",
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_university_course",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "niece"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "pharmacy_degree_bath"
+      ]
+    },
+    "course_types": {
+      "sort": "CourseType",
+      "members": [
+        "university",
+        "sixth_form",
+        "college",
+        "school",
+        "foundation_learning"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Course"
+    }
+  ],
+  "knowledge_base": [
+    "age(niece) == 19",
+    "is_parent(niece) == True",
+    "is_main_carer(niece) == True",
+    "lives_in_england(niece) == True",
+    "has_legal_right_to_study(niece) == True",
+    "course_type(pharmacy_degree_bath) == university",
+    "is_publicly_funded(pharmacy_degree_bath) == True",
+    "is_university_course(pharmacy_degree_bath) == True",
+    "ForAll([p, c], Implies(is_university_course(c), Not(qualifies_for_care_to_learn(p, c))))",
+    "ForAll([p, c], Implies(And(age(p) < 20, is_parent(p), is_main_carer(p), lives_in_england(p), has_legal_right_to_study(p), is_publicly_funded(c), Not(is_university_course(c))), qualifies_for_care_to_learn(p, c)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can niece qualify for Care to Learn",
+      "constraint": "qualifies_for_care_to_learn(niece, pharmacy_degree_bath)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

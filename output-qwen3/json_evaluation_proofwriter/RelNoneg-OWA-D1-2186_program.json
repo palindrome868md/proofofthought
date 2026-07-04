@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "mouse",
+        "bear",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "likes(bald_eagle, mouse)",
+    "likes(bear, squirrel)",
+    "is_round(mouse)",
+    "eats(squirrel, mouse)",
+    "ForAll([x], Implies(eats(x, mouse), chases(mouse, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bald Eagle Likes Mouse",
+      "constraint": "likes(bald_eagle, mouse)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

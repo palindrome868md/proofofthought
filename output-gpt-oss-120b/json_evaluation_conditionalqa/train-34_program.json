@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Condition",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_condition",
+      "domain": [
+        "Person",
+        "Condition"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_extra_care",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_resident_UK",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_under_16",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_DLA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "daughter"
+      ]
+    },
+    "conditions": {
+      "sort": "Condition",
+      "members": [
+        "AML"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "age(daughter) == 9",
+    "is_under_16(daughter)",
+    "is_resident_UK(daughter)",
+    "has_condition(daughter, AML)",
+    "needs_extra_care(daughter)",
+    {
+      "assertion": "can_claim_DLA(daughter)",
+      "value": false
+    }
+  ],
+  "rules": [
+    {
+      "name": "DLA eligibility rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_under_16(p), needs_extra_care(p), is_resident_UK(p))",
+        "consequent": "can_claim_DLA(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can claim DLA for daughter",
+      "constraint": "can_claim_DLA(daughter)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

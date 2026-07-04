@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_on_west_coast",
+      "domain": [
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_on_east_coast",
+      "domain": [
+        "City"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "cities": {
+      "sort": "City",
+      "members": [
+        "miami",
+        "los_angeles",
+        "san_francisco",
+        "new_york"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "City"
+    }
+  ],
+  "knowledge_base": [
+    "is_on_east_coast(miami) == True",
+    "is_on_west_coast(miami) == False",
+    "is_on_west_coast(los_angeles) == True",
+    "is_on_west_coast(san_francisco) == True",
+    "is_on_east_coast(new_york) == True",
+    "ForAll([c], Implies(is_on_east_coast(c), Not(is_on_west_coast(c))))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Miami on West Coast",
+      "constraint": "is_on_west_coast(miami)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

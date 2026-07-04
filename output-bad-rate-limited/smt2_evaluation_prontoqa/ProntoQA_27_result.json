@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_27",
+  "question": "Wumpuses are not sour. Each wumpus is a rompus. Rompuses are dull. Each rompus is a dumpus. Every dumpus is feisty. Jompuses are aggressive. Dumpuses are tumpuses. Tumpuses are opaque. Every tumpus is a numpus. Numpuses are hot. Numpuses are zumpuses. Zumpuses are large. Every zumpus is a vumpus. Vumpuses are blue. Every vumpus is an impus. Impuses are not aggressive. Impuses are yumpuses. Fae is a tumpus.\n\nIs the following statement true or false? Fae is not aggressive.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

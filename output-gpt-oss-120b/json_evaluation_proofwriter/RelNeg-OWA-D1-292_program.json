@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "lion",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "Young(lion)",
+    "Not(likes(lion, mouse))",
+    "likes(lion, rabbit)",
+    "visits(lion, mouse)",
+    "Not(eats(mouse, rabbit))",
+    "Blue(mouse)",
+    "Green(mouse)",
+    "visits(mouse, lion)",
+    "visits(mouse, rabbit)",
+    "eats(rabbit, lion)",
+    "eats(rabbit, mouse)",
+    "Cold(rabbit)",
+    "Green(rabbit)",
+    "Not(Nice(rabbit))",
+    "visits(rabbit, lion)",
+    "Not(visits(rabbit, mouse))",
+    "ForAll([x], Implies(And(likes(x, rabbit), visits(rabbit, mouse)), Not(Green(x))))",
+    "ForAll([x], Implies(visits(x, mouse), visits(mouse, rabbit)))",
+    "ForAll([x], Implies(Cold(x), likes(x, mouse)))",
+    "ForAll([x], Implies(eats(x, mouse), likes(mouse, lion)))",
+    "ForAll([x], Implies(Nice(x), likes(x, lion)))",
+    "ForAll([x], Implies(And(likes(x, rabbit), eats(rabbit, lion)), Green(rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit likes mouse",
+      "constraint": "likes(rabbit, mouse)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

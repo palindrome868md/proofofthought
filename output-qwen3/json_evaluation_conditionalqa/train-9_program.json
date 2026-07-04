@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Date",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Pension",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "served_before_date",
+      "domain": [
+        "Person",
+        "Date"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "died_from_service_injury",
+      "domain": [
+        "Person",
+        "Date"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_spouse",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible_for_war_widow_pension",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_taxable",
+      "domain": [
+        "Pension"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_pension",
+      "domain": [
+        "Person",
+        "Pension"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "widow"
+      ]
+    },
+    "dates": {
+      "sort": "Date",
+      "members": [
+        "service_date_2001",
+        "death_date_2007",
+        "cutoff_date_2005"
+      ]
+    },
+    "pensions": {
+      "sort": "Pension",
+      "members": [
+        "war_widow_pension"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Date"
+    },
+    {
+      "name": "pen",
+      "sort": "Pension"
+    }
+  ],
+  "knowledge_base": [
+    "is_spouse(husband, widow)",
+    "served_before_date(husband, cutoff_date_2005)",
+    "died_from_service_injury(husband, death_date_2007)",
+    "ForAll([p], Implies(And(is_spouse(husband, p), served_before_date(husband, cutoff_date_2005), died_from_service_injury(husband, death_date_2007)), is_eligible_for_war_widow_pension(p)))",
+    "ForAll([pen], Implies(pen == war_widow_pension, Not(is_taxable(pen))))",
+    "ForAll([p, pen], Implies(And(is_eligible_for_war_widow_pension(p), pen == war_widow_pension), receives_pension(p, pen)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is War Widow Pension Taxable for Eligible Widow",
+      "constraint": "Not(is_taxable(war_widow_pension))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

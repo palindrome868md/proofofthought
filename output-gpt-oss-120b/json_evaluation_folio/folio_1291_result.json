@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1291",
+  "question": "Given the following premises:\n\nEveryone that knows about breath-first-search knows how to use a queue. \nIf someone is a seasoned software engineer interviewer at Google, then they know what breath-first-search is. \nSomeone is either a seasoned software engineer interviewer at Google, has human rights, or both. \nEvery person who has human rights is entitled to the right to life and liberty. \nEveryone that knows how to use a queue knows about the first-in-first-out data structure. \nEveryone that is entitled to the right to life and liberty cannot be deprived of their rights without due process of law. \nJack is entitled to the right to life and liberty, has human rights, or knows about the first-in-first-out data structure. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Jack can be deprived of their rights without due process of law.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

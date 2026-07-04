@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "University",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "helped_establish",
+      "domain": [
+        "Person",
+        "University"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "millard_fillmore"
+      ]
+    },
+    "universities": {
+      "sort": "University",
+      "members": [
+        "university_of_pittsburgh"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(helped_establish(millard_fillmore, university_of_pittsburgh))"
+  ],
+  "verifications": [
+    {
+      "name": "Did Millard Fillmore help to establish the University of Pittsburgh",
+      "constraint": "helped_establish(millard_fillmore, university_of_pittsburgh)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

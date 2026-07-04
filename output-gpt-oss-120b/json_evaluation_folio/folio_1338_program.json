@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "IsEel",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsFish",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsPlant",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsAnimal",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsMulticellular",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsBacteria",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsDisplayed",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sea_eel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(IsEel(x), IsFish(x)))",
+    "ForAll([x], Implies(IsFish(x), Not(IsPlant(x))))",
+    "ForAll([x], Implies(IsDisplayed(x), Or(IsPlant(x), IsAnimal(x))))",
+    "ForAll([x], Implies(And(IsMulticellular(x), IsAnimal(x)), Not(IsBacteria(x))))",
+    "ForAll([x], Implies(And(IsAnimal(x), IsDisplayed(x)), IsMulticellular(x)))",
+    "IsDisplayed(sea_eel)",
+    "Or(IsEel(sea_eel), IsAnimal(sea_eel), Not(IsPlant(sea_eel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sea eel multicellular or bacteria",
+      "constraint": "Or(IsMulticellular(sea_eel), IsBacteria(sea_eel))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "agree",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "court_can_decide",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alice",
+        "bob"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Not(agree(alice, bob))",
+    "ForAll([p1, p2], Implies(Not(agree(p1, p2)), court_can_decide(p1, p2)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can go to court to decide asset division",
+      "constraint": "court_can_decide(alice, bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

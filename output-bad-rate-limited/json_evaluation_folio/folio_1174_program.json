@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "L_2021"
+      ]
+    },
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "LG",
+        "OtherBrand"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "m",
+      "sort": "Monitor"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_type_c_port",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_before_2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "produced_by",
+      "domain": [
+        "Monitor",
+        "Company"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([m], And(produced_by(m, LG), has_type_c_port(m)))",
+    "ForAll([m], Implies(has_type_c_port(m), Not(made_before_2010(m))))",
+    "ForAll([m], Implies(in_library(m), made_before_2010(m)))",
+    "Or(in_library(L_2021), has_type_c_port(L_2021))",
+    "ForAll([x], Implies(x == L_2021, Or(And(made_before_2010(x), produced_by(x, LG)), And(Not(made_before_2010(x)), Not(produced_by(x, LG))))) )"
+  ],
+  "verifications": [
+    {
+      "name": "L-2021 is in library or produced by LG",
+      "constraint": "Not(Or(in_library(L_2021), produced_by(L_2021, LG)))"
+    }
+  ]
+}

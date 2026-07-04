@@ -1,0 +1,179 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "romp",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zump",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jomp",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vump",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tump",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yump",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dump",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wump",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nump",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(romp(x), Not(earthy(x))))",
+    "ForAll([x], Implies(romp(x), zump(x)))",
+    "ForAll([x], Implies(zump(x), Not(bitter(x))))",
+    "ForAll([x], Implies(zump(x), jomp(x)))",
+    "ForAll([x], Implies(jomp(x), dull(x)))",
+    "ForAll([x], Implies(jomp(x), vump(x)))",
+    "ForAll([x], Implies(nump(x), Not(transparent(x))))",
+    "ForAll([x], Implies(vump(x), Not(kind(x))))",
+    "ForAll([x], Implies(vump(x), tump(x)))",
+    "ForAll([x], Implies(tump(x), temperate(x)))",
+    "ForAll([x], Implies(tump(x), yump(x)))",
+    "ForAll([x], Implies(yump(x), happy(x)))",
+    "ForAll([x], Implies(yump(x), dump(x)))",
+    "ForAll([x], Implies(dump(x), liquid(x)))",
+    "ForAll([x], Implies(dump(x), wump(x)))",
+    "ForAll([x], Implies(wump(x), transparent(x)))",
+    "ForAll([x], Implies(wump(x), impus(x)))",
+    "vump(sam)"
+  ],
+  "verifications": [
+    {
+      "name": "Sam not transparent",
+      "constraint": "Not(transparent(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_cold",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Thing",
+      "members": [
+        "bob",
+        "erin",
+        "gary",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "is_cold(bob)",
+    "is_green(bob)",
+    "is_kind(bob)",
+    "is_quiet(bob)",
+    "is_kind(erin)",
+    "is_quiet(erin)",
+    "is_cold(gary)",
+    "is_green(gary)",
+    "is_quiet(gary)",
+    "is_red(gary)",
+    "is_cold(harry)",
+    "is_red(harry)",
+    "ForAll([x], Implies(is_cold(x), is_kind(x)))",
+    "ForAll([x], Implies(is_kind(x), is_green(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Gary is kind",
+      "constraint": "is_kind(gary)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

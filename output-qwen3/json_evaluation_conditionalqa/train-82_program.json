@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Document",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_valid",
+      "domain": [
+        "Document"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_donor_of",
+      "domain": [
+        "Person",
+        "Document"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deceased",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "grandfather"
+      ]
+    },
+    "documents": {
+      "sort": "Document",
+      "members": [
+        "lpa_document"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Document"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, d], Implies(And(is_donor_of(p, d), is_deceased(p)), Not(is_valid(d))))",
+    "is_donor_of(grandfather, lpa_document)"
+  ],
+  "verifications": [
+    {
+      "name": "LPA Valid After Donor Death",
+      "constraint": "And(is_deceased(grandfather), is_valid(lpa_document))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

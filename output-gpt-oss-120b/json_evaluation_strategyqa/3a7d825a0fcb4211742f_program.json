@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Profession",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Discipline",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "uses",
+      "domain": [
+        "Profession",
+        "Discipline"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "professions": {
+      "sort": "Profession",
+      "members": [
+        "geographer"
+      ]
+    },
+    "disciplines": {
+      "sort": "Discipline",
+      "members": [
+        "biochemistry"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(uses(geographer, biochemistry))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Geographer uses biochemistry",
+      "constraint": "uses(geographer, biochemistry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_next_of_kin",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_authorised",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_appointee",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_applied_for_authorisation",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_applied_for_appointee",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hmrc_approved",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cannot_manage_affairs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user",
+        "aunt"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "q",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_next_of_kin(user, aunt)",
+    "cannot_manage_affairs(aunt)",
+    "ForAll([p, q], Implies(is_authorised(p, q), has_applied_for_authorisation(p, q)))",
+    "ForAll([p, q], Implies(is_appointee(p, q), And(has_applied_for_appointee(p, q), hmrc_approved(p, q))))",
+    "ForAll([p, q], Implies(is_next_of_kin(p, q), Not(has_applied_for_authorisation(p, q))))",
+    "ForAll([p, q], Implies(is_next_of_kin(p, q), Not(has_applied_for_appointee(p, q))))"
+  ],
+  "verifications": [
+    {
+      "name": "Is next of kin automatically authorised as appointee",
+      "constraint": "And(is_next_of_kin(user, aunt), Not(has_applied_for_appointee(user, aunt)), is_appointee(user, aunt))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

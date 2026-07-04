@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D3-1407",
+  "question": "The cat eats the tiger. The cat is cold. The cat is round. The mouse is nice. The mouse is not rough. The mouse likes the cat. The mouse likes the squirrel. The mouse does not visit the cat. The squirrel eats the mouse. The squirrel is nice. The squirrel is rough. The squirrel visits the tiger. The tiger eats the squirrel. The tiger is nice. The tiger likes the cat. The tiger likes the squirrel. If someone likes the mouse and the mouse is not round then the mouse is cold. All rough people are not cold. If the mouse visits the tiger and the mouse is not cold then the tiger is cold. If someone eats the tiger and the tiger is cold then the tiger does not eat the cat. If someone is red and they visit the tiger then the tiger does not eat the cat. If the squirrel eats the tiger and the squirrel visits the cat then the tiger visits the cat. If the squirrel is not cold then the squirrel visits the cat. If someone visits the cat then the cat visits the squirrel.\n\nQuestion: The squirrel is cold.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

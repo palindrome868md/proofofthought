@@ -1,0 +1,11 @@
+{
+  "sample_id": "93eafc413d86df9c0755",
+  "question": "Could an ocelot subsist on a single bee hummingbird per day?",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

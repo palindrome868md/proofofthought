@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "complex_finances",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "unable_to_find_deputy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "court_can_appoint_specialist_deputy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "complex_finances(father)",
+    "unable_to_find_deputy(father)"
+  ],
+  "rules": [
+    {
+      "name": "Court appoints specialist deputy if needed",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(complex_finances(p), unable_to_find_deputy(p))",
+        "consequent": "court_can_appoint_specialist_deputy(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can court appoint specialist deputy for father",
+      "constraint": "court_can_appoint_specialist_deputy(father)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

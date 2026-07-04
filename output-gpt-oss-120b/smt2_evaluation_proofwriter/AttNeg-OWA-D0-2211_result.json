@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D0-2211",
+  "question": "Anne is blue. Bob is not blue. Gary is blue. If someone is rough then they are big. All furry, kind people are big. Furry people are big. Green people are rough. Blue, quiet people are not furry. If Gary is quiet then Gary is rough.\n\nQuestion: Bob is blue.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

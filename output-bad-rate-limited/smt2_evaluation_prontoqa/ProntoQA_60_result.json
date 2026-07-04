@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_60",
+  "question": "Wumpuses are large. Each wumpus is an impus. Each impus is not hot. Impuses are numpuses. Every numpus is earthy. Zumpuses are mean. Numpuses are vumpuses. Vumpuses are liquid. Vumpuses are dumpuses. Dumpuses are not mean. Dumpuses are tumpuses. Sam is a wumpus.\n\nIs the following statement true or false? Sam is mean.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

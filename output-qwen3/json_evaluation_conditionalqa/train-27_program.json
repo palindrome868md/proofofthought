@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Will",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_beneficiary",
+      "domain": [
+        "Person",
+        "Will"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_witness",
+      "domain": [
+        "Person",
+        "Will"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_valid_will",
+      "domain": [
+        "Will"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "testator",
+        "partner"
+      ]
+    },
+    "wills": {
+      "sort": "Will",
+      "members": [
+        "new_will"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    },
+    {
+      "name": "y",
+      "sort": "Will"
+    }
+  ],
+  "knowledge_base": [
+    "is_married(testator, partner)",
+    "is_valid_will(new_will)",
+    "Not(is_witness(partner, new_will))",
+    "ForAll([x, y], Implies(is_witness(x, y), Not(is_beneficiary(x, y))))"
+  ],
+  "rules": [
+    {
+      "name": "Spouse Can Be Beneficiary Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "w",
+          "sort": "Will"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_valid_will(w), is_married(testator, p), Not(is_witness(p, w)))",
+        "consequent": "is_beneficiary(p, w)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can partner be included in will",
+      "constraint": "is_beneficiary(partner, new_will)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

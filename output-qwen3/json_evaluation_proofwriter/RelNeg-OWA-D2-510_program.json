@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "cat",
+        "lion",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "eats(bald_eagle, cat)",
+    "eats(bald_eagle, lion)",
+    "Not(chases(cat, rabbit))",
+    "Not(big(cat))",
+    "Not(likes(cat, lion))",
+    "cold(lion)",
+    "round(lion)",
+    "chases(rabbit, lion)",
+    "Not(eats(rabbit, bald_eagle))",
+    "eats(rabbit, lion)",
+    "red(rabbit)",
+    "likes(rabbit, bald_eagle)",
+    "ForAll([x], Implies(cold(x), Not(chases(x, bald_eagle))))",
+    "Implies(And(chases(lion, cat), eats(cat, rabbit)), Not(red(cat)))",
+    "ForAll([x], Implies(And(round(x), Not(chases(x, bald_eagle))), Not(likes(x, lion))))"
+  ],
+  "verifications": [
+    {
+      "name": "Lion chases bald eagle",
+      "constraint": "chases(lion, bald_eagle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

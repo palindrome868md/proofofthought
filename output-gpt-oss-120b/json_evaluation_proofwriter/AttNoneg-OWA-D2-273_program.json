@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Bob",
+        "Charlie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "red(Bob)",
+    "rough(Bob)",
+    "smart(Charlie)",
+    "ForAll([x], Implies(big(x), blue(x)))",
+    "Implies(big(Charlie), rough(Charlie))",
+    "Implies(And(kind(Bob), big(Bob)), young(Bob))",
+    "Implies(young(Bob), big(Bob))",
+    "ForAll([x], Implies(blue(x), young(x)))",
+    "ForAll([x], Implies(red(x), blue(x)))",
+    "ForAll([x], Implies(smart(x), kind(x)))",
+    "Implies(smart(Charlie), kind(Charlie))"
+  ],
+  "verifications": [
+    {
+      "name": "Bob_is_rough",
+      "constraint": "rough(Bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

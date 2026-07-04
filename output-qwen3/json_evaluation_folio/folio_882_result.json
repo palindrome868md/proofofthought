@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_882",
+  "question": "Given the following premises:\n\nNo athletes never exercise.\nAll professional basketball players are athletes. \nAll NBA players are professional basketball players. \nAll Knicks players are NBA players. \nEither John is a professional basketball player and he never exercises, or he is not a professional basketball player and he sometimes exercises.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Jim is not a Knicks player.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

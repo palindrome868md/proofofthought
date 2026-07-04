@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_uk",
+      "domain": [
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_caring_parent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_paying_parent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_claim_maintenance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_make_cms_application",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_make_private_arrangement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "son",
+        "ex"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "uk",
+        "abroad_country"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_uk(uk) == True",
+    "Not(is_uk(abroad_country))",
+    "lives_in(me, abroad_country)",
+    "lives_in(son, abroad_country)",
+    "lives_in(ex, uk)",
+    "is_child(son)",
+    "is_caring_parent(me)",
+    "is_paying_parent(ex)",
+    "ForAll([p], Implies(is_caring_parent(p), can_make_private_arrangement(p)))",
+    "ForAll([p], Implies(And(is_caring_parent(p), lives_in(p, abroad_country), lives_in(son, abroad_country)), Not(can_make_cms_application(p))))",
+    "ForAll([p], Implies(Or(can_make_cms_application(p), can_make_private_arrangement(p)), can_claim_maintenance(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can parent living abroad claim child maintenance",
+      "constraint": "can_claim_maintenance(me)"
+    }
+  ],
+  "optimization": null,
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "stella"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "wumpus(stella)",
+    "Implies(wumpus(stella), zumpus(stella))",
+    "Implies(zumpus(stella), fruity(stella))",
+    "Implies(zumpus(stella), tumpus(stella))",
+    "Implies(tumpus(stella), Not(large(stella)))",
+    "Implies(tumpus(stella), vumpus(stella))",
+    "Implies(vumpus(stella), liquid(stella))",
+    "Implies(vumpus(stella), jompus(stella))",
+    "Implies(jompus(stella), hot(stella))",
+    "Implies(jompus(stella), dumpus(stella))"
+  ],
+  "verifications": [
+    {
+      "name": "Stella is not hot",
+      "constraint": "Not(hot(stella))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

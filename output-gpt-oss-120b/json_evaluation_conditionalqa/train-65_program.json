@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Jurisdiction",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "remote_allowed",
+      "domain": [
+        "Jurisdiction"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "jurisdictions": {
+      "sort": "Jurisdiction",
+      "members": [
+        "England",
+        "Wales",
+        "Scotland"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "my_loc",
+      "sort": "Jurisdiction"
+    }
+  ],
+  "knowledge_base": [
+    "my_loc == Scotland",
+    "remote_allowed(England) == True",
+    "remote_allowed(Wales) == True",
+    "remote_allowed(Scotland) == False"
+  ],
+  "verifications": [
+    {
+      "name": "Remote witness allowed for me",
+      "constraint": "remote_allowed(my_loc)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

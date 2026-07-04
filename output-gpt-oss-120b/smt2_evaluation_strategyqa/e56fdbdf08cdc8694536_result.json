@@ -1,0 +1,11 @@
+{
+  "sample_id": "e56fdbdf08cdc8694536",
+  "question": "Could the Powerpuff Girls hypothetically attend the Camden Military Academy?",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

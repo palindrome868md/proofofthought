@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-150",
+  "question": "Dave is smart. Erin is furry. Erin is nice. Gary is nice. Harry is nice. Harry is red. Harry is smart. Big things are furry. If something is blue then it is big. Red things are blue.\n\nQuestion: Harry is not blue.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

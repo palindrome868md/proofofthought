@@ -1,0 +1,133 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Film",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "directed_by",
+      "domain": [
+        "Film",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_filmmaker",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_from",
+      "domain": [
+        "Person",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_in",
+      "domain": [
+        "City",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_from_country",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_documentary",
+      "domain": [
+        "Film"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lana_wilson"
+      ]
+    },
+    "films": {
+      "sort": "Film",
+      "members": [
+        "after_tiller",
+        "the_departure",
+        "miss_americana"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "kirkland"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "usa"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "f",
+      "sort": "Film"
+    },
+    {
+      "name": "c",
+      "sort": "City"
+    },
+    {
+      "name": "co",
+      "sort": "Country"
+    }
+  ],
+  "knowledge_base": [
+    "directed_by(after_tiller, lana_wilson)",
+    "directed_by(the_departure, lana_wilson)",
+    "directed_by(miss_americana, lana_wilson)",
+    "is_documentary(after_tiller)",
+    "is_from(lana_wilson, kirkland)",
+    "is_in(kirkland, usa)",
+    "ForAll([f, p], Implies(directed_by(f, p), is_filmmaker(p)))",
+    "ForAll([p, c, co], Implies(And(is_from(p, c), is_in(c, co)), is_from_country(p, co)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Lana Wilson a US Filmmaker",
+      "constraint": "And(is_filmmaker(lana_wilson), is_from_country(lana_wilson, usa))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

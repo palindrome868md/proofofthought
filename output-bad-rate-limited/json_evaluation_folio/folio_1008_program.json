@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "attends_wedding",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "getting_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_getting_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "preteen_or_young_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoys_life_milestones_with_others",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fond_of_large_group_functions",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "outgoing",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spirited",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "carol"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(attends_wedding(x), Or(getting_married(x), knows_getting_married(x))))",
+    "ForAll([x], Implies(preteen_or_young_child(x), And(Not(getting_married(x)), Not(knows_getting_married(x)))))",
+    "ForAll([x], Implies(enjoys_life_milestones_with_others(x), attends_wedding(x)))",
+    "ForAll([x], Implies(fond_of_large_group_functions(x), enjoys_life_milestones_with_others(x)))",
+    "ForAll([x], Implies(And(outgoing(x), spirited(x)), fond_of_large_group_functions(x)))",
+    "Implies(Not(And(preteen_or_young_child(carol), attends_wedding(carol))), Or(Not(getting_married(carol)), knows_getting_married(carol)))"
+  ],
+  "verifications": [
+    {
+      "name": "Carol is outgoing and very spirited",
+      "constraint": "And(outgoing(carol), spirited(carol))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

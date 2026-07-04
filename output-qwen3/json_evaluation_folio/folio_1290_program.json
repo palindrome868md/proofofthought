@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "knows_bfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_queue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_seasoned_se_google",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_human_rights",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entitled_to_life_liberty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_fifo",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "deprived_without_due_process",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "jack"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(knows_bfs(x), knows_queue(x)))",
+    "ForAll([x], Implies(is_seasoned_se_google(x), knows_bfs(x)))",
+    "ForAll([x], Or(is_seasoned_se_google(x), has_human_rights(x)))",
+    "ForAll([x], Implies(has_human_rights(x), entitled_to_life_liberty(x)))",
+    "ForAll([x], Implies(knows_queue(x), knows_fifo(x)))",
+    "ForAll([x], Implies(entitled_to_life_liberty(x), Not(deprived_without_due_process(x))))",
+    "Or(entitled_to_life_liberty(jack), has_human_rights(jack), knows_fifo(jack))"
+  ],
+  "verifications": [
+    {
+      "name": "Jack Cannot Be Deprived Without Due Process",
+      "constraint": "Not(deprived_without_due_process(jack))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

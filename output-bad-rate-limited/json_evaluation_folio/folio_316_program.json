@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Community",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Route",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "County",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "on_route",
+      "domain": [
+        "Community",
+        "Route"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_unincorporated",
+      "domain": [
+        "Community"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "northwest_of",
+      "domain": [
+        "Community",
+        "Community"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "Community",
+        "County"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "routes": {
+      "sort": "Route",
+      "members": [
+        "kentucky_route_32"
+      ]
+    },
+    "counties": {
+      "sort": "County",
+      "members": [
+        "elliot_county"
+      ]
+    },
+    "communities": {
+      "sort": "Community",
+      "members": [
+        "ordinary",
+        "sandy_hook"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_unincorporated(ordinary)",
+    "on_route(ordinary, kentucky_route_32)",
+    "northwest_of(ordinary, sandy_hook)"
+  ],
+  "verifications": [
+    {
+      "name": "No unincorporated communities along KY32",
+      "forall": [
+        {
+          "name": "c",
+          "sort": "Community"
+        }
+      ],
+      "implies": {
+        "antecedent": "on_route(c, kentucky_route_32)",
+        "consequent": "Not(is_unincorporated(c))"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

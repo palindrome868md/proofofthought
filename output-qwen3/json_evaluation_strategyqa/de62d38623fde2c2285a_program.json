@@ -1,0 +1,55 @@
+{
+  "sorts": [
+    {
+      "name": "Show",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "num_episodes",
+      "domain": [
+        "Show"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "episode_duration_minutes",
+      "domain": [
+        "Show"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "total_watch_time_minutes",
+      "domain": [
+        "Show"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "shows": {
+      "sort": "Show",
+      "members": [
+        "ugly_betty"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "num_episodes(ugly_betty) == 85",
+    "episode_duration_minutes(ugly_betty) == 43",
+    "total_watch_time_minutes(ugly_betty) == num_episodes(ugly_betty) * episode_duration_minutes(ugly_betty)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Would a week be enough time to watch every episode of Ugly Betty",
+      "constraint": "total_watch_time_minutes(ugly_betty) <= 10080"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

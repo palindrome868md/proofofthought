@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "current_population",
+      "domain": [
+        "City"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "annual_growth",
+      "domain": [
+        "City"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "years_to_reach",
+      "domain": [
+        "City",
+        "IntSort"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "cities": {
+      "sort": "City",
+      "members": [
+        "albany_ga",
+        "albany_ny"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "current_population(albany_ga) == 75000",
+    "current_population(albany_ny) == 97000",
+    "annual_growth(albany_ga) == 1500",
+    "annual_growth(albany_ny) == 300",
+    "years_to_reach(albany_ga, 100000) == 17",
+    "years_to_reach(albany_ny, 100000) == 10"
+  ],
+  "verifications": [
+    {
+      "name": "Albany GA reaches 100k before Albany NY",
+      "constraint": "years_to_reach(albany_ga, 100000) < years_to_reach(albany_ny, 100000)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

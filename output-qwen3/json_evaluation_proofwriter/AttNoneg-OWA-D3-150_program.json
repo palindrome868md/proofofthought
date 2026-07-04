@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_smart",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_furry",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "dave",
+        "erin",
+        "gary",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_smart(dave)",
+    "is_furry(erin)",
+    "is_nice(erin)",
+    "is_nice(gary)",
+    "is_nice(harry)",
+    "is_red(harry)",
+    "is_smart(harry)",
+    "ForAll([x], Implies(is_big(x), is_furry(x)))",
+    "ForAll([x], Implies(is_blue(x), is_big(x)))",
+    "ForAll([x], Implies(is_red(x), is_blue(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is not blue",
+      "constraint": "Not(is_blue(harry))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

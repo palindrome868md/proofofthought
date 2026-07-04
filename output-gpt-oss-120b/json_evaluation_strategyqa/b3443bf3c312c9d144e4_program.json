@@ -1,0 +1,39 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "burial_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "marie_curie",
+        "simone_veil"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "burial_year(marie_curie) == 1995",
+    "burial_year(simone_veil) == 2018"
+  ],
+  "verifications": [
+    {
+      "name": "Full Neptunian orbit between first two women burials",
+      "constraint": "burial_year(simone_veil) - burial_year(marie_curie) >= 165"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Grade",
+      "type": "EnumSort",
+      "values": [
+        "Eleventh"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "age_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "grade_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "Grade"
+    },
+    {
+      "name": "eligible_for_Medicare",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "grades": {
+      "sort": "Grade",
+      "members": [
+        "Eleventh"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(grade_of(p) == Eleventh, age_of(p) == 17))",
+    "ForAll([p], Implies(age_of(p) >= 65, eligible_for_Medicare(p)))",
+    "ForAll([p], Implies(age_of(p) < 65, Not(eligible_for_Medicare(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "EleventhGraderMedicareEligibility",
+      "constraint": "And(grade_of(p) == Eleventh, eligible_for_Medicare(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "knows_about_bfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_how_queue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "seasoned_interviewer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_human_rights",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entitled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_about_fifo",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cannot_be_deprived_without_due_process",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "jack"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(knows_about_bfs(p), knows_how_queue(p)))",
+    "ForAll([p], Implies(seasoned_interviewer(p), knows_about_bfs(p)))",
+    "ForAll([p], Or(seasoned_interviewer(p), has_human_rights(p)))",
+    "ForAll([p], Implies(has_human_rights(p), entitled(p)))",
+    "ForAll([p], Implies(knows_how_queue(p), knows_about_fifo(p)))",
+    "ForAll([p], Implies(entitled(p), cannot_be_deprived_without_due_process(p)))",
+    "Or(entitled(jack), has_human_rights(jack), knows_about_fifo(jack))"
+  ],
+  "verifications": [
+    {
+      "name": "JackCanBeDeprivedWithoutDueProcess",
+      "constraint": "Not(cannot_be_deprived_without_due_process(jack))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

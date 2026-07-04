@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "cat",
+        "dog",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "chases(bear, cat)",
+    "visits(bear, tiger)",
+    "chases(cat, dog)",
+    "Not(is_young(cat))",
+    "Not(chases(dog, bear))",
+    "eats(dog, bear)",
+    "visits(tiger, cat)",
+    "ForAll([x], Implies(chases(x, cat), Not(is_kind(cat))))",
+    "ForAll([x], Implies(visits(x, tiger), chases(tiger, cat)))",
+    "Implies(And(eats(cat, dog), chases(dog, tiger)), eats(tiger, bear))",
+    "ForAll([x], Implies(chases(x, cat), is_kind(x)))",
+    "ForAll([x], Implies(And(visits(x, tiger), Not(eats(x, tiger))), visits(tiger, bear)))",
+    "ForAll([x], Implies(is_kind(x), visits(x, tiger)))"
+  ],
+  "verifications": [
+    {
+      "name": "Tiger visits tiger",
+      "constraint": "visits(tiger, tiger)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

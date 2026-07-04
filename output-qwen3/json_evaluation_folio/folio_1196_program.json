@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "InFamily",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "SubscribesAMC",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "SubscribesHBO",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Eligible3Movies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "GoesCinemaWeekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "PrefersTV",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "WatchesTVInCinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "customers": {
+      "sort": "Person",
+      "members": [
+        "Lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(InFamily(p), SubscribesAMC(p)), Eligible3Movies(p)))",
+    "Exists([p], And(InFamily(p), GoesCinemaWeekly(p)))",
+    "ForAll([p], Implies(InFamily(p), Or(SubscribesAMC(p), SubscribesHBO(p))))",
+    "ForAll([p], Implies(And(InFamily(p), PrefersTV(p)), Not(WatchesTVInCinema(p))))",
+    "ForAll([p], Implies(And(InFamily(p), SubscribesHBO(p)), PrefersTV(p)))",
+    "InFamily(Lily)",
+    "WatchesTVInCinema(Lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Check Statement Truth",
+      "constraint": "Implies(And(Eligible3Movies(Lily), WatchesTVInCinema(Lily)), And(GoesCinemaWeekly(Lily), PrefersTV(Lily)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

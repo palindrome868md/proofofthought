@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Ground",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Behaviour",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_valid_ground",
+      "domain": [
+        "Ground"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "constitutes_unreasonable_behaviour",
+      "domain": [
+        "Behaviour"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "user_experienced",
+      "domain": [
+        "Behaviour"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "partnership_over_1_year",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_dissolve",
+      "domain": [
+        "Ground"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "grounds": {
+      "sort": "Ground",
+      "members": [
+        "unreasonable_behaviour",
+        "desertion",
+        "separation_2years",
+        "separation_5years"
+      ]
+    },
+    "behaviours": {
+      "sort": "Behaviour",
+      "members": [
+        "abuse",
+        "coercive_control",
+        "irresponsible_money",
+        "sexual_unfaithful"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "g",
+      "sort": "Ground"
+    },
+    {
+      "name": "b",
+      "sort": "Behaviour"
+    }
+  ],
+  "knowledge_base": [
+    "is_valid_ground(unreasonable_behaviour) == True",
+    "constitutes_unreasonable_behaviour(abuse) == True",
+    "constitutes_unreasonable_behaviour(coercive_control) == True",
+    "user_experienced(abuse) == True",
+    "user_experienced(coercive_control) == True",
+    "partnership_over_1_year() == True",
+    "ForAll([g], Implies(And(is_valid_ground(g), g == unreasonable_behaviour, Exists([b], And(user_experienced(b), constitutes_unreasonable_behaviour(b))), partnership_over_1_year()), can_dissolve(g)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can dissolve on unreasonable behaviour",
+      "constraint": "can_dissolve(unreasonable_behaviour)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

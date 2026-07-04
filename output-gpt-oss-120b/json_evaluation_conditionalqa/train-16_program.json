@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "School",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Disability",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_school",
+      "domain": [
+        "School"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_disability",
+      "domain": [
+        "Person",
+        "Disability"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_rescind_offer",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "offered_place",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "schools": {
+      "sort": "School",
+      "members": [
+        "my_school"
+      ]
+    },
+    "children": {
+      "sort": "Person",
+      "members": [
+        "my_child"
+      ]
+    },
+    "disabilities": {
+      "sort": "Disability",
+      "members": [
+        "scoliosis"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "School"
+    },
+    {
+      "name": "c",
+      "sort": "Person"
+    },
+    {
+      "name": "d",
+      "sort": "Disability"
+    }
+  ],
+  "knowledge_base": [
+    "is_school(my_school)",
+    "is_child(my_child)",
+    "has_disability(my_child, scoliosis)",
+    "offered_place(my_school, my_child)",
+    "ForAll([s, c, d], Implies(And(is_school(s), is_child(c), has_disability(c, d)), Not(can_rescind_offer(s, c))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can school rescind offer",
+      "constraint": "can_rescind_offer(my_school, my_child)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

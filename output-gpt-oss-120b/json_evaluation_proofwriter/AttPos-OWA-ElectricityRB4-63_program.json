@@ -1,0 +1,152 @@
+{
+  "sorts": [
+    {
+      "name": "Component",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Circuit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "includes",
+      "domain": [
+        "Circuit",
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "flat",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "on",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "metal",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plastic",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "powered",
+      "domain": [
+        "Circuit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "complete",
+      "domain": [
+        "Circuit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "conducting",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_in_circuit",
+      "domain": [
+        "Circuit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_in",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "glowing",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ringing",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "playing",
+      "domain": [
+        "Component"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "components": {
+      "sort": "Component",
+      "members": [
+        "battery",
+        "switch",
+        "wire",
+        "bell",
+        "light_bulb",
+        "radio"
+      ]
+    },
+    "circuits": {
+      "sort": "Circuit",
+      "members": [
+        "circuit1"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "flat(battery)",
+    "on(switch)",
+    "metal(wire)",
+    "includes(circuit1, bell)",
+    "Implies(And(includes(circuit1, battery), Not(flat(battery))), powered(circuit1))",
+    "Implies(And(includes(circuit1, switch), on(switch)), complete(circuit1))",
+    "Implies(Not(includes(circuit1, switch)), complete(circuit1))",
+    "Implies(metal(wire), conducting(wire))",
+    "Implies(plastic(wire), Not(conducting(wire)))",
+    "Implies(And(powered(circuit1), complete(circuit1), conducting(wire)), current_in_circuit(circuit1))",
+    "Implies(And(current_in_circuit(circuit1), includes(circuit1, light_bulb)), current_in(light_bulb))",
+    "Implies(And(current_in_circuit(circuit1), includes(circuit1, bell)), current_in(bell))",
+    "Implies(And(current_in_circuit(circuit1), includes(circuit1, radio)), current_in(radio))",
+    "Implies(current_in(light_bulb), glowing(light_bulb))",
+    "Implies(current_in(bell), ringing(bell))",
+    "Implies(current_in(radio), playing(radio))"
+  ],
+  "verifications": [
+    {
+      "name": "SwitchIsOn",
+      "constraint": "on(switch)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

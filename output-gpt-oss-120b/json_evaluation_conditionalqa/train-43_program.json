@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eligible_for_spl",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_take_spl_together",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "eligible_for_spl(me)",
+    "eligible_for_spl(partner)"
+  ],
+  "rules": [
+    {
+      "name": "Eligibility implies joint leave possibility",
+      "forall": [
+        {
+          "name": "p1",
+          "sort": "Person"
+        },
+        {
+          "name": "p2",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(eligible_for_spl(p1), eligible_for_spl(p2))",
+        "consequent": "can_take_spl_together(p1, p2)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can both take SPL at the same time",
+      "constraint": "can_take_spl_together(me, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

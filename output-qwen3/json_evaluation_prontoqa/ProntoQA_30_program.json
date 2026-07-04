@@ -1,0 +1,179 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "Impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Shy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Metallic",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(Impus(x), Bright(x)))",
+    "ForAll([x], Implies(Impus(x), Jompus(x)))",
+    "ForAll([x], Implies(Jompus(x), Mean(x)))",
+    "ForAll([x], Implies(Zumpus(x), Not(Temperate(x))))",
+    "ForAll([x], Implies(Jompus(x), Vumpus(x)))",
+    "ForAll([x], Implies(Vumpus(x), Transparent(x)))",
+    "ForAll([x], Implies(Vumpus(x), Tumpus(x)))",
+    "ForAll([x], Implies(Tumpus(x), Shy(x)))",
+    "ForAll([x], Implies(Tumpus(x), Numpus(x)))",
+    "ForAll([x], Implies(Numpus(x), Not(Blue(x))))",
+    "ForAll([x], Implies(Numpus(x), Dumpus(x)))",
+    "ForAll([x], Implies(Dumpus(x), Not(Fruity(x))))",
+    "ForAll([x], Implies(Dumpus(x), Wumpus(x)))",
+    "ForAll([x], Implies(Wumpus(x), Temperate(x)))",
+    "ForAll([x], Implies(Wumpus(x), Rompus(x)))",
+    "ForAll([x], Implies(Rompus(x), Metallic(x)))",
+    "ForAll([x], Implies(Rompus(x), Yumpus(x)))",
+    "Vumpus(fae)"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is temperate",
+      "constraint": "Temperate(fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

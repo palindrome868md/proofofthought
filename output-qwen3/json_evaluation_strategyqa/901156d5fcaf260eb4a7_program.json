@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Temperature",
+      "type": "EnumSort",
+      "values": [
+        "Cold",
+        "Warm"
+      ]
+    },
+    {
+      "name": "WaterBody",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "temperature",
+      "domain": [
+        "WaterBody"
+      ],
+      "range": "Temperature"
+    },
+    {
+      "name": "anchovy_population",
+      "domain": [
+        "WaterBody"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "temps": {
+      "sort": "Temperature",
+      "members": [
+        "Cold",
+        "Warm"
+      ]
+    },
+    "water_bodies": {
+      "sort": "WaterBody",
+      "members": [
+        "cold_water_1",
+        "cold_water_2",
+        "warm_water_1",
+        "warm_water_2"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "wb",
+      "sort": "WaterBody"
+    }
+  ],
+  "knowledge_base": [
+    "temperature(cold_water_1) == Cold",
+    "temperature(cold_water_2) == Cold",
+    "temperature(warm_water_1) == Warm",
+    "temperature(warm_water_2) == Warm",
+    "anchovy_population(cold_water_1) == 10000",
+    "anchovy_population(cold_water_2) == 12000",
+    "anchovy_population(warm_water_1) == 3000",
+    "anchovy_population(warm_water_2) == 2500",
+    "ForAll([wb], Implies(temperature(wb) == Cold, anchovy_population(wb) > 5000))",
+    "ForAll([wb], Implies(temperature(wb) == Warm, anchovy_population(wb) < 5000))"
+  ],
+  "verifications": [
+    {
+      "name": "More anchovy in cold waters",
+      "constraint": "anchovy_population(cold_water_1) + anchovy_population(cold_water_2) > anchovy_population(warm_water_1) + anchovy_population(warm_water_2)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

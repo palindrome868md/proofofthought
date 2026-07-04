@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "easy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "recommended",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starred",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate",
+      "domain": [
+        "Problem"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(easy(p), ac_rate(p) < 0.20))",
+    "ForAll([p], Implies(recommended(p), easy(p)))",
+    "ForAll([p], Or(easy(p), hard(p)))",
+    "ForAll([p], Implies(starred(p), hard(p)))",
+    "recommended(two_sum)",
+    "starred(four_sum)"
+  ],
+  "verifications": [
+    {
+      "name": "2Sum AC rate > 20 percent",
+      "constraint": "ac_rate(two_sum) > 0.20"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_english_professional_footballer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "scored_winning_goal_1913FA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "thomas_barber"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_english_professional_footballer(thomas_barber) == True",
+    "scored_winning_goal_1913FA(thomas_barber) == True"
+  ],
+  "verifications": [
+    {
+      "name": "EnglishProfessionalScoredWinningGoal1913FA",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_english_professional_footballer(p), scored_winning_goal_1913FA(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

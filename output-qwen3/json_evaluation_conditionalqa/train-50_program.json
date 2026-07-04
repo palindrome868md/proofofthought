@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_widow",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ex_employee",
+      "domain": [
+        "Person",
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "would_be_eligible_for_ncfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible_for_ncfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bcc",
+      "domain": [
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ncb",
+      "domain": [
+        "Company"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "husband"
+      ]
+    },
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "british_coal_corp",
+        "national_coal_board"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "c",
+      "sort": "Company"
+    },
+    {
+      "name": "h",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_widow(applicant)",
+    "is_ex_employee(husband, british_coal_corp)",
+    "is_bcc(british_coal_corp)",
+    "ForAll([p, c], Implies(And(is_ex_employee(p, c), is_bcc(c)), would_be_eligible_for_ncfs(p)))",
+    "ForAll([p, c], Implies(And(is_ex_employee(p, c), is_ncb(c)), would_be_eligible_for_ncfs(p)))",
+    "ForAll([p], Implies(And(is_widow(p), is_ex_employee(husband, british_coal_corp), would_be_eligible_for_ncfs(husband)), is_eligible_for_ncfs(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is applicant eligible for NCFS",
+      "constraint": "is_eligible_for_ncfs(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

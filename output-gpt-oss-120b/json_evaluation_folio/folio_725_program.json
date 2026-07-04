@@ -1,0 +1,43 @@
+{
+  "sorts": [
+    {
+      "name": "Bear",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_zoo",
+      "domain": [
+        "Bear"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wild",
+      "domain": [
+        "Bear"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Bear"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([b], Implies(in_zoo(b), Not(wild(b))))",
+    "Exists([b], in_zoo(b))"
+  ],
+  "verifications": [
+    {
+      "name": "NotAllBearsWild",
+      "constraint": "Exists([b], Not(wild(b)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

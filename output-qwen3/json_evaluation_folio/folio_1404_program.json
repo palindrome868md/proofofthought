@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Object",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_biodegradable",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_env_friendly",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_woodware",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_paper",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_good",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bad",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "items": {
+      "sort": "Object",
+      "members": [
+        "worksheet"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Object"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_biodegradable(x), is_env_friendly(x)))",
+    "ForAll([x], Implies(is_woodware(x), is_biodegradable(x)))",
+    "ForAll([x], Implies(is_paper(x), is_woodware(x)))",
+    "ForAll([x], Not(And(is_good(x), is_bad(x))))",
+    "ForAll([x], Implies(is_env_friendly(x), is_good(x)))",
+    "Or(is_paper(worksheet), is_env_friendly(worksheet))"
+  ],
+  "verifications": [
+    {
+      "name": "Is worksheet bad",
+      "constraint": "is_bad(worksheet)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

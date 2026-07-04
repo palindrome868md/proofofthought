@@ -1,0 +1,110 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person"
+      ],
+      "range": "Location"
+    },
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_of_sound_mind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_terminal_illness",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_immunocompromised",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "remote_witnessing_allowed",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_will_be_witnessed_remotely",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "user"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "Scotland",
+        "England",
+        "Wales"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "loc",
+      "sort": "Location"
+    }
+  ],
+  "knowledge_base": [
+    "remote_witnessing_allowed(England) == True",
+    "remote_witnessing_allowed(Wales) == True",
+    "remote_witnessing_allowed(Scotland) == False",
+    "lives_in(user) == Scotland",
+    "age(user) == 68",
+    "is_of_sound_mind(user) == True",
+    "has_terminal_illness(user) == True",
+    "is_immunocompromised(user) == True",
+    "ForAll([p, loc], Implies(And(lives_in(p) == loc, remote_witnessing_allowed(loc)), can_will_be_witnessed_remotely(p)))",
+    "ForAll([p, loc], Implies(And(lives_in(p) == loc, Not(remote_witnessing_allowed(loc))), Not(can_will_be_witnessed_remotely(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can user witness will remotely via videoconferencing",
+      "constraint": "can_will_be_witnessed_remotely(user)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

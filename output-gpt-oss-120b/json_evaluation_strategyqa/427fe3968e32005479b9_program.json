@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BodyPart",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Team",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Championship",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_body_part",
+      "domain": [
+        "Person",
+        "BodyPart"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "member_of",
+      "domain": [
+        "Person",
+        "Team"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wins",
+      "domain": [
+        "Team",
+        "Championship"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alice"
+      ]
+    },
+    "body_parts": {
+      "sort": "BodyPart",
+      "members": [
+        "tibia"
+      ]
+    },
+    "teams": {
+      "sort": "Team",
+      "members": [
+        "teamA"
+      ]
+    },
+    "championships": {
+      "sort": "Championship",
+      "members": [
+        "stanley_cup"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "wins(teamA, stanley_cup)",
+    "member_of(alice, teamA)",
+    "Not(has_body_part(alice, tibia))"
+  ],
+  "verifications": [
+    {
+      "name": "Tibia not necessary for winning Stanley Cup",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "t",
+          "sort": "Team"
+        }
+      ],
+      "constraint": "And(wins(t, stanley_cup), member_of(p, t), Not(has_body_part(p, tibia)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

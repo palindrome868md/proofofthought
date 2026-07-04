@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "birth_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "death_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "motor_vehicle_available",
+      "domain": [
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "oscar_wilde"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "y",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "birth_year(oscar_wilde) == 1854",
+    "death_year(oscar_wilde) == 1900",
+    "ForAll([y], Implies(y >= 1885, motor_vehicle_available(y)))",
+    "ForAll([y], Implies(y < 1885, Not(motor_vehicle_available(y))))"
+  ],
+  "verifications": [
+    {
+      "name": "Could Oscar Wilde have operated a motor vehicle",
+      "exists": [
+        {
+          "name": "y",
+          "sort": "IntSort"
+        }
+      ],
+      "constraint": "And(y >= birth_year(oscar_wilde), y <= death_year(oscar_wilde), y - birth_year(oscar_wilde) >= 16, motor_vehicle_available(y))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

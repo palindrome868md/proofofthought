@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "size",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "pouch_capacity",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "scooby_doo",
+        "joey"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "size(scooby_doo) == 120",
+    "pouch_capacity(joey) == 50"
+  ],
+  "verifications": [
+    {
+      "name": "ScoobyFitsInKangarooPouch",
+      "constraint": "size(scooby_doo) <= pouch_capacity(joey)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Time",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person",
+        "Time"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "legal_driving_age",
+      "domain": [],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_legally_drive",
+      "domain": [
+        "Person",
+        "Time"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lil_wayne"
+      ]
+    },
+    "times": {
+      "sort": "Time",
+      "members": [
+        "beginning_of_career"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "t",
+      "sort": "Time"
+    }
+  ],
+  "knowledge_base": [
+    "age(lil_wayne, beginning_of_career) == 13",
+    "legal_driving_age() == 16",
+    "ForAll([p, t], Implies(age(p, t) >= legal_driving_age(), can_legally_drive(p, t)))",
+    "ForAll([p, t], Implies(age(p, t) < legal_driving_age(), Not(can_legally_drive(p, t))))"
+  ],
+  "verifications": [
+    {
+      "name": "Could Lil Wayne legally drive at beginning of career",
+      "constraint": "can_legally_drive(lil_wayne, beginning_of_career)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

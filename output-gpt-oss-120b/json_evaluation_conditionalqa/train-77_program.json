@@ -1,0 +1,117 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_child_under_15",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_student_finance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_postgraduate_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "resident_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_dependent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "partner_claiming_other_help",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_part_time",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_childcare_grant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alice"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "charlie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_full_time_student(alice) == True",
+    "has_child_under_15(alice) == True",
+    "eligible_student_finance(alice) == True",
+    "has_postgraduate_loan(alice) == False",
+    "resident_in_england(alice) == True",
+    "child_dependent(alice) == True",
+    "partner_claiming_other_help(alice) == False",
+    "works_part_time(alice) == True",
+    "ForAll([p], Implies(And(is_full_time_student(p), has_child_under_15(p), eligible_student_finance(p), Not(has_postgraduate_loan(p)), resident_in_england(p), child_dependent(p), Not(partner_claiming_other_help(p))), eligible_for_childcare_grant(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for Childcare Grant",
+      "constraint": "eligible_for_childcare_grant(alice)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

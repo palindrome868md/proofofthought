@@ -1,0 +1,93 @@
+{
+  "sorts": [
+    {
+      "name": "Object",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Object",
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eat",
+      "domain": [
+        "Object",
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visit",
+      "domain": [
+        "Object",
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "objects": {
+      "sort": "Object",
+      "members": [
+        "bald_eagle",
+        "cat",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Object"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bald_eagle, cat)",
+    "sees(cat, bald_eagle)",
+    "Not(eat(mouse, cat))",
+    "Not(sees(rabbit, mouse))",
+    "ForAll([x], Implies(red(x), Not(eat(x, bald_eagle))))",
+    "ForAll([x], Implies(And(sees(x, bald_eagle), Not(sees(bald_eagle, rabbit))), eat(x, cat)))",
+    "Implies(Not(rough(mouse)), Not(eat(mouse, cat)))",
+    "ForAll([x], Implies(And(eat(x, bald_eagle), Not(sees(x, bald_eagle))), Not(visit(x, rabbit))))",
+    "ForAll([x], Implies(sees(x, cat), rough(cat)))",
+    "ForAll([x], Implies(sees(x, mouse), Not(blue(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "CatIsRough",
+      "constraint": "rough(cat)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Disability",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_disability",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "disability_affects_study",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_undergraduate_or_postgraduate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualifies_for_student_finance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "course_last_at_least_year",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_excluded_from_dsa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible_for_dsa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "studies_hnd",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_aspergers",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "lives_in_england(me) == True",
+    "has_aspergers(me) == True",
+    "has_disability(me) == True",
+    "disability_affects_study(me) == True",
+    "studies_hnd(me) == True",
+    "is_undergraduate_or_postgraduate(me) == True",
+    "qualifies_for_student_finance(me) == True",
+    "course_last_at_least_year(me) == True",
+    "is_excluded_from_dsa(me) == False",
+    "ForAll([p], Implies(And(lives_in_england(p), has_disability(p), disability_affects_study(p), is_undergraduate_or_postgraduate(p), qualifies_for_student_finance(p), course_last_at_least_year(p), Not(is_excluded_from_dsa(p))), is_eligible_for_dsa(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is me eligible for DSA",
+      "constraint": "is_eligible_for_dsa(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

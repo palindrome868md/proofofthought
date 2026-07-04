@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "sees(cat, squirrel)",
+    "sees(squirrel, cat)",
+    "ForAll([x], Implies(And(visits(x, cat), young(cat)), eats(x, squirrel)))",
+    "ForAll([x], Implies(And(eats(x, squirrel), sees(squirrel, cat)), round(squirrel)))",
+    "ForAll([x], Implies(And(sees(x, cat), sees(cat, squirrel)), eats(x, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Squirrel eats squirrel",
+      "constraint": "eats(squirrel, squirrel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

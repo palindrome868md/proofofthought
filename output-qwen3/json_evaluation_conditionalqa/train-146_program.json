@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Deputy",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_deputy_for",
+      "domain": [
+        "Deputy",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "person_alive",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "deputyship_valid",
+      "domain": [
+        "Deputy",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "uncle",
+        "nephew"
+      ]
+    },
+    "deputies": {
+      "sort": "Deputy",
+      "members": [
+        "nephew_deputy"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "d",
+      "sort": "Deputy"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([d, p], Implies(is_deputy_for(d, p), person_alive(p)))",
+    "ForAll([d, p], Implies(Not(person_alive(p)), Not(deputyship_valid(d, p))))",
+    "is_deputy_for(nephew_deputy, uncle)",
+    "Not(person_alive(uncle))"
+  ],
+  "verifications": [
+    {
+      "name": "Deputyship Valid After Death",
+      "constraint": "deputyship_valid(nephew_deputy, uncle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

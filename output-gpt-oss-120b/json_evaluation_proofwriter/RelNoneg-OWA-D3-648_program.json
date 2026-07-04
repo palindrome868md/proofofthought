@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cow"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "round(cow)",
+    "ForAll([x], Implies(kind(x), young(x)))",
+    "ForAll([x], Implies(And(round(x), red(x)), young(x)))",
+    "ForAll([x], Implies(young(x), round(x)))",
+    "Implies(And(round(cow), young(cow)), kind(cow))",
+    "ForAll([x], Implies(round(x), red(x)))",
+    "ForAll([x], Implies(And(round(x), kind(x)), young(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "CowIsRound",
+      "constraint": "round(cow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

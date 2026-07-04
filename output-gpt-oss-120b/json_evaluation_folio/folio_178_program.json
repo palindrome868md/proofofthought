@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "managed_by",
+      "domain": [
+        "Building",
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "Building",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owned_by",
+      "domain": [
+        "Building",
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_logo",
+      "domain": [
+        "Building",
+        "Company"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "tower_a",
+        "tower_b"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "new_haven",
+        "manhattans"
+      ]
+    },
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "yale_housing",
+        "bloomberg"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Building"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([b], Implies(located_in(b, new_haven), Not(high(b))))",
+    "ForAll([b], Implies(managed_by(b, yale_housing), located_in(b, new_haven)))",
+    "ForAll([b], Implies(located_in(b, manhattans), high(b)))",
+    "ForAll([b], Implies(owned_by(b, bloomberg), located_in(b, manhattans)))",
+    "ForAll([b], Implies(has_logo(b, bloomberg), owned_by(b, bloomberg)))",
+    "managed_by(tower_a, yale_housing)",
+    "has_logo(tower_b, bloomberg)"
+  ],
+  "verifications": [
+    {
+      "name": "Tower B not located in Manhattans",
+      "constraint": "Not(located_in(tower_b, manhattans))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

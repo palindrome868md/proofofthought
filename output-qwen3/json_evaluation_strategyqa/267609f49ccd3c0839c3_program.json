@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "member_count",
+      "domain": [
+        "Organization"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "seat_count",
+      "domain": [
+        "Organization"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "swiss_guard",
+        "va_assembly"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "member_count(swiss_guard) == 135",
+    "seat_count(va_assembly) == 140"
+  ],
+  "verifications": [
+    {
+      "name": "Can Swiss Guard Fill VA Assembly",
+      "constraint": "member_count(swiss_guard) >= seat_count(va_assembly)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

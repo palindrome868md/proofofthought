@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D2-840",
+  "question": "Bob is not big. Bob is blue. Bob is green. Bob is red. Bob is rough. Bob is round. Bob is not white. Gary is big. Gary is green. Gary is rough. Gary is round. Gary is white. Red, rough people are round. Green people are round. All red, white people are round. If someone is blue and round then they are red. Round, white people are big. All round people are blue.\n\nQuestion: Bob is green.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

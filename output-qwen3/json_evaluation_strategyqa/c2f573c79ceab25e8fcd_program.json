@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Organism",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "WormType",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_animal",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_plant",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_get_parasitic_worms",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "gets_worms_similar_to",
+      "domain": [
+        "Organism",
+        "Organism"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organisms": {
+      "sort": "Organism",
+      "members": [
+        "dog",
+        "strawberry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "o",
+      "sort": "Organism"
+    }
+  ],
+  "knowledge_base": [
+    "is_animal(dog) == True",
+    "is_plant(dog) == False",
+    "is_animal(strawberry) == False",
+    "is_plant(strawberry) == True",
+    "can_get_parasitic_worms(dog) == True",
+    "can_get_parasitic_worms(strawberry) == False",
+    "ForAll([o], Implies(is_animal(o), can_get_parasitic_worms(o)))",
+    "ForAll([o], Implies(is_plant(o), Not(can_get_parasitic_worms(o))))",
+    "gets_worms_similar_to(strawberry, dog) == can_get_parasitic_worms(strawberry)"
+  ],
+  "verifications": [
+    {
+      "name": "Can strawberry get worms similar to dogs",
+      "constraint": "gets_worms_similar_to(strawberry, dog)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

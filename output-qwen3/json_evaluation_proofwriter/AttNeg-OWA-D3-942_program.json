@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "charlie",
+        "erin",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_red(anne)",
+    "is_young(charlie)",
+    "Not(is_young(erin))",
+    "is_white(harry)",
+    "ForAll([x], Implies(is_kind(x), is_young(x)))",
+    "ForAll([x], Implies(is_cold(x), is_young(x)))",
+    "ForAll([x], Implies(is_red(x), Not(is_young(x))))",
+    "Implies(And(is_kind(harry), is_nice(harry)), is_red(harry))",
+    "ForAll([x], Implies(is_white(x), is_quiet(x)))",
+    "ForAll([x], Implies(is_quiet(x), is_red(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Erin is not young",
+      "constraint": "Not(is_young(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

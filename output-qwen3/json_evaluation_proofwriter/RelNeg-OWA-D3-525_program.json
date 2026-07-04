@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_blue",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "is_blue(rabbit)",
+    "ForAll([x], Implies(And(is_green(x), is_round(x)), Not(is_blue(x))))",
+    "ForAll([x], Implies(is_blue(x), is_green(x)))",
+    "Implies(is_green(rabbit), is_cold(rabbit))",
+    "ForAll([x], Implies(And(is_green(x), Not(is_blue(x))), Not(is_cold(x))))",
+    "ForAll([x], Implies(is_round(x), Not(is_red(x))))",
+    "ForAll([x], Implies(is_cold(x), Not(is_red(x))))",
+    "ForAll([x], Implies(is_round(x), is_red(x)))",
+    "Implies(is_cold(rabbit), Not(is_red(rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit is not green",
+      "constraint": "Not(is_green(rabbit))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

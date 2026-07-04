@@ -1,0 +1,131 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "is_rompus(wren)",
+    "ForAll([x], Implies(is_rompus(x), is_bitter(x)))",
+    "ForAll([x], Implies(is_rompus(x), is_yumpus(x)))",
+    "ForAll([x], Implies(is_yumpus(x), is_nervous(x)))",
+    "ForAll([x], Implies(is_yumpus(x), is_jompus(x)))",
+    "ForAll([x], Implies(is_jompus(x), Not(is_blue(x))))",
+    "ForAll([x], Implies(is_dumpus(x), Not(is_earthy(x))))",
+    "ForAll([x], Implies(is_jompus(x), is_impus(x)))",
+    "ForAll([x], Implies(is_impus(x), is_bright(x)))",
+    "ForAll([x], Implies(is_impus(x), is_numpus(x)))",
+    "ForAll([x], Implies(is_numpus(x), is_earthy(x)))",
+    "ForAll([x], Implies(is_numpus(x), is_vumpus(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Wren not earthy",
+      "constraint": "Not(is_earthy(wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

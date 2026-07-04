@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_attorney",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_adult",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wants_attorney",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "my_self",
+        "daughter"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "donor",
+      "sort": "Person"
+    },
+    {
+      "name": "att",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([donor, att], Implies(is_attorney(donor, att), And(is_adult(att), has_capacity(att), wants_attorney(att))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can appoint daughter who does not want to be attorney",
+      "constraint": "And(is_attorney(my_self, daughter), Not(wants_attorney(daughter)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "receives_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_pip_daily_living",
+      "domain": [
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_carer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_be_registered_carer",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "pip_daily_living_lower"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "b",
+      "sort": "Benefit"
+    },
+    {
+      "name": "care_recipient",
+      "sort": "Person"
+    },
+    {
+      "name": "carer",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "receives_benefit(me, pip_daily_living_lower)",
+    "is_pip_daily_living(pip_daily_living_lower)",
+    "ForAll([p, b], Implies(And(receives_benefit(p, b), is_pip_daily_living(b)), eligible_for_carer(p)))",
+    "ForAll([care_recipient, carer], Implies(eligible_for_carer(care_recipient), can_be_registered_carer(carer, care_recipient)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can partner be registered as carer",
+      "constraint": "can_be_registered_carer(partner, me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

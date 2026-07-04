@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Podcast",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "ContentType",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_deacon",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_fan_of",
+      "domain": [
+        "Person",
+        "Podcast"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "podcast_content_type",
+      "domain": [
+        "Podcast"
+      ],
+      "range": "ContentType"
+    },
+    {
+      "name": "religious_role_avoids_content",
+      "domain": [
+        "Person",
+        "ContentType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_irreverent_to_religion",
+      "domain": [
+        "ContentType"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "deacon_example"
+      ]
+    },
+    "podcasts": {
+      "sort": "Podcast",
+      "members": [
+        "god_awful_movies"
+      ]
+    },
+    "content_types": {
+      "sort": "ContentType",
+      "members": [
+        "irreverent_religious_content"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "pod",
+      "sort": "Podcast"
+    },
+    {
+      "name": "ct",
+      "sort": "ContentType"
+    }
+  ],
+  "knowledge_base": [
+    "is_deacon(deacon_example) == True",
+    "podcast_content_type(god_awful_movies) == irreverent_religious_content",
+    "is_irreverent_to_religion(irreverent_religious_content) == True",
+    "ForAll([p, ct], Implies(And(is_deacon(p), is_irreverent_to_religion(ct)), religious_role_avoids_content(p, ct)))",
+    "ForAll([p, pod, ct], Implies(And(podcast_content_type(pod) == ct, religious_role_avoids_content(p, ct)), Not(is_fan_of(p, pod))))"
+  ],
+  "verifications": [
+    {
+      "name": "Would Deacon be fan of God Awful Movies",
+      "constraint": "is_fan_of(deacon_example, god_awful_movies)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

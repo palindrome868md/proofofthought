@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "App",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_social_media",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_chat",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_video",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_software",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_computer_program",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_addictive",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ideal_for_preteens",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "apps": {
+      "sort": "App",
+      "members": [
+        "tiktok"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "App"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([a], Implies(And(is_social_media(a), has_chat(a)), is_software(a)))",
+    "ForAll([a], Implies(is_social_media(a), Or(has_chat(a), has_video(a))))",
+    "ForAll([a], Implies(And(is_software(a), is_social_media(a)), is_computer_program(a)))",
+    "ForAll([a], Implies(is_addictive(a), Not(is_ideal_for_preteens(a))))",
+    "And(is_social_media(tiktok), Not(is_ideal_for_preteens(tiktok)))"
+  ],
+  "verifications": [
+    {
+      "name": "TikTok chat or computer program statement",
+      "constraint": "Or(Not(has_chat(tiktok)), Not(is_computer_program(tiktok)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

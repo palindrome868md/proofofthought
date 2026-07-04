@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "missing_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "missing_natural",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_sibling",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_declare_dead",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "my_brother"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "missing_years(my_brother) == 2",
+    "missing_natural(my_brother) == True",
+    "is_sibling(me, my_brother) == True"
+  ],
+  "rules": [
+    {
+      "name": "DeclarationRule",
+      "forall": [
+        {
+          "name": "c",
+          "sort": "Person"
+        },
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "Or(And(missing_years(p) >= 7, is_sibling(c, p)), And(missing_years(p) < 7, missing_natural(p), is_sibling(c, p)))",
+        "consequent": "can_declare_dead(c, p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can declare brother dead",
+      "constraint": "can_declare_dead(me, my_brother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

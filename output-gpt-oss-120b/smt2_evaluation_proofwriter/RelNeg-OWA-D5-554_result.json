@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D5-554",
+  "question": "The bald eagle chases the cow. The bald eagle likes the lion. The bear chases the lion. The bear does not eat the bald eagle. The bear eats the lion. The cow chases the bald eagle. The cow chases the lion. The cow likes the bald eagle. The lion is rough. The lion likes the bald eagle. If something is rough then it eats the cow. If something likes the cow then it eats the cow. If something likes the cow then it likes the lion. If something is cold then it likes the lion. If the bear is cold and the bear eats the lion then the bear chases the cow. If something is round and not big then it does not eat the bald eagle. If the bald eagle likes the bear and the bear chases the bald eagle then the bald eagle chases the bear. If something is rough and it chases the cow then the cow is rough. If something eats the cow then it chases the cow.\n\nQuestion: The lion chases the cow.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

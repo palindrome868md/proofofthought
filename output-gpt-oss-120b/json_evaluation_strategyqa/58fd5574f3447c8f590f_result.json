@@ -1,0 +1,11 @@
+{
+  "sample_id": "58fd5574f3447c8f590f",
+  "question": "Would a student of the class of 2017 have amnesia about 9/11?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

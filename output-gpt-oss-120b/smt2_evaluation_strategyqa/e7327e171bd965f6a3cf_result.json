@@ -1,0 +1,11 @@
+{
+  "sample_id": "e7327e171bd965f6a3cf",
+  "question": "Is art prioritized in the US education system?",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

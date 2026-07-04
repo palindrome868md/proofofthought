@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "diagnosed_diffuse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "diagnosed_after_2012",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "exposure_UK",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_trace_employer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_civil_claim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "received_other_payment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_DMPS",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "diagnosed_diffuse(me) == True",
+    "diagnosed_after_2012(me) == True",
+    "exposure_UK(me) == True",
+    "can_trace_employer(me) == False",
+    "made_civil_claim(me) == False",
+    "received_other_payment(me) == False",
+    "ForAll([p], Implies(And(diagnosed_diffuse(p), diagnosed_after_2012(p), exposure_UK(p), Not(can_trace_employer(p)), Not(made_civil_claim(p)), Not(received_other_payment(p))), eligible_for_DMPS(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Entitled to state compensation when employer cannot be traced",
+      "constraint": "eligible_for_DMPS(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

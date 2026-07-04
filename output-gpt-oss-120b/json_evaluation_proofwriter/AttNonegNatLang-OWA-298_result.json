@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNonegNatLang-OWA-298",
+  "question": "Alan may be round, but he is also kind. Dave may be round, but he is also kind. Gary is a young, round shaped young man who is also very cold. Young Harry has rough, green skin that is always cold.  Harry is known for being a nice guy. People who have red coloration usually treat people in a kind manner. They are also usually young looking. If you run across a young person with rough skin and a round figure, you can count on them being kind. A person that is both nice and rough is someone who is also big. People with big smiles and round eyes will have red hair. A red, nice person will definitely be a blue person. Someone that is cold rough and red is also considered to be kind. A young person who is big and rough and big is also usually round.\n\nQuestion: Harry is big.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

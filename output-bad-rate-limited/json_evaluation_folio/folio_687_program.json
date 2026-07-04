@@ -1,0 +1,167 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "spends_money",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rents_car",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "borrows_car",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns_car",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_to",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "drives_to",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "camping_in",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sarah"
+      ]
+    },
+    "places": {
+      "sort": "Place",
+      "members": [
+        "vermont"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Implies(goes_to(sarah, vermont), drives_to(sarah, vermont))",
+    "Not(owns_car(sarah))",
+    "camping_in(sarah, vermont)"
+  ],
+  "rules": [
+    {
+      "name": "If someone doesn't own a car and goes somewhere, they must borrow or rent",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "pl",
+          "sort": "Place"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(Not(owns_car(p)), goes_to(p, pl))",
+        "consequent": "Or(borrows_car(p, pl), rents_car(p, pl))"
+      }
+    },
+    {
+      "name": "Camping implies going to that place",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "pl",
+          "sort": "Place"
+        }
+      ],
+      "implies": {
+        "antecedent": "camping_in(p, pl)",
+        "consequent": "goes_to(p, pl)"
+      }
+    },
+    {
+      "name": "If someone rents a car, they spend money",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "pl",
+          "sort": "Place"
+        }
+      ],
+      "implies": {
+        "antecedent": "rents_car(p, pl)",
+        "consequent": "spends_money(p)"
+      }
+    },
+    {
+      "name": "No borrowing when camping (if camping, not borrows_car for that place)",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "pl",
+          "sort": "Place"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(camping_in(p, pl), goes_to(p, pl))",
+        "consequent": "Not(borrows_car(p, pl))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Sarah spends money",
+      "constraint": "spends_money(sarah)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

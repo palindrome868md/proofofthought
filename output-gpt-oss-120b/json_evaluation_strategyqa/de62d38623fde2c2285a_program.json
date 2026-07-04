@@ -1,0 +1,33 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [
+    {
+      "name": "total_episodes",
+      "sort": "IntSort"
+    },
+    {
+      "name": "episode_length",
+      "sort": "IntSort"
+    },
+    {
+      "name": "week_minutes",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "total_episodes == 85",
+    "episode_length == 42",
+    "week_minutes == 10080"
+  ],
+  "verifications": [
+    {
+      "name": "Week enough to watch all Ugly Betty episodes",
+      "constraint": "total_episodes * episode_length <= week_minutes"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

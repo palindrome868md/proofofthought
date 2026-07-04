@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Car",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "num_children",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "seating_capacity",
+      "domain": [
+        "Car"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "lil_wayne"
+      ]
+    },
+    "cars": {
+      "sort": "Car",
+      "members": [
+        "corvette_zr1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "num_children(lil_wayne) == 4",
+    "seating_capacity(corvette_zr1) == 2"
+  ],
+  "verifications": [
+    {
+      "name": "Can children fit in Corvette",
+      "constraint": "num_children(lil_wayne) <= seating_capacity(corvette_zr1)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "rabbit",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    },
+    {
+      "name": "y",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bald_eagle, rabbit)",
+    "likes(rabbit, bald_eagle)",
+    "blue(squirrel)",
+    "ForAll([x], Implies(likes(x, bald_eagle), blue(x)))",
+    "ForAll([x], Implies(And(likes(x, bald_eagle), sees(x, bald_eagle)), blue(bald_eagle)))",
+    "ForAll([x], Implies(chases(x, rabbit), young(rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "RabbitIsBlue",
+      "constraint": "blue(rabbit)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

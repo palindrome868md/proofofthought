@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "civil_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_one_year_EW",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "missing_lived_one_year_EW",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "missing_domicile_EW",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claim_allowed",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "claimant",
+        "missing_person"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "civil_partner(claimant, missing_person)",
+    "lived_one_year_EW(claimant)",
+    "Not(missing_lived_one_year_EW(missing_person))",
+    "Not(missing_domicile_EW(missing_person))"
+  ],
+  "rules": [
+    {
+      "name": "ClaimAllowedRule",
+      "forall": [
+        {
+          "name": "c",
+          "sort": "Person"
+        },
+        {
+          "name": "m",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(civil_partner(c,m), Or(lived_one_year_EW(c), missing_lived_one_year_EW(m), missing_domicile_EW(m)))",
+        "consequent": "claim_allowed(c,m)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CanMakeDeclarationOfPresumedDeath",
+      "constraint": "claim_allowed(claimant, missing_person)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

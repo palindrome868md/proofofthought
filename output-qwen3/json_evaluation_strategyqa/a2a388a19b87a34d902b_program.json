@@ -1,0 +1,92 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Kingdom",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_land_owner",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_ruler",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "elects",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_kingdom",
+      "domain": [
+        "Person",
+        "Kingdom"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "land_owners_elect_rulers",
+      "domain": [
+        "Kingdom"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "kingdoms": {
+      "sort": "Kingdom",
+      "members": [
+        "kingdom_of_hungary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "land_owners_elect_rulers(kingdom_of_hungary)",
+    "ForAll([p1, p2], Implies(And(land_owners_elect_rulers(kingdom_of_hungary), is_land_owner(p1), is_ruler(p2), in_kingdom(p1, kingdom_of_hungary), in_kingdom(p2, kingdom_of_hungary)), elects(p1, p2)))"
+  ],
+  "verifications": [
+    {
+      "name": "Land owners elected rulers in Kingdom of Hungary",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Person"
+        },
+        {
+          "name": "y",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_land_owner(x), is_ruler(y), elects(x, y), in_kingdom(x, kingdom_of_hungary), in_kingdom(y, kingdom_of_hungary))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

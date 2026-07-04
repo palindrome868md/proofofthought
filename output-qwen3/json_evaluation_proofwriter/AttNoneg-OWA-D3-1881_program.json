@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_red",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "erin"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "is_red(erin)",
+    "ForAll([x], Implies(is_red(x), is_nice(x)))",
+    "Implies(is_nice(erin), is_cold(erin))",
+    "Implies(is_cold(erin), is_big(erin))"
+  ],
+  "verifications": [
+    {
+      "name": "Erin is not cold",
+      "constraint": "Not(is_cold(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

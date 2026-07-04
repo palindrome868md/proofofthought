@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_franchisee",
+      "domain": [
+        "Person",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_employee",
+      "domain": [
+        "Person",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_child_abuser",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_connection",
+      "domain": [
+        "Person",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "subway"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "person1",
+        "person2",
+        "person3"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "o",
+      "sort": "Organization"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, o], Implies(is_franchisee(p, o), has_connection(p, o)))",
+    "ForAll([p, o], Implies(is_employee(p, o), has_connection(p, o)))",
+    "is_franchisee(person1, subway)",
+    "is_child_abuser(person1)",
+    "is_employee(person2, subway)",
+    "Not(is_child_abuser(person2))",
+    "Not(is_franchisee(person3, subway))",
+    "Not(is_employee(person3, subway))"
+  ],
+  "verifications": [
+    {
+      "name": "Subway has connection with child abuser",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(has_connection(p, subway), is_child_abuser(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

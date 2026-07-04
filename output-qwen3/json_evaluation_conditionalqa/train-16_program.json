@@ -1,0 +1,103 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "School",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Disability",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_disability",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "offered_place",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rescind_offer_due_to_disability",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_discrimination",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_legal",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "son"
+      ]
+    },
+    "schools": {
+      "sort": "School",
+      "members": [
+        "reception_school"
+      ]
+    },
+    "disabilities": {
+      "sort": "Disability",
+      "members": [
+        "scoliosis"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "School"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "has_disability(son)",
+    "offered_place(reception_school, son)",
+    "ForAll([s, p], Implies(And(offered_place(s, p), has_disability(p)), Not(rescind_offer_due_to_disability(s, p))))",
+    "ForAll([s, p], Implies(rescind_offer_due_to_disability(s, p), is_discrimination(s, p)))",
+    "ForAll([s, p], Implies(is_discrimination(s, p), Not(is_legal(s, p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can school rescind offer due to disability",
+      "constraint": "rescind_offer_due_to_disability(reception_school, son)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

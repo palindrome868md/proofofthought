@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Community",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "County",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Route",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_unincorporated",
+      "domain": [
+        "Community"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_on",
+      "domain": [
+        "Community",
+        "Route"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "Community",
+        "County"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_northwest_of",
+      "domain": [
+        "Community",
+        "Community"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "communities": {
+      "sort": "Community",
+      "members": [
+        "ordinary",
+        "sandy_hook"
+      ]
+    },
+    "counties": {
+      "sort": "County",
+      "members": [
+        "elliott_county"
+      ]
+    },
+    "routes": {
+      "sort": "Route",
+      "members": [
+        "route_32"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Community"
+    }
+  ],
+  "knowledge_base": [
+    "is_unincorporated(ordinary) == True",
+    "located_on(ordinary, route_32) == True",
+    "located_in(ordinary, elliott_county) == True",
+    "located_northwest_of(ordinary, sandy_hook) == True"
+  ],
+  "verifications": [
+    {
+      "name": "No unincorporated communities on Route 32",
+      "constraint": "Not(Exists([c], And(is_unincorporated(c), located_on(c, route_32))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

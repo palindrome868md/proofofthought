@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "current_benefit",
+      "domain": [
+        "Person"
+      ],
+      "range": "Benefit"
+    },
+    {
+      "name": "total_debt",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_borrow",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "PensionCredit",
+        "UniversalCredit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "current_benefit(applicant) == PensionCredit",
+    "current_benefit(applicant) != UniversalCredit",
+    "total_debt(applicant) == 1600",
+    "ForAll([p], Implies(total_debt(p) > 1500, Not(can_borrow(p))))",
+    "ForAll([p], Implies(current_benefit(p) == UniversalCredit, Not(can_borrow(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can applicant borrow more",
+      "constraint": "can_borrow(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

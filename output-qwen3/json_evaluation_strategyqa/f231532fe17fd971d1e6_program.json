@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Film",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Aircraft",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "box_office_receipts",
+      "domain": [
+        "Film"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "aircraft_cost",
+      "domain": [
+        "Aircraft"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "films": {
+      "sort": "Film",
+      "members": [
+        "wonder_woman_2017"
+      ]
+    },
+    "aircrafts": {
+      "sort": "Aircraft",
+      "members": [
+        "boeing_737"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "box_office_receipts(wonder_woman_2017) == 822000000",
+    "aircraft_cost(boeing_737) == 100000000"
+  ],
+  "verifications": [
+    {
+      "name": "Box Office Covers Aircraft Cost",
+      "constraint": "box_office_receipts(wonder_woman_2017) >= aircraft_cost(boeing_737)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "mass",
+      "domain": [
+        "Substance"
+      ],
+      "range": "RealSort"
+    },
+    {
+      "name": "weight",
+      "domain": [
+        "Person"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "ten_gallons_seawater"
+      ]
+    },
+    "people": {
+      "sort": "Person",
+      "members": [
+        "six_year_old"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "mass(ten_gallons_seawater) == 80.0",
+    "weight(six_year_old) == 45.0"
+  ],
+  "verifications": [
+    {
+      "name": "Could ten gallons of seawater crush a six year old",
+      "constraint": "And(mass(ten_gallons_seawater) > weight(six_year_old) * 2, mass(ten_gallons_seawater) > 0)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

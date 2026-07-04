@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_obtain_court_order",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "mother",
+        "husband",
+        "child"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "Ghana",
+        "UK"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "lives_in(mother, Ghana)",
+    "lives_in(husband, UK)",
+    "lives_in(child, Ghana)",
+    "is_parent(husband, child)",
+    "is_parent(mother, child)",
+    "can_obtain_court_order(husband, child)"
+  ],
+  "verifications": [
+    {
+      "name": "CourtOrderPossible",
+      "constraint": "can_obtain_court_order(husband, child)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

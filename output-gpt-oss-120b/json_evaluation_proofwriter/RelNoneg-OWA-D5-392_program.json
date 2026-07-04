@@ -1,0 +1,98 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "bald_eagle",
+        "mouse",
+        "rabbit",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "likes(bald_eagle, mouse)",
+    "likes(mouse, bald_eagle)",
+    "likes(rabbit, mouse)",
+    "chases(tiger, mouse)",
+    "chases(tiger, rabbit)",
+    "big(tiger)",
+    "sees(tiger, bald_eagle)",
+    "Implies(And(likes(rabbit, tiger), sees(tiger, bald_eagle)), rough(rabbit))",
+    "ForAll([x], Implies(sees(x, rabbit), likes(rabbit, tiger)))",
+    "ForAll([x], Implies(And(likes(x, bald_eagle), likes(bald_eagle, rabbit)), big(rabbit)))",
+    "ForAll([x], Implies(likes(x, bald_eagle), rough(bald_eagle)))",
+    "Implies(chases(mouse, rabbit), chases(rabbit, tiger))",
+    "Implies(sees(rabbit, bald_eagle), chases(bald_eagle, rabbit))",
+    "ForAll([x], Implies(And(young(x), chases(x, mouse)), sees(x, mouse)))",
+    "ForAll([x], Implies(And(likes(x, mouse), rough(x)), sees(x, rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit does not like mouse",
+      "constraint": "Not(likes(rabbit, mouse))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

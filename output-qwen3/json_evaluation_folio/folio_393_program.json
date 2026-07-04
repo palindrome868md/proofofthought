@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "located_in",
+      "domain": [
+        "Building",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "blake_mcfall",
+        "emmet"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "portland_oregon"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "located_in(emmet, portland_oregon)",
+    "blake_mcfall == emmet"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is Blake McFall Building in Portland",
+      "constraint": "located_in(blake_mcfall, portland_oregon)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

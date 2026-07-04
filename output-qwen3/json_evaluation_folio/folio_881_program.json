@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_athlete",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "exercises",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_pro_bball_player",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nba_player",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_knicks_player",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "john",
+        "jim"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_athlete(x), exercises(x)))",
+    "ForAll([x], Implies(is_pro_bball_player(x), is_athlete(x)))",
+    "ForAll([x], Implies(is_nba_player(x), is_pro_bball_player(x)))",
+    "ForAll([x], Implies(is_knicks_player(x), is_nba_player(x)))",
+    "Or(And(is_pro_bball_player(john), Not(exercises(john))), And(Not(is_pro_bball_player(john)), exercises(john)))"
+  ],
+  "verifications": [
+    {
+      "name": "Jim is a Knicks player",
+      "constraint": "is_knicks_player(jim)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

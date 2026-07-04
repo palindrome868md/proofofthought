@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNonegNatLang-OWA-349",
+  "question": "Bob may be round, but he is also kind. The young person who is always feeling cold is named Charlie. Dave is a round and rough around the edges, and he is also big. Gary is nice and kind even though people make fun of his red and green skin.  Gary always feels cold. A kind person who is down in the dumps and blue tends to have a rough side. Every time you meet someone kind and nice, they'll be green, too. A red hued and rough looking person is definitely a young person. Anyone who is both red and green must be as cold as Christmas. Watch out for young people that are kind for they are rough. Nice and green people are often found to be big as well. A person who inherits genes that make them big and green will also express a blue color.\n\nQuestion: Gary is young.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

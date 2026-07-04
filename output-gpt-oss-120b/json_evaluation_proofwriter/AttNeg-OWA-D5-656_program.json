@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "smart",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "anne",
+        "charlie",
+        "erin",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "smart(anne)",
+    "Not(blue(charlie))",
+    "quiet(charlie)",
+    "Not(nice(erin))",
+    "round(erin)",
+    "green(harry)",
+    "young(harry)",
+    "ForAll([x], Implies(smart(x), green(x)))",
+    "Implies(round(anne), young(anne))",
+    "ForAll([x], Implies(And(blue(x), green(x)), Not(quiet(x))))",
+    "ForAll([x], Implies(And(green(x), smart(x)), round(x)))",
+    "ForAll([x], Implies(young(x), blue(x)))",
+    "ForAll([x], Implies(smart(x), nice(x)))",
+    "Implies(And(quiet(harry), Not(smart(harry))), young(harry))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is quiet",
+      "constraint": "quiet(harry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

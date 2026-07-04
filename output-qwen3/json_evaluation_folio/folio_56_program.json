@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_english",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_professional_footballer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "scored_winning_goal",
+      "domain": [
+        "Person",
+        "Event"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "thomas_barber"
+      ]
+    },
+    "events": {
+      "sort": "Event",
+      "members": [
+        "fa_cup_final_1913"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_english(thomas_barber)",
+    "is_professional_footballer(thomas_barber)",
+    "scored_winning_goal(thomas_barber, fa_cup_final_1913)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "English Footballer Scored",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_english(p), is_professional_footballer(p), scored_winning_goal(p, fa_cup_final_1913))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

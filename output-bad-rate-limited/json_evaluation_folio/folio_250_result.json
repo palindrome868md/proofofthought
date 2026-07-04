@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_250",
+  "question": "Given the following premises:\n\nLawton Park is a neighborhood in Seattle. \nAll citizens of Lawton Park use the zip code 98199. \nTom is a citizen of Lawton Park.\nDaniel uses the zip code 98199. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Tom doesn't use the zip code 98199.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([p], Implies(citizen_of(p, Lawton_Park), uses_zip(p, 98199)))': name 'p' is not defined"
+}

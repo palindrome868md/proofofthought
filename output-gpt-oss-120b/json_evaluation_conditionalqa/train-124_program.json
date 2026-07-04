@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Account",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_deceased",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns_account",
+      "domain": [
+        "Person",
+        "Account"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_pay_from_account",
+      "domain": [
+        "Account"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father"
+      ]
+    },
+    "accounts": {
+      "sort": "Account",
+      "members": [
+        "father_account"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_deceased(father)",
+    "owns_account(father, father_account)",
+    "can_pay_from_account(father_account)"
+  ],
+  "verifications": [
+    {
+      "name": "Can pay from deceased father's account",
+      "constraint": "And(is_deceased(father), owns_account(father, father_account), can_pay_from_account(father_account))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

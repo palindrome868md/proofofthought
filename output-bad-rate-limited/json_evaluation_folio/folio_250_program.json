@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Neighborhood",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_city",
+      "domain": [
+        "Neighborhood",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "citizen_of",
+      "domain": [
+        "Person",
+        "Neighborhood"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_zip",
+      "domain": [
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "neighborhoods": {
+      "sort": "Neighborhood",
+      "members": [
+        "Lawton_Park"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "Seattle"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Tom",
+        "Daniel"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "in_city(Lawton_Park, Seattle)",
+    "citizen_of(Tom, Lawton_Park)",
+    "ForAll([p], Implies(citizen_of(p, Lawton_Park), uses_zip(p, 98199)))",
+    "uses_zip(Daniel, 98199)"
+  ],
+  "verifications": [
+    {
+      "name": "Tom does not use zip 98199",
+      "constraint": "Not(uses_zip(Tom, 98199))"
+    }
+  ]
+}

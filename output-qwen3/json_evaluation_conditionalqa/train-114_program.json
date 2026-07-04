@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "caring_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "meets_age_requirement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cared_person_has_qualifying_status",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_carers_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "carer"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "caring_hours(carer) == 22",
+    "caring_hours(carer) >= 20",
+    "meets_age_requirement(carer)",
+    "cared_person_has_qualifying_status(carer)"
+  ],
+  "rules": [
+    {
+      "name": "Carers Credit Eligibility Rule",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(caring_hours(x) >= 20, meets_age_requirement(x), cared_person_has_qualifying_status(x))",
+        "consequent": "eligible_for_carers_credit(x)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Check If Carer Is Eligible For Carers Credit",
+      "constraint": "eligible_for_carers_credit(carer)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

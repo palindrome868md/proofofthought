@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "numpus(fae)",
+    "Implies(numpus(fae), wumpus(fae))",
+    "Implies(wumpus(fae), jompus(fae))",
+    "Implies(jompus(fae), yumpus(fae))",
+    "Implies(yumpus(fae), vumpus(fae))",
+    "Implies(vumpus(fae), opaque(fae))",
+    "opaque(fae)"
+  ],
+  "verifications": [
+    {
+      "name": "Fae Not Opaque",
+      "constraint": "Not(opaque(fae))"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "abuse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "unreasonable_behaviour",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "my_partner"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "abuse(my_partner)",
+    "ForAll([p], Implies(abuse(p), unreasonable_behaviour(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can use unreasonable behaviour ground",
+      "constraint": "unreasonable_behaviour(my_partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

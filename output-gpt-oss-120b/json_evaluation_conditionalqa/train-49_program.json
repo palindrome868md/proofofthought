@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Asset",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "asset_value",
+      "domain": [
+        "Asset"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "inherits",
+      "domain": [
+        "Person",
+        "Asset"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "me",
+        "sibling1",
+        "sibling2"
+      ]
+    },
+    "assets": {
+      "sort": "Asset",
+      "members": [
+        "home"
+      ]
+    },
+    "ints": {
+      "sort": "IntSort",
+      "members": [
+        "gifts_total"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "asset_value(home) == 400000",
+    "inherits(me, home) == True",
+    "gifts_total == 250000"
+  ],
+  "verifications": [
+    {
+      "name": "No inheritance tax on property and gifts",
+      "constraint": "And(asset_value(home) <= 500000, gifts_total <= 325000)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

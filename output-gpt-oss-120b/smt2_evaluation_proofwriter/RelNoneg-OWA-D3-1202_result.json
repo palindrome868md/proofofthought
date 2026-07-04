@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D3-1202",
+  "question": "The bald eagle eats the mouse. The bald eagle sees the mouse. The bald eagle sees the rabbit. The bald eagle visits the mouse. The mouse eats the bald eagle. The mouse eats the rabbit. The mouse sees the bald eagle. The mouse visits the rabbit. The rabbit eats the bald eagle. The rabbit is cold. The rabbit is kind. The rabbit is rough. The rabbit is young. The rabbit sees the bald eagle. The rabbit sees the mouse. The rabbit visits the bald eagle. If something visits the rabbit then it is young. If something sees the mouse then the mouse visits the bald eagle. Big things are cold. If something sees the rabbit then it visits the rabbit. Young things are cold. If something sees the mouse and it visits the mouse then the mouse eats the rabbit. If something sees the mouse then the mouse is big. If something visits the mouse and the mouse is rough then it eats the mouse.\n\nQuestion: The mouse does not eat the bald eagle.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

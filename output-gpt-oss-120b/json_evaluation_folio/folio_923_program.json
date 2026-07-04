@@ -1,0 +1,84 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "young_adult",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "college_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yale_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "harvard_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "diligent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes_independence",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "susan"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(young_adult(p), likes_independence(p)))",
+    "ForAll([p], Implies(college_student(p), young_adult(p)))",
+    "ForAll([p], Implies(yale_student(p), college_student(p)))",
+    "ForAll([p], Or(yale_student(p), harvard_student(p)))",
+    "ForAll([p], Implies(harvard_student(p), diligent(p)))",
+    "Implies(harvard_student(susan), young_adult(susan))",
+    "Implies(yale_student(susan), Not(likes_independence(susan)))"
+  ],
+  "verifications": [
+    {
+      "name": "Susan not both diligent and likes independence",
+      "constraint": "Not(And(diligent(susan), likes_independence(susan)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

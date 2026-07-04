@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D1-1249",
+  "question": "Anne is blue. Anne is quiet. Anne is white. Bob is blue. Bob is kind. Bob is nice. Bob is red. Bob is young. Charlie is blue. Charlie is quiet. Fiona is blue. Fiona is kind. Fiona is nice. Fiona is quiet. Fiona is young. If something is kind then it is red. Red, nice things are white. If something is blue and white then it is red. If something is quiet and red then it is nice. Blue things are white. All red things are young. If Fiona is quiet and Fiona is nice then Fiona is kind. If something is young and white then it is kind.\n\nQuestion: Fiona is not white.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

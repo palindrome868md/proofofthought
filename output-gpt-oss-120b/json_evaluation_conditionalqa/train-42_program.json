@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_bank_account",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mentally_incapable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_be_appointee",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "brother"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "app",
+      "sort": "Person"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(me) == 28",
+    "age(brother) == 30",
+    "has_bank_account(me) == True",
+    "mentally_incapable(brother) == True",
+    "ForAll([app, p], Implies(And(age(app) >= 18, has_bank_account(app), mentally_incapable(p)), can_be_appointee(app, p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can be appointed as appointee for brother",
+      "constraint": "can_be_appointee(me, brother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

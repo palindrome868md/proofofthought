@@ -1,0 +1,52 @@
+; Declare a generic entity sort
+(declare-sort Entity 0)
+
+; Declare the individual
+(declare-const fae Entity)
+
+; Declare predicates (unary relations / properties)
+(declare-fun Tumpus (Entity) Bool)
+(declare-fun Numpus (Entity) Bool)
+(declare-fun Orange (Entity) Bool)
+(declare-fun Small (Entity) Bool)
+(declare-fun Vumpus (Entity) Bool)
+(declare-fun Sour (Entity) Bool)
+(declare-fun Dumpus (Entity) Bool)
+(declare-fun Zumpus (Entity) Bool)
+(declare-fun Dull (Entity) Bool)
+(declare-fun Yumpus (Entity) Bool)
+(declare-fun Jompus (Entity) Bool)
+(declare-fun Floral (Entity) Bool)
+(declare-fun Amenable (Entity) Bool)
+(declare-fun Rompus (Entity) Bool)
+(declare-fun Opaque (Entity) Bool)
+(declare-fun Impuse (Entity) Bool)
+(declare-fun Wumpus (Entity) Bool)
+(declare-fun Cold (Entity) Bool)
+
+; Knowledge base (rules)
+(assert (forall ((x Entity)) (=> (Tumpus x) (Numpus x))))
+(assert (forall ((x Entity)) (=> (Numpus x) (Small x))))
+(assert (forall ((x Entity)) (=> (Numpus x) (Vumpus x))))
+(assert (forall ((x Entity)) (=> (Vumpus x) (Sour x))))
+(assert (forall ((x Entity)) (=> (Vumpus x) (Dumpus x))))
+(assert (forall ((x Entity)) (=> (Dumpus x) (Cold x))))
+(assert (forall ((x Entity)) (=> (Dumpus x) (Zumpus x))))
+(assert (forall ((x Entity)) (=> (Zumpus x) (Dull x))))
+(assert (forall ((x Entity)) (=> (Zumpus x) (Yumpus x))))
+(assert (forall ((x Entity)) (=> (Jompus x) (Floral x))))
+(assert (forall ((x Entity)) (=> (Yumpus x) (not (Amenable x)))))
+(assert (forall ((x Entity)) (=> (Yumpus x) (Rompus x))))
+(assert (forall ((x Entity)) (=> (Rompus x) (Opaque x))))
+(assert (forall ((x Entity)) (=> (Rompus x) (Impuse x))))
+(assert (forall ((x Entity)) (=> (Impuse x) (not (Floral x)))))
+(assert (forall ((x Entity)) (=> (Impuse x) (Wumpus x))))
+(assert (forall ((x Entity)) (=> (Tumpus x) (Orange x))))
+
+; Facts: Fae is a dumpus
+(assert (Dumpus fae))
+
+; Test scenario: "Fae is not floral."
+(assert (not (Floral fae)))
+(check-sat)
+(get-model)

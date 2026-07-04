@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "IsProfessionalAthlete",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "SpendsMostTimeOnSports",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsOlympicGoldMedalWinner",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsFullTimeScientist",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "IsNobelPhysicsLaureate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Amy"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(IsProfessionalAthlete(x), SpendsMostTimeOnSports(x)))",
+    "ForAll([x], Implies(IsOlympicGoldMedalWinner(x), IsProfessionalAthlete(x)))",
+    "ForAll([x], Implies(IsFullTimeScientist(x), Not(SpendsMostTimeOnSports(x))))",
+    "ForAll([x], Implies(IsNobelPhysicsLaureate(x), IsFullTimeScientist(x)))",
+    "Or(SpendsMostTimeOnSports(Amy), IsOlympicGoldMedalWinner(Amy))",
+    "Implies(Not(IsNobelPhysicsLaureate(Amy)), Not(IsOlympicGoldMedalWinner(Amy)))"
+  ],
+  "verifications": [
+    {
+      "name": "Verify Statement",
+      "constraint": "Implies(Not(IsOlympicGoldMedalWinner(Amy)), IsNobelPhysicsLaureate(Amy))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

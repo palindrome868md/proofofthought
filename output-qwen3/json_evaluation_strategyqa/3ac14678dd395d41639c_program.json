@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_eleventh_grader",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_medicare",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_eleventh_grader(p), And(age(p) >= 16, age(p) <= 17)))",
+    "ForAll([p], Implies(eligible_for_medicare(p), age(p) >= 65))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Eleventh-grader Medicare Eligibility",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_eleventh_grader(p), eligible_for_medicare(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

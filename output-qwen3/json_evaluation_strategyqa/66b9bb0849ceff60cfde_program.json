@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Organism",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Disease",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_plant",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_liver",
+      "domain": [
+        "Organism"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_suffer_from",
+      "domain": [
+        "Organism",
+        "Disease"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "requires_liver",
+      "domain": [
+        "Disease"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organisms": {
+      "sort": "Organism",
+      "members": [
+        "dandelion"
+      ]
+    },
+    "diseases": {
+      "sort": "Disease",
+      "members": [
+        "hepatitis"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "o",
+      "sort": "Organism"
+    },
+    {
+      "name": "d",
+      "sort": "Disease"
+    }
+  ],
+  "knowledge_base": [
+    "is_plant(dandelion)",
+    "Not(has_liver(dandelion))",
+    "requires_liver(hepatitis)",
+    "ForAll([o], Implies(is_plant(o), Not(has_liver(o))))",
+    "ForAll([o, d], Implies(And(can_suffer_from(o, d), requires_liver(d)), has_liver(o)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can dandelion suffer from hepatitis",
+      "constraint": "can_suffer_from(dandelion, hepatitis)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

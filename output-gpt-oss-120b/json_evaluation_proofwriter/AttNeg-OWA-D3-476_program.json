@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob",
+        "gary",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Not(nice(anne))",
+    "rough(anne)",
+    "smart(anne)",
+    "rough(bob)",
+    "nice(gary)",
+    "quiet(gary)",
+    "rough(harry)",
+    "Implies(big(gary), cold(gary))",
+    "ForAll([x], Implies(nice(x), big(x)))",
+    "Implies(big(gary), quiet(gary))",
+    "ForAll([x], Implies(green(x), smart(x)))",
+    "Implies(And(quiet(anne), Not(green(anne))), big(anne))",
+    "ForAll([x], Implies(And(nice(x), Not(quiet(x))), Not(rough(x))))",
+    "ForAll([x], Implies(And(quiet(x), Not(big(x))), Not(rough(x))))",
+    "ForAll([x], Implies(cold(x), rough(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Gary is not cold",
+      "constraint": "Not(cold(gary))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

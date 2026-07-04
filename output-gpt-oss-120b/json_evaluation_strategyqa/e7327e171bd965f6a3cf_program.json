@@ -1,0 +1,53 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Subject",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "prioritizes",
+      "domain": [
+        "Subject",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "US"
+      ]
+    },
+    "subjects": {
+      "sort": "Subject",
+      "members": [
+        "art",
+        "math",
+        "science"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "prioritizes(math, US)",
+    "prioritizes(science, US)",
+    "Not(prioritizes(art, US))"
+  ],
+  "verifications": [
+    {
+      "name": "ArtIsPrioritizedInUS",
+      "constraint": "prioritizes(art, US)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

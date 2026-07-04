@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "served_before_2005",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "death_due_to_service",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "funeral_grant_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "my_husband"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "served_before_2005(my_husband) == True",
+    "death_due_to_service(my_husband) == True",
+    "ForAll([p], Implies(And(death_due_to_service(p), served_before_2005(p)), funeral_grant_eligible(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can get funeral grant",
+      "constraint": "funeral_grant_eligible(my_husband)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

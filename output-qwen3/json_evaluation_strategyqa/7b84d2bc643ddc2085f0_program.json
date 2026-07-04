@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Vessel",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tunnel",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "width",
+      "domain": [
+        "Vessel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "height",
+      "domain": [
+        "Vessel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "tunnel_width",
+      "domain": [
+        "Tunnel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "tunnel_height",
+      "domain": [
+        "Tunnel"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_sail_through",
+      "domain": [
+        "Vessel",
+        "Tunnel"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "vessels": {
+      "sort": "Vessel",
+      "members": [
+        "noahs_ark"
+      ]
+    },
+    "tunnels": {
+      "sort": "Tunnel",
+      "members": [
+        "lincoln_tunnel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "v",
+      "sort": "Vessel"
+    },
+    {
+      "name": "t",
+      "sort": "Tunnel"
+    }
+  ],
+  "knowledge_base": [
+    "width(noahs_ark) == 75",
+    "height(noahs_ark) == 45",
+    "tunnel_width(lincoln_tunnel) == 21",
+    "tunnel_height(lincoln_tunnel) == 13",
+    "ForAll([v, t], Implies(And(width(v) <= tunnel_width(t), height(v) <= tunnel_height(t)), can_sail_through(v, t)))",
+    "ForAll([v, t], Implies(Or(width(v) > tunnel_width(t), height(v) > tunnel_height(t)), Not(can_sail_through(v, t))))"
+  ],
+  "verifications": [
+    {
+      "name": "Will Noah's Ark sail through Lincoln Tunnel",
+      "constraint": "can_sail_through(noahs_ark, lincoln_tunnel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

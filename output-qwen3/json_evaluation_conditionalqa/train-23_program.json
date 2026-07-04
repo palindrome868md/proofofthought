@@ -1,0 +1,192 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Relationship",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_spouse",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_child",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_step_parent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_step_child",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_administration_priority",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_administration",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deceased",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_over_18",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_stop_administration",
+      "domain": [
+        "Person",
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "step_mother",
+        "child1",
+        "child2"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "q",
+      "sort": "Person"
+    },
+    {
+      "name": "r",
+      "sort": "Person"
+    },
+    {
+      "name": "deceased",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_deceased(father) == True",
+    "is_spouse(step_mother, father) == False",
+    "is_step_parent(step_mother, child1) == True",
+    "is_step_parent(step_mother, child2) == True",
+    "is_child(child1, father) == True",
+    "is_child(child2, father) == True",
+    "is_over_18(child1) == True",
+    "is_over_18(child2) == True",
+    "ForAll([p, deceased], Implies(And(is_spouse(p, deceased), is_deceased(deceased)), has_administration_priority(p, deceased)))",
+    "ForAll([p, deceased], Implies(And(is_child(p, deceased), Not(is_step_child(p, deceased)), is_deceased(deceased), is_over_18(p)), has_administration_priority(p, deceased)))",
+    "ForAll([p, deceased], Implies(And(is_step_parent(p, child1), Not(is_spouse(p, deceased)), is_deceased(deceased)), Not(has_administration_priority(p, deceased))))",
+    "ForAll([p, deceased], Implies(And(has_administration_priority(p, deceased), is_over_18(p)), can_apply_for_administration(p, deceased)))",
+    "ForAll([p, q, deceased], Implies(And(has_administration_priority(p, deceased), Not(has_administration_priority(q, deceased)), is_over_18(p)), can_stop_administration(p, q, deceased)))"
+  ],
+  "rules": [
+    {
+      "name": "Step Children Not Entitled",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "deceased",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_step_child(p, deceased)",
+        "consequent": "Not(has_administration_priority(p, deceased))"
+      }
+    },
+    {
+      "name": "Spouse Priority Over Children",
+      "forall": [
+        {
+          "name": "spouse",
+          "sort": "Person"
+        },
+        {
+          "name": "child",
+          "sort": "Person"
+        },
+        {
+          "name": "deceased",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_spouse(spouse, deceased), is_child(child, deceased), Not(is_step_child(child, deceased)))",
+        "consequent": "has_administration_priority(spouse, deceased)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can Children Stop Non-Spouse Step-Parent",
+      "exists": [
+        {
+          "name": "child",
+          "sort": "Person"
+        },
+        {
+          "name": "step_parent",
+          "sort": "Person"
+        },
+        {
+          "name": "deceased",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_child(child, deceased), is_step_parent(step_parent, child), Not(is_spouse(step_parent, deceased)), is_deceased(deceased), can_stop_administration(child, step_parent, deceased))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

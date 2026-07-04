@@ -1,0 +1,91 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_dementia",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_in_nursing_home",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_conviction_of_domestic_violence",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "causes_distress",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "court_can_issue_visit_prevention_order",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "mother",
+        "former_partner"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "has_dementia(mother) == True",
+    "is_in_nursing_home(mother) == True",
+    "has_conviction_of_domestic_violence(former_partner, mother) == True",
+    "causes_distress(mother, former_partner) == True"
+  ],
+  "rules": [
+    {
+      "name": "PreventVisitIfDistressAndLackCapacity",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "v",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(has_dementia(p), is_in_nursing_home(p), causes_distress(p, v))",
+        "consequent": "court_can_issue_visit_prevention_order(p, v)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CanGetOrderToPreventVisit",
+      "constraint": "court_can_issue_visit_prevention_order(mother, former_partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

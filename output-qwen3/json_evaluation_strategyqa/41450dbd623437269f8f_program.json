@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_depressed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "contains_monoamine_oxidase",
+      "domain": [
+        "Substance"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "increases_neurotransmitter_breakdown",
+      "domain": [
+        "Substance"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lowers_neurotransmitter_levels",
+      "domain": [
+        "Substance"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cheers_up",
+      "domain": [
+        "Substance",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "monoamine_oxidase_candy_bar"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "depressed_friend"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Substance"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "contains_monoamine_oxidase(monoamine_oxidase_candy_bar) == True",
+    "is_depressed(depressed_friend) == True",
+    "ForAll([s], Implies(contains_monoamine_oxidase(s), increases_neurotransmitter_breakdown(s)))",
+    "ForAll([s], Implies(increases_neurotransmitter_breakdown(s), lowers_neurotransmitter_levels(s)))",
+    "ForAll([s, p], Implies(And(is_depressed(p), lowers_neurotransmitter_levels(s)), Not(cheers_up(s, p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Would candy bar cheer up depressed friend",
+      "constraint": "cheers_up(monoamine_oxidase_candy_bar, depressed_friend)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

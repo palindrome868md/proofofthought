@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Party",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Institution",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sat_in_commons",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "supports",
+      "domain": [
+        "Person",
+        "Party"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "seat_in_parliament",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    },
+    "parties": {
+      "sort": "Party",
+      "members": [
+        "portland_whigs"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "sat_in_commons(william_dickinson) == True",
+    "supports(william_dickinson, portland_whigs) == True",
+    "ForAll([p], Implies(supports(p, portland_whigs), Not(seat_in_parliament(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson sat in the House of Commons",
+      "constraint": "sat_in_commons(william_dickinson)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

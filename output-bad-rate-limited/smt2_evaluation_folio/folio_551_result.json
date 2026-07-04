@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_551",
+  "question": "Given the following premises:\n\nA La Liga soccer team ranks higher than another La Liga soccer team if it receives more points.\nIf there are two La Liga soccer teams and neither has more points than the other, then the team which receives more points from the games between the two teams ranks higher.\nReal Madrid and Barcelona are both La Liga soccer teams.\nReal Madrid received more points than Barcelona.\nNeither Real Madrid nor Barcelona received more points from the games between them.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Barcelona ranks higher than Real Madrid.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

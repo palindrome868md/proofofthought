@@ -1,0 +1,39 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_bnei_yisrael",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "dustin_hoffman"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_bnei_yisrael(dustin_hoffman) == True"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is Dustin Hoffman B'nei Yisrael",
+      "constraint": "is_bnei_yisrael(dustin_hoffman)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

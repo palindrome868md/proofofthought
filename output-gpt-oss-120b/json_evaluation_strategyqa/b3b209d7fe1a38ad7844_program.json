@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Show",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Phrase",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "incorrect_phrase_for_host_of",
+      "domain": [
+        "Show",
+        "Phrase"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "shows": {
+      "sort": "Show",
+      "members": [
+        "dancing_with_the_stars"
+      ]
+    },
+    "phrases": {
+      "sort": "Phrase",
+      "members": [
+        "double_duty"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "incorrect_phrase_for_host_of(dancing_with_the_stars, double_duty)"
+  ],
+  "verifications": [
+    {
+      "name": "Is double duty an incorrect phrase for host of Dancing With The Stars",
+      "constraint": "incorrect_phrase_for_host_of(dancing_with_the_stars, double_duty)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

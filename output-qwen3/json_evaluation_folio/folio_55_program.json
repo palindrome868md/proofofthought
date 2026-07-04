@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Player",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Position",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Team",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_english",
+      "domain": [
+        "Player"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_professional_footballer",
+      "domain": [
+        "Player"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "played_for",
+      "domain": [
+        "Player",
+        "Team"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "played_as",
+      "domain": [
+        "Player",
+        "Position"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "scored_winning_goal",
+      "domain": [
+        "Player"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "players": {
+      "sort": "Player",
+      "members": [
+        "thomas_barber"
+      ]
+    },
+    "positions": {
+      "sort": "Position",
+      "members": [
+        "inside_left",
+        "halfback"
+      ]
+    },
+    "teams": {
+      "sort": "Team",
+      "members": [
+        "aston_villa"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_english(thomas_barber)",
+    "is_professional_footballer(thomas_barber)",
+    "played_for(thomas_barber, aston_villa)",
+    "And(played_as(thomas_barber, halfback), played_as(thomas_barber, inside_left))",
+    "scored_winning_goal(thomas_barber)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Thomas Barber Inside Left",
+      "constraint": "played_as(thomas_barber, inside_left)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

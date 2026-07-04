@@ -1,0 +1,155 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "luminous",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "tumpus(sam)",
+    "ForAll([p], Implies(tumpus(p), rompus(p)))",
+    "ForAll([p], Implies(rompus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), luminous(p)))",
+    "ForAll([p], Implies(zumpus(p), impuse(p)))",
+    "ForAll([p], Implies(numpus(p), temperate(p)))",
+    "ForAll([p], Implies(impuse(p), Not(temperate(p))))",
+    "ForAll([p], Implies(impuse(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), red(p)))",
+    "ForAll([p], Implies(wumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), kind(p)))",
+    "ForAll([p], Implies(yumpus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), shy(p)))",
+    "ForAll([p], Implies(jompus(p), vumpus(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam is not temperate",
+      "constraint": "Not(temperate(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,55 @@
+; Domain
+(declare-sort Entity 0)
+
+; Constants
+(declare-const max Entity)
+
+; Predicates (unary properties)
+(declare-fun Rompus (Entity) Bool)
+(declare-fun Yumpus (Entity) Bool)
+(declare-fun Earthy (Entity) Bool)
+(declare-fun Jompus (Entity) Bool)
+(declare-fun Wumpus (Entity) Bool)
+(declare-fun Brown (Entity) Bool)
+(declare-fun Zumpus (Entity) Bool)
+(declare-fun Dull (Entity) Bool)
+(declare-fun Tumpus (Entity) Bool)
+(declare-fun Numpus (Entity) Bool)
+(declare-fun Bitter (Entity) Bool)
+(declare-fun Dumpus (Entity) Bool)
+(declare-fun Impus (Entity) Bool)
+(declare-fun Vumpus (Entity) Bool)
+(declare-fun Hot (Entity) Bool)
+(declare-fun Shy (Entity) Bool)
+(declare-fun Transparent (Entity) Bool)
+(declare-fun Large (Entity) Bool)
+
+; Knowledge base (rules)
+(assert (forall ((x Entity)) (=> (Rompus x) (Yumpus x))))
+(assert (forall ((x Entity)) (=> (Yumpus x) (Earthy x))))
+(assert (forall ((x Entity)) (=> (Yumpus x) (Jompus x))))
+(assert (forall ((x Entity)) (=> (Jompus x) (not (Large x)))))
+(assert (forall ((x Entity)) (=> (Jompus x) (Wumpus x))))
+(assert (forall ((x Entity)) (=> (Wumpus x) (not (Brown x)))))
+(assert (forall ((x Entity)) (=> (Tumpus x) (Hot x))))
+(assert (forall ((x Entity)) (=> (Wumpus x) (Zumpus x))))
+(assert (forall ((x Entity)) (=> (Zumpus x) (Dull x))))
+(assert (forall ((x Entity)) (=> (Zumpus x) (Numpus x))))
+(assert (forall ((x Entity)) (=> (Numpus x) (Bitter x))))
+(assert (forall ((x Entity)) (=> (Numpus x) (Dumpus x))))
+(assert (forall ((x Entity)) (=> (Dumpus x) (not (Shy x)))))
+(assert (forall ((x Entity)) (=> (Dumpus x) (Impus x))))
+(assert (forall ((x Entity)) (=> (Impus x) (not (Hot x)))))
+(assert (forall ((x Entity)) (=> (Impus x) (Vumpus x))))
+(assert (Wumpus max))
+(assert (forall ((x Entity)) (=> (Rompus x) (Transparent x))))
+
+; Extra relations used by the knowledge base (not strictly necessary for the query)
+; (No need to assert anything about max being Rompus or other properties beyond what is provided)
+
+; Test query: "Max is not hot."
+(assert (not (Hot max)))
+
+; Verification
+(check-sat)
+(get-model)

@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "born_in",
+      "domain": [
+        "Person",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_near",
+      "domain": [
+        "Location",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_original_bond_actor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sean_connery"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "edinburgh",
+        "washington_monument"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "l",
+      "sort": "Location"
+    }
+  ],
+  "knowledge_base": [
+    "is_original_bond_actor(sean_connery)",
+    "born_in(sean_connery, edinburgh)",
+    "Not(is_near(edinburgh, washington_monument))"
+  ],
+  "verifications": [
+    {
+      "name": "Original Bond Actor Born Near Washington Monument",
+      "constraint": "And(is_original_bond_actor(sean_connery), born_in(sean_connery, l), is_near(l, washington_monument))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

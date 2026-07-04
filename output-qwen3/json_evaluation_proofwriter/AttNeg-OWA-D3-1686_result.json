@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D3-1686",
+  "question": "Bob is cold. Erin is rough. Fiona is kind. If someone is blue then they are round. If someone is nice then they are blue. All rough people are nice. All rough, blue people are cold. If Fiona is not round then Fiona is cold. If someone is cold and rough then they are kind.\n\nQuestion: Erin is not blue.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

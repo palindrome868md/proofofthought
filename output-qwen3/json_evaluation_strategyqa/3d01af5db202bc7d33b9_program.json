@@ -1,0 +1,125 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Plant",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Name",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "located_in",
+      "domain": [
+        "Person",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "refers_to_as",
+      "domain": [
+        "Person",
+        "Plant",
+        "Name"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "common_name_in_region",
+      "domain": [
+        "Plant",
+        "Location",
+        "Name"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_in_region",
+      "domain": [
+        "Location",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "mumbai",
+        "india",
+        "usa"
+      ]
+    },
+    "plants": {
+      "sort": "Plant",
+      "members": [
+        "solanum_melongena"
+      ]
+    },
+    "names": {
+      "sort": "Name",
+      "members": [
+        "eggplant",
+        "brinjal",
+        "aubergine"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "mumbai_person"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "l",
+      "sort": "Location"
+    },
+    {
+      "name": "n",
+      "sort": "Name"
+    },
+    {
+      "name": "n1",
+      "sort": "Name"
+    },
+    {
+      "name": "n2",
+      "sort": "Name"
+    }
+  ],
+  "knowledge_base": [
+    "is_in_region(mumbai, india)",
+    "located_in(mumbai_person, mumbai)",
+    "common_name_in_region(solanum_melongena, india, brinjal)",
+    "common_name_in_region(solanum_melongena, usa, eggplant)",
+    "ForAll([p, l, n], Implies(And(located_in(p, l), is_in_region(l, india), common_name_in_region(solanum_melongena, india, n)), refers_to_as(p, solanum_melongena, n)))",
+    "ForAll([p, n1, n2], Implies(And(refers_to_as(p, solanum_melongena, n1), refers_to_as(p, solanum_melongena, n2)), n1 == n2))"
+  ],
+  "verifications": [
+    {
+      "name": "Would Mumbai person call solanum melongena eggplant",
+      "constraint": "refers_to_as(mumbai_person, solanum_melongena, eggplant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

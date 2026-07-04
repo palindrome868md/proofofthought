@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Dish",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "water_added",
+      "domain": [
+        "Dish"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "horchata",
+      "domain": [
+        "Dish"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dishes": {
+      "sort": "Dish",
+      "members": [
+        "rice_pudding"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [
+    {
+      "name": "NoHorchaFromRicePuddingWithWater",
+      "forall": [
+        {
+          "name": "d",
+          "sort": "Dish"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(d == rice_pudding, water_added(d))",
+        "consequent": "Not(horchata(d))"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "AddWaterToRicePuddingMakesHorchata",
+      "exists": [
+        {
+          "name": "e",
+          "sort": "Dish"
+        }
+      ],
+      "constraint": "And(e == rice_pudding, water_added(e), horchata(e))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Technology",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BiologicalEntity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_create",
+      "domain": [
+        "Technology",
+        "BiologicalEntity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_3d_printing",
+      "domain": [
+        "Technology"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_virus",
+      "domain": [
+        "BiologicalEntity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "technologies": {
+      "sort": "Technology",
+      "members": [
+        "three_d_printing"
+      ]
+    },
+    "biological_entities": {
+      "sort": "BiologicalEntity",
+      "members": [
+        "adenovirus"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "t",
+      "sort": "Technology"
+    },
+    {
+      "name": "b",
+      "sort": "BiologicalEntity"
+    }
+  ],
+  "knowledge_base": [
+    "is_3d_printing(three_d_printing)",
+    "is_virus(adenovirus)",
+    "ForAll([t, b], Implies(And(is_3d_printing(t), is_virus(b)), Not(can_create(t, b))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can 3D printing make adenovirus",
+      "constraint": "can_create(three_d_printing, adenovirus)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

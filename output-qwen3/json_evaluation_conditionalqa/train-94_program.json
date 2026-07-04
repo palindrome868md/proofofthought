@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "struggles_to_walk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_wheelchair",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_care_day_and_night",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualifies_higher_mobility",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualifies_highest_care",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "qualifies_maximum_dla",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "son"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(son) == 13",
+    "struggles_to_walk(son) == True",
+    "uses_wheelchair(son) == True",
+    "ForAll([p], Implies(And(age(p) >= 3, age(p) < 16, Or(uses_wheelchair(p), struggles_to_walk(p))), qualifies_higher_mobility(p)))",
+    "ForAll([p], Implies(And(age(p) < 16, needs_care_day_and_night(p)), qualifies_highest_care(p)))",
+    "ForAll([p], Implies(And(qualifies_higher_mobility(p), qualifies_highest_care(p)), qualifies_maximum_dla(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Son Qualifies for Maximum DLA Payment",
+      "constraint": "qualifies_maximum_dla(son)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

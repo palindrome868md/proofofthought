@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_family",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sub_amc",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sub_hbo",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pref_tv",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watch_tv_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watch_3_movies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "go_cinema_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(in_family(p), sub_amc(p)), watch_3_movies(p)))",
+    "ForAll([p], Implies(in_family(p), Or(sub_amc(p), sub_hbo(p))))",
+    "ForAll([p], Implies(And(in_family(p), pref_tv(p)), Not(watch_tv_cinema(p))))",
+    "ForAll([p], Implies(And(in_family(p), sub_hbo(p)), pref_tv(p)))",
+    "in_family(lily)",
+    "watch_tv_cinema(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Lily Statement Check",
+      "constraint": "Or(go_cinema_weekly(lily), watch_3_movies(lily))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

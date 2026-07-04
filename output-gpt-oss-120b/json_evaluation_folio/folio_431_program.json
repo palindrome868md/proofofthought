@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Instrument",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Band",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Style",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Style"
+    }
+  ],
+  "functions": [
+    {
+      "name": "plays_instrument",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays_style",
+      "domain": [
+        "Person",
+        "Style"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "member_of",
+      "domain": [
+        "Person",
+        "Band"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "vic_di_cara"
+      ]
+    },
+    "instruments": {
+      "sort": "Instrument",
+      "members": [
+        "guitar",
+        "bass"
+      ]
+    },
+    "bands": {
+      "sort": "Band",
+      "members": [
+        "inside_out"
+      ]
+    },
+    "styles": {
+      "sort": "Style",
+      "members": [
+        "punk"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "plays_instrument(vic_di_cara, guitar)",
+    "plays_instrument(vic_di_cara, bass)",
+    "member_of(vic_di_cara, inside_out)",
+    "plays_style(vic_di_cara, punk)",
+    "ForAll([s], Implies(plays_style(vic_di_cara, s), s == punk))"
+  ],
+  "verifications": [
+    {
+      "name": "Musician from Inside Out plays bass",
+      "exists": [
+        {
+          "name": "m",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(member_of(m, inside_out), plays_instrument(m, bass))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

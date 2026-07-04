@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "HealthCondition",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_mental_health_condition",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "condition_affects_work",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "under_pension_age",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_ni_contributions",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "claims_jsa_or_ssp",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_esa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "scenario_person"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "has_mental_health_condition(scenario_person) == True",
+    "condition_affects_work(scenario_person) == True",
+    "under_pension_age(scenario_person) == True",
+    "has_ni_contributions(scenario_person) == True",
+    "claims_jsa_or_ssp(scenario_person) == False",
+    "ForAll([p], Implies(And(has_mental_health_condition(p), condition_affects_work(p), under_pension_age(p), has_ni_contributions(p), Not(claims_jsa_or_ssp(p))), eligible_for_esa(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Mental health condition eligibility for ESA",
+      "constraint": "eligible_for_esa(scenario_person)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

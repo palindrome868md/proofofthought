@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_32",
+  "question": "Numpuses are earthy. Numpuses are vumpuses. Vumpuses are transparent. Each vumpus is a tumpus. Tumpuses are small. Tumpuses are dumpuses. Each dumpus is not aggressive. Dumpuses are wumpuses. Every wumpus is not wooden. Every wumpus is a jompus. Jompuses are not nervous. Each jompus is a zumpus. Each zumpus is temperate. Rompuses are wooden. Zumpuses are impuses. Each impus is blue. Impuses are yumpuses. Sally is a numpus.\n\nIs the following statement true or false? Sally is not wooden.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([{\"name\": \"x\", \"sort\": \"Entity\"}], Implies(numpus(x), vumpus(x)))': name 'x' is not defined"
+}

@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_income_support",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jsa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_esa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_pension_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_universal_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "involved_in_industrial_action",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owes_amount",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "eligible_budgeting_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [
+    {
+      "name": "Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(Or(is_income_support(p), is_jsa(p), is_esa(p), is_pension_credit(p)), Not(is_universal_credit(p)), Not(involved_in_industrial_action(p)), owes_amount(p) <= 1500)",
+        "consequent": "eligible_budgeting_loan(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Am I eligible for a Budgeting Loan",
+      "constraint": "eligible_budgeting_loan(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

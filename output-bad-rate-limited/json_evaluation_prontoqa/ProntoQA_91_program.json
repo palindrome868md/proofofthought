@@ -1,0 +1,152 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompuses",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "tumpus(wren)",
+    "ForAll([p], Implies(tumpus(p), vumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), impus(p)))",
+    "ForAll([p], Implies(impus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), small(p)))",
+    "ForAll([p], Implies(yumpus(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(numpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), Not(opaque(p))))",
+    "ForAll([p], Implies(wumpus(p), floral(p)))",
+    "ForAll([p], Implies(zumpus(p), rompuses(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Wren not small",
+      "constraint": "Not(small(wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

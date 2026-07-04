@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "receives",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_be_cared_for",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "partner"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "pip_daily_living_low",
+        "pip_daily_living_high"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "receives(me, pip_daily_living_low)"
+  ],
+  "rules": [
+    {
+      "name": "PIP eligibility for Carer Allowance",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "Or(receives(p, pip_daily_living_low), receives(p, pip_daily_living_high))",
+        "consequent": "can_be_cared_for(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Partner can be registered as carer",
+      "constraint": "can_be_cared_for(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

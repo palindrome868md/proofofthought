@@ -1,0 +1,99 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_opaque",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_amenable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_wumpus(sally)",
+    "ForAll([p], Implies(is_wumpus(p), is_dumpus(p)))",
+    "ForAll([p], Implies(is_dumpus(p), is_rompus(p)))",
+    "ForAll([p], Implies(is_rompus(p), is_tumpus(p)))",
+    "ForAll([p], Implies(is_tumpus(p), is_opaque(p)))",
+    "ForAll([p], Implies(is_tumpus(p), is_jompus(p)))",
+    "ForAll([p], Implies(is_jompus(p), is_zumpus(p)))",
+    "ForAll([p], Implies(is_jompus(p), is_amenable(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sally amenable",
+      "constraint": "is_amenable(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

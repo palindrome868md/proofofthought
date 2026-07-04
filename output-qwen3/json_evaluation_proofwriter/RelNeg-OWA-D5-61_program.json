@@ -1,0 +1,121 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "mouse",
+        "tiger",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bear, mouse)",
+    "Not(sees(bear, tiger))",
+    "visits(bear, squirrel)",
+    "visits(bear, tiger)",
+    "Not(eats(mouse, tiger))",
+    "is_cold(mouse)",
+    "is_green(mouse)",
+    "visits(mouse, squirrel)",
+    "is_cold(squirrel)",
+    "visits(squirrel, bear)",
+    "visits(squirrel, mouse)",
+    "eats(tiger, mouse)",
+    "is_big(tiger)",
+    "sees(tiger, bear)",
+    "sees(tiger, mouse)",
+    "Not(visits(tiger, mouse))",
+    "ForAll([x], Implies(eats(x, squirrel), Not(is_green(squirrel))))",
+    "ForAll([x], Implies(And(sees(x, bear), sees(bear, mouse)), visits(x, tiger)))",
+    "ForAll([x], Implies(sees(x, squirrel), Not(is_rough(x))))",
+    "ForAll([x], Implies(And(is_round(x), is_big(x)), sees(x, bear)))",
+    "ForAll([x], Implies(visits(x, tiger), sees(x, squirrel)))",
+    "ForAll([x], Implies(And(visits(x, squirrel), visits(x, tiger)), eats(squirrel, mouse)))",
+    "ForAll([x], Implies(And(visits(x, bear), eats(x, mouse)), sees(mouse, bear)))",
+    "ForAll([x], Implies(And(eats(x, mouse), Not(is_round(mouse))), Not(is_cold(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Mouse does not visit tiger",
+      "constraint": "Not(visits(mouse, tiger))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

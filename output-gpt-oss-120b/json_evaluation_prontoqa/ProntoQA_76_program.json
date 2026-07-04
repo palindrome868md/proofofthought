@@ -1,0 +1,211 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "angry",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpuses",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "luminous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpuses",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "z",
+      "sort": "Entity"
+    },
+    {
+      "name": "y",
+      "sort": "Entity"
+    },
+    {
+      "name": "i",
+      "sort": "Entity"
+    },
+    {
+      "name": "j",
+      "sort": "Entity"
+    },
+    {
+      "name": "r",
+      "sort": "Entity"
+    },
+    {
+      "name": "w",
+      "sort": "Entity"
+    },
+    {
+      "name": "v",
+      "sort": "Entity"
+    },
+    {
+      "name": "n",
+      "sort": "Entity"
+    },
+    {
+      "name": "t",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([z], Implies(zumpus(z), Not(spicy(z))))",
+    "ForAll([y], Implies(yumpus(y), cold(y)))",
+    "ForAll([y], Implies(yumpus(y), impus(y)))",
+    "ForAll([i], Implies(impus(i), red(i)))",
+    "ForAll([i], Implies(impus(i), jompus(i)))",
+    "ForAll([j], Implies(jompus(j), Not(feisty(j))))",
+    "ForAll([j], Implies(jompus(j), rompus(j)))",
+    "ForAll([r], Implies(rompus(r), angry(r)))",
+    "ForAll([r], Implies(rompus(r), wumpus(r)))",
+    "ForAll([w], Implies(wumpus(w), spicy(w)))",
+    "ForAll([w], Implies(wumpus(w), vumpus(w)))",
+    "ForAll([v], Implies(vumpus(v), Not(small(v))))",
+    "ForAll([v], Implies(vumpus(v), numpuses(v)))",
+    "ForAll([n], Implies(numpuses(n), earthy(n)))",
+    "ForAll([n], Implies(numpuses(n), tumpus(n)))",
+    "ForAll([t], Implies(tumpus(t), luminous(t)))",
+    "ForAll([t], Implies(tumpus(t), dumpuses(t)))",
+    "yumpus(sally)"
+  ],
+  "verifications": [
+    {
+      "name": "Sally is spicy",
+      "constraint": "spicy(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

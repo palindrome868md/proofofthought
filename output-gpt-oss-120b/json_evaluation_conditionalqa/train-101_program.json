@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cares_hours",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "on_holiday",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "break_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "dad"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "DLA"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "cares_hours(me, dad) == 25",
+    "on_holiday(me) == True",
+    "break_weeks(me) == 6",
+    "has_benefit(dad, DLA) == True",
+    "eligible_credit(me) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility while on holiday",
+      "constraint": "eligible_credit(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

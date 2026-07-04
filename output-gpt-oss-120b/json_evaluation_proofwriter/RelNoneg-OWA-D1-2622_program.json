@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "cat",
+        "dog",
+        "lion",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "is_nice(cat)",
+    "sees(cat, dog)",
+    "chases(dog, rabbit)",
+    "eats(dog, rabbit)",
+    "is_round(dog)",
+    "sees(dog, lion)",
+    "sees(dog, rabbit)",
+    "chases(lion, cat)",
+    "chases(lion, dog)",
+    "eats(lion, cat)",
+    "eats(lion, rabbit)",
+    "chases(rabbit, cat)",
+    "eats(rabbit, cat)",
+    "eats(rabbit, dog)",
+    "sees(rabbit, cat)",
+    "ForAll([x], Implies(is_kind(x), is_round(x)))",
+    "ForAll([x], Implies(And(chases(x, dog), eats(x, cat)), eats(x, dog)))",
+    "ForAll([x], Implies(eats(x, lion), chases(lion, rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit does not eat cat",
+      "constraint": "Not(eats(rabbit, cat))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

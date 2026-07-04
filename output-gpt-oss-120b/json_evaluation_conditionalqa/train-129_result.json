@@ -1,0 +1,11 @@
+{
+  "sample_id": "train-129",
+  "question": "Scenario: I own a home with a mortgage with my wife. 4 months ago my hours reduced to just 10 hours per week due to coronavirus and I had to start claiming Income Support and Support for Mortgage Interest. Now my hours have increased to 40 per week again.\n\nQuestion: Can I claim Mortgage Interest Run On?\n\nDocument - Mortgage Interest Run On:\n## Overview\n\nMortgage Interest Run On is extra money you can get towards your housing costs if certain other benefits are stopping because you\u2019re:\n\n- returning to work full-time\n\n- working more hours\n\n- earning more money\n\nYou can get this help for 4 weeks.\n\n## What you'll get\n\nIf you\u2019re eligible and were getting Support for Mortgage Interest before your work situation changed, you\u2019ll usually continue to get the same amount as you were getting before your benefits stopped.\n\nPayments for your mortgage or loan interest will be paid direct to you instead of to your lender.\n\n## Eligibility\n\nYou can claim Mortgage Interest Run On if you\u2019ve stopped getting income-based Jobseeker\u2019s Allowance, Income Support or income-related Employment and Support Allowance because you\u2019re:\n\n- returning to work full-time\n\n- working more hours\n\n- earning more money\n\nAll of the following must also apply:\n\n- you\u2019ve been claiming the benefit continuously for at least 26 weeks\n\n- you expect the work (or more money) to last for 5 weeks or more\n\n- you were entitled to help with your\u00a0housing costs\u00a0before your work started and you\u2019ll still have these costs when you start work\n\n## How to claim\n\nYou don\u2019t need to apply - you should get Mortgage Interest Run On automatically. You just need to let your Jobcentre Plus office know as soon as you\u2019re starting work.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

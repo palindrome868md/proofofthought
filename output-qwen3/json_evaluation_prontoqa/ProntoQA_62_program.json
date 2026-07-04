@@ -1,0 +1,163 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_romp",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_brown",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_floral",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_zumpus(x), is_nervous(x)))",
+    "ForAll([x], Implies(is_zumpus(x), is_dumpus(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_large(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_romp(x)))",
+    "ForAll([x], Implies(is_romp(x), is_brown(x)))",
+    "ForAll([x], Implies(is_vumpus(x), is_transparent(x)))",
+    "ForAll([x], Implies(is_romp(x), is_numpus(x)))",
+    "ForAll([x], Implies(is_numpus(x), Not(is_bitter(x))))",
+    "ForAll([x], Implies(is_numpus(x), is_wumpus(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_floral(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_yumpus(x)))",
+    "ForAll([x], Implies(is_yumpus(x), Not(is_transparent(x))))",
+    "ForAll([x], Implies(is_yumpus(x), is_tumpus(x)))",
+    "ForAll([x], Implies(is_tumpus(x), Not(is_bright(x))))",
+    "ForAll([x], Implies(is_tumpus(x), is_impus(x)))",
+    "is_dumpus(Wren)"
+  ],
+  "verifications": [
+    {
+      "name": "Wren not transparent",
+      "constraint": "Not(is_transparent(Wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

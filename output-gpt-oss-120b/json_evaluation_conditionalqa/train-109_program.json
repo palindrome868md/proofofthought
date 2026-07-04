@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "nearest_relative",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_discharge",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant",
+        "mother"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "nearest_relative(applicant, mother)"
+  ],
+  "rules": [
+    {
+      "name": "NearestRelativeCanApply",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Person"
+        },
+        {
+          "name": "y",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "nearest_relative(x, y)",
+        "consequent": "can_apply_for_discharge(x, y)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "CanApplyAsNearestRelative",
+      "constraint": "can_apply_for_discharge(applicant, mother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

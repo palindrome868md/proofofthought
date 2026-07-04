@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1198",
+  "question": "Given the following premises:\n\nEveryone at the business conference is either an investor or an entrepreneur.\nNone of those at the business conference who enjoy the opportunity of starting a business prefer a planned economy. \nAll entrepreneurs at the business conference enjoy the opportunity of starting a business. \nEveryone at the business conference who enjoys state ownership of means of production prefers a planned economy. \nEveryone at the business conference who is an ardent communist prefers state ownership of the means of production.\nHo is at the business conference and prefers state ownership of the means of production. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Ho is an investor or is not an ardent communist.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,141 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Film",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "directed",
+      "domain": [
+        "Person",
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_filmmaker",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "from_city",
+      "domain": [
+        "Person",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_city_in_country",
+      "domain": [
+        "City",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "from_country",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_documentary",
+      "domain": [
+        "Film"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_film",
+      "domain": [
+        "Film"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lana_wilson"
+      ]
+    },
+    "films": {
+      "sort": "Film",
+      "members": [
+        "after_tiller",
+        "the_departure",
+        "miss_americana"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "kirkland"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "usa"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "f",
+      "sort": "Film"
+    },
+    {
+      "name": "c",
+      "sort": "City"
+    },
+    {
+      "name": "co",
+      "sort": "Country"
+    }
+  ],
+  "knowledge_base": [
+    "directed(lana_wilson, after_tiller)",
+    "directed(lana_wilson, the_departure)",
+    "directed(lana_wilson, miss_americana)",
+    "ForAll([p, f], Implies(directed(p, f), is_filmmaker(p)))",
+    "is_documentary(after_tiller)",
+    "ForAll([f], Implies(is_documentary(f), is_film(f)))",
+    "from_city(lana_wilson, kirkland)",
+    "is_city_in_country(kirkland, usa)",
+    "ForAll([p, c, co], Implies(And(from_city(p, c), is_city_in_country(c, co)), from_country(p, co)))"
+  ],
+  "verifications": [
+    {
+      "name": "Miss Americana not directed by filmmaker from Kirkland",
+      "constraint": "Not(Exists([p], And(is_filmmaker(p), from_city(p, kirkland), directed(p, miss_americana))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

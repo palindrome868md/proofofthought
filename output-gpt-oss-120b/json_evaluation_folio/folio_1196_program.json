@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Service",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "subscribes",
+      "domain": [
+        "Person",
+        "Service"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_three_movies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_tv",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watches_tv_in_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    },
+    "services": {
+      "sort": "Service",
+      "members": [
+        "AMC_A_List",
+        "HBO"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "svc",
+      "sort": "Service"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(subscribes(p, AMC_A_List), eligible_three_movies(p)))",
+    "Exists([p], goes_weekly(p))",
+    "ForAll([p], Or(subscribes(p, AMC_A_List), subscribes(p, HBO)))",
+    "ForAll([p], Implies(prefers_tv(p), Not(watches_tv_in_cinema(p))))",
+    "ForAll([p], Implies(subscribes(p, HBO), prefers_tv(p)))",
+    {
+      "assertion": "watches_tv_in_cinema(lily)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "StatementTruth",
+      "constraint": "And(eligible_three_movies(lily), watches_tv_in_cinema(lily), Not(And(goes_weekly(lily), prefers_tv(lily))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

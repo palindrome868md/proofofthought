@@ -1,0 +1,155 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "alex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(numpus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), nervous(p)))",
+    "ForAll([p], Implies(yumpus(p), vumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), hot(p)))",
+    "ForAll([p], Implies(vumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), small(p)))",
+    "ForAll([p], Implies(tumpus(p), rompus(p)))",
+    "ForAll([p], Implies(rompus(p), mean(p)))",
+    "ForAll([p], Implies(rompus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), Not(sour(p))))",
+    "ForAll([p], Implies(zumpus(p), jompus(p)))",
+    "ForAll([p], Implies(numpus(p), Not(fruity(p))))",
+    "ForAll([p], Implies(dumpus(p), Not(orange(p))))",
+    "yumpus(alex)"
+  ],
+  "verifications": [
+    {
+      "name": "Alex not sour",
+      "constraint": "Not(sour(alex))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

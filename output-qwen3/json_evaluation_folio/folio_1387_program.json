@@ -1,0 +1,114 @@
+{
+  "sorts": [
+    {
+      "name": "App",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_social_media",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_chat",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_software",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "allows_send_message",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_video",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "allows_upload_video",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_computer_program",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high_engagement",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_addictive",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ideal_preteens",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "apps": {
+      "sort": "App",
+      "members": [
+        "tiktok"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "App"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(is_social_media(x), has_chat(x)), is_software(x)))",
+    "ForAll([x], Implies(And(is_social_media(x), allows_send_message(x)), has_chat(x)))",
+    "ForAll([x], Implies(is_social_media(x), Or(has_chat(x), has_video(x))))",
+    "ForAll([x], Implies(And(is_social_media(x), has_video(x)), allows_upload_video(x)))",
+    "ForAll([x], Implies(And(is_software(x), is_social_media(x)), is_computer_program(x)))",
+    "ForAll([x], Implies(And(is_social_media(x), high_engagement(x)), is_addictive(x)))",
+    "ForAll([x], Implies(And(is_social_media(x), is_addictive(x)), Not(ideal_preteens(x))))",
+    "is_social_media(tiktok)",
+    "Not(ideal_preteens(tiktok))"
+  ],
+  "verifications": [
+    {
+      "name": "TikTok Chat or Program Check",
+      "constraint": "Or(Not(has_chat(tiktok)), Not(is_computer_program(tiktok)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Sin",
+      "type": "EnumSort",
+      "values": [
+        "pride",
+        "greed",
+        "lust",
+        "envy",
+        "gluttony",
+        "wrath",
+        "sloth"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "prevalence",
+      "domain": [
+        "Sin"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Sin"
+    }
+  ],
+  "knowledge_base": [
+    "prevalence(pride) == 75",
+    "prevalence(greed) == 80",
+    "prevalence(lust) == 70",
+    "prevalence(envy) == 65",
+    "prevalence(gluttony) == 60",
+    "prevalence(wrath) == 55",
+    "prevalence(sloth) == 50"
+  ],
+  "verifications": [
+    {
+      "name": "Is greed most prevalent",
+      "constraint": "And(prevalence(greed) >= prevalence(pride), prevalence(greed) >= prevalence(lust), prevalence(greed) >= prevalence(envy), prevalence(greed) >= prevalence(gluttony), prevalence(greed) >= prevalence(wrath), prevalence(greed) >= prevalence(sloth))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

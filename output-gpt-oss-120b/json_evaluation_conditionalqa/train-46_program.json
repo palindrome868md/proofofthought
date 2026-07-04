@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "disabled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owner",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tenant",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "intended_years",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "properties": {
+      "sort": "Property",
+      "members": [
+        "my_property"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "disabled(me)",
+    "tenant(me, my_property)",
+    "Not(owner(me, my_property))",
+    "intended_years(me, my_property) == 3"
+  ],
+  "verifications": [
+    {
+      "name": "Can Apply for Disabled Facilities Grant",
+      "constraint": "And(disabled(me), Or(owner(me, my_property), tenant(me, my_property)), intended_years(me, my_property) >= 5)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

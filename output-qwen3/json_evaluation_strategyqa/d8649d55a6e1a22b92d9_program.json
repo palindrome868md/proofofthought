@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_psychic",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "admits_hot_reading",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_hot_reading",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_deceptive",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_trustworthy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(admits_hot_reading(x), uses_hot_reading(x)))",
+    "ForAll([x], Implies(uses_hot_reading(x), is_deceptive(x)))",
+    "ForAll([x], Implies(is_deceptive(x), Not(is_trustworthy(x))))",
+    "is_psychic(p)",
+    "admits_hot_reading(p)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is Psychic Trustworthy",
+      "constraint": "is_trustworthy(p)"
+    }
+  ],
+  "optimization": null,
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "dave",
+        "fiona",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_cold(bob)",
+    "is_white(bob)",
+    "is_big(dave)",
+    "is_cold(dave)",
+    "is_quiet(dave)",
+    "is_smart(dave)",
+    "is_kind(fiona)",
+    "is_smart(fiona)",
+    "is_big(harry)",
+    "is_cold(harry)",
+    "is_rough(harry)",
+    "is_smart(harry)",
+    "ForAll([p], Implies(And(is_big(p), is_rough(p)), is_white(p)))",
+    "Implies(And(is_big(fiona), is_cold(fiona)), is_kind(fiona))",
+    "Implies(is_cold(dave), is_quiet(dave))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Bob Cold",
+      "constraint": "is_cold(bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}
