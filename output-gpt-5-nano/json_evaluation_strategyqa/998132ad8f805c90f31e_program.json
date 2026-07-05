@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_good_location_for_groundhog_day",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "antarctica"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(is_good_location_for_groundhog_day(antarctica))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Antarctica a good location for Groundhog Day",
+      "constraint": "is_good_location_for_groundhog_day(antarctica)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

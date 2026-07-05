@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNonegNatLang-OWA-118",
+  "question": "Young Bob is kind and blue with green and cold traits that show how really big he is. That guy Dave sure is nice. Fred is green and cold too. No one knows Gary like me and he is a kind guy, very round in the belly and green as grass. When a person is nice and round and cold, they look blue. People that are green and big while also being cold are always nice. A kind young person who is green will be cold. Someone who is young at heart and age are very round. A person that is round and somewhat green while being nice tends to be red as well. Any human who is rough, green, and kind, has a blue personality. People who are round and red tend  to be rough.\n\nQuestion: Bob is not red.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

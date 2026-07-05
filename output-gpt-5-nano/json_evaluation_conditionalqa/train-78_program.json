@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_disabled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owns",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "intends_to_live_in",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "household_savings",
+      "domain": [
+        "Property"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "dfg_eligible",
+      "domain": [
+        "Person",
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife"
+      ]
+    },
+    "homes": {
+      "sort": "Property",
+      "members": [
+        "our_home"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_disabled(wife)",
+    "owns(husband, our_home)",
+    "lives_in(husband, our_home)",
+    "lives_in(wife, our_home)",
+    "intends_to_live_in(husband, our_home)",
+    "household_savings(our_home) == 5000",
+    "dfg_eligible(husband, wife, our_home)"
+  ],
+  "verifications": [
+    {
+      "name": "Disabled Facilities Grant eligibility for couple",
+      "constraint": "dfg_eligible(husband, wife, our_home)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

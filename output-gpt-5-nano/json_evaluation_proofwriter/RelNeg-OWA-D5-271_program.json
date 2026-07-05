@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "dog",
+        "mouse",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "cold(bear)",
+    "blue(mouse)",
+    "rough(mouse)",
+    "likes(mouse, dog)",
+    "Not(needs(mouse, bear))",
+    "cold(squirrel)",
+    "likes(dog, squirrel)",
+    "Not(likes(dog, bear))",
+    "likes(squirrel, dog)",
+    "likes(squirrel, mouse)",
+    "ForAll([x], Implies(And(likes(x, bear), likes(x, dog)), likes(x, squirrel)))",
+    "ForAll([x], Implies(blue(x), chases(x, bear)))",
+    "ForAll([x], Implies(And(needs(x, squirrel), cold(squirrel)), chases(x, bear)))",
+    "Implies(Not(needs(dog, bear)), Not(chases(dog, squirrel)))",
+    "ForAll([x], Implies(And(likes(x, mouse), needs(mouse, dog)), chases(x, dog)))",
+    "ForAll([x], Implies(And(chases(x, bear), Not(needs(x, bear))), needs(x, dog)))",
+    "ForAll([x], Implies(And(likes(x, mouse), cold(x)), needs(x, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Mouse not rough",
+      "constraint": "Not(rough(mouse))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

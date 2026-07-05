@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Memorial",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_firefighter",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "included_in_memorial",
+      "domain": [
+        "Memorial",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john_smith"
+      ]
+    },
+    "memorials": {
+      "sort": "Memorial",
+      "members": [
+        "september_11_memorial"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([p], Implies(is_firefighter(p), included_in_memorial(september_11_memorial, p)))",
+    "is_firefighter(john_smith)"
+  ],
+  "verifications": [
+    {
+      "name": "All firefighters included in September 11 memorial",
+      "forall": [
+        {
+          "name": "f",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_firefighter(f)",
+        "consequent": "included_in_memorial(september_11_memorial, f)"
+      }
+    }
+  ]
+}

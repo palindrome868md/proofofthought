@@ -1,0 +1,115 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "LearningProvider",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "ChildCareProvider",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "under_20",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "main_carer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "course_qualifies",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "childcare_provider_qualifies",
+      "domain": [
+        "ChildCareProvider"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "childcare_provider_for",
+      "domain": [
+        "Person",
+        "ChildCareProvider"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "learning_provider_for_course",
+      "domain": [
+        "LearningProvider",
+        "Course"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "niece_anna"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "pharmacy_degree_bath"
+      ]
+    },
+    "learning_providers": {
+      "sort": "LearningProvider",
+      "members": [
+        "bath_university"
+      ]
+    },
+    "childcare_providers": {
+      "sort": "ChildCareProvider",
+      "members": [
+        "care_provider1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "under_20(niece_anna)",
+    "main_carer(niece_anna)",
+    "lives_in_england(niece_anna)",
+    "course_qualifies(pharmacy_degree_bath)",
+    "childcare_provider_for(niece_anna, care_provider1)",
+    "childcare_provider_qualifies(care_provider1)",
+    "learning_provider_for_course(bath_university, pharmacy_degree_bath)"
+  ],
+  "verifications": [
+    {
+      "name": "Care to Learn eligibility for the niece",
+      "constraint": "And(under_20(niece_anna), main_carer(niece_anna), lives_in_england(niece_anna), course_qualifies(pharmacy_degree_bath), childcare_provider_for(niece_anna, care_provider1), childcare_provider_qualifies(care_provider1), learning_provider_for_course(bath_university, pharmacy_degree_bath))"
+    }
+  ]
+}

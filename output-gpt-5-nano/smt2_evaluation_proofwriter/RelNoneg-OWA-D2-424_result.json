@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D2-424",
+  "question": "The bald eagle is rough. The cow chases the bald eagle. If something likes the bald eagle and the bald eagle eats the cow then the bald eagle chases the cow. If something eats the bald eagle and the bald eagle eats the cow then the bald eagle chases the cow. If something likes the cow and it is blue then it chases the bald eagle. If something eats the cow then it likes the bald eagle. If something is cold then it chases the bald eagle. If something chases the bald eagle then the bald eagle eats the cow.\n\nQuestion: The bald eagle does not like the bald eagle.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

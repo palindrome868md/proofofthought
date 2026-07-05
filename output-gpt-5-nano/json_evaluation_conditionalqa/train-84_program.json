@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "married_to",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "applies_for_grc",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stays_married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "sp",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, sp], Implies(And(married_to(p, sp), applies_for_grc(p)), stays_married(p, sp)))"
+  ],
+  "verifications": [
+    {
+      "name": "Marriage remains after applying for GRC",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "sp",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(married_to(p, sp), applies_for_grc(p))",
+        "consequent": "stays_married(p, sp)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

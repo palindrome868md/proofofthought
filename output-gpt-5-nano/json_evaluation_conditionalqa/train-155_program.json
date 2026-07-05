@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CTFAccount",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "withdrawal_age",
+      "domain": [
+        "CTFAccount"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "control_age",
+      "domain": [
+        "CTFAccount"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "ctf_accounts": {
+      "sort": "CTFAccount",
+      "members": [
+        "richard_ctf"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "withdrawal_age(richard_ctf) == 18",
+    "control_age(richard_ctf) == 16"
+  ],
+  "verifications": [
+    {
+      "name": "Cannot withdraw before 18",
+      "constraint": "withdrawal_age(richard_ctf) < 18"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

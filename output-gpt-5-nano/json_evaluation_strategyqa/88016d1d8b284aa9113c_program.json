@@ -1,0 +1,42 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "nickel_exposure",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zombie_skin",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(nickel_exposure(p), zombie_skin(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Nickel could cause zombie-colored skin",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "nickel_exposure(p) and zombie_skin(p)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

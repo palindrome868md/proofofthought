@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Body",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Crime",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "suspended",
+      "domain": [
+        "Person",
+        "Body"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "guilty_of",
+      "domain": [
+        "Person",
+        "Crime"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "tiffany_alston"
+      ]
+    },
+    "bodies": {
+      "sort": "Body",
+      "members": [
+        "maryland_house_of_delegates"
+      ]
+    },
+    "crimes": {
+      "sort": "Crime",
+      "members": [
+        "stealing_government_funds"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Implies(guilty_of(tiffany_alston, stealing_government_funds), suspended(tiffany_alston, maryland_house_of_delegates))",
+    "guilty_of(tiffany_alston, stealing_government_funds)"
+  ],
+  "verifications": [
+    {
+      "name": "Tiffany Alston suspended from Maryland House of Delegates",
+      "constraint": "suspended(tiffany_alston, maryland_house_of_delegates)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

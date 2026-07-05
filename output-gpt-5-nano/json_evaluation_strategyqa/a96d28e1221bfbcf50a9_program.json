@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_insurance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "decline_CT_scan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(has_insurance(p), Not(decline_CT_scan(p))))",
+    "ForAll([p], Implies(Not(has_insurance(p)), decline_CT_scan(p)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Uninsured are more likely to decline CT scan",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "Not(has_insurance(p))",
+        "consequent": "decline_CT_scan(p)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "tiger",
+        "bald_eagle",
+        "cow"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [],
+  "knowledge_base": [
+    "eats(bald_eagle, bear)",
+    "eats(bald_eagle, tiger)",
+    "rough(bald_eagle)",
+    "likes(bald_eagle, bear)",
+    "needs(bald_eagle, tiger)",
+    "eats(bear, cow)",
+    "eats(bear, tiger)",
+    "cold(bear)",
+    "needs(cow, tiger)",
+    "needs(tiger, bald_eagle)"
+  ],
+  "verifications": [
+    {
+      "name": "Bald eagle needs tiger",
+      "constraint": "needs(bald_eagle, tiger)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

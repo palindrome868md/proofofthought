@@ -1,0 +1,28 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {
+    "counts": {
+      "sort": "IntSort",
+      "members": [
+        "dragon_ball_projects_count",
+        "friday_13th_projects_count"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "dragon_ball_projects_count == 10",
+    "friday_13th_projects_count == 20"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Dragon Ball has fewer projects than Friday the 13th",
+      "constraint": "dragon_ball_projects_count < friday_13th_projects_count"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

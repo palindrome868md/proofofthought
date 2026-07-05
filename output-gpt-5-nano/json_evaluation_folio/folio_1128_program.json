@@ -1,0 +1,112 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "drinks_coffee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dependent_on_caffeine",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wants_not_dependent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "aware_of_drug",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "unaware_of_drug",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "rina"
+      ]
+    }
+  },
+  "variables": [],
+  "rules": [
+    {
+      "name": "Coffee implies caffeine",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "drinks_coffee(p)",
+        "consequent": "dependent_on_caffeine(p)"
+      }
+    },
+    {
+      "name": "Coffee or not dependent for all",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "Or(drinks_coffee(p), wants_not_dependent(p))"
+    },
+    {
+      "name": "Wants not dependent implies not unaware of drug",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "wants_not_dependent(p)",
+        "consequent": "Not(unaware_of_drug(p))"
+      }
+    }
+  ],
+  "knowledge_base": [
+    "Or(And(student(rina), unaware_of_drug(rina)), And(Not(student(rina)), aware_of_drug(rina)))",
+    "Or(And(student(rina), dependent_on_caffeine(rina)), And(Not(student(rina)), Not(dependent_on_caffeine(rina))))"
+  ],
+  "verifications": [
+    {
+      "name": "Rina drinks coffee or is unaware of caffeine drug",
+      "constraint": "And(Not(drinks_coffee(rina)), Not(unaware_of_drug(rina)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

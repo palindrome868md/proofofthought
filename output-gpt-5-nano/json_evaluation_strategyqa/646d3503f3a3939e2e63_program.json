@@ -1,0 +1,44 @@
+{
+  "sorts": [
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Sea",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "top_sticks_out_of",
+      "domain": [
+        "Place",
+        "Sea"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "Mount_Fuji",
+      "sort": "Place"
+    },
+    {
+      "name": "Sea_of_Japan",
+      "sort": "Sea"
+    }
+  ],
+  "knowledge_base": [
+    "Not(top_sticks_out_of(Mount_Fuji, Sea_of_Japan))"
+  ],
+  "verifications": [
+    {
+      "name": "Top of Mount Fuji sticks out of Sea of Japan",
+      "constraint": "top_sticks_out_of(Mount_Fuji, Sea_of_Japan)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

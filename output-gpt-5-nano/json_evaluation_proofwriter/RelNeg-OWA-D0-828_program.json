@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eat",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "like",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "eat(cat, rabbit)",
+    "cold(cat)",
+    "green(cat)",
+    "nice(cat)",
+    "round(cat)",
+    "young(cat)",
+    "like(cat, rabbit)",
+    "visits(cat, rabbit)",
+    "eat(rabbit, cat)",
+    "Not(cold(rabbit))",
+    "green(rabbit)",
+    "nice(rabbit)",
+    "round(rabbit)",
+    "young(rabbit)",
+    "Not(like(rabbit, cat))",
+    "visits(rabbit, cat)"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit not young",
+      "constraint": "Not(young(rabbit))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

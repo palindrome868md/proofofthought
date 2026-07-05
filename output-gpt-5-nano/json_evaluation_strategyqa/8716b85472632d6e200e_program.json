@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Resort",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "size",
+      "domain": [
+        "Resort"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "resorts": {
+      "sort": "Resort",
+      "members": [
+        "disneyland_paris",
+        "walt_disney_world",
+        "tokyo_disney_resort",
+        "shanghai_disney_resort",
+        "hong_kong_disneyland"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "size(walt_disney_world) > size(disneyland_paris)"
+  ],
+  "verifications": [
+    {
+      "name": "Is Disneyland Paris the largest Disney resort?",
+      "forall": [
+        {
+          "name": "r",
+          "sort": "Resort"
+        }
+      ],
+      "implies": {
+        "antecedent": "Not(r == disneyland_paris)",
+        "consequent": "size(disneyland_paris) >= size(r)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

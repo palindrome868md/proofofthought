@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_disabled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tenant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "intends_to_live_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_apply_DFG",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(is_disabled(p), is_tenant(p), intends_to_live_years(p) <= 5), can_apply_DFG(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can I apply for Disabled Facilities Grant given I plan to live 3 years?",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_disabled(p), is_tenant(p), intends_to_live_years(p) == 3, can_apply_DFG(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D0-828",
+  "question": "The cat eats the rabbit. The cat is cold. The cat is green. The cat is nice. The cat is round. The cat is young. The cat likes the rabbit. The cat visits the rabbit. The rabbit eats the cat. The rabbit is not cold. The rabbit is green. The rabbit is nice. The rabbit is round. The rabbit is young. The rabbit does not like the cat. The rabbit visits the cat. If someone eats the cat and they are not nice then the cat does not eat the rabbit. If the cat is cold then the cat eats the rabbit. All nice people are young. If someone is green then they do not like the cat. If someone likes the cat then the cat visits the rabbit. If someone eats the rabbit and the rabbit does not eat the cat then the rabbit visits the cat. If someone likes the rabbit and they do not like the cat then the rabbit visits the cat. If someone likes the cat and the cat does not visit the rabbit then the cat likes the rabbit.\n\nQuestion: The rabbit is not young.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

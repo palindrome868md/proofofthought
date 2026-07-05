@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_923",
+  "question": "Given the following premises:\n\nAll young adults at the event like independence.\nAll college students at the event are young adults.\nAll Yale students at the event are college students.\nEveryone at the event is a Yale student or a Harvard student.\nAll Harvard students at the event are diligent.\nSusan is at the event, and if Susan is a Harvard student, then she is a young adult.\nIf Susan is a Yale student, then she does not like independence.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Susan is not both diligent and likes independence.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

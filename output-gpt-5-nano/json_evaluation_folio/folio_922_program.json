@@ -1,0 +1,92 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "at_event",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young_adult",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes_independence",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yale",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "harvard",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "diligent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "college",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "susan"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(at_event(x), young_adult(x)), likes_independence(x)))",
+    "ForAll([x], Implies(And(at_event(x), yale(x)), college(x)))",
+    "ForAll([x], Implies(And(at_event(x), college(x)), young_adult(x)))",
+    "ForAll([x], Implies(at_event(x), Or(yale(x), harvard(x))))",
+    "ForAll([x], Implies(And(at_event(x), harvard(x)), diligent(x)))",
+    "at_event(susan)",
+    "Implies(harvard(susan), young_adult(susan))",
+    "Implies(yale(susan), Not(likes_independence(susan)))"
+  ],
+  "verifications": [
+    {
+      "name": "Susan likes independence and is diligent",
+      "constraint": "And(likes_independence(susan), diligent(susan))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

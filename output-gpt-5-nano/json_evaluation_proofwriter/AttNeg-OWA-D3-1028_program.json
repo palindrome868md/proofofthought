@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "erin",
+        "fiona",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "e",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "blue(bob)",
+    "quiet(erin)",
+    "ForAll([p], Implies(quiet(p), blue(p)))",
+    "ForAll([p], Implies(blue(p), young(p)))",
+    "ForAll([p], Implies(And(blue(p), Not(red(p))), round(p)))",
+    "ForAll([p], Implies(And(blue(p), round(p)), cold(p)))",
+    "ForAll([p], Implies(young(p), white(p)))",
+    "ForAll([e], Implies(And(red(e), Not(round(e))), young(e)))",
+    "ForAll([e], Implies(And(red(e), Not(cold(e))), white(e)))"
+  ],
+  "verifications": [
+    {
+      "name": "Erin not blue",
+      "constraint": "Not(blue(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

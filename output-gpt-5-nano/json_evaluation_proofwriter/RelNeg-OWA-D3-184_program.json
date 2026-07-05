@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "kind",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "kind(squirrel)",
+    "ForAll([p], Implies(kind(p), blue(p)))",
+    "ForAll([p], Implies(round(p), blue(p)))",
+    "ForAll([p], Implies(And(round(p), blue(p)), rough(p)))",
+    "ForAll([p], Implies(And(round(p), Not(kind(p))), Not(young(p))))",
+    "ForAll([p], Implies(And(kind(p), blue(p)), round(p)))",
+    "Implies(rough(squirrel), round(squirrel))"
+  ],
+  "verifications": [
+    {
+      "name": "Squirrel not blue",
+      "constraint": "Not(blue(squirrel))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

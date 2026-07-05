@@ -1,0 +1,166 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Rex"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "jompus(Rex)",
+    "ForAll([x], Implies(yumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), Not(temperate(x))))",
+    "ForAll([x], Implies(vumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), Not(dull(x))))",
+    "ForAll([x], Implies(impuse(x), Not(spicy(x))))",
+    "ForAll([x], Implies(jompus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), Not(opaque(x))))",
+    "ForAll([x], Implies(numpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), amenable(x)))",
+    "ForAll([x], Implies(wumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), Not(red(x))))",
+    "ForAll([x], Implies(rompus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), spicy(x)))",
+    "ForAll([x], Implies(tumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), shy(x)))",
+    "ForAll([x], Implies(dumpus(x), zumpus(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rex is not spicy",
+      "constraint": "Not(spicy(Rex))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

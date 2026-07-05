@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "name_changed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "contact_opg_to_update",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sister"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "name_changed(sister)",
+    "ForAll([a], Implies(name_changed(a), contact_opg_to_update(a)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Update required when sister changes name",
+      "constraint": "contact_opg_to_update(sister)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

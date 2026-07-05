@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D3-476",
+  "question": "Anne is not nice. Anne is rough. Anne is smart. Bob is rough. Gary is nice. Gary is quiet. Harry is rough. If Gary is big then Gary is cold. All nice people are big. If Gary is big then Gary is quiet. If someone is green then they are smart. If Anne is quiet and Anne is not green then Anne is big. If someone is nice and not quiet then they are not rough. If someone is quiet and not big then they are not rough. Cold people are rough.\n\nQuestion: Gary is not cold.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([x], Implies(nice(x), big(x)))': name 'x' is not defined"
+}

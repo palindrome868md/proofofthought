@@ -1,0 +1,190 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob",
+        "charlie",
+        "fiona"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "blue(anne)",
+    "quiet(anne)",
+    "white(anne)",
+    "blue(bob)",
+    "kind(bob)",
+    "nice(bob)",
+    "red(bob)",
+    "young(bob)",
+    "blue(charlie)",
+    "quiet(charlie)",
+    "blue(fiona)",
+    "kind(fiona)",
+    "nice(fiona)",
+    "quiet(fiona)",
+    "young(fiona)"
+  ],
+  "rules": [
+    {
+      "name": "Kind implies Red",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "kind(p)",
+        "consequent": "red(p)"
+      }
+    },
+    {
+      "name": "Red and Nice implies White",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(red(p), nice(p))",
+        "consequent": "white(p)"
+      }
+    },
+    {
+      "name": "Blue and White implies Red",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(blue(p), white(p))",
+        "consequent": "red(p)"
+      }
+    },
+    {
+      "name": "Quiet and Red implies Nice",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(quiet(p), red(p))",
+        "consequent": "nice(p)"
+      }
+    },
+    {
+      "name": "Blue implies White",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "blue(p)",
+        "consequent": "white(p)"
+      }
+    },
+    {
+      "name": "Red implies Young",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "red(p)",
+        "consequent": "young(p)"
+      }
+    },
+    {
+      "name": "Young and White implies Kind",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(young(p), white(p))",
+        "consequent": "kind(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Fiona not white",
+      "constraint": "Not(white(fiona))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

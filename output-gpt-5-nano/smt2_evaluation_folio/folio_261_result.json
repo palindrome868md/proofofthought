@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_261",
+  "question": "Given the following premises:\n\nIf a legislator is found guilty of stealing government funds, they will be suspended from office.\nTiffany T. Alston was a legislator in Maryland's House of Delegates from 2011 to 2013.\nTiffany T. Alston was found guilty of stealing government funds in 2012.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Tiffany T. Alston was suspended from the Maryland House of Delegates.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

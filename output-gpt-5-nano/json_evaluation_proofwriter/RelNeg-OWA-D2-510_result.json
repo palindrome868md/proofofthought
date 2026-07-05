@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D2-510",
+  "question": "The bald eagle eats the cat. The bald eagle eats the lion. The cat does not chase the rabbit. The cat is not big. The cat does not like the lion. The lion is cold. The lion is round. The rabbit chases the lion. The rabbit does not eat the bald eagle. The rabbit eats the lion. The rabbit is red. The rabbit likes the bald eagle. If someone is cold then they do not chase the bald eagle. If the lion chases the cat and the cat eats the rabbit then the cat is not red. If someone is round and they do not chase the bald eagle then they do not like the lion.\n\nQuestion: The lion chases the bald eagle.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

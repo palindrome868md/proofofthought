@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_legislator",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "found_guilty_of_stealing_funds",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "suspended_from_office",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "tiffany_alston"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_legislator(tiffany_alston)",
+    "found_guilty_of_stealing_funds(tiffany_alston)",
+    {
+      "assertion": "Implies(And(is_legislator(tiffany_alston), found_guilty_of_stealing_funds(tiffany_alston)), suspended_from_office(tiffany_alston))",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Tiffany Alston Not Suspended",
+      "constraint": "Not(suspended_from_office(tiffany_alston))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

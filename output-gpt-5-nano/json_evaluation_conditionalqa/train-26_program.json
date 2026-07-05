@@ -1,0 +1,40 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "instalment_interest_amount",
+      "domain": [
+        "IntSort"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "k",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([k], Implies(k > 1, instalment_interest_amount(k) > 0))"
+  ],
+  "verifications": [
+    {
+      "name": "Interest payable on later instalments when paying in instalments",
+      "forall": [
+        {
+          "name": "k",
+          "sort": "IntSort"
+        }
+      ],
+      "implies": {
+        "antecedent": "k > 1",
+        "consequent": "instalment_interest_amount(k) > 0"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

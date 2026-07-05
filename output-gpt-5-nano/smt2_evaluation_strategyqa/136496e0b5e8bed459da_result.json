@@ -1,0 +1,11 @@
+{
+  "sample_id": "136496e0b5e8bed459da",
+  "question": "Would it be impossible to use an Iwato scale for a twelve-tone technique composition?",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D2-140",
+  "question": "Dave is nice. Fiona is quiet. If something is red and cold then it is quiet. If Fiona is quiet and Fiona is blue then Fiona is round. Nice, green things are red. If something is nice then it is not blue. If Dave is not blue then Dave is round. If Dave is red and Dave is not round then Dave is not quiet.\n\nQuestion: Dave is not round.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([x], Implies(And(red(x), cold(x)), quiet(x)))': name 'x' is not defined"
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D2-265",
+  "question": "The dog is nice. If something is round and not nice then it is green. If something is kind and big then it is green. All big, kind things are green. All green things are kind. If something is green and kind then it is big. If the dog is green then the dog is kind. If the dog is nice then the dog is green. All nice, kind things are round.\n\nQuestion: The dog is kind.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

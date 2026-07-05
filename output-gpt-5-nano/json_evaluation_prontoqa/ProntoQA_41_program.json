@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "wumpus(Max)",
+    "Implies(wumpus(Max), zumpus(Max))",
+    "Implies(zumpus(Max), numpus(Max))",
+    "Implies(numpus(Max), dumpus(Max))",
+    "Implies(dumpus(Max), impus(Max))",
+    "Implies(impus(Max), Not(hot(Max)))",
+    "Implies(impus(Max), vumpus(Max))"
+  ],
+  "verifications": [
+    {
+      "name": "Max is not hot",
+      "constraint": "Not(hot(Max))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

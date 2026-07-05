@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_201",
+  "question": "Given the following premises:\n\nLana Wilson directed After Tiller, The Departure, and Miss Americana.\nIf a film is directed by a person, the person is a filmmaker.\nAfter Tiller is a documentary.\nThe documentary is a type of film.\nLana Wilson is from Kirkland.\nKirkland is a US city.\nIf a person is from a city in a country, the person is from the country.\nAfter Tiller is nominated for the Independent Spirit Award for Best Documentary.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Lana Wilson is a US filmmaker.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Error evaluating expression 'filmmaker(lana_wilson) and from_country(lana_wilson, usa)': Symbolic expressions cannot be cast to concrete Boolean values."
+}

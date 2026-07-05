@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "sees(cat, squirrel)",
+    "sees(squirrel, cat)",
+    "ForAll([p], Implies(And(sees(p, cat), sees(cat, squirrel)), eats(p, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Squirrel eats squirrel",
+      "constraint": "eats(squirrel, squirrel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

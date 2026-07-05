@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "on_diet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "must_skip_lunch_at",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "places": {
+      "sort": "Place",
+      "members": [
+        "mcdonalds"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(on_diet(p), must_skip_lunch_at(p, mcdonalds)))"
+  ],
+  "verifications": [
+    {
+      "name": "All dieters skip lunch at McDonald's",
+      "forall": [
+        {
+          "name": "q",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "on_diet(q)",
+        "consequent": "must_skip_lunch_at(q, mcdonalds)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

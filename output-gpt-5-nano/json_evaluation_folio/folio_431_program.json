@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Band",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Instrument",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "member_of",
+      "domain": [
+        "Person",
+        "Band"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays_instrument",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "vic_dicara"
+      ]
+    },
+    "bands": {
+      "sort": "Band",
+      "members": [
+        "inside_out"
+      ]
+    },
+    "instruments": {
+      "sort": "Instrument",
+      "members": [
+        "guitar",
+        "bass"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "member_of(vic_dicara, inside_out)",
+    "plays_instrument(vic_dicara, bass)",
+    "plays_instrument(vic_dicara, guitar)"
+  ],
+  "verifications": [
+    {
+      "name": "Exists Inside Out musician playing bass",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(member_of(p, inside_out), plays_instrument(p, bass))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_couple",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "adoption_leave",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p1, p2], Implies(is_couple(p1, p2), Not(And(adoption_leave(p1), adoption_leave(p2)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can both partners take Statutory Adoption Leave at the same time",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Person"
+        },
+        {
+          "name": "b",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_couple(a, b), adoption_leave(a), adoption_leave(b))"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D1-2186",
+  "question": "The bald eagle likes the mouse. The bear likes the squirrel. The mouse is round. The squirrel eats the mouse. If something eats the mouse then the mouse chases the squirrel.\n\nQuestion: The bald eagle likes the mouse.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

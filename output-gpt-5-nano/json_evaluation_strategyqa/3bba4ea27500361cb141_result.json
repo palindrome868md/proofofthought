@@ -1,0 +1,11 @@
+{
+  "sample_id": "3bba4ea27500361cb141",
+  "question": "Will Oasis cruise boat traverse the Lincoln Tunnel?",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

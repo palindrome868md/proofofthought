@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "me",
+      "sort": "Person"
+    }
+  ],
+  "functions": [
+    {
+      "name": "hours_worked_now",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "weeks_claimed_continuously",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "benefit_stopped_due_to_work",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "housing_costs_before_work",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "hours_worked_now(me) == 40",
+    "weeks_claimed_continuously(me) == 16",
+    "housing_costs_before_work(me) == True"
+  ],
+  "verifications": [
+    {
+      "name": "Mortgage Interest Run On eligibility check",
+      "constraint": "And(benefit_stopped_due_to_work(me), weeks_claimed_continuously(me) >= 26, hours_worked_now(me) >= 40, housing_costs_before_work(me))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

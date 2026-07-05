@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1172",
+  "question": "Given the following premises:\n\nSome students in the class who are good at math are also good at chemistry.\nAll students in the class who are good at chemistry enjoy conducting experiments. \nAll students in the class that enjoy conducting experiments are good at planning. \nNone of the students who are good at planning failed the class.\nJames is a student in the class; he is either good at chemistry and failed the class, or bad at chemistry and passed the class.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: If James is good at Chemistry or failed the class, then James is either good at planning or good at math.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

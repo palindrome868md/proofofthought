@@ -1,0 +1,35 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "could_operate_motor_vehicle",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "oscar_wilde"
+      ]
+    }
+  },
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Oscar Wilde could operate a motor vehicle",
+      "constraint": "could_operate_motor_vehicle(oscar_wilde)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

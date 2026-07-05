@@ -1,0 +1,69 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_under_state_pension_age",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_health_condition",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_self_employed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "work_hours",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "earnings",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "can_apply_esa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Freelancer can apply for ESA while working again",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_under_state_pension_age(p), has_health_condition(p), is_self_employed(p), work_hours(p) <= 16, earnings(p) <= 143, can_apply_esa(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

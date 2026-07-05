@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Team",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Cup",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wins",
+      "domain": [
+        "Team",
+        "Cup"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tibia_required",
+      "domain": [
+        "Team"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "teams": {
+      "sort": "Team",
+      "members": [
+        "maple_leafs"
+      ]
+    },
+    "cups": {
+      "sort": "Cup",
+      "members": [
+        "stanley_cup"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "t",
+      "sort": "Team"
+    }
+  ],
+  "knowledge_base": [
+    "wins(maple_leafs, stanley_cup)",
+    "Not(tibia_required(maple_leafs))",
+    "ForAll([t], Implies(wins(t, stanley_cup), tibia_required(t)))"
+  ],
+  "verifications": [
+    {
+      "name": "Tibia Necessary for Stanley Cup",
+      "forall": [
+        {
+          "name": "t",
+          "sort": "Team"
+        }
+      ],
+      "implies": {
+        "antecedent": "wins(t, stanley_cup)",
+        "consequent": "tibia_required(t)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

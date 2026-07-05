@@ -1,0 +1,162 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "jompus(max)",
+    "ForAll([p], Implies(jompus(p), rompus(p)))",
+    "ForAll([p], Implies(rompus(p), mean(p)))",
+    "ForAll([p], Implies(rompus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), transparent(p)))",
+    "ForAll([p], Implies(zumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), Not(earthy(p))))",
+    "ForAll([p], Implies(dumpus(p), bright(p)))",
+    "ForAll([p], Implies(tumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), Not(bright(p))))",
+    "ForAll([p], Implies(yumpus(p), impuse(p)))",
+    "ForAll([p], Implies(impuse(p), temperate(p)))",
+    "ForAll([p], Implies(impuse(p), numpus(p)))",
+    "ForAll([p], Implies(numpus(p), feisty(p)))",
+    "ForAll([p], Implies(numpus(p), wumpus(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Max bright",
+      "constraint": "bright(max)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

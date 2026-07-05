@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "deputy_for",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "death_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_power_after_death",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "you",
+        "uncle"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "deputy_for(you, uncle)",
+    "death_of(uncle)",
+    "Not(has_power_after_death(you, uncle))"
+  ],
+  "verifications": [
+    {
+      "name": "Power after uncle dies",
+      "constraint": "has_power_after_death(you, uncle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

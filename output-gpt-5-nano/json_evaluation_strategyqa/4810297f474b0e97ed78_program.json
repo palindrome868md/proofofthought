@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "crush_by",
+      "domain": [
+        "IntSort",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], age_of(p) >= 0)"
+  ],
+  "verifications": [
+    {
+      "name": "Could ten gallons of seawater crush a six year old",
+      "exists": [
+        {
+          "name": "child",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(age_of(child) == 6, crush_by(10, child))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

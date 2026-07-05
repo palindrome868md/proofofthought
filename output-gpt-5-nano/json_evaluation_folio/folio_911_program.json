@@ -1,0 +1,129 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "kid",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "toddler",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "elderly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pirate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "seafarer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "nancy"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "name": "Kids are Young",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "kid(p)",
+        "consequent": "young(p)"
+      }
+    },
+    {
+      "name": "Toddlers are Kids",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "toddler(p)",
+        "consequent": "kid(p)"
+      }
+    },
+    {
+      "name": "Young implies Not Elderly",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "young(p)",
+        "consequent": "Not(elderly(p))"
+      }
+    },
+    {
+      "name": "Pirates are Seafarers",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "pirate(p)",
+        "consequent": "seafarer(p)"
+      }
+    },
+    "Implies(Not(pirate(nancy)), young(nancy))",
+    "Implies(Not(toddler(nancy)), seafarer(nancy))",
+    "Implies(pirate(nancy), toddler(nancy))",
+    "Implies(toddler(nancy), pirate(nancy))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Nancy is either pirate and toddler or neither",
+      "constraint": "Or(And(pirate(nancy), toddler(nancy)), And(Not(pirate(nancy)), Not(toddler(nancy))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

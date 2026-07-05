@@ -1,0 +1,155 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_spicy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "polly"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([x], Implies(is_jompus(x), is_rompus(x)))",
+    "ForAll([x], Implies(is_rompus(x), is_vumpus(x)))",
+    "ForAll([x], Implies(is_vumpus(x), is_numpus(x)))",
+    "ForAll([x], Implies(is_numpus(x), is_impus(x)))",
+    "ForAll([x], Implies(is_impus(x), is_wumpus(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_fruity(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_yumpus(x)))",
+    "ForAll([x], Implies(is_yumpus(x), is_dumpus(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_small(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_tumpus(x)))",
+    "ForAll([x], Implies(is_yumpus(x), is_liquid(x)))",
+    "ForAll([x], Implies(is_numpus(x), Not(is_spicy(x))))",
+    "ForAll([x], Implies(is_impus(x), is_temperate(x)))",
+    "ForAll([x], Implies(is_impus(x), is_wumpus(x)))",
+    "is_rompus(polly)"
+  ],
+  "verifications": [
+    {
+      "name": "Polly fruity",
+      "constraint": "is_fruity(polly)"
+    }
+  ],
+  "Actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "sorts": [
+    {
+      "name": "SocialMediaApp",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_chat",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_video",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_send_messages",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_upload_videos",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_software",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_computer_program",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high_engagement",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "addictive",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ideal_for_preteens",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "social_media_apps": {
+      "sort": "SocialMediaApp",
+      "members": [
+        "tiktok"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "SocialMediaApp"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(has_chat(x), is_software(x)))",
+    "ForAll([x], Implies(can_send_messages(x), has_chat(x)))",
+    "ForAll([x], Or(has_chat(x), has_video(x)))",
+    "ForAll([x], Implies(has_video(x), can_upload_videos(x)))",
+    "ForAll([x], Implies(is_software(x), is_computer_program(x)))",
+    "ForAll([x], Implies(high_engagement(x), addictive(x)))",
+    "ForAll([x], Implies(addictive(x), Not(ideal_for_preteens(x))))",
+    "Not(has_chat(tiktok))",
+    "has_video(tiktok)",
+    "Not(ideal_for_preteens(tiktok))"
+  ],
+  "verifications": [
+    {
+      "name": "TikTok either lacks chat or is not a computer program",
+      "constraint": "Or(Not(has_chat(tiktok)), Not(is_computer_program(tiktok)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

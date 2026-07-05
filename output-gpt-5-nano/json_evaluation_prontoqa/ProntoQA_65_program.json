@@ -1,0 +1,130 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "angry",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "luminous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "zumpus(Max)",
+    "dumpus(Max)",
+    "happy(Max)",
+    "vumpus(Max)",
+    "jompus(Max)",
+    "Not(large(Max))",
+    "wumpus(Max)",
+    "Not(angry(Max))",
+    "tumpus(Max)",
+    "dull(Max)",
+    "numpus(Max)",
+    "Not(luminous(Max))",
+    "yumpus(Max)"
+  ],
+  "verifications": [
+    {
+      "name": "Is Max angry",
+      "constraint": "angry(Max)"
+    }
+  ]
+}

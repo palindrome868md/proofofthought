@@ -1,0 +1,34 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {
+    "president_numbers": {
+      "sort": "IntSort",
+      "members": [
+        "andrew_johnson_pres_num"
+      ]
+    },
+    "emperor_numbers": {
+      "sort": "IntSort",
+      "members": [
+        "elagabalus_emperor_num"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "andrew_johnson_pres_num == 17",
+    "elagabalus_emperor_num == 8",
+    "andrew_johnson_pres_num > elagabalus_emperor_num"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Andrew Johnson's presidential number exceeds Elagabalus's Emperor number",
+      "constraint": "andrew_johnson_pres_num > elagabalus_emperor_num"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

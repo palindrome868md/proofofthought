@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "cow"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "round(cow)",
+    "ForAll([x], Implies(kind(x), young(x)))",
+    "ForAll([x], Implies(And(round(x), red(x)), young(x)))",
+    "ForAll([x], Implies(young(x), round(x)))",
+    "Implies(And(round(cow), young(cow)), kind(cow))",
+    "ForAll([x], Implies(round(x), red(x)))",
+    "ForAll([x], Implies(And(round(x), kind(x)), young(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cow is round",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(round(x), x == cow)"
+    }
+  ]
+}

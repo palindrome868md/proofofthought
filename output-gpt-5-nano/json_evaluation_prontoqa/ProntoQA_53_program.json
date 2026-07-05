@@ -1,0 +1,178 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(numpus(x), kind(x)))",
+    "ForAll([x], Implies(numpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), Not(wooden(x))))",
+    "ForAll([x], Implies(zumpus(x), Not(dull(x))))",
+    "ForAll([x], Implies(wumpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), hot(x)))",
+    "ForAll([x], Implies(yumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), transparent(x)))",
+    "ForAll([x], Implies(vumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), Not(small(x))))",
+    "ForAll([x], Implies(rompus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), dull(x)))",
+    "ForAll([x], Implies(jompus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), earthy(x)))",
+    "ForAll([x], Implies(dumpus(x), tumpus(x)))",
+    "impus(fae)"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is dull",
+      "constraint": "dull(fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

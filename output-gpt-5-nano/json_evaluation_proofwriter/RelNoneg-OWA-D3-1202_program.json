@@ -1,0 +1,119 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "eats(bald_eagle, mouse)",
+    "sees(bald_eagle, mouse)",
+    "sees(bald_eagle, rabbit)",
+    "visits(bald_eagle, mouse)",
+    "eats(mouse, bald_eagle)",
+    "eats(mouse, rabbit)",
+    "sees(mouse, bald_eagle)",
+    "visits(mouse, rabbit)",
+    "eats(rabbit, bald_eagle)",
+    "cold(rabbit)",
+    "kind(rabbit)",
+    "rough(rabbit)",
+    "young(rabbit)",
+    "sees(rabbit, bald_eagle)",
+    "sees(rabbit, mouse)",
+    "visits(rabbit, bald_eagle)",
+    "ForAll([x], Implies(visits(x, rabbit), young(x)))",
+    "ForAll([x], Implies(sees(x, mouse), visits(x, rabbit)))",
+    "ForAll([x], Implies(sees(x, rabbit), visits(x, rabbit)))",
+    "ForAll([x], Implies(young(x), cold(x)))",
+    "ForAll([x], Implies(sees(x, mouse), big(mouse)))",
+    "ForAll([x], Implies(And(visits(x, mouse), rough(mouse)), eats(x, mouse)))",
+    "ForAll([x], Implies(And(sees(x, mouse), visits(x, mouse)), eats(mouse, rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Mouse does not eat bald_eagle",
+      "constraint": "Not(eats(mouse, bald_eagle))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

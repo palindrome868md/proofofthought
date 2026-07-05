@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "good_math",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_chem",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoy_experiments",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_planning",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "failed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "passed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "james"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "s",
+      "sort": "Person"
+    },
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([s], And(good_math(s), good_chem(s)))",
+    "ForAll([x], Implies(good_chem(x), enjoy_experiments(x)))",
+    "ForAll([x], Implies(enjoy_experiments(x), good_planning(x)))",
+    "ForAll([x], Implies(good_planning(x), Not(failed(x))))",
+    "Or(And(good_chem(james), failed(james)), And(Not(good_chem(james)), passed(james)))"
+  ],
+  "verifications": [
+    {
+      "name": "James chem or failed implies planning or math",
+      "constraint": "Implies(Or(good_chem(james), failed(james)), Or(good_planning(james), good_math(james)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

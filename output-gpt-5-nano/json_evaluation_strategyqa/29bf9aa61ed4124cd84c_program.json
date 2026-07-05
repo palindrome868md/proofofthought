@@ -1,0 +1,37 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "first_year_100k",
+      "domain": [
+        "City"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "cities": {
+      "sort": "City",
+      "members": [
+        "Albany_GA",
+        "Albany_NY"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Will Albany, Georgia reach 100k occupants before Albany, New York?",
+      "constraint": "first_year_100k(Albany_GA) < first_year_100k(Albany_NY)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

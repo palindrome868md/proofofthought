@@ -1,0 +1,48 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [
+    {
+      "name": "home_400k",
+      "sort": "IntSort"
+    },
+    {
+      "name": "gifts_250k",
+      "sort": "IntSort"
+    },
+    {
+      "name": "threshold_500k",
+      "sort": "IntSort"
+    },
+    {
+      "name": "estate_value",
+      "sort": "IntSort"
+    },
+    {
+      "name": "taxable",
+      "sort": "IntSort"
+    },
+    {
+      "name": "IHT_due",
+      "sort": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "home_400k == 400000",
+    "gifts_250k == 250000",
+    "threshold_500k == 500000",
+    "estate_value == home_400k + gifts_250k",
+    "taxable == estate_value - threshold_500k",
+    "IHT_due == (taxable > 0)"
+  ],
+  "verifications": [
+    {
+      "name": "Inheritance Tax due on estate",
+      "constraint": "IHT_due"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

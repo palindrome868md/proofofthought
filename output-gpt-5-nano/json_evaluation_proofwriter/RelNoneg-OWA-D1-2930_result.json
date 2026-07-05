@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D1-2930",
+  "question": "The bald eagle sees the rabbit. The rabbit likes the bald eagle. The squirrel is blue. If something likes the bald eagle then it is blue. If something likes the bald eagle and it sees the bald eagle then the bald eagle is blue. If something chases the rabbit then the rabbit is young.\n\nQuestion: The rabbit is blue.",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Ambiguous verification result: SAT=0, UNSAT=0\nOutput:\n"
+}

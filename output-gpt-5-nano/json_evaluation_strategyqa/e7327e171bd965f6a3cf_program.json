@@ -1,0 +1,24 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "art_priority_in_us_education",
+      "domain": [],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [
+    "art_priority_in_us_education()"
+  ],
+  "verifications": [
+    {
+      "name": "Art prioritized in US education",
+      "constraint": "art_priority_in_us_education()"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

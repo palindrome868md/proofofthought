@@ -1,0 +1,40 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "serfdom_status",
+      "domain": [
+        "Country"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "japan",
+        "england"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "serfdom_status(japan) == 3",
+    "serfdom_status(england) == 2"
+  ],
+  "verifications": [
+    {
+      "name": "Japanese serfdom has higher status than English serfdom",
+      "constraint": "serfdom_status(japan) > serfdom_status(england)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

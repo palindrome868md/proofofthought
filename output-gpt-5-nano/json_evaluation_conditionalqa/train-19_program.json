@@ -1,0 +1,33 @@
+{
+  "sorts": [
+    {
+      "name": "ServiceMember",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "ClaimType",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "appeal_possible",
+      "domain": [],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": [],
+  "variables": [],
+  "knowledge_base": [
+    "appeal_possible()"
+  ],
+  "verifications": [
+    {
+      "name": "Can appeal decision on lump sum compensation",
+      "constraint": "appeal_possible()"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

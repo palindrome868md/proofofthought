@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_47",
+  "question": "Vumpuses are fruity. Vumpuses are jompuses. Jompuses are opaque. Every jompus is a wumpus. Every wumpus is nervous. Each wumpus is an impus. Every impus is sour. Impuses are tumpuses. Every tumpus is not amenable. Each tumpus is a yumpus. Yumpuses are not metallic. Yumpuses are numpuses. Numpuses are large. Every numpus is a rompus. Dumpuses are not cold. Each rompus is cold. Each rompus is a zumpus. Max is an impus.\n\nIs the following statement true or false? Max is not cold.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

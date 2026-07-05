@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "bear",
+        "rabbit",
+        "mouse"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bald_eagle, bear)",
+    "sees(bald_eagle, rabbit)",
+    "chases(bear, bald_eagle)",
+    "chases(bear, rabbit)",
+    "eats(bear, mouse)",
+    "blue(bear)",
+    "sees(bear, rabbit)",
+    "chases(mouse, rabbit)",
+    "cold(mouse)",
+    "nice(mouse)",
+    "sees(mouse, bear)",
+    "sees(mouse, rabbit)",
+    "eats(rabbit, bear)",
+    "eats(rabbit, mouse)",
+    "sees(rabbit, bald_eagle)",
+    "ForAll([x], Implies(chases(x, rabbit), eats(rabbit, bald_eagle)))",
+    "ForAll([x], Implies(sees(x, bear), red(bear)))",
+    "ForAll([x], Implies(red(x), big(x)))",
+    "ForAll([x], Implies(And(chases(x, bald_eagle), eats(bald_eagle, rabbit)), red(bald_eagle)))",
+    "ForAll([x], Implies(red(x), blue(x)))",
+    "ForAll([x], Implies(And(eats(x, rabbit), red(rabbit)), blue(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit eats mouse",
+      "constraint": "eats(rabbit, mouse)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

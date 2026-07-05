@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Pension",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "tax_exempt",
+      "domain": [
+        "Pension"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "pensions": {
+      "sort": "Pension",
+      "members": [
+        "war_widow_pension"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "tax_exempt(war_widow_pension)"
+  ],
+  "verifications": [
+    {
+      "name": "War Widow Pension is tax-exempt",
+      "constraint": "tax_exempt(war_widow_pension)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

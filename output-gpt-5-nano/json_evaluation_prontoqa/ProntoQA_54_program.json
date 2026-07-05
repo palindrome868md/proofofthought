@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "stella"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(tumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), Not(large(x))))",
+    "ForAll([x], Implies(jompus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), impuse(x)))",
+    "ForAll([x], Implies(impuse(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), Not(red(x))))",
+    "vumpus(stella)"
+  ],
+  "verifications": [
+    {
+      "name": "Stella not red",
+      "constraint": "Not(red(stella))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

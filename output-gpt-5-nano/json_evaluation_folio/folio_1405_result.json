@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1405",
+  "question": "Given the following premises:\n\nAll biodegradable things are environment-friendly. \nAll woodware is biodegradable.\nAll paper is woodware. \nNothing is a good thing and also a bad thing.\nAll environment-friendly things are good.\nA worksheet is either paper or environment-friendly.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: A worksheet is not bad.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

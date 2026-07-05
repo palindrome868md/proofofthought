@@ -1,0 +1,45 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height_cm",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "leila_george"
+      ]
+    },
+    "model_requirements": {
+      "sort": "IntSort",
+      "members": [
+        "min_model_height"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "height_cm(leila_george) == 160",
+    "min_model_height == 170"
+  ],
+  "verifications": [
+    {
+      "name": "Leila George lacks height to be a model",
+      "constraint": "height_cm(leila_george) < min_model_height"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

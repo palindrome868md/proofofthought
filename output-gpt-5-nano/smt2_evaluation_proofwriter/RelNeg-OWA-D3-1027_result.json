@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D3-1027",
+  "question": "The bald eagle chases the dog. The bald eagle chases the tiger. The dog chases the bald eagle. The dog is blue. The dog is cold. The dog is red. The dog is round. The dog is young. The tiger chases the dog. The tiger is round. The tiger likes the bald eagle. The tiger sees the bald eagle. If someone chases the bald eagle and they chase the tiger then they see the bald eagle. If the bald eagle sees the tiger and the tiger is young then the bald eagle chases the tiger. If the tiger likes the dog and the dog is cold then the dog sees the bald eagle. If the dog is red and the dog sees the bald eagle then the bald eagle does not like the tiger. If someone is blue then they chase the tiger. If the dog chases the tiger and the dog sees the tiger then the tiger does not like the bald eagle. If someone chases the bald eagle and they do not like the tiger then the tiger is red. If someone is round and they do not see the bald eagle then the bald eagle sees the dog.\n\nQuestion: The bald eagle chases the dog.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

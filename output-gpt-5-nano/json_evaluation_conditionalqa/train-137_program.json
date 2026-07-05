@@ -1,0 +1,46 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "waiver_possible",
+      "domain": [
+        "IntSort",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "incomes": {
+      "sort": "IntSort",
+      "members": [
+        "husband_income",
+        "wife_income"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "husband_income == 52000",
+      "value": true
+    },
+    {
+      "assertion": "wife_income == 0",
+      "value": true
+    },
+    {
+      "assertion": "waiver_possible(husband_income, wife_income)",
+      "value": false
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Tax waiver not possible with husband income 52000",
+      "constraint": "waiver_possible(husband_income, wife_income)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

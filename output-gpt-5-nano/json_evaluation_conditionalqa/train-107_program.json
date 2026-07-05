@@ -1,0 +1,116 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "stopped_benefit_due_to_work",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "will_start_work",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "continuous_claim_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "expected_work_duration_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "entitled_to_housing_costs_before",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "will_have_housing_costs_when_start",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "had_mortgage_interest_before",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "previously_claimed_mortgage_interest",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_run_on",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "applicant"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "stopped_benefit_due_to_work(applicant)",
+    "will_start_work(applicant)",
+    "continuous_claim_weeks(applicant) >= 26",
+    "expected_work_duration_weeks(applicant) >= 5",
+    "entitled_to_housing_costs_before(applicant)",
+    "will_have_housing_costs_when_start(applicant)",
+    "had_mortgage_interest_before(applicant)",
+    "previously_claimed_mortgage_interest(applicant)"
+  ],
+  "rules": [
+    {
+      "name": "MIR Run On Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(stopped_benefit_due_to_work(p), will_start_work(p), continuous_claim_weeks(p) >= 26, expected_work_duration_weeks(p) >= 5, entitled_to_housing_costs_before(p), will_have_housing_costs_when_start(p), had_mortgage_interest_before(p), previously_claimed_mortgage_interest(p))",
+        "consequent": "eligible_for_run_on(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Eligible for Mortgage Interest Run On",
+      "constraint": "eligible_for_run_on(applicant)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "receives_undergrad_finance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_postgraduate_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "financially_dependent_on",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "childcare_grant_eligible",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "me",
+      "sort": "Person"
+    },
+    {
+      "name": "partner",
+      "sort": "Person"
+    },
+    {
+      "name": "child",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_full_time_student(me)",
+    "receives_undergrad_finance(me)",
+    "lives_in_england(me)",
+    "Not(has_postgraduate_loan(me))",
+    "financially_dependent_on(me, child)",
+    "age(child) == 5",
+    "childcare_grant_eligible(me, child)"
+  ],
+  "verifications": [
+    {
+      "name": "Can I get childcare grant for my son while I study",
+      "constraint": "childcare_grant_eligible(me, child)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

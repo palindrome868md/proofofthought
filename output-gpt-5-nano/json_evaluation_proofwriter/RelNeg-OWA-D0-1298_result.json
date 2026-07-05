@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D0-1298",
+  "question": "The bald eagle chases the mouse. The bear is rough. The mouse visits the bear. Red things are not rough. Rough, red things are not blue. If something chases the mouse then the mouse chases the bear. If something chases the mouse and the mouse is big then it visits the bear. If the bear likes the mouse and the bear is not red then the mouse chases the bald eagle. If something chases the bear then it is kind.\n\nQuestion: The bear is rough.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

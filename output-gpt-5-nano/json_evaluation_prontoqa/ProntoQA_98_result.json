@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_98",
+  "question": "Vumpuses are liquid. Vumpuses are rompuses. Every rompus is fruity. Each rompus is a zumpus. Every zumpus is bright. Zumpuses are tumpuses. Each tumpus is happy. Each tumpus is a jompus. Jompuses are large. Every jompus is an impus. Impuses are cold. Impuses are dumpuses. Dumpuses are angry. Each dumpus is a yumpus. Each yumpus is not orange. Every wumpus is not angry. Yumpuses are numpuses. Rex is a zumpus.\n\nIs the following statement true or false? Rex is not angry.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

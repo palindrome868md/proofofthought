@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_71",
+  "question": "Given the following premises:\n\nIf a Leetcode problem is at the easy level, then its AC rate is lower than 20 percent. \nAll Leetcode problems that are recommended to novices are easy. \nA Leetode problem is either easy or hard.\nLeetcode problems that are starred by more than one thousand users are hard.\n2Sum is recommended to novices. \n4Sum is starred by more than 1,000 users.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: 2Sum has an AC rate higher than 20 percent.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

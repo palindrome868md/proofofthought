@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "LeetcodeProblem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "easy",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hard",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "recommended_to_novices",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "star_count",
+      "domain": [
+        "LeetcodeProblem"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "LeetcodeProblem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "LeetcodeProblem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Or(easy(p), hard(p)))",
+    "ForAll([p], Not(And(easy(p), hard(p))))",
+    "ForAll([p], Implies(recommended_to_novices(p), easy(p)))",
+    "ForAll([p], Implies(star_count(p) > 1000, hard(p)))",
+    "star_count(four_sum) > 1000",
+    "recommended_to_novices(two_sum)"
+  ],
+  "verifications": [
+    {
+      "name": "4Sum novice-recommended",
+      "constraint": "recommended_to_novices(four_sum)"
+    }
+  ]
+}

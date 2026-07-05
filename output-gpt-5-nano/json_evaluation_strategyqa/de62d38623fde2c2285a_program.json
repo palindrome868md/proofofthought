@@ -1,0 +1,16 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Week is enough to watch Ugly Betty",
+      "constraint": "85 * 42 <= 7 * 24 * 60"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

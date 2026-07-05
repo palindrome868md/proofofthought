@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "injured_during_service",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "afcs_eligibility",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "john_smith"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "injured_during_service(john_smith)",
+    "afcs_eligibility(john_smith)"
+  ],
+  "verifications": [
+    {
+      "name": "Can John Smith claim compensation for injury suffered during service",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(injured_during_service(p), afcs_eligibility(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

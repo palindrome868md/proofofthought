@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "days_missing",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_sufficient_interest",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_guardianship_finance",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "applicant",
+      "sort": "Person"
+    },
+    {
+      "name": "missing",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([applicant, missing], Implies(And(has_sufficient_interest(applicant, missing), days_missing(missing) >= 90), can_guardianship_finance(applicant, missing)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Guardian finances possible for missing business partner",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Person"
+        },
+        {
+          "name": "m",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(has_sufficient_interest(a, m), days_missing(m) >= 90, can_guardianship_finance(a, m))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

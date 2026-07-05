@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "dave",
+        "fiona"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "green(bob)",
+    "rough(bob)",
+    "smart(bob)",
+    "big(dave)",
+    "blue(dave)",
+    "quiet(dave)",
+    "smart(dave)",
+    "rough(fiona)",
+    "smart(fiona)",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Person\"}], Implies(And(smart(x), big(x)), blue(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Person\"}], Implies(smart(x), furry(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Person\"}], Implies(And(rough(x), green(x)), big(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Person\"}], Implies(And(green(x), rough(x)), smart(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Person\"}], Implies(And(blue(x), rough(x)), quiet(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Person\"}], Implies(quiet(x), big(x)))",
+    "ForAll([{\"name\": \"x\", \"sort\": \"Person\"}], Implies(big(x), furry(x)))",
+    "Implies(And(blue(bob), smart(bob)), big(bob))"
+  ],
+  "verifications": [
+    {
+      "name": "Bob not furry",
+      "constraint": "Not(furry(bob))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "see",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "like",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "cow",
+        "lion",
+        "mouse"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "kind(bald_eagle)",
+    "blue(cow)",
+    "chases(lion, mouse)",
+    "chases(mouse, lion)",
+    "ForAll([x], Implies(chases(x, mouse), Not(rough(mouse))))",
+    "ForAll([x], Implies(see(x, mouse), chases(x, cow)))",
+    "ForAll([x], Implies(kind(x), cold(x)))",
+    "ForAll([x], Implies(cold(x), like(x, lion)))",
+    "ForAll([x], Implies(And(chases(x, lion), Not(see(x, mouse))), Not(kind(x))))",
+    "ForAll([x], Implies(like(x, lion), chases(lion, cow)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bald eagle does not like the lion",
+      "constraint": "Not(like(bald_eagle, lion))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

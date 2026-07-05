@@ -1,0 +1,144 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Stella"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "impus(Stella)",
+    "ForAll([x], Implies(impus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), bright(x)))",
+    "ForAll([x], Implies(jompus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), shy(x)))",
+    "ForAll([x], Implies(impus(x), small(x)))",
+    "ForAll([x], Implies(dumpus(x), numpus(x)))",
+    "ForAll([x], Implies(yumpus(x), temperate(x)))",
+    "ForAll([x], Implies(wumpus(x), amenable(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Stella not shy",
+      "constraint": "Not(shy(Stella))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alan",
+        "dave",
+        "gary",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_round(alan)",
+    "is_kind(alan)",
+    "is_round(dave)",
+    "is_kind(dave)",
+    "is_young(gary)",
+    "is_round(gary)",
+    "is_cold(gary)",
+    "is_rough(harry)",
+    "is_green(harry)",
+    "is_cold(harry)",
+    "is_nice(harry)",
+    "ForAll([x], Implies(is_red(x), is_kind(x)))",
+    "ForAll([x], Implies(is_red(x), is_young(x)))",
+    "ForAll([x], Implies(And(is_young(x), is_rough(x), is_round(x)), is_kind(x)))",
+    "ForAll([x], Implies(And(is_nice(x), is_rough(x)), is_big(x)))",
+    "ForAll([x], Implies(And(is_big(x), is_round(x)), is_red(x)))",
+    "ForAll([x], Implies(And(is_cold(x), is_rough(x), is_red(x)), is_kind(x)))",
+    "ForAll([x], Implies(And(is_young(x), is_big(x), is_rough(x)), is_round(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry big",
+      "constraint": "is_big(harry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

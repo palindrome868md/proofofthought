@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D3-1318",
+  "question": "Bob is cold. Charlie is quiet. Erin is quiet. Harry is big. All big, round things are green. Cold, red things are green. White, cold things are big. Cold things are big. If something is big then it is red. If something is red and not white then it is not round.\n\nQuestion: Harry is not big.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

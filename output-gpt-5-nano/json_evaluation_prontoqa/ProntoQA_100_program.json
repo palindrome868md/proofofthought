@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "numpuses": {
+      "sort": "Numpus",
+      "members": [
+        "alex"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "numpus(alex)",
+    "blue(alex)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Alex blue",
+      "constraint": "blue(alex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

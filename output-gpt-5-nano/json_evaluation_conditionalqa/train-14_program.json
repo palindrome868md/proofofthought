@@ -1,0 +1,28 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {
+    "grounds": {
+      "sort": "BoolSort",
+      "members": [
+        "unreasonable_behaviour_can_be_ground"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "unreasonable_behaviour_can_be_ground",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Can I end the civil partnership using unreasonable behaviour as ground",
+      "constraint": "unreasonable_behaviour_can_be_ground"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

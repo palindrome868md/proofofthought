@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "EnumSort",
+      "values": [
+        "Scotland",
+        "England",
+        "Wales"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "remote_witnessing_allowed",
+      "domain": [
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "Scotland",
+        "England",
+        "Wales"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "remote_witnessing_allowed(Scotland) == False",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Remote witnessing not allowed in Scotland",
+      "constraint": "remote_witnessing_allowed(Scotland)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "a60e5f73700b47a5f34a",
+  "question": "Does rock star Keith Richards play a captain of a boat in a movie?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

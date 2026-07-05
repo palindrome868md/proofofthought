@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "in_regular_employment",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "retirement_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "reduced_earnings_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age(you) >= 66",
+    "Not(in_regular_employment(you))",
+    "Implies(And(age(you) >= 66, Not(in_regular_employment(you))), retirement_allowance(you))",
+    "Implies(retirement_allowance(you), Not(reduced_earnings_allowance(you)))"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for Reduced Earnings Allowance after turning 66",
+      "constraint": "reduced_earnings_allowance(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_czech",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "published_in_year",
+      "domain": [
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_choral_conductor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_musician",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "miroslav_venhoda"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_czech(miroslav_venhoda)",
+    "published_in_year(miroslav_venhoda, 1946)",
+    "is_choral_conductor(miroslav_venhoda)",
+    "ForAll([p], Implies(is_choral_conductor(p), is_musician(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Czech published a book in 1946",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_czech(x), published_in_year(x, 1946))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

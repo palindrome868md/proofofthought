@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_91",
+  "question": "Numpuses are spicy. Dumpuses are not small. Each numpus is a yumpus. Yumpuses are not opaque. Every yumpus is a wumpus. Wumpuses are floral. Each wumpus is a tumpus. Tumpuses are cold. Each tumpus is a vumpus. Vumpuses are not bright. Each vumpus is an impus. Impuses are nervous. Each impus is a jompus. Jompuses are mean. Jompuses are zumpuses. Zumpuses are small. Zumpuses are rompuses. Wren is a tumpus.\n\nIs the following statement true or false? Wren is not small.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,130 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "rompus(wren)",
+    "ForAll([p], Implies(rompus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), nervous(p)))",
+    "ForAll([p], Implies(yumpus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), Not(blue(p))))",
+    "ForAll([p], Implies(jompus(p), impus(p)))",
+    "ForAll([p], Implies(impus(p), bright(p)))",
+    "ForAll([p], Implies(impus(p), numpus(p)))",
+    "ForAll([p], Implies(numpus(p), earthy(p)))",
+    "ForAll([p], Implies(numpus(p), vumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), Not(earthy(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Wren not earthy",
+      "constraint": "Not(earthy(wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

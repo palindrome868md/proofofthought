@@ -1,0 +1,33 @@
+{
+  "sorts": [
+    {
+      "name": "Geographer",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "uses_biochemistry_in_work",
+      "domain": [
+        "Geographer"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Existence of a Geographer who uses biochemistry in their work",
+      "exists": [
+        {
+          "name": "g",
+          "sort": "Geographer"
+        }
+      ],
+      "constraint": "uses_biochemistry_in_work(g)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

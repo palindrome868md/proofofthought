@@ -1,0 +1,11 @@
+{
+  "sample_id": "8716b85472632d6e200e",
+  "question": "Is Disneyland Paris the largest Disney resort?",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

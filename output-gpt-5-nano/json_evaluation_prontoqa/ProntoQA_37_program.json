@@ -1,0 +1,160 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sweet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(impuse(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), dumpuse(p)))",
+    "ForAll([p], Implies(dumpuse(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), wooden(p)))",
+    "ForAll([p], Implies(zumpus(p), vumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), large(p)))",
+    "ForAll([p], Implies(vumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), transparent(p)))",
+    "ForAll([p], Implies(yumpus(p), numpus(p)))",
+    "ForAll([p], Implies(numpus(p), brown(p)))",
+    "ForAll([p], Implies(numpus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), sweet(p)))",
+    "ForAll([p], Implies(tumpus(p), jompus(p)))",
+    "zumpus(wren)",
+    "ForAll([p], Implies(impuse(p), Not(fruity(p))))",
+    "ForAll([p], Implies(wumpus(p), Not(temperate(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Wren is sweet",
+      "constraint": "sweet(wren)"
+    }
+  ]
+}

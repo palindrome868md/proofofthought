@@ -1,0 +1,84 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Alex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "rompus(Alex)",
+    "ForAll([x], Implies(rompus(x), impuse(x)))",
+    "ForAll([x], Implies(impuse(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), Not(feisty(x))))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Alex not feisty",
+      "constraint": "Not(feisty(Alex))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

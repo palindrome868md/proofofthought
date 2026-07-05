@@ -1,0 +1,41 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "automatic_authorisation",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    },
+    {
+      "name": "aunt",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Not(automatic_authorisation(you, aunt))"
+  ],
+  "verifications": [
+    {
+      "name": "Automatic authorisation for appointee",
+      "constraint": "automatic_authorisation(you, aunt)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

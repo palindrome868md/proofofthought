@@ -1,0 +1,46 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_active_deputy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_to_apply_refund",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "clients": {
+      "sort": "Person",
+      "members": [
+        "client"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_active_deputy(client)",
+    "Not(needs_to_apply_refund(client))"
+  ],
+  "variables": [],
+  "verifications": [
+    {
+      "name": "No need to apply for Deputyship refund for active deputy",
+      "constraint": "Not(needs_to_apply_refund(client))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

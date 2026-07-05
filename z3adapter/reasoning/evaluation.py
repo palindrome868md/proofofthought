@@ -6,6 +6,7 @@ import os
 from concurrent.futures import as_completed
 from dataclasses import dataclass, field
 from typing import Any
+from pathlib import Path
 
 import numpy as np
 from sklearn.metrics import (
@@ -25,6 +26,7 @@ class EvaluationMetrics:
     """Evaluation metrics for reasoning tasks."""
 
     accuracy: float
+    accuracy_including_failed: float
     precision: float
     recall: float
     f1_score: float
@@ -151,6 +153,7 @@ class EvaluationPipeline:
         id_field: str | None = None,
         max_samples: int | None = None,
         skip_existing: bool = True,
+        dataset_name: str = "unspecified dataset name",
     ) -> EvaluationResult:
         """Evaluate on a dataset.
 
@@ -288,17 +291,36 @@ class EvaluationPipeline:
         metrics = self._calculate_metrics(y_true, y_pred, correct, wrong, failed)
 
         # Log final results
-        logger.info("=" * 80)
-        logger.info("FINAL EVALUATION RESULTS")
-        logger.info("=" * 80)
+        logger.info("=" * 70)
+        logger.info(f"{dataset_name} FINAL EVALUATION RESULTS Using Model {self.pot.model}")
+        logger.info("=" * 70)
         logger.info(f"Total samples: {len(dataset_list)}")
         logger.info(f"Correct: {correct}")
         logger.info(f"Wrong: {wrong}")
         logger.info(f"Failed: {failed}")
+        logger.info("")
         logger.info(f"Accuracy: {metrics.accuracy:.2%}")
+        logger.info(f"Accuracy including Failed: {metrics.accuracy_including_failed:.2%}")
         logger.info(f"Precision: {metrics.precision:.4f}")
         logger.info(f"Recall: {metrics.recall:.4f}")
         logger.info(f"F1 Score: {metrics.f1_score:.4f}")
+        logger.info("")
+        logger.info(f"True Positives: {metrics.tp}")
+        logger.info(f"True Negatives: {metrics.tn}")
+        logger.info(f"False Positives: {metrics.fp}")
+        logger.info(f"False Negatives: {metrics.fn}")
+        logger.info("")
+        eval_output_dir = Path(f"output/{self.pot.backend_type}_evaluation_{dataset_name}")
+        attempts = []
+        for result_file in eval_output_dir.glob("*_result.json"):
+            with open(result_file) as f:
+                data = json.load(f)
+            if data.get("num_attempts") is not None:
+                attempts.append(data["num_attempts"])
+        total_attempts = sum(attempts)
+        avg_attempts = total_attempts / len(attempts) if attempts else 0.0
+        logger.info(f"Total Attempts from cached result folder: {total_attempts}")
+        logger.info("=" * 70)
 
         return EvaluationResult(metrics=metrics, results=results, y_true=y_true, y_pred=y_pred)
 
@@ -321,6 +343,7 @@ class EvaluationPipeline:
             # No successful predictions
             return EvaluationMetrics(
                 accuracy=0.0,
+                accuracy_including_failed=0.0,
                 precision=0.0,
                 recall=0.0,
                 f1_score=0.0,
@@ -380,6 +403,7 @@ class EvaluationPipeline:
 
         return EvaluationMetrics(
             accuracy=accuracy,
+            accuracy_including_failed=(correct)/(correct+wrong+failed),
             precision=precision,
             recall=recall,
             f1_score=f1,

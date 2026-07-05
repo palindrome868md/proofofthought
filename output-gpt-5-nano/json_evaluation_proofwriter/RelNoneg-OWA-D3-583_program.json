@@ -1,0 +1,103 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cow",
+        "bald_eagle",
+        "rabbit",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "red(bald_eagle)",
+    "green(cow)",
+    "likes(cow, bald_eagle)",
+    "likes(cow, rabbit)",
+    "visits(cow, bald_eagle)",
+    "visits(cow, rabbit)",
+    "likes(rabbit, cow)",
+    "sees(rabbit, tiger)",
+    "visits(rabbit, tiger)",
+    "red(tiger)",
+    "visits(tiger, cow)",
+    "visits(tiger, rabbit)",
+    "ForAll([p], Implies(visits(p, rabbit), red(p)))",
+    "ForAll([p], Implies(And(sees(p, bald_eagle), visits(bald_eagle, cow)), sees(p, cow)))",
+    "ForAll([p], Implies(red(p), kind(p)))",
+    "ForAll([v], Implies(And(sees(v, tiger), sees(tiger, rabbit)), green(v)))",
+    "ForAll([p], Implies(kind(p), sees(p, bald_eagle)))",
+    "ForAll([r], Implies(green(r), red(r)))",
+    "ForAll([p], Implies(red(p), sees(p, rabbit)))",
+    "ForAll([p], Implies(And(likes(p, cow), likes(p, bald_eagle)), sees(cow, rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cow does not visit bald_eagle",
+      "constraint": "Not(visits(cow, bald_eagle))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D5-392",
+  "question": "The bald eagle likes the mouse. The mouse likes the bald eagle. The rabbit likes the mouse. The tiger chases the mouse. The tiger chases the rabbit. The tiger is big. The tiger sees the bald eagle. If the rabbit likes the tiger and the tiger sees the bald eagle then the rabbit is rough. If someone sees the rabbit then the rabbit likes the tiger. If someone likes the bald eagle and the bald eagle likes the rabbit then the rabbit is big. If someone likes the bald eagle then the bald eagle is rough. If the mouse chases the rabbit then the rabbit chases the tiger. If the rabbit sees the bald eagle then the bald eagle chases the rabbit. If someone is young and they chase the mouse then they see the mouse. If someone likes the mouse and they are rough then they see the rabbit.\n\nQuestion: The rabbit does not like the mouse.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

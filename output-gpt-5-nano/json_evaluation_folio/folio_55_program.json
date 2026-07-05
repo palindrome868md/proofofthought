@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Club",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Position",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "played_as",
+      "domain": [
+        "Person",
+        "Position"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "for_club",
+      "domain": [
+        "Person",
+        "Club"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "thomas_barber"
+      ]
+    },
+    "clubs": {
+      "sort": "Club",
+      "members": [
+        "aston_villa"
+      ]
+    },
+    "positions": {
+      "sort": "Position",
+      "members": [
+        "halfback",
+        "inside_left"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "played_as(thomas_barber, halfback)",
+    "played_as(thomas_barber, inside_left)",
+    "for_club(thomas_barber, aston_villa)"
+  ],
+  "verifications": [
+    {
+      "name": "Thomas Barber played as inside_left",
+      "constraint": "played_as(thomas_barber, inside_left)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

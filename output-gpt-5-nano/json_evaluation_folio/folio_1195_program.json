@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "subscribes_AMC_AList",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribes_HBO",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "go_to_cinema_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watch_TV_series_in_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_three_movies_no_fee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_tv_series_to_movies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_tv_series",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "family_members": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(subscribes_AMC_AList(p), eligible_three_movies_no_fee(p)))",
+    "Exists([p], go_to_cinema_weekly(p))",
+    "ForAll([p], Or(subscribes_AMC_AList(p), subscribes_HBO(p)))",
+    "ForAll([p], Implies(prefers_tv_series(p), Not(watch_TV_series_in_cinema(p))))",
+    "ForAll([p], Implies(subscribes_HBO(p), prefers_tv_series_to_movies(p)))",
+    "watch_TV_series_in_cinema(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Lily: If Lily does not both go to cinemas weekly and subscribe to HBO, then Lily is either eligible for 3 movies no fee or she prefers TV series to movies",
+      "constraint": "Not(Implies(Not(And(go_to_cinema_weekly(lily), subscribes_HBO(lily))), Or(eligible_three_movies_no_fee(lily), prefers_tv_series_to_movies(lily))))"
+    }
+  ]
+}

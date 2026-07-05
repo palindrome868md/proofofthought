@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Service",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "subscribes",
+      "domain": [
+        "Person",
+        "Service"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watches_tv_series_in_cinema",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_tv_series",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_family",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_three_free",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "family": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    },
+    "services": {
+      "sort": "Service",
+      "members": [
+        "AMC_AList",
+        "HBO"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(in_family(p), subscribes(p, AMC_AList)), eligible_three_free(p)))",
+    "Exists([x], And(in_family(x), goes_weekly(x)))",
+    "ForAll([p], Implies(in_family(p), Or(subscribes(p, AMC_AList), subscribes(p, HBO))))",
+    "ForAll([p], Implies(And(in_family(p), prefers_tv_series(p)), Not(watches_tv_series_in_cinema(p))))",
+    "ForAll([p], Implies(And(in_family(p), subscribes(p, HBO)), prefers_tv_series(p)))",
+    "in_family(lily)",
+    "watches_tv_series_in_cinema(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Lily goes to cinemas every week or watches 3 movies every week without any additional fees",
+      "constraint": "Or(goes_weekly(lily), eligible_three_free(lily))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

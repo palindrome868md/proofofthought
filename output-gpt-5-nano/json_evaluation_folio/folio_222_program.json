@@ -1,0 +1,78 @@
+{
+  "sorts": [
+    {
+      "name": "Species",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_species_of",
+      "domain": [
+        "Species"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in",
+      "domain": [
+        "Species",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "species": {
+      "sort": "Species",
+      "members": [
+        "ambiortus_dementjevi"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "mongolia"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_species_of(ambiortus_dementjevi)",
+    "lives_in(ambiortus_dementjevi, mongolia)"
+  ],
+  "rules": [
+    {
+      "name": "Only Ambiortus species is ambiortus_dementjevi",
+      "forall": [
+        {
+          "name": "s",
+          "sort": "Species"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_species_of(s)",
+        "consequent": "s == ambiortus_dementjevi"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Exists Ambiortus species not living in Mongolia",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Species"
+        }
+      ],
+      "constraint": "And(is_species_of(s), Not(lives_in(s, mongolia)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

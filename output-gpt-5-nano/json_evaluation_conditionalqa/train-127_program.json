@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_obtain_maintenance_order",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "child1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "can_obtain_maintenance_order(me, child1)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "There exists a court order that can be obtained for child maintenance",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "Child"
+        }
+      ],
+      "constraint": "can_obtain_maintenance_order(p, c)"
+    }
+  ],
+  "Actions": [
+    "verify_conditions"
+  ]
+}

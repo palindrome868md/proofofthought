@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D0-3926",
+  "question": "Bob is not big. Bob is furry. Bob is green. Bob is rough. Bob is round. Bob is smart. Bob is not white. Dave is big. Dave is furry. Dave is green. Dave is rough. Dave is not round. Dave is not smart. Dave is white. Smart, white things are big. If Dave is white then Dave is big. If something is white and not big then it is round. Big, white things are not round. If something is big and smart then it is round. If something is white then it is furry. If something is round and rough then it is furry. If Dave is round and Dave is green then Dave is furry.\n\nQuestion: Bob is white.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

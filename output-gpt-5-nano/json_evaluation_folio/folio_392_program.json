@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "story_count",
+      "domain": [
+        "Building"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "built_year",
+      "domain": [
+        "Building"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "emmet_building",
+        "blake_mcfall_building"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "emmet_building == blake_mcfall_building",
+    "story_count(emmet_building) == 5",
+    "built_year(emmet_building) == 1915"
+  ],
+  "verifications": [
+    {
+      "name": "Exists a five-story building built in 1915",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Building"
+        }
+      ],
+      "constraint": "And(story_count(x) == 5, built_year(x) == 1915, emmet_building == x)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

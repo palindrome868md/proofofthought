@@ -1,0 +1,110 @@
+{
+  "sorts": [
+    {
+      "name": "App",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_social_media",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_chat",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_video",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_software",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_computer_program",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_addictive",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ideal_for_pretens",
+      "domain": [
+        "App"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "apps": {
+      "sort": "App",
+      "members": [
+        "tiktok"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_social_media(tiktok)",
+    "has_chat(tiktok)",
+    "Not(ideal_for_pretens(tiktok))"
+  ],
+  "rules": [
+    {
+      "name": "Social with chat implies software",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "App"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_social_media(a), has_chat(a))",
+        "consequent": "is_software(a)"
+      }
+    },
+    {
+      "name": "Software and social imply computer program",
+      "forall": [
+        {
+          "name": "a",
+          "sort": "App"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_software(a), is_social_media(a))",
+        "consequent": "is_computer_program(a)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "TikTok is a computer program",
+      "constraint": "is_computer_program(tiktok)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

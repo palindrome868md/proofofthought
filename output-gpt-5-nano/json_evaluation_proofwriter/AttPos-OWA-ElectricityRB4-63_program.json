@@ -1,0 +1,173 @@
+{
+  "sorts": [
+    {
+      "name": "Battery",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Switch",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wire",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Circuit",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Bell",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "LightBulb",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Radio",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "flat",
+      "domain": [
+        "Battery"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "switch_on",
+      "domain": [
+        "Switch"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_metal",
+      "domain": [
+        "Wire"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "conducting",
+      "domain": [
+        "Wire"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "includes",
+      "domain": [
+        "Circuit",
+        "Bell"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "powered",
+      "domain": [
+        "Circuit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "complete",
+      "domain": [
+        "Circuit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "current_runs_through",
+      "domain": [
+        "Circuit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "glowing",
+      "domain": [
+        "LightBulb"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ringing",
+      "domain": [
+        "Bell"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "playing",
+      "domain": [
+        "Radio"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "batteries": {
+      "sort": "Battery",
+      "members": [
+        "battery1"
+      ]
+    },
+    "switches": {
+      "sort": "Switch",
+      "members": [
+        "switch1"
+      ]
+    },
+    "wires": {
+      "sort": "Wire",
+      "members": [
+        "wire1"
+      ]
+    },
+    "circuits": {
+      "sort": "Circuit",
+      "members": [
+        "circuit1"
+      ]
+    },
+    "bells": {
+      "sort": "Bell",
+      "members": [
+        "bell1"
+      ]
+    },
+    "lights": {
+      "sort": "LightBulb",
+      "members": [
+        "lightbulb1"
+      ]
+    },
+    "radios": {
+      "sort": "Radio",
+      "members": [
+        "radio1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "flat(battery1)",
+    "switch_on(switch1)",
+    "is_metal(wire1)",
+    "includes(circuit1, bell1)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Switch is on",
+      "constraint": "switch_on(switch1)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

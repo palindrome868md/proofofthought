@@ -1,0 +1,46 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "green",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "cow"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "green(cow)",
+    "Implies(green(cow), big(cow))"
+  ],
+  "verifications": [
+    {
+      "name": "Cow is big",
+      "constraint": "big(cow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

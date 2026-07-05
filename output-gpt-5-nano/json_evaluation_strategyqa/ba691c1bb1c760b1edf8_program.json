@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Flower",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "allergic_to",
+      "domain": [
+        "Person",
+        "Flower"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "the_little_prince"
+      ]
+    },
+    "flowers": {
+      "sort": "Flower",
+      "members": [
+        "rose"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(allergic_to(the_little_prince, rose))"
+  ],
+  "variables": [],
+  "verifications": [
+    {
+      "name": "Little Prince allergic to rose",
+      "constraint": "allergic_to(the_little_prince, rose)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "sorts": [
+    {
+      "name": "Creature",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "aggressive",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompuse",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Creature",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Creature"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(jompus(p), Not(shy(p))))",
+    "ForAll([p], Implies(jompus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), aggressive(p)))",
+    "ForAll([p], Implies(yumpus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), Not(wooden(p))))",
+    "ForAll([p], Implies(dumpus(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), red(p)))",
+    "ForAll([p], Implies(wumpus(p), impus(p)))",
+    "ForAll([p], Implies(impus(p), opaque(p)))",
+    "ForAll([p], Implies(impus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), Not(sour(p))))",
+    "ForAll([p], Implies(tumpus(p), vumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), earthy(p)))",
+    "ForAll([p], Implies(vumpus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), small(p)))",
+    "ForAll([p], Implies(zumpus(p), rompuse(p)))",
+    "ForAll([p], Implies(numpus(p), sour(p)))",
+    "yumpus(Max)"
+  ],
+  "verifications": [
+    {
+      "name": "Max is sour",
+      "constraint": "sour(Max)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

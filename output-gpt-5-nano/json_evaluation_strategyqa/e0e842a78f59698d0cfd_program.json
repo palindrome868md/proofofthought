@@ -1,0 +1,36 @@
+{
+  "sorts": [
+    {
+      "name": "Tweet",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "haiku_in_tweet",
+      "domain": [
+        "Tweet"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can write a haiku in a single tweet",
+      "exists": [
+        {
+          "name": "t",
+          "sort": "Tweet"
+        }
+      ],
+      "constraint": "haiku_in_tweet(t)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

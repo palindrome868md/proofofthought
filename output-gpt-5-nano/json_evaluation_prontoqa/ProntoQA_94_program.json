@@ -1,0 +1,163 @@
+{
+  "sorts": [
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rompus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "angry",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpuses",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dumpus": {
+      "sort": "Dumpus",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "d",
+      "sort": "Dumpus"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([d], rompus(d))",
+    "ForAll([d], Implies(rompus(d), small(d)))",
+    "ForAll([d], Implies(rompus(d), jompus(d)))",
+    "ForAll([d], Implies(jompus(d), orange(d)))",
+    "ForAll([d], Implies(jompus(d), wumpus(d)))",
+    "ForAll([d], Implies(wumpus(d), earthy(d)))",
+    "ForAll([d], Implies(wumpus(d), zumpus(d)))",
+    "ForAll([d], Implies(zumpus(d), angry(d)))",
+    "ForAll([d], Implies(zumpus(d), vumpus(d)))",
+    "ForAll([d], Implies(vumpus(d), yumpus(d)))",
+    "ForAll([d], Implies(yumpus(d), Not(hot(d))))",
+    "ForAll([d], Implies(yumpus(d), impus(d)))",
+    "ForAll([d], Implies(impus(d), bright(d)))",
+    "ForAll([d], Implies(impus(d), numpuses(d)))",
+    "ForAll([d], Implies(vumpus(d), Not(spicy(d))))",
+    "ForAll([d], Implies(tumpus(d), Not(angry(d))))"
+  ],
+  "verifications": [
+    {
+      "name": "Max is angry",
+      "constraint": "angry(Max)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

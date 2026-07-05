@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Band",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "member_of",
+      "domain": [
+        "Person",
+        "Band"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_law_enforcement",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_arrest",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "andy_summers",
+        "sting",
+        "stewart_copeland"
+      ]
+    },
+    "bands": {
+      "sort": "Band",
+      "members": [
+        "the_police"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "member_of(andy_summers, the_police)",
+    "is_law_enforcement(andy_summers)",
+    "can_arrest(andy_summers)"
+  ],
+  "verifications": [
+    {
+      "name": "Could a member of The Police perform a lawful arrest",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(member_of(p, the_police), is_law_enforcement(p), can_arrest(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

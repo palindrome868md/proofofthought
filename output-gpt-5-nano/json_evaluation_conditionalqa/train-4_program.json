@@ -1,0 +1,69 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earnings_per_week",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "shares_responsibility",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "employed_weeks",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "employed_by_same_employer",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Exist two fully eligible SPL/ShPP candidates when both work full time",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "q",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_employee(p), is_employee(q), p != q, shares_responsibility(p,q), shares_responsibility(q,p), earnings_per_week(p) >= 120, earnings_per_week(q) >= 120, employed_weeks(p) >= 26, employed_weeks(q) >= 26, employed_by_same_employer(p,q))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

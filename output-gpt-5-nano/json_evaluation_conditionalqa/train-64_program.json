@@ -1,0 +1,36 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_claim_compensation",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "can_claim_compensation(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Can I still claim compensation",
+      "constraint": "can_claim_compensation(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

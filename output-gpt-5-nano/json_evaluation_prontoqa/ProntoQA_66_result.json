@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_66",
+  "question": "Impuses are not large. Each impus is a yumpus. Yumpuses are floral. Yumpuses are jompuses. Jompuses are not transparent. Each jompus is a wumpus. Every wumpus is nervous. Wumpuses are vumpuses. Rompuses are not sweet. Each vumpus is hot. Vumpuses are tumpuses. Every tumpus is mean. Tumpuses are numpuses. Numpuses are dull. Numpuses are zumpuses. Zumpuses are sweet. Zumpuses are dumpuses. Sam is a wumpus.\n\nIs the following statement true or false? Sam is not sweet.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

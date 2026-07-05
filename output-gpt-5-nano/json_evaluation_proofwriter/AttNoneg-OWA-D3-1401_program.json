@@ -1,0 +1,92 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "charlie",
+        "dave",
+        "erin"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "cold(charlie)",
+    "furry(charlie)",
+    "green(charlie)",
+    "red(charlie)",
+    "round(charlie)",
+    "smart(charlie)",
+    "white(charlie)",
+    "cold(dave)",
+    "green(dave)",
+    "furry(erin)",
+    "Implies(green(dave), round(dave))"
+  ],
+  "verifications": [
+    {
+      "name": "Dave is round",
+      "constraint": "round(dave)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

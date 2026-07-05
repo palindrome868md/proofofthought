@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Song",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "top_billboard_song",
+      "domain": [
+        "Person"
+      ],
+      "range": "Song"
+    },
+    {
+      "name": "collaborates_with",
+      "domain": [
+        "Song",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lil_jon",
+        "jadakiss",
+        "styles_p",
+        "sheek_louch"
+      ]
+    },
+    "songs": {
+      "sort": "Song",
+      "members": [
+        "yeah_lox_collab",
+        "yeah",
+        "turn_down_for_what"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "top_billboard_song(lil_jon) == yeah_lox_collab",
+    {
+      "assertion": "collaborates_with(yeah_lox_collab, jadakiss)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Lil Jon's top Billboard song is a collaboration with a LOX member",
+      "constraint": "Or(collaborates_with(top_billboard_song(lil_jon), jadakiss), collaborates_with(top_billboard_song(lil_jon), styles_p), collaborates_with(top_billboard_song(lil_jon), sheek_louch))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

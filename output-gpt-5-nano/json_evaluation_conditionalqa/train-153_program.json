@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_registered_blind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_certificate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_blind_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "sisters": {
+      "sort": "Person",
+      "members": [
+        "sister_case"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_registered_blind(sister_case)",
+    "has_certificate(sister_case)",
+    "ForAll([], Implies(And(is_registered_blind(sister_case), has_certificate(sister_case)), eligible_blind_allowance(sister_case)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can Sister Claim Blind Person's Allowance",
+      "constraint": "eligible_blind_allowance(sister_case)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

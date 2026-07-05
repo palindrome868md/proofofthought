@@ -1,0 +1,11 @@
+{
+  "sample_id": "ed6d9f875c9787e1817c",
+  "question": "Could George Washington's own speeches have been recorded live to a compact disc?",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

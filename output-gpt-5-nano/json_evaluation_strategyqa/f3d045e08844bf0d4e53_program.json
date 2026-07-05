@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Artwork",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "License",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "license_sold_to",
+      "domain": [
+        "Person",
+        "Artwork",
+        "License"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "alice_smith"
+      ]
+    },
+    "artworks": {
+      "sort": "Artwork",
+      "members": [
+        "birth_of_venus"
+      ]
+    },
+    "licenses": {
+      "sort": "License",
+      "members": [
+        "creative_commons_license"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "license_sold_to(alice_smith, birth_of_venus, creative_commons_license)"
+  ],
+  "verifications": [
+    {
+      "name": "CC License Sold for Birth of Venus",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "license_sold_to(p, birth_of_venus, creative_commons_license)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

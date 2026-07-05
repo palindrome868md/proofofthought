@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dementia",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "distressed_about_visits",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "one_off_decision_can_stop_visits",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "mother",
+      "sort": "Person"
+    },
+    {
+      "name": "partner",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "dementia(mother)",
+    "distressed_about_visits(mother, partner)",
+    "one_off_decision_can_stop_visits(mother, partner)"
+  ],
+  "verifications": [
+    {
+      "name": "Can court issue a one-off decision to stop visits",
+      "constraint": "one_off_decision_can_stop_visits(mother, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

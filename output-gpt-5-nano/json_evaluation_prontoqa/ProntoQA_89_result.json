@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_89",
+  "question": "Tumpuses are sour. Each tumpus is a vumpus. Vumpuses are bright. Each vumpus is a numpus. Each rompus is not brown. Each numpus is liquid. Numpuses are impuses. Impuses are not small. Impuses are jompuses. Jompuses are brown. Jompuses are yumpuses. Max is a tumpus.\n\nIs the following statement true or false? Max is not brown.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

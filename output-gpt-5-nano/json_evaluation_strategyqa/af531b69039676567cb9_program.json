@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Substance",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "associated_with_thanksgiving",
+      "domain": [
+        "Substance"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "substances": {
+      "sort": "Substance",
+      "members": [
+        "menthol"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is Menthol associated with Thanksgiving",
+      "constraint": "associated_with_thanksgiving(menthol)"
+    }
+  ],
+  "optimization": null,
+  "actions": [
+    "verify_conditions"
+  ]
+}

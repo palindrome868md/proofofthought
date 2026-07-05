@@ -1,0 +1,161 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "metallic",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "d",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([d], Implies(dumpus(d), rompus(d)))",
+    "ForAll([d], Implies(rompus(d), yumpus(d)))",
+    "ForAll([d], Implies(yumpus(d), brown(d)))",
+    "ForAll([d], Implies(yumpus(d), vumpus(d)))",
+    "ForAll([d], Implies(vumpus(d), numpus(d)))",
+    "ForAll([d], Implies(numpus(d), Not(temperate(d))))",
+    "ForAll([d], Implies(numpus(d), zumpus(d)))",
+    "ForAll([d], Implies(zumpus(d), metallic(d)))",
+    "ForAll([d], Implies(zumpus(d), jompus(d)))",
+    "ForAll([d], Implies(jompus(d), Not(fruity(d))))",
+    "ForAll([d], Implies(jompus(d), tumpus(d)))",
+    "ForAll([d], Implies(tumpus(d), opaque(d)))",
+    "ForAll([d], Implies(tumpus(d), wumpus(d)))",
+    "yumpus(sam)"
+  ],
+  "verifications": [
+    {
+      "name": "Is Sam fruity",
+      "constraint": "fruity(sam)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

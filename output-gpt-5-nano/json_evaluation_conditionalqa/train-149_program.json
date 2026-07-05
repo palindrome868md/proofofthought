@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "major_disagreement",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "one_off_stop_visit_decision",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "family": {
+      "sort": "Person",
+      "members": [
+        "sister",
+        "father"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "v",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "major_disagreement(sister, father)",
+    "ForAll([v], Implies(major_disagreement(v, father), one_off_stop_visit_decision(v, father)))"
+  ],
+  "verifications": [
+    {
+      "name": "Stop sister from visiting father",
+      "constraint": "one_off_stop_visit_decision(sister, father)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

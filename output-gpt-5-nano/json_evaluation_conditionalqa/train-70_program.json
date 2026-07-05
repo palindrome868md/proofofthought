@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "BankAccount",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "belongs_to",
+      "domain": [
+        "BankAccount",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_pay_iht_from_account",
+      "domain": [
+        "BankAccount"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "deceased": {
+      "sort": "Person",
+      "members": [
+        "deceased_father"
+      ]
+    },
+    "accounts": {
+      "sort": "BankAccount",
+      "members": [
+        "father_account_1",
+        "father_account_2"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "belongs_to(father_account_1, deceased_father)",
+    "belongs_to(father_account_2, deceased_father)",
+    "can_pay_iht_from_account(father_account_1)"
+  ],
+  "verifications": [
+    {
+      "name": "Pay Inheritance Tax from Deceased Father's Account Possible",
+      "exists": [
+        {
+          "name": "acct",
+          "sort": "BankAccount"
+        }
+      ],
+      "constraint": "And(belongs_to(acct, deceased_father), can_pay_iht_from_account(acct))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

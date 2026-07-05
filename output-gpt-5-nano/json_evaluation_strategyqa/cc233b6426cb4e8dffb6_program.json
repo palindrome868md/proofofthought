@@ -1,0 +1,37 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "born_near_washington_monument",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sean_connery"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(born_near_washington_monument(sean_connery))"
+  ],
+  "verifications": [
+    {
+      "name": "Original James Bond actor born near Washington Monument",
+      "constraint": "born_near_washington_monument(sean_connery)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

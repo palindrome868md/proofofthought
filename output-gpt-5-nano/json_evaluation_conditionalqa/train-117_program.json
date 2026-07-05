@@ -1,0 +1,81 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Condition",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_condition",
+      "domain": [
+        "Person",
+        "Condition"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "disability_affects_study",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_England",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "course_is_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "DSA_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    },
+    "conditions": {
+      "sort": "Condition",
+      "members": [
+        "asperger"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "has_condition(you, asperger)",
+    "lives_in_England(you)",
+    "course_is_eligible(you)",
+    "disability_affects_study(you)",
+    "Implies(And(has_condition(you, asperger), lives_in_England(you), course_is_eligible(you), disability_affects_study(you)), DSA_eligible(you))"
+  ],
+  "verifications": [
+    {
+      "name": "Asperger entitles in-England HND student to DSA",
+      "constraint": "DSA_eligible(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

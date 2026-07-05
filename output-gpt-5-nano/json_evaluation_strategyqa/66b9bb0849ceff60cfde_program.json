@@ -1,0 +1,36 @@
+{
+  "sorts": [
+    {
+      "name": "Plant",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_hepatitis",
+      "domain": [
+        "Plant"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "plants": {
+      "sort": "Plant",
+      "members": [
+        "dandelion"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Could a dandelion suffer from hepatitis",
+      "constraint": "has_hepatitis(dandelion)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

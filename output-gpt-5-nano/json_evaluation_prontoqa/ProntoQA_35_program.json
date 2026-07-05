@@ -1,0 +1,170 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "aggressive",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "jompus(Fae)",
+    "ForAll([x], Implies(zumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), Not(sour(x))))",
+    "ForAll([x], Implies(vumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), floral(x)))",
+    "ForAll([x], Implies(jompus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), transparent(x)))",
+    "ForAll([x], Implies(wumpus(x), impuse(x)))",
+    "ForAll([x], Implies(impuse(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), feisty(x)))",
+    "ForAll([x], Implies(numpus(x), Not(orange(x))))",
+    "ForAll([x], Implies(yumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), orange(x)))",
+    "ForAll([x], Implies(dumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), Not(aggressive(x))))",
+    "ForAll([x], Implies(rompus(x), tumpus(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Fae orange",
+      "constraint": "orange(Fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

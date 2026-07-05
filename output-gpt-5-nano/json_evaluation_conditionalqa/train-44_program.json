@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "civil_partner_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "Person"
+    },
+    {
+      "name": "copy_sent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "claimant",
+      "sort": "Person"
+    },
+    {
+      "name": "missing_person",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([claimant, missing_person], copy_sent(claimant, civil_partner_of(missing_person)))"
+  ],
+  "verifications": [
+    {
+      "name": "Send copies to civil partner",
+      "constraint": "copy_sent(claimant, civil_partner_of(missing_person))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

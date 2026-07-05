@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "dave"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Implies(cold(dave), quiet(dave))",
+    "Implies(quiet(dave), green(dave))",
+    "Implies(And(cold(dave), kind(dave)), furry(dave))",
+    "Implies(And(kind(dave), cold(dave)), big(dave))",
+    "Implies(And(cold(dave), green(dave)), blue(dave))",
+    "Implies(kind(dave), big(dave))",
+    "cold(dave)"
+  ],
+  "verifications": [
+    {
+      "name": "Dave is quiet",
+      "constraint": "quiet(dave)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

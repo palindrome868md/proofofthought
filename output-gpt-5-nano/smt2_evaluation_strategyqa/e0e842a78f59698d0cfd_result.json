@@ -1,0 +1,11 @@
+{
+  "sample_id": "e0e842a78f59698d0cfd",
+  "question": "Can you write a whole Haiku in a single tweet?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

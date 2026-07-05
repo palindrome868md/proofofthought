@@ -1,0 +1,140 @@
+{
+  "sorts": [
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dumpuses": {
+      "sort": "Dumpus",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Dumpus"
+    }
+  ],
+  "knowledge_base": [
+    "dumpus(sally)",
+    "ForAll([x], Implies(dumpus(x), amenable(x)))",
+    "ForAll([x], Implies(dumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), wooden(x)))",
+    "ForAll([x], Implies(tumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), bitter(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Sally bitter",
+      "constraint": "bitter(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

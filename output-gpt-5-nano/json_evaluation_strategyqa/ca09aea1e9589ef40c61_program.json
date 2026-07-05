@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Ship",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "well_preserved",
+      "domain": [
+        "Ship",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "ships": {
+      "sort": "Ship",
+      "members": [
+        "titanic"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "gulf_of_finland_bottom"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "well_preserved(titanic, gulf_of_finland_bottom)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Titanic well preserved at Gulf of Finland bottom",
+      "constraint": "well_preserved(titanic, gulf_of_finland_bottom)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

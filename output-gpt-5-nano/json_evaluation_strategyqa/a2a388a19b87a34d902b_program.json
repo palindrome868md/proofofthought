@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Kingdom",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "ruler_of",
+      "domain": [
+        "Person",
+        "Kingdom"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "elected_by_landowners",
+      "domain": [
+        "Person",
+        "Kingdom"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "kingdoms": {
+      "sort": "Kingdom",
+      "members": [
+        "hungary"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([p], Implies(ruler_of(p, hungary), elected_by_landowners(p, hungary)))"
+  ],
+  "verifications": [
+    {
+      "name": "All rulers of Hungary are elected by landowners",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "ruler_of(p, hungary)",
+        "consequent": "elected_by_landowners(p, hungary)"
+      }
+    }
+  ]
+}

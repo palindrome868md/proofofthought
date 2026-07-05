@@ -1,0 +1,118 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sweet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "wumpus(sam)",
+    "Implies(wumpus(sam), nervous(sam))",
+    "Implies(wumpus(sam), vumpus(sam))",
+    "Implies(vumpus(sam), hot(sam))",
+    "Implies(vumpus(sam), tumpus(sam))",
+    "Implies(tumpus(sam), mean(sam))",
+    "Implies(tumpus(sam), numpus(sam))",
+    "Implies(numpus(sam), dull(sam))",
+    "Implies(numpus(sam), zumpus(sam))",
+    "Implies(zumpus(sam), sweet(sam))",
+    "Implies(zumpus(sam), dumpus(sam))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam not sweet",
+      "constraint": "Not(sweet(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

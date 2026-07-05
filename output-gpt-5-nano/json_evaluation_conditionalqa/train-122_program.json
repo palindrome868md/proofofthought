@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_homeowner",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_qualifying_benefit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smi_covers_interest",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_homeowner(p), Implies(has_qualifying_benefit(p), smi_covers_interest(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Can I get SMI for mortgage interest",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_homeowner(p), has_qualifying_benefit(p), smi_covers_interest(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

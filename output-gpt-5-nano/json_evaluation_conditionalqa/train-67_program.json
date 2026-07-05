@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Region",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "spouse_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_lived_in_for_years",
+      "domain": [
+        "Person",
+        "Region",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "regions": {
+      "sort": "Region",
+      "members": [
+        "wales"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Civil partner can apply for declaration despite missing abroad",
+      "exists": [
+        {
+          "name": "claimant",
+          "sort": "Person"
+        },
+        {
+          "name": "missing_person",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(spouse_of(claimant, missing_person), has_lived_in_for_years(claimant, wales, 1))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

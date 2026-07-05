@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Artifact",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_item_in",
+      "domain": [
+        "City",
+        "Artifact"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "cities": {
+      "sort": "City",
+      "members": [
+        "karachi"
+      ]
+    },
+    "artifacts": {
+      "sort": "Artifact",
+      "members": [
+        "crucifix"
+      ]
+    }
+  },
+  "verifications": [
+    {
+      "name": "Crucifix in Karachi is possible",
+      "exists": [
+        {
+          "name": "i",
+          "sort": "Artifact"
+        }
+      ],
+      "constraint": "And(has_item_in(karachi, i), i == crucifix)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

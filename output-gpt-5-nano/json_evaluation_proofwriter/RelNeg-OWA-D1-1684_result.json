@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D1-1684",
+  "question": "The cow chases the rabbit. The cow eats the dog. The cow is red. The cow is round. The dog chases the cow. The dog chases the rabbit. The dog eats the mouse. The dog is kind. The mouse eats the cow. The rabbit does not chase the cow. The rabbit eats the cow. The rabbit is kind. If someone chases the cow then the cow eats the mouse. If the dog does not visit the cow then the dog is not round. If someone chases the cow then they chase the rabbit.\n\nQuestion: The cow eats the dog.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

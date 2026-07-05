@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "PapayaPart",
+      "type": "EnumSort",
+      "values": [
+        "center",
+        "flesh",
+        "seeds",
+        "rind"
+      ]
+    },
+    {
+      "name": "Papaya",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "best_tasting_part",
+      "domain": [
+        "Papaya"
+      ],
+      "range": "PapayaPart"
+    }
+  ],
+  "constants": {
+    "papayas": {
+      "sort": "Papaya",
+      "members": [
+        "papaya1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Best Tasting Part of Papaya",
+      "constraint": "best_tasting_part(papaya1) == center"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

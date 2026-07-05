@@ -1,0 +1,48 @@
+; Sorts and constants
+(declare-sort Person 0)
+(declare-const sam Person)
+
+; Predicates
+(declare-fun rompus (Person) Bool)
+(declare-fun zumpus (Person) Bool)
+(declare-fun jompus (Person) Bool)
+(declare-fun dull (Person) Bool)
+(declare-fun vumpus (Person) Bool)
+(declare-fun tumpus (Person) Bool)
+(declare-fun yumpus (Person) Bool)
+(declare-fun dumpus (Person) Bool)
+(declare-fun wumpus (Person) Bool)
+(declare-fun transparent (Person) Bool)
+(declare-fun impuse (Person) Bool)
+(declare-fun numpus (Person) Bool)
+(declare-fun bitter (Person) Bool)
+(declare-fun kind (Person) Bool)
+(declare-fun temperate (Person) Bool)
+(declare-fun happy (Person) Bool)
+(declare-fun liquid (Person) Bool)
+
+; Knowledge base (universal rules)
+(assert (forall ((p Person)) (=> (rompus p) (zumpus p))))
+(assert (forall ((p Person)) (=> (zumpus p) (not (bitter p)))))
+(assert (forall ((p Person)) (=> (zumpus p) (jompus p))))
+(assert (forall ((p Person)) (=> (jompus p) (dull p))))
+(assert (forall ((p Person)) (=> (jompus p) (vumpus p))))
+(assert (forall ((p Person)) (=> (numpus p) (not (transparent p)))))
+(assert (forall ((p Person)) (=> (vumpus p) (not (kind p)))))
+(assert (forall ((p Person)) (=> (vumpus p) (tumpus p))))
+(assert (forall ((p Person)) (=> (tumpus p) (temperate p))))
+(assert (forall ((p Person)) (=> (tumpus p) (yumpus p))))
+(assert (forall ((p Person)) (=> (yumpus p) (happy p))))
+(assert (forall ((p Person)) (=> (yumpus p) (dumpus p))))
+(assert (forall ((p Person)) (=> (dumpus p) (liquid p))))
+(assert (forall ((p Person)) (=> (dumpus p) (wumpus p))))
+(assert (forall ((p Person)) (=> (wumpus p) (transparent p))))
+(assert (forall ((p Person)) (=> (wumpus p) (impuse p))))
+
+; Fact: Sam is a vumpus
+(assert (vumpus sam))
+
+; Test: Is "Sam is not transparent" true?
+(assert (not (transparent sam)))
+(check-sat)
+(get-model)

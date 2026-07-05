@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D3-1548",
+  "question": "The bald eagle is cold. The bald eagle is kind. The bald eagle is young. The bald eagle sees the cat. The bald eagle visits the cat. The bald eagle visits the dog. The cat is kind. The cat sees the dog. The dog eats the bald eagle. The dog eats the cat. The dog is cold. The dog is round. The dog sees the bald eagle. The dog sees the cat. The dog visits the bald eagle. The dog visits the cat. If the dog visits the cat then the cat eats the dog. If something is kind then it sees the dog. If the bald eagle sees the dog then the dog is cold. If something visits the cat and the cat eats the dog then the dog is kind. If something eats the cat and it is round then the cat is rough. If something visits the cat and the cat visits the bald eagle then the cat visits the dog.\n\nQuestion: The dog sees the dog.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

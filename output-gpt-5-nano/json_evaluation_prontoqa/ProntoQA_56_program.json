@@ -1,0 +1,134 @@
+{
+  "sorts": [
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_liquid",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_hot",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "numpuses": {
+      "sort": "Numpus",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Numpus"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_numpus(x), is_dumpus(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_tumpus(x)))",
+    "ForAll([x], Implies(is_tumpus(x), is_jompus(x)))",
+    "ForAll([x], Implies(is_jompus(x), is_impus(x)))",
+    "ForAll([x], Implies(is_impus(x), Not(is_liquid(x))))",
+    "ForAll([x], Implies(is_impus(x), is_yumpus(x)))",
+    "is_numpus(sam)"
+  ],
+  "verifications": [
+    {
+      "name": "Sam is not liquid",
+      "constraint": "Not(is_liquid(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

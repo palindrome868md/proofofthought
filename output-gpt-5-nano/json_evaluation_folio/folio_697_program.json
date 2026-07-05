@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_snake",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_reptile",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_fur",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_snake(x), is_reptile(x)))",
+    "ForAll([x], Implies(is_reptile(x), Not(has_fur(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Snake with fur exists",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "constraint": "And(is_snake(x), has_fur(x))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

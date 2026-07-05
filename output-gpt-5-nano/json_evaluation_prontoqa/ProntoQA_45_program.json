@@ -1,0 +1,125 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_large",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_dumpus(fae)",
+    "Implies(is_dumpus(fae), is_cold(fae))",
+    "Implies(is_dumpus(fae), is_numpus(fae))",
+    "Implies(is_numpus(fae), Not(is_bitter(fae)))",
+    "Implies(is_numpus(fae), is_zumpus(fae))",
+    "Implies(is_zumpus(fae), is_fruity(fae))",
+    "Implies(is_zumpus(fae), is_wumpus(fae))",
+    "Implies(is_wumpus(fae), is_large(fae))",
+    "Implies(is_wumpus(fae), is_impus(fae))",
+    "Implies(is_impus(fae), is_wooden(fae))",
+    "Implies(is_impus(fae), is_rompus(fae))"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is wooden",
+      "constraint": "is_wooden(fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

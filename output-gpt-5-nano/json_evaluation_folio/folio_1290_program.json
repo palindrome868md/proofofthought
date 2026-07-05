@@ -1,0 +1,88 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "knows_bfs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_queue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_fifo",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "google_interviewer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_human_rights",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entitled_life_liberty",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "deprived_without_due_process",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "jack"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(knows_bfs(p), knows_queue(p)))",
+    "ForAll([p], Implies(google_interviewer(p), knows_bfs(p)))",
+    "ForAll([p], Or(google_interviewer(p), has_human_rights(p)))",
+    "ForAll([p], Implies(has_human_rights(p), entitled_life_liberty(p)))",
+    "ForAll([p], Implies(knows_queue(p), knows_fifo(p)))",
+    "ForAll([p], Implies(entitled_life_liberty(p), Not(deprived_without_due_process(p))))",
+    "Or(entitled_life_liberty(jack), has_human_rights(jack), knows_fifo(jack))"
+  ],
+  "verifications": [
+    {
+      "name": "Can Jack be deprived without due process",
+      "constraint": "deprived_without_due_process(jack)"
+    }
+  ]
+}

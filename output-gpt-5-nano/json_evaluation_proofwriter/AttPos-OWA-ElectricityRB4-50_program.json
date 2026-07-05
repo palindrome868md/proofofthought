@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Circuit",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Switch",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wire",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "LightBulb",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "includes_lightbulb",
+      "domain": [
+        "Circuit",
+        "LightBulb"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "includes_switch",
+      "domain": [
+        "Circuit",
+        "Switch"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "switch_is_on",
+      "domain": [
+        "Switch"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wire_is_metal",
+      "domain": [
+        "Wire"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "circuits": {
+      "sort": "Circuit",
+      "members": [
+        "circuit1"
+      ]
+    },
+    "switches": {
+      "sort": "Switch",
+      "members": [
+        "switch1"
+      ]
+    },
+    "wires": {
+      "sort": "Wire",
+      "members": [
+        "wire1"
+      ]
+    },
+    "lightbulbs": {
+      "sort": "LightBulb",
+      "members": [
+        "lightbulb1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "includes_lightbulb(circuit1, lightbulb1)",
+    "includes_switch(circuit1, switch1)",
+    "switch_is_on(switch1)",
+    "wire_is_metal(wire1)"
+  ],
+  "verifications": [
+    {
+      "name": "Circuit includes the light bulb",
+      "constraint": "includes_lightbulb(circuit1, lightbulb1)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

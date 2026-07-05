@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "zumpus(fae)",
+    "ForAll([x], Implies(zumpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), fruity(x)))",
+    "ForAll([x], Implies(zumpus(x), happy(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is not fruity",
+      "constraint": "Not(fruity(fae))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

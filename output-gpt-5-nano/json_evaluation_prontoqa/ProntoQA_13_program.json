@@ -1,0 +1,178 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "yumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "metallic",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Thing",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(yumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), opaque(x)))",
+    "ForAll([x], Implies(dumpus(x), zumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), floral(x)))",
+    "ForAll([x], Implies(zumpus(x), hot(x)))",
+    "ForAll([x], Implies(zumpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), large(x)))",
+    "ForAll([x], Implies(impus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), amenable(x)))",
+    "ForAll([x], Implies(numpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), dull(x)))",
+    "ForAll([x], Implies(jompus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), Not(metallic(x))))",
+    "ForAll([x], Implies(wumpus(x), tumpus(x)))",
+    "zumpus(Max)",
+    "ForAll([x], Implies(vumpus(x), Not(dull(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Max is dull",
+      "constraint": "dull(Max)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

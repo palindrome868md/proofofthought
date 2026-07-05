@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Case",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "child_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "caveat_exists",
+      "domain": [
+        "Case"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "caveat_by",
+      "domain": [
+        "Case",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "executor_of_case",
+      "domain": [
+        "Case"
+      ],
+      "range": "Person"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "father",
+        "step_mother"
+      ]
+    },
+    "cases": {
+      "sort": "Case",
+      "members": [
+        "probate_case"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "c",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([c], And(child_of(c, father), caveat_by(probate_case, c), caveat_exists(probate_case), executor_of_case(probate_case) == step_mother))"
+  ],
+  "verifications": [
+    {
+      "name": "Can children stop step-mother from handling probate",
+      "exists": [
+        {
+          "name": "c",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(child_of(c, father), caveat_by(probate_case, c), caveat_exists(probate_case), executor_of_case(probate_case) == step_mother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

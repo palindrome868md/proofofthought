@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_84",
+  "question": "Vumpuses are floral. Vumpuses are wumpuses. Each wumpus is not spicy. Wumpuses are zumpuses. Zumpuses are orange. Zumpuses are tumpuses. Every tumpus is dull. Every tumpus is a dumpus. Every dumpus is amenable. Every yumpus is not opaque. Dumpuses are impuses. Each impus is not feisty. Every impus is a jompus. Each jompus is opaque. Jompuses are numpuses. Rex is a zumpus.\n\nIs the following statement true or false? Rex is not opaque.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

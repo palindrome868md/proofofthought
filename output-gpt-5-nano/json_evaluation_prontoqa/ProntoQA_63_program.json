@@ -1,0 +1,178 @@
+{
+  "sorts": [
+    {
+      "name": "Object",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Object"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "objects": {
+      "sort": "Object",
+      "members": [
+        "rex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Object"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(numpus(x), rompus(x)))",
+    "ForAll([x], Implies(numpus(x), Not(mean(x))))",
+    "ForAll([x], Implies(zumpus(x), Not(brown(x))))",
+    "ForAll([x], Implies(rompus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), Not(happy(x))))",
+    "ForAll([x], Implies(vumpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), liquid(x)))",
+    "ForAll([x], Implies(impus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), dull(x)))",
+    "ForAll([x], Implies(jompus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), spicy(x)))",
+    "ForAll([x], Implies(tumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), fruity(x)))",
+    "ForAll([x], Implies(yumpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), brown(x)))",
+    "ForAll([x], Implies(wumpus(x), dumpus(x)))",
+    "impus(rex)"
+  ],
+  "verifications": [
+    {
+      "name": "Rex is brown",
+      "constraint": "brown(rex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

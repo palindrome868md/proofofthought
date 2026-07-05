@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1309",
+  "question": "Given the following premises:\n\nFunctional brainstems are necessary for breath control.\nAll humans that can swim can control their breath. \nHumans can swim or walk. \nHumans who can walk can stand on the ground by themselves. \nHumans whose brainstems are functional can control their balance.\nEvery human who can stand on the ground by themselves has functional leg muscles. \nGeorge and Archie are humans.\nGeorge can control his balance and can swim.\nArchie can walk if and only if he has functional brainstems.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Archie cannot control his balance and doesn't have functional leg muscles.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

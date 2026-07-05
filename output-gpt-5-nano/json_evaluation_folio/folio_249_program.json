@@ -1,0 +1,53 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zip_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_citizen_of_LawtonPark",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "tom",
+        "daniel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_citizen_of_LawtonPark(tom)",
+    "ForAll([p], Implies(is_citizen_of_LawtonPark(p), zip_of(p) == 98199))",
+    "zip_of(daniel) == 98199"
+  ],
+  "verifications": [
+    {
+      "name": "Tom uses zip 98199",
+      "constraint": "zip_of(tom) == 98199"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

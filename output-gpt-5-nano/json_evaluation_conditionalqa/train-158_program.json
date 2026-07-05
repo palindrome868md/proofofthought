@@ -1,0 +1,82 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "hours_care",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_DLA_higher",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "weekly_earnings",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "lives_in_scotland",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cares_for",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    },
+    {
+      "name": "partner",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "lives_in_scotland(you)",
+    "hours_care(you) == 30",
+    "has_DLA_higher(partner)",
+    "weekly_earnings(you) == 115",
+    "cares_for(you, partner)"
+  ],
+  "verifications": [
+    {
+      "name": "Can I claim Carer's Allowance given scenario",
+      "exists": [
+        {
+          "name": "y",
+          "sort": "Person"
+        },
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(y == you, p == partner, hours_care(y) >= 35, has_DLA_higher(p), cares_for(y,p), weekly_earnings(y) <= 128, lives_in_scotland(y))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

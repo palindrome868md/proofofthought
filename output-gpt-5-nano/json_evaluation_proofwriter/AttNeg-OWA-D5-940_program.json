@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "charlie",
+        "dave",
+        "erin",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "blue(charlie)",
+    "green(charlie)",
+    "rough(dave)",
+    "Not(cold(erin))",
+    "green(erin)",
+    "rough(erin)",
+    "young(erin)",
+    "green(harry)",
+    "red(harry)",
+    "rough(harry)",
+    "Not(young(harry))",
+    "red(charlie)",
+    "ForAll([x], Implies(blue(x), rough(x)))",
+    "ForAll([x], Implies(green(x), rough(x)))",
+    "ForAll([x], Implies(quiet(x), cold(x)))",
+    "Implies(blue(harry), green(harry))",
+    "Implies(And(blue(dave), red(dave)), quiet(dave))",
+    "ForAll([x], Implies(And(rough(x), red(x)), blue(x)))",
+    "ForAll([x], Implies(And(green(x), cold(x)), Not(quiet(x))))",
+    "ForAll([x], Implies(cold(x), Not(young(x))))",
+    "ForAll([x], Implies(rough(x), red(x)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Charlie not red",
+      "constraint": "Not(red(charlie))"
+    }
+  ],
+  "optimizations": []
+}

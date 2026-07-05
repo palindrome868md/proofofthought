@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Product",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Store",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Brand",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "brand_of",
+      "domain": [
+        "Product"
+      ],
+      "range": "Brand"
+    },
+    {
+      "name": "sells",
+      "domain": [
+        "Store",
+        "Product"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "stores": {
+      "sort": "Store",
+      "members": [
+        "petco"
+      ]
+    },
+    "brands": {
+      "sort": "Brand",
+      "members": [
+        "casio"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Casio at Petco available",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Product"
+        }
+      ],
+      "constraint": "And(brand_of(p) == casio, sells(petco, p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

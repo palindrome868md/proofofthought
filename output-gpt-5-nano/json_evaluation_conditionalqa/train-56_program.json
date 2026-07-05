@@ -1,0 +1,38 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "passes_to_spouse",
+      "domain": [
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tax_due",
+      "domain": [
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "passes_to_spouse(300000)",
+    "ForAll([p], Implies(passes_to_spouse(p), Not(tax_due(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "No inheritance tax if home left to a spouse",
+      "constraint": "Not(tax_due(300000))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

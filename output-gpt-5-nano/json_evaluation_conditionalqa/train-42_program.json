@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_over_18",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_bank_account",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cannot_manage_affairs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "you",
+        "brother"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "cannot_manage_affairs(brother)",
+    "is_over_18(you)",
+    "has_bank_account(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Can I be appointed to handle my brother's tax credits",
+      "constraint": "And(is_over_18(you), has_bank_account(you), cannot_manage_affairs(brother))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

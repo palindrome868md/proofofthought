@@ -1,0 +1,81 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Brand",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_type_c_port",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_before_2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "produced_by",
+      "domain": [
+        "Monitor",
+        "Brand"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "l_2021",
+        "lg_monitor_typec"
+      ]
+    },
+    "brands": {
+      "sort": "Brand",
+      "members": [
+        "LG"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Monitor"
+    }
+  ],
+  "knowledge_base": [
+    "produced_by(lg_monitor_typec, LG)",
+    "has_type_c_port(lg_monitor_typec)",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Monitor\"}], Implies(has_type_c_port(p), Not(made_before_2010(p))))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"Monitor\"}], Implies(in_library(p), made_before_2010(p)))",
+    "Or(in_library(l_2021), has_type_c_port(l_2021))",
+    "Or(And(made_before_2010(l_2021), produced_by(l_2021, LG)), And(Not(made_before_2010(l_2021)), Not(produced_by(l_2021, LG))))"
+  ],
+  "verifications": [
+    {
+      "name": "L-2021 is in_library or produced_by_LG",
+      "constraint": "Not(Or(in_library(l_2021), produced_by(l_2021, LG)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

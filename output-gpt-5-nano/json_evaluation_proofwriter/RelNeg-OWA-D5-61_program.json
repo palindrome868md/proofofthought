@@ -1,0 +1,139 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Entity",
+      "members": [
+        "bear",
+        "mouse",
+        "tiger",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "sees(bear, mouse)",
+    "Not(sees(bear, tiger))",
+    "visits(bear, squirrel)",
+    "visits(bear, tiger)",
+    "Not(eats(mouse, tiger))",
+    "cold(mouse)",
+    "green(mouse)",
+    "visits(mouse, squirrel)",
+    "cold(squirrel)",
+    "visits(squirrel, bear)",
+    "visits(squirrel, mouse)",
+    "eats(tiger, mouse)",
+    "big(tiger)",
+    "sees(tiger, bear)",
+    "sees(tiger, mouse)",
+    "Not(visits(tiger, mouse))",
+    "Implies(eats(bear, squirrel), Not(green(squirrel)))",
+    "Implies(eats(mouse, squirrel), Not(green(squirrel)))",
+    "Implies(eats(tiger, squirrel), Not(green(squirrel)))",
+    "Implies(eats(squirrel, squirrel), Not(green(squirrel)))",
+    "Implies(And(sees(bear, bear), sees(bear, mouse)), visits(bear, tiger))",
+    "Implies(And(sees(mouse, bear), sees(bear, mouse)), visits(mouse, tiger))",
+    "Implies(And(sees(tiger, bear), sees(bear, mouse)), visits(tiger, tiger))",
+    "Implies(And(sees(squirrel, bear), sees(bear, mouse)), visits(squirrel, tiger))",
+    "Implies(sees(bear, squirrel), Not(rough(bear)))",
+    "Implies(sees(mouse, squirrel), Not(rough(mouse)))",
+    "Implies(sees(tiger, squirrel), Not(rough(tiger)))",
+    "Implies(sees(squirrel, squirrel), Not(rough(squirrel)))",
+    "Implies(And(round(bear), big(bear)), sees(bear, bear))",
+    "Implies(And(round(mouse), big(mouse)), sees(mouse, bear))",
+    "Implies(And(round(tiger), big(tiger)), sees(tiger, bear))",
+    "Implies(And(round(squirrel), big(squirrel)), sees(squirrel, bear))",
+    "Implies(visits(bear, tiger), sees(bear, squirrel))",
+    "Implies(visits(mouse, tiger), sees(mouse, squirrel))",
+    "Implies(visits(tiger, tiger), sees(tiger, squirrel))",
+    "Implies(visits(squirrel, tiger), sees(squirrel, squirrel))",
+    "Implies(And(visits(bear, squirrel), visits(bear, tiger)), eats(squirrel, mouse))",
+    "Implies(And(visits(mouse, squirrel), visits(mouse, tiger)), eats(squirrel, mouse))",
+    "Implies(And(visits(tiger, squirrel), visits(tiger, tiger)), eats(squirrel, mouse))",
+    "Implies(And(visits(squirrel, squirrel), visits(squirrel, tiger)), eats(squirrel, mouse))",
+    "Implies(And(visits(bear, bear), eats(bear, mouse)), sees(mouse, bear))",
+    "Implies(And(visits(tiger, bear), eats(tiger, mouse)), sees(mouse, bear))",
+    "Implies(And(visits(squirrel, bear), eats(squirrel, mouse)), sees(mouse, bear))",
+    "Implies(eats(bear, mouse), Not(round(mouse)))",
+    "Implies(eats(mouse, mouse), Not(round(mouse)))",
+    "Implies(eats(tiger, mouse), Not(round(mouse)))",
+    "Implies(eats(squirrel, mouse), Not(round(mouse)))"
+  ],
+  "verifications": [
+    {
+      "name": "Mouse does not visit tiger",
+      "constraint": "Not(visits(mouse, tiger))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

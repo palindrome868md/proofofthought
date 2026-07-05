@@ -1,0 +1,44 @@
+{
+  "sorts": [
+    {
+      "name": "Artifact",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "life_size",
+      "domain": [
+        "Artifact"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "identified_in_year",
+      "domain": [
+        "Artifact",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "artifacts": {
+      "sort": "Artifact",
+      "members": [
+        "donatello_crucifix"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Was Donatello crucifix life-sized in 2020",
+      "constraint": "And(life_size(donatello_crucifix), identified_in_year(donatello_crucifix, 2020))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

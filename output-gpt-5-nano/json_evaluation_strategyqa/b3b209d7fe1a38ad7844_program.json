@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Show",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Phrase",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_incorrect_phrase_for_host",
+      "domain": [
+        "Phrase",
+        "Person",
+        "Show"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "shows": {
+      "sort": "Show",
+      "members": [
+        "dancing_with_the_stars"
+      ]
+    },
+    "hosts": {
+      "sort": "Person",
+      "members": [
+        "tom_bergeron",
+        "tyra_banks"
+      ]
+    },
+    "phrases": {
+      "sort": "Phrase",
+      "members": [
+        "double_duty"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "is_incorrect_phrase_for_host(double_duty, tom_bergeron, dancing_with_the_stars)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Double duty is an incorrect phrase for the Dancing With The Stars host",
+      "exists": [
+        {
+          "name": "h",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "is_incorrect_phrase_for_host(double_duty, h, dancing_with_the_stars)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

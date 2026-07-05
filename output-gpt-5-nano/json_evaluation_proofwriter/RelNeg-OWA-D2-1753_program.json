@@ -1,0 +1,80 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bear",
+        "cat",
+        "rabbit",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "eats(bear, cat)",
+    "sees(bear, cat)",
+    "eats(cat, bear)",
+    "red(cat)",
+    "sees(cat, rabbit)",
+    "eats(rabbit, squirrel)",
+    "sees(rabbit, squirrel)",
+    "eats(squirrel, bear)",
+    "eats(squirrel, cat)",
+    "visits(squirrel, rabbit)",
+    "ForAll([x], Implies(sees(x, cat), visits(cat, squirrel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cat visits the squirrel",
+      "constraint": "visits(cat, squirrel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

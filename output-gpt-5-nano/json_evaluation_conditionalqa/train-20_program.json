@@ -1,0 +1,23 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [
+    {
+      "name": "weeks_employed",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [
+    "weeks_employed == 8"
+  ],
+  "verifications": [
+    {
+      "name": "Is paternity leave possible with 2 months of work",
+      "constraint": "weeks_employed >= 26"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

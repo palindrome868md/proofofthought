@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Agreement",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "consent_order",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "court_approves",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "legally_binding",
+      "domain": [
+        "Agreement"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "agreements": {
+      "sort": "Agreement",
+      "members": [
+        "split_agreement"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "consent_order(split_agreement)",
+    "court_approves(split_agreement)",
+    "Implies(And(consent_order(split_agreement), court_approves(split_agreement)), legally_binding(split_agreement))"
+  ],
+  "verifications": [
+    {
+      "name": "Consent order can legally bind finances",
+      "constraint": "legally_binding(split_agreement)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

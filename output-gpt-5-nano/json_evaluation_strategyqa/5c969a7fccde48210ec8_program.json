@@ -1,0 +1,42 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wears_dolce_gabbana",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shunned_by_amish",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Amish shun DolceGabbana wearer",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(wears_dolce_gabbana(p), shunned_by_amish(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

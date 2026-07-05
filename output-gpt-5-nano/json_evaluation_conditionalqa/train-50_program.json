@@ -1,0 +1,37 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "eligible(you)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Are you eligible for NCFS",
+      "constraint": "eligible(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

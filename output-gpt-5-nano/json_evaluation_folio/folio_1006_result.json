@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1006",
+  "question": "Given the following premises:\n\nEverything is either outside the solar system or in the solar system. \nNothing outside the solar system has the Sun as its star.\nEverything in the solar system is gravitationally bound by the Sun.\nNo planets gravitationally bound by the Sun are rogue planets. \nAll orphan planets are rogue planets.\nIf PSO J318.5\u221222 is not both a rogue planet and a planet gravitationally bound by the Sun, then it is a rogue planet.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: PSO J318.5\u221222 is an orphan planet or it does not have the Sun as its star, or both.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_swim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "breath_control",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "functional_brainstem",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_walk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_stand_on_ground_by_self",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_control_balance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "functional_leg_muscles",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "george",
+        "archie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(breath_control(x), functional_brainstem(x)))",
+    "ForAll([x], Implies(can_swim(x), breath_control(x)))",
+    "ForAll([x], Or(can_swim(x), can_walk(x)))",
+    "ForAll([x], Implies(can_walk(x), can_stand_on_ground_by_self(x)))",
+    "ForAll([x], Implies(functional_brainstem(x), can_control_balance(x)))",
+    "ForAll([x], Implies(can_stand_on_ground_by_self(x), functional_leg_muscles(x)))",
+    "ForAll([x], Implies(can_walk(x), functional_brainstem(x)))",
+    "ForAll([x], Implies(functional_brainstem(x), can_walk(x)))",
+    "can_swim(archie)",
+    "can_control_balance(george)"
+  ],
+  "verifications": [
+    {
+      "name": "Archie has functional leg muscles and can balance",
+      "constraint": "And(functional_leg_muscles(archie), can_control_balance(archie))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

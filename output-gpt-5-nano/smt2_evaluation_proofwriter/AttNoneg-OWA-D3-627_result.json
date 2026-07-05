@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-627",
+  "question": "Anne is furry. Dave is cold. Dave is furry. Dave is green. Dave is nice. Dave is red. Dave is round. Fiona is cold. Fiona is red. Gary is rough. All round, furry people are red. All nice, red people are furry. All red people are round. If someone is furry and cold then they are rough. Round people are furry. All furry people are red. If Dave is nice and Dave is furry then Dave is green. If Anne is red then Anne is nice.\n\nQuestion: Anne is furry.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

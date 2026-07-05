@@ -1,0 +1,80 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Brand",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "made_by",
+      "domain": [
+        "Monitor",
+        "Brand"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_typec",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "before_2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "L_2021"
+      ]
+    },
+    "brands": {
+      "sort": "Brand",
+      "members": [
+        "LG"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Exists([{\"name\": \"n\", \"sort\": \"Monitor\"}], And(made_by(n, LG), has_typec(n)))",
+    "ForAll([m], Implies(has_typec(m), Not(before_2010(m))))",
+    "ForAll([m], Implies(in_library(m), before_2010(m)))",
+    "Or(in_library(L_2021), has_typec(L_2021))",
+    "Or(And(before_2010(L_2021), made_by(L_2021, LG)), And(Not(before_2010(L_2021)), Not(made_by(L_2021, LG))))"
+  ],
+  "verifications": [
+    {
+      "name": "L-2021 has Type-C port or LG",
+      "exists": [
+        {
+          "name": "m",
+          "sort": "Monitor"
+        }
+      ],
+      "constraint": "And(m == L_2021, Or(has_typec(m), made_by(m, LG)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

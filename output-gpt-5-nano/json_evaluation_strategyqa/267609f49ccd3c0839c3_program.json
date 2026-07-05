@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_swiss_guard",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_eligible_to_hold_office",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "guards": {
+      "sort": "Person",
+      "members": [
+        "swiss_guard_1"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_swiss_guard(swiss_guard_1)",
+    "is_eligible_to_hold_office(swiss_guard_1)"
+  ],
+  "verifications": [
+    {
+      "name": "Swiss Guard can fill Virginia General Assembly chairs",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_swiss_guard(p), is_eligible_to_hold_office(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

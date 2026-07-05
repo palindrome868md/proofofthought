@@ -1,0 +1,36 @@
+{
+  "sorts": [
+    {
+      "name": "Fruit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_worms_similar_to_dogs",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fruits": {
+      "sort": "Fruit",
+      "members": [
+        "strawberry"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Can strawberry get worms similar to dogs",
+      "constraint": "has_worms_similar_to_dogs(strawberry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

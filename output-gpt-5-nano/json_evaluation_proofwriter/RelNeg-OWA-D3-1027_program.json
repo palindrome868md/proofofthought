@@ -1,0 +1,116 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "dog",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "chases(bald_eagle, dog)",
+    "chases(bald_eagle, tiger)",
+    "chases(dog, bald_eagle)",
+    "is_blue(dog)",
+    "is_cold(dog)",
+    "is_red(dog)",
+    "is_round(dog)",
+    "is_young(dog)",
+    "chases(tiger, dog)",
+    "is_round(tiger)",
+    "likes(tiger, bald_eagle)",
+    "sees(tiger, bald_eagle)",
+    "ForAll([x], Implies(And(chases(x, bald_eagle), chases(x, tiger)), sees(x, bald_eagle)))",
+    "ForAll([x], Implies(is_blue(x), chases(x, tiger)))",
+    "Implies(And(sees(bald_eagle, tiger), is_young(tiger)), chases(bald_eagle, tiger))",
+    "Implies(And(likes(tiger, dog), is_cold(dog)), sees(dog, bald_eagle))",
+    "Implies(And(is_red(dog), sees(dog, bald_eagle)), Not(likes(bald_eagle, tiger)))",
+    "ForAll([x], Implies(And(chases(x, tiger), sees(x, tiger)), Not(likes(tiger, bald_eagle))))",
+    "ForAll([x], Implies(And(is_round(x), Not(sees(x, bald_eagle))), sees(bald_eagle, dog)))",
+    "ForAll([x], Implies(And(chases(x, bald_eagle), Not(likes(x, tiger))), is_red(tiger)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bald Eagle Chases Dog",
+      "constraint": "chases(bald_eagle, dog)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Monster",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Spot",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "bald_spot_of",
+      "domain": [
+        "Monster"
+      ],
+      "range": "Spot"
+    },
+    {
+      "name": "see_from_above",
+      "domain": [
+        "Person",
+        "Spot",
+        "Monster"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "robert_wadlow"
+      ]
+    },
+    "monsters": {
+      "sort": "Monster",
+      "members": [
+        "frankenstein"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Wadlow can see Frankenstein's bald spot from above",
+      "exists": [
+        {
+          "name": "monster",
+          "sort": "Monster"
+        }
+      ],
+      "constraint": "see_from_above(robert_wadlow, bald_spot_of(monster), monster)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

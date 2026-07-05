@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_remarried",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_include_in_will",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_remarried(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Can include partner in will after remarriage",
+      "exists": [
+        {
+          "name": "partner",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_remarried(you), can_include_in_will(you, partner))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

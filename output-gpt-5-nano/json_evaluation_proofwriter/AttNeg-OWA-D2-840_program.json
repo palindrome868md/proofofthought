@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Not(big(bob))",
+    "blue(bob)",
+    "green(bob)",
+    "red(bob)",
+    "rough(bob)",
+    "round(bob)",
+    "Not(white(bob))",
+    "big(gary)",
+    "green(gary)",
+    "rough(gary)",
+    "round(gary)",
+    "white(gary)",
+    "ForAll([p], Implies(And(red(p), rough(p)), round(p)))",
+    "ForAll([p], Implies(green(p), round(p)))",
+    "ForAll([p], Implies(And(red(p), white(p)), round(p)))",
+    "ForAll([p], Implies(And(blue(p), round(p)), red(p)))",
+    "ForAll([p], Implies(round(p), blue(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bob is green",
+      "constraint": "green(bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

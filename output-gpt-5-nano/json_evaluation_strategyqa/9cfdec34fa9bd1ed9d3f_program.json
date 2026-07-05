@@ -1,0 +1,40 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lungs_healthy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "j_p_morgan"
+      ]
+    }
+  },
+  "knowledge_base": [
+    {
+      "assertion": "lungs_healthy(j_p_morgan)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Did J. P. Morgan have healthy lungs",
+      "constraint": "lungs_healthy(j_p_morgan)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Lipstick",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "FinishType",
+      "type": "EnumSort",
+      "values": [
+        "Velvet",
+        "Satin"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "finish",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "FinishType"
+    },
+    {
+      "name": "rosewood_in_description",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_set",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "refillable",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "lipsticks": {
+      "sort": "Lipstick",
+      "members": [
+        "lip_999"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "l",
+      "sort": "Lipstick"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([l], Implies(in_set(l), Or(finish(l) == Velvet, finish(l) == Satin)))",
+    "ForAll([l], Implies(finish(l) == Satin, rosewood_in_description(l)))",
+    "in_set(lip_999)",
+    "ForAll([l], Implies(And(in_set(l), finish(l) == Velvet), refillable(l)))",
+    "Or(rosewood_in_description(lip_999), finish(lip_999) == Velvet)"
+  ],
+  "verifications": [
+    {
+      "name": "ROUGE Lip Balm 999 satin and rosewood",
+      "constraint": "And(finish(lip_999) == Satin, rosewood_in_description(lip_999))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

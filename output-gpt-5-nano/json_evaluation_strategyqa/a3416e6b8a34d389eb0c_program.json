@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yeti",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "height",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "height_yeti",
+      "domain": [
+        "Yeti"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "andre_the_giant"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "height(andre_the_giant) == 224"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Andre Towers Yeti",
+      "exists": [
+        {
+          "name": "y",
+          "sort": "Yeti"
+        }
+      ],
+      "constraint": "height(andre_the_giant) > height_yeti(y)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

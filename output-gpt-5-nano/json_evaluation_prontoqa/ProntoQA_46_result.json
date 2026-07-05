@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_46",
+  "question": "Each rompus is nervous. Rompuses are jompuses. Jompuses are angry. Jompuses are tumpuses. Tumpuses are earthy. Every tumpus is a numpus. Each numpus is not cold. Each numpus is an impus. Dumpuses are metallic. Impuses are dull. Each impus is a zumpus. Zumpuses are not opaque. Zumpuses are wumpuses. Every wumpus is blue. Wumpuses are vumpuses. Every vumpus is not metallic. Every vumpus is a yumpus. Sally is a numpus.\n\nIs the following statement true or false? Sally is not metallic.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

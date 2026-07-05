@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "bear",
+        "mouse",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "likes(bald_eagle, mouse)",
+    "likes(bear, squirrel)",
+    "is_round(mouse)",
+    "eats(squirrel, mouse)"
+  ],
+  "verifications": [
+    {
+      "name": "Bald Eagle Likes Mouse",
+      "constraint": "likes(bald_eagle, mouse)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

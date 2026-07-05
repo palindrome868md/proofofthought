@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D5-323",
+  "question": "The bear sees the rabbit. The cow likes the rabbit. The cow needs the rabbit. The cow sees the rabbit. The dog is green. The dog is red. The dog likes the cow. The dog likes the rabbit. The dog needs the bear. The dog sees the cow. The dog sees the rabbit. The rabbit is blue. The rabbit is cold. The rabbit needs the bear. The rabbit needs the cow. The rabbit sees the dog. If the bear is cold then the bear is red. If someone likes the rabbit and they are red then the rabbit likes the dog. If someone sees the dog and they need the bear then they are red. Green people are red. If someone is red then they need the cow. If someone sees the cow and they need the cow then they like the bear. All cold, kind people are green. If someone sees the bear and the bear is cold then the bear needs the rabbit. If someone sees the dog and the dog likes the bear then the bear is cold.\n\nQuestion: The bear is not cold.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

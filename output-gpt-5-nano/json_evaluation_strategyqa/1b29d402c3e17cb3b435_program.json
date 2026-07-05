@@ -1,0 +1,36 @@
+{
+  "sorts": [
+    {
+      "name": "Currency",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "worth",
+      "domain": [
+        "Currency"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {
+    "currencies": {
+      "sort": "Currency",
+      "members": [
+        "pound_sterling"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Is pound_sterling Valuable",
+      "constraint": "worth(pound_sterling) > 0"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

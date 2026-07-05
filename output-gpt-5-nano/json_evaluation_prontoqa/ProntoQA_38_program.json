@@ -1,0 +1,213 @@
+{
+  "sorts": [
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wooden",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "angry",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "happy",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "vumpuses": {
+      "sort": "Vumpus",
+      "members": [
+        "polly"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Vumpus"
+    }
+  ],
+  "knowledge_base": [
+    "vumpus(polly)",
+    "ForAll([p], Implies(vumpus(p), wooden(p)))",
+    "ForAll([p], Implies(vumpus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), earthy(p)))",
+    "ForAll([p], Implies(jompus(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), Not(transparent(p))))",
+    "ForAll([p], Implies(wumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), Not(bright(p))))",
+    "ForAll([p], Implies(yumpus(p), impus(p)))",
+    "ForAll([p], Implies(impus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), brown(p)))",
+    "ForAll([p], Implies(dumpus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), Not(sour(p))))",
+    "ForAll([p], Implies(zumpus(p), numpus(p)))",
+    "ForAll([p], Implies(numpus(p), Not(angry(p))))",
+    "ForAll([p], Implies(numpus(p), tumpus(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Polly not happy",
+      "constraint": "Not(happy(polly))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

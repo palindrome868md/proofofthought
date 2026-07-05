@@ -1,0 +1,46 @@
+{
+  "sorts": [
+    {
+      "name": "Sin",
+      "type": "EnumSort",
+      "values": [
+        "Pride",
+        "Greed",
+        "Lust",
+        "Envy",
+        "Gluttony",
+        "Wrath",
+        "Sloth"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "prevalence",
+      "domain": [
+        "Sin"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Greed is the most prevalent sin",
+      "forall": [
+        {
+          "name": "s",
+          "sort": "Sin"
+        }
+      ],
+      "implies": {
+        "antecedent": "Distinct(s, Greed)",
+        "consequent": "prevalence(Greed) > prevalence(s)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

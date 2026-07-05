@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "PValue",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "p_value_metrics_of_effect",
+      "domain": [
+        "PValue"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "P-values do not represent metrics of effect",
+      "forall": [
+        {
+          "name": "pv",
+          "sort": "PValue"
+        }
+      ],
+      "implies": {
+        "antecedent": "pv == pv",
+        "consequent": "Not(p_value_metrics_of_effect(pv))"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

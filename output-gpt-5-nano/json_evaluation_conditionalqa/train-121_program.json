@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_apply_statutory_will",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "dad"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "can_apply_statutory_will(dad)"
+  ],
+  "verifications": [
+    {
+      "name": "Can Court of Protection change dad's will",
+      "constraint": "can_apply_statutory_will(dad)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

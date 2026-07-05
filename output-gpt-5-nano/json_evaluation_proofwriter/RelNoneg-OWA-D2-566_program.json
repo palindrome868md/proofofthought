@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "cat",
+        "squirrel"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "likes(cat, squirrel)",
+    "blue(squirrel)"
+  ],
+  "verifications": [
+    {
+      "name": "Cat likes squirrel",
+      "constraint": "likes(cat, squirrel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

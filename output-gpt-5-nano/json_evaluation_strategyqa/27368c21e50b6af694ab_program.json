@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Topic",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_ethics_professor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "teaches",
+      "domain": [
+        "Person",
+        "Topic"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "topics": {
+      "sort": "Topic",
+      "members": [
+        "cezanne_topic"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Ethics professor could teach a class on Cezanne",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_ethics_professor(p), teaches(p, cezanne_topic))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

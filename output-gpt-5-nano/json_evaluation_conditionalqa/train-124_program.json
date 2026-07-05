@@ -1,0 +1,42 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_access_to_deceased_account",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "deceased_persons": {
+      "sort": "Person",
+      "members": [
+        "deceased_father"
+      ]
+    }
+  },
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Can I pay Inheritance Tax from deceased father's account",
+      "exists": [
+        {
+          "name": "payer",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "has_access_to_deceased_account(payer, deceased_father)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "43e4aea70f7e53d1d807",
+  "question": "Would a Deacon be likely to be a fan of the podcast 'God Awful Movies'?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

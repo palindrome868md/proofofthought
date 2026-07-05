@@ -1,0 +1,43 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob",
+        "gary"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "blue(anne)",
+    "Not(blue(bob))",
+    "blue(gary)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Bob blue",
+      "constraint": "blue(bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

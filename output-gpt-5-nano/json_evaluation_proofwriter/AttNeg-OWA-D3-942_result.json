@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D3-942",
+  "question": "Anne is red. Charlie is young. Erin is not young. Harry is white. If something is kind then it is young. All cold things are young. Red things are not young. If Harry is kind and Harry is nice then Harry is red. All white things are quiet. Quiet things are red.\n\nQuestion: Erin is not young.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

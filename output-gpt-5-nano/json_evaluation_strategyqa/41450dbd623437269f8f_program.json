@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CandyBar",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "depressed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cheer_up",
+      "domain": [
+        "Person",
+        "CandyBar"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "candies": {
+      "sort": "CandyBar",
+      "members": [
+        "mao_candy_bar"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([p], depressed(p))",
+    "ForAll([p], Implies(depressed(p), cheer_up(p, mao_candy_bar)))"
+  ],
+  "verifications": [
+    {
+      "name": "Would a MAO candy bar cheer up a depressed friend",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(depressed(p), cheer_up(p, mao_candy_bar))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

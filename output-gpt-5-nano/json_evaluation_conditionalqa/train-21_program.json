@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lived_in_uk_years",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "closely_related",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "lived_in_uk_years(you) >= 2"
+  ],
+  "verifications": [
+    {
+      "name": "Can I file an annulment petition",
+      "exists": [
+        {
+          "name": "spouse",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(married(you, spouse), closely_related(you, spouse), lived_in_uk_years(you) >= 2)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

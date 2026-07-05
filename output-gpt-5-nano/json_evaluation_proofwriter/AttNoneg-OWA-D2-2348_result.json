@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D2-2348",
+  "question": "Dave is cold. If something is cold then it is quiet. All quiet things are green. If Dave is cold and Dave is kind then Dave is furry. If Dave is kind and Dave is cold then Dave is big. If something is cold and green then it is blue. If something is kind then it is big.\n\nQuestion: Dave is quiet.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

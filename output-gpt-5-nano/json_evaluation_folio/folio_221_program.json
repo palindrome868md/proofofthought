@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Genus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_bird_genus",
+      "domain": [
+        "Genus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "discovered_genus",
+      "domain": [
+        "Person",
+        "Genus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "yevgeny_kurochkin"
+      ]
+    },
+    "bird_genera": {
+      "sort": "Genus",
+      "members": [
+        "ambiortus"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_bird_genus(ambiortus)",
+    "discovered_genus(yevgeny_kurochkin, ambiortus)"
+  ],
+  "verifications": [
+    {
+      "name": "Kurochkin discovered a bird genus",
+      "constraint": "discovered_genus(yevgeny_kurochkin, ambiortus)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

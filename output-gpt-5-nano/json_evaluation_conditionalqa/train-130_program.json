@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "lives_in_england",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "years_in_england_last3",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "three_months_difficulties",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "continuation_9months",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_pip",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [],
+  "variables": [],
+  "constants": {},
+  "rules": [],
+  "verifications": [
+    {
+      "name": "PIP eligibility for a 16-year-old in England with a long-term disability",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(age(p) >= 16, lives_in_england(p), years_in_england_last3(p) >= 2, three_months_difficulties(p), continuation_9months(p), needs_pip(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

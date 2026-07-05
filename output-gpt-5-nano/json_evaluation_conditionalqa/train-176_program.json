@@ -1,0 +1,144 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Course",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Child",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Provider",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_parent_of",
+      "domain": [
+        "Person",
+        "Child"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "child_age",
+      "domain": [
+        "Child"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "course_of_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "Course"
+    },
+    {
+      "name": "publicly_funded",
+      "domain": [
+        "Course"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "childcare_provider_of",
+      "domain": [
+        "Child"
+      ],
+      "range": "Provider"
+    },
+    {
+      "name": "provider_registered",
+      "domain": [
+        "Provider"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "provider_ofsted",
+      "domain": [
+        "Provider"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "places": {
+      "sort": "Place",
+      "members": [
+        "london"
+      ]
+    },
+    "courses": {
+      "sort": "Course",
+      "members": [
+        "sixth_form_course"
+      ]
+    },
+    "children": {
+      "sort": "Child",
+      "members": [
+        "child1"
+      ]
+    },
+    "providers": {
+      "sort": "Provider",
+      "members": [
+        "provider1"
+      ]
+    },
+    "myself": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "age(you) == 19",
+    "lives_in(you, london)",
+    "course_of_student(you) == sixth_form_course",
+    "publicly_funded(sixth_form_course)",
+    "is_parent_of(you, child1)",
+    "child_age(child1) == 2",
+    "childcare_provider_of(child1) == provider1",
+    "provider_registered(provider1)",
+    "provider_ofsted(provider1)"
+  ],
+  "verifications": [
+    {
+      "name": "Care to Learn eligibility for you in London",
+      "constraint": "And(age(you) < 20, lives_in(you, london), course_of_student(you) == sixth_form_course, publicly_funded(sixth_form_course), is_parent_of(you, child1), child_age(child1) == 2, childcare_provider_of(child1) == provider1, provider_registered(provider1), provider_ofsted(provider1))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

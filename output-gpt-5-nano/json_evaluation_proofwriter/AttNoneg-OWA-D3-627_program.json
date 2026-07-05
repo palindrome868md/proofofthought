@@ -1,0 +1,92 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "dave",
+        "fiona",
+        "gary"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "furry(anne)",
+    "cold(dave)",
+    "furry(dave)",
+    "green(dave)",
+    "nice(dave)",
+    "red(dave)",
+    "round(dave)",
+    "cold(fiona)",
+    "red(fiona)",
+    "rough(gary)"
+  ],
+  "verifications": [
+    {
+      "name": "Anne is furry",
+      "constraint": "furry(anne)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

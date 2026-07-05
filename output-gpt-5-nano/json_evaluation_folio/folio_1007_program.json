@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Planet",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "outside_solar",
+      "domain": [
+        "Planet"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_solar",
+      "domain": [
+        "Planet"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_sun_as_star",
+      "domain": [
+        "Planet"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bound_by_sun",
+      "domain": [
+        "Planet"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rogue",
+      "domain": [
+        "Planet"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orphan",
+      "domain": [
+        "Planet"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "planets": {
+      "sort": "Planet",
+      "members": [
+        "PSO_J318_5_22"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Planet"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Or(outside_solar(p), in_solar(p)))",
+    "ForAll([p], Implies(outside_solar(p), Not(has_sun_as_star(p))))",
+    "ForAll([p], Implies(in_solar(p), bound_by_sun(p)))",
+    "ForAll([p], Implies(bound_by_sun(p), Not(rogue(p))))",
+    "ForAll([p], Implies(orphan(p), rogue(p)))",
+    "Implies(Not(And(rogue(PSO_J318_5_22), bound_by_sun(PSO_J318_5_22))), rogue(PSO_J318_5_22))"
+  ],
+  "verifications": [
+    {
+      "name": "PSO J318.5\u221222 antecedent implies not orphan and not sun",
+      "constraint": "Implies(Or(orphan(PSO_J318_5_22), Not(has_sun_as_star(PSO_J318_5_22))), And(Not(orphan(PSO_J318_5_22)), Not(has_sun_as_star(PSO_J318_5_22))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

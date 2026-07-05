@@ -1,0 +1,11 @@
+{
+  "sample_id": "50c3af76816a5c2f07d2",
+  "question": "Does Disney have an ice princess?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

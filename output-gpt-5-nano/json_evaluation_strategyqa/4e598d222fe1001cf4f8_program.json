@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Dog",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Pouch",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_fit_in_pouch",
+      "domain": [
+        "Dog",
+        "Pouch"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dogs": {
+      "sort": "Dog",
+      "members": [
+        "scooby_doo"
+      ]
+    },
+    "pouches": {
+      "sort": "Pouch",
+      "members": [
+        "kangaroo_pouch"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "can_fit_in_pouch(scooby_doo, kangaroo_pouch)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Could Scooby fit in a kangaroo pouch",
+      "constraint": "can_fit_in_pouch(scooby_doo, kangaroo_pouch)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

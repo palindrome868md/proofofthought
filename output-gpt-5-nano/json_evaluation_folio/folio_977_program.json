@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "WentToClaySchool",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "LivesInCA",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "AttendsYoga",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "MakesMatcha",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "WakesLate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "StartPastNoon",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "HasRegularNineToFive",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "PrefersHome",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Celebrity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bunny"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(And(WentToClaySchool(x), MakesMatcha(x)), And(Not(WakesLate(x)), Not(StartPastNoon(x)))))",
+    "ForAll([x], Implies(And(WentToClaySchool(x), LivesInCA(x), AttendsYoga(x)), MakesMatcha(x)))",
+    "ForAll([x], Implies(And(WentToClaySchool(x), Celebrity(x)), And(WakesLate(x), StartPastNoon(x))))",
+    "ForAll([x], Implies(And(WentToClaySchool(x), Not(HasRegularNineToFive(x))), Celebrity(x)))",
+    "ForAll([x], Implies(And(WentToClaySchool(x), PrefersHome(x)), Not(HasRegularNineToFive(x))))",
+    "And(WentToClaySchool(bunny), Or(And(PrefersHome(bunny), MakesMatcha(bunny)), And(Not(PrefersHome(bunny)), Not(MakesMatcha(bunny)))))"
+  ],
+  "verifications": [
+    {
+      "name": "Bunny CA and yoga",
+      "constraint": "And(WentToClaySchool(bunny), LivesInCA(bunny), AttendsYoga(bunny))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

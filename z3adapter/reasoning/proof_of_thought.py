@@ -88,6 +88,7 @@ class ProofOfThought:
             ... )
         """
         self.backend_type = backend
+        self.model = model
         self.llm_client = llm_client
         self.generator = Z3ProgramGenerator(llm_client=llm_client, model=model, backend=backend)
 

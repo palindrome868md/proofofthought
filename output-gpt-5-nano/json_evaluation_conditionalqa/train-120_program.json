@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_partner",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cares_for",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hours_of_care",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "has_pip_daily_living",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "has_pip_daily_living(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Partner can be registered as carer",
+      "exists": [
+        {
+          "name": "pc",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_partner(pc, you), cares_for(pc, you), hours_of_care(pc, you) >= 35, has_pip_daily_living(you))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

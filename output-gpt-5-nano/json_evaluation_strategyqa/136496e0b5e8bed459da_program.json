@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Note",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Scale",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "TwelveToneRow",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "row_note",
+      "domain": [
+        "TwelveToneRow",
+        "IntSort"
+      ],
+      "range": "Note"
+    },
+    {
+      "name": "is_in_scale",
+      "domain": [
+        "Note",
+        "Scale"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "scales": {
+      "sort": "Scale",
+      "members": [
+        "iwato_scale"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "i",
+      "sort": "IntSort"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Impossible to use Iwato scale in a 12-tone row",
+      "exists": [
+        {
+          "name": "row",
+          "sort": "TwelveToneRow"
+        }
+      ],
+      "constraint": "ForAll([i], And(i >= 1, i <= 12, is_in_scale(row_note(row, i), iwato_scale), Distinct(row_note(row, 1), row_note(row, 2), row_note(row, 3), row_note(row, 4), row_note(row, 5), row_note(row, 6), row_note(row, 7), row_note(row, 8), row_note(row, 9), row_note(row, 10), row_note(row, 11), row_note(row, 12))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

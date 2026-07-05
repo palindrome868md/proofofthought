@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "weeks_pregnant",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "ma_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "affects_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "CouncilTaxReduction",
+        "HousingBenefit",
+        "ESA",
+        "IncomeSupport",
+        "JSA",
+        "BereavementBenefits",
+        "CarerAllowance",
+        "UniversalCredit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "weeks_pregnant(you) == 30",
+    "ma_eligible(you)",
+    "affects_benefit(you, JSA)"
+  ],
+  "verifications": [
+    {
+      "name": "Maternity Allowance eligibility and impact on JSA",
+      "constraint": "And(ma_eligible(you), affects_benefit(you, JSA))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

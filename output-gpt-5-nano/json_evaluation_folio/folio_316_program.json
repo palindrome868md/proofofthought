@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Place",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Route",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_unincorporated",
+      "domain": [
+        "Place"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "on_route",
+      "domain": [
+        "Place",
+        "Route"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "places": {
+      "sort": "Place",
+      "members": [
+        "ordinary"
+      ]
+    },
+    "routes": {
+      "sort": "Route",
+      "members": [
+        "kentucky_route_32"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_unincorporated(ordinary)",
+    "on_route(ordinary, kentucky_route_32)"
+  ],
+  "verifications": [
+    {
+      "name": "No unincorporated communities along KY Route 32",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Place"
+        }
+      ],
+      "implies": {
+        "antecedent": "on_route(p, kentucky_route_32)",
+        "consequent": "Not(is_unincorporated(p))"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

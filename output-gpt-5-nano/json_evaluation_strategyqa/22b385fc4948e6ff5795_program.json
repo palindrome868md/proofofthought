@@ -1,0 +1,53 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Time",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_drive_alone",
+      "domain": [
+        "Person",
+        "Time"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lil_wayne"
+      ]
+    },
+    "times": {
+      "sort": "Time",
+      "members": [
+        "beginning_of_career"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Lil Wayne could drive alone at the beginning of his career",
+      "exists": [
+        {
+          "name": "t",
+          "sort": "Time"
+        }
+      ],
+      "constraint": "And(t == beginning_of_career, can_drive_alone(lil_wayne, t))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

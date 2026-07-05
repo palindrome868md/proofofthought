@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "gary"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "cold(gary)",
+    "green(gary)",
+    "quiet(gary)",
+    "red(gary)",
+    "ForAll([p], Implies(cold(p), kind(p)))",
+    "ForAll([p], Implies(kind(p), green(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Gary is kind",
+      "constraint": "kind(gary)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

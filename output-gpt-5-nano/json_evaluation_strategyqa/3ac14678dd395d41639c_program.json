@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_eleventh_grader",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "medicare_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_qualifying_disability",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_end_stage_renal_disease",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(is_eleventh_grader(p), has_qualifying_disability(p)), medicare_eligible(p)))",
+    "ForAll([p], Implies(And(is_eleventh_grader(p), has_end_stage_renal_disease(p)), medicare_eligible(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Exists eleventh-grader eligible for Medicare",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_eleventh_grader(p), medicare_eligible(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

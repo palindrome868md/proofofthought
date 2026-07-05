@@ -1,0 +1,106 @@
+{
+  "sorts": [
+    {
+      "name": "SocialApp",
+      "type": "DeclareSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "a",
+      "sort": "SocialApp"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_chat",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_video",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "allows_messages",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_upload_video",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "software",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "computer_program",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ideal_for_pret",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high_engagement",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "addictive",
+      "domain": [
+        "SocialApp"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "social_apps": {
+      "sort": "SocialApp",
+      "members": [
+        "tiktok"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([a], Implies(has_chat(a), software(a)))",
+    "ForAll([a], Implies(allows_messages(a), has_chat(a)))",
+    "ForAll([a], Or(has_chat(a), has_video(a)))",
+    "ForAll([a], Implies(has_video(a), can_upload_video(a)))",
+    "ForAll([a], Implies(software(a), computer_program(a)))",
+    "ForAll([a], Implies(high_engagement(a), addictive(a)))",
+    "ForAll([a], Implies(addictive(a), Not(ideal_for_pret(a))))",
+    "Not(ideal_for_pret(tiktok))"
+  ],
+  "verifications": [
+    {
+      "name": "TikTok is ideal_for_pret or a computer_program",
+      "constraint": "Or(ideal_for_pret(tiktok), computer_program(tiktok))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

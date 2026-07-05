@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sour",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "Not",
+      "domain": [
+        "BoolSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "stella"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "dumpus(stella)",
+    "ForAll([x], Implies(dumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), Not(sour(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Stella is sour",
+      "constraint": "sour(stella)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

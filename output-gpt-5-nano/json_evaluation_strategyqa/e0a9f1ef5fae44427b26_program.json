@@ -1,0 +1,35 @@
+{
+  "sorts": [
+    {
+      "name": "Fruit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sinks_in_water",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fruits": {
+      "sort": "Fruit",
+      "members": [
+        "pear"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "sinks_in_water(pear)"
+  ],
+  "verifications": [
+    {
+      "name": "Pear sinks in water",
+      "constraint": "sinks_in_water(pear)"
+    }
+  ]
+}

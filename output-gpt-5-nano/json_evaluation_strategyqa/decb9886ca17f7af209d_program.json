@@ -1,0 +1,41 @@
+{
+  "sorts": [
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_english_rooted",
+      "domain": [
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "svg_language"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "is_english_rooted(svg_language)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "SVG language rooted in English",
+      "constraint": "is_english_rooted(svg_language)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

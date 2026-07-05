@@ -1,0 +1,56 @@
+{
+  "sorts": [],
+  "functions": [
+    {
+      "name": "is_eligible_budgeting_loan",
+      "domain": [
+        "IntSort",
+        "BoolSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": [],
+  "variables": [
+    {
+      "name": "months_on_benefits",
+      "sort": "IntSort"
+    },
+    {
+      "name": "on_universal_credit",
+      "sort": "BoolSort"
+    },
+    {
+      "name": "has_outstanding_debt",
+      "sort": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([months_on_benefits, on_universal_credit, has_outstanding_debt], Implies(And(months_on_benefits >= 6, Not(on_universal_credit), Not(has_outstanding_debt)), is_eligible_budgeting_loan(months_on_benefits, on_universal_credit)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Budgeting Loan Eligibility",
+      "exists": [
+        {
+          "name": "months_on_benefits",
+          "sort": "IntSort"
+        },
+        {
+          "name": "on_universal_credit",
+          "sort": "BoolSort"
+        },
+        {
+          "name": "has_outstanding_debt",
+          "sort": "BoolSort"
+        }
+      ],
+      "constraint": "And(months_on_benefits >= 6, Not(on_universal_credit), Not(has_outstanding_debt), is_eligible_budgeting_loan(months_on_benefits, on_universal_credit))"
+    }
+  ],
+  "optimization": [],
+  "actions": [
+    "verify_conditions"
+  ]
+}

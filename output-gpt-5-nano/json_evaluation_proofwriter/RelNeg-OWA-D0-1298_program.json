@@ -1,0 +1,105 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "bear",
+        "mouse",
+        "bald_eagle"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "chases(bald_eagle, mouse)",
+    "rough(bear)",
+    "visits(mouse, bear)",
+    "ForAll([p], Implies(red(p), Not(rough(p))))",
+    "ForAll([p], Implies(And(rough(p), red(p)), Not(blue(p))))",
+    "ForAll([p], Implies(chases(p, mouse), chases(mouse, bear)))",
+    "ForAll([p], Implies(And(chases(p, mouse), big(mouse)), visits(p, bear)))",
+    "Implies(And(likes(bear, mouse), Not(red(bear))), chases(mouse, bald_eagle))",
+    "ForAll([p], Implies(chases(p, bear), kind(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Bear is rough",
+      "constraint": "rough(bear)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

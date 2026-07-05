@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "attends_wedding",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "gets_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "knows_getting_married",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "preteen",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young_child",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoys_milestones",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fond_large_group",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "outgoing",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spirited",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "carol"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(attends_wedding(p), Or(gets_married(p), knows_getting_married(p))))",
+    "ForAll([p], Implies(Or(preteen(p), young_child(p)), And(Not(gets_married(p)), Not(knows_getting_married(p)))))",
+    "ForAll([p], Implies(enjoys_milestones(p), attends_wedding(p)))",
+    "ForAll([p], Implies(fond_large_group(p), enjoys_milestones(p)))",
+    "ForAll([p], Implies(And(outgoing(p), spirited(p)), fond_large_group(p)))",
+    "Implies(Not(And(Or(preteen(carol), young_child(carol)), attends_wedding(carol))), Or(Not(gets_married(carol)), Not(knows_getting_married(carol))))"
+  ],
+  "verifications": [
+    {
+      "name": "Carol does not enjoy milestones and is not outgoing or spirited",
+      "constraint": "And(Not(enjoys_milestones(carol)), Not(And(outgoing(carol), spirited(carol))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

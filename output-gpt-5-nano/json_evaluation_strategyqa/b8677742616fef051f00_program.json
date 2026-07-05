@@ -1,0 +1,45 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "descends_from",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "num_people_related_to",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "genghis_khan",
+        "julius_caesar"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "More people today related to Genghis Khan than Julius Caesar",
+      "constraint": "num_people_related_to(genghis_khan) > num_people_related_to(julius_caesar)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

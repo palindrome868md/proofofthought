@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_diffuse_mesothelioma",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "diagnosed_after_20120725",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "exposed_to_asbestos_at_work_in_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cannot_trace_employer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_claimed_elsewhere",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "received_compensation",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "DMPS eligibility for uncle",
+      "exists": [
+        {
+          "name": "u",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(has_diffuse_mesothelioma(u), diagnosed_after_20120725(u), exposed_to_asbestos_at_work_in_uk(u), cannot_trace_employer(u), Not(has_claimed_elsewhere(u)), Not(received_compensation(u)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

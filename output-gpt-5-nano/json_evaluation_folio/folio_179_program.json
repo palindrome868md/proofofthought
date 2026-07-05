@@ -1,0 +1,97 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "EnumSort",
+      "values": [
+        "Bloomberg",
+        "Yale_Housing"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "located_in",
+      "domain": [
+        "Building"
+      ],
+      "range": "City"
+    },
+    {
+      "name": "high",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "manager",
+      "domain": [
+        "Building"
+      ],
+      "range": "Company"
+    },
+    {
+      "name": "owner",
+      "domain": [
+        "Building"
+      ],
+      "range": "Company"
+    },
+    {
+      "name": "logo",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "towers": {
+      "sort": "Building",
+      "members": [
+        "Tower_A",
+        "Tower_B"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "New_Haven",
+        "Manhattans"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Building"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([b], Implies(located_in(b) == New_Haven, Not(high(b))))",
+    "ForAll([b], Implies(manager(b) == Yale_Housing, located_in(b) == New_Haven))",
+    "ForAll([b], Implies(located_in(b) == Manhattans, high(b)))",
+    "ForAll([b], Implies(owner(b) == Bloomberg, located_in(b) == Manhattans))",
+    "ForAll([b], Implies(logo(b), owner(b) == Bloomberg))",
+    "manager(Tower_A) == Yale_Housing",
+    "logo(Tower_B)"
+  ],
+  "verifications": [
+    {
+      "name": "Tower_B located in New_Haven",
+      "constraint": "located_in(Tower_B) == New_Haven"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

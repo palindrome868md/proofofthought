@@ -1,0 +1,11 @@
+{
+  "sample_id": "f231532fe17fd971d1e6",
+  "question": "Is a Boeing 737 cost covered by Wonder Woman (2017 film) box office receipts?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

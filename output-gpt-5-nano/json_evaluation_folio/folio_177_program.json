@@ -1,0 +1,108 @@
+{
+  "sorts": [
+    {
+      "name": "Building",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Logo",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "located_in",
+      "domain": [
+        "Building",
+        "City"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "managed_by",
+      "domain": [
+        "Building",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "owned_by",
+      "domain": [
+        "Building",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_logo",
+      "domain": [
+        "Building",
+        "Logo"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high",
+      "domain": [
+        "Building"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "buildings": {
+      "sort": "Building",
+      "members": [
+        "tower_a",
+        "tower_b"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "new_haven",
+        "manhattans"
+      ]
+    },
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "yale_housing",
+        "bloomberg"
+      ]
+    },
+    "logos": {
+      "sort": "Logo",
+      "members": [
+        "bloomberg_logo"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([p], Implies(managed_by(p, yale_housing), located_in(p, new_haven)))",
+    "ForAll([p], Implies(located_in(p, new_haven), Not(high(p))))",
+    "ForAll([p], Implies(located_in(p, manhattans), high(p)))",
+    "ForAll([p], Implies(owned_by(p, bloomberg), located_in(p, manhattans)))",
+    "ForAll([p], Implies(has_logo(p, bloomberg_logo), owned_by(p, bloomberg)))",
+    "managed_by(tower_a, yale_housing)",
+    "has_logo(tower_b, bloomberg_logo)"
+  ],
+  "verifications": [
+    {
+      "name": "Tower A is low",
+      "constraint": "Not(high(tower_a))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

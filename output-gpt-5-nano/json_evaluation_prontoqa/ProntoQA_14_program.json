@@ -1,0 +1,160 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "fae"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_jompus(fae)"
+  ],
+  "rules": [
+    {
+      "name": "Jompus implies Zumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_jompus(p)",
+        "consequent": "is_zumpus(p)"
+      }
+    },
+    {
+      "name": "Zumpus implies Numpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_zumpus(p)",
+        "consequent": "is_numpus(p)"
+      }
+    },
+    {
+      "name": "Numpus implies Yumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_numpus(p)",
+        "consequent": "is_yumpus(p)"
+      }
+    },
+    {
+      "name": "Yumpus implies Wumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_yumpus(p)",
+        "consequent": "is_wumpus(p)"
+      }
+    },
+    {
+      "name": "Wumpus implies Not Opaque",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_wumpus(p)",
+        "consequent": "Not(is_opaque(p))"
+      }
+    },
+    {
+      "name": "Wumpus implies Impuse",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_wumpus(p)",
+        "consequent": "is_impuse(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Is Fae opaque",
+      "constraint": "is_opaque(fae)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

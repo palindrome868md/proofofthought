@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "takes_photo_of",
+      "domain": [
+        "Person",
+        "Animal",
+        "City"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    },
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "saltwater_crocodile"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "memphis"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Take photo of Saltwater crocodile in Memphis",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "takes_photo_of(p, saltwater_crocodile, memphis)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

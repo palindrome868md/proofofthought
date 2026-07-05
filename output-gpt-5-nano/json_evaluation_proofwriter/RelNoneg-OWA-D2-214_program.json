@@ -1,0 +1,100 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "cat",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "chases(cat, rabbit)",
+    "kind(cat)",
+    "red(cat)",
+    "rough(cat)",
+    "visits(cat, mouse)",
+    "chases(mouse, cat)",
+    "chases(mouse, rabbit)",
+    "eats(mouse, rabbit)",
+    "red(mouse)",
+    "rough(mouse)",
+    "visits(mouse, cat)",
+    "visits(mouse, rabbit)",
+    "chases(rabbit, mouse)",
+    "eats(rabbit, cat)",
+    "eats(rabbit, mouse)",
+    "red(rabbit)",
+    "ForAll([x], Implies(And(visits(x, rabbit), visits(x, cat)), chases(rabbit, cat)))",
+    "ForAll([x], Implies(chases(x, cat), visits(x, mouse)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit chases cat",
+      "constraint": "chases(rabbit, cat)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

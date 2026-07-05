@@ -1,0 +1,87 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Illness",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "serve_in_afghanistan_2012_2013",
+      "domain": [
+        "Person",
+        "IntSort",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_illness",
+      "domain": [
+        "Person",
+        "Illness"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "late_onset",
+      "domain": [
+        "Illness"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "afcs_eligible",
+      "domain": [
+        "Person",
+        "Illness"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "illnesses": {
+      "sort": "Illness",
+      "members": [
+        "PTSD"
+      ]
+    },
+    "people": {
+      "sort": "Person",
+      "members": [
+        "current_user"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(serve_in_afghanistan_2012_2013(p, 2012, 2013), has_illness(p, PTSD), late_onset(PTSD)), afcs_eligible(p, PTSD)))",
+    "serve_in_afghanistan_2012_2013(current_user, 2012, 2013)",
+    "has_illness(current_user, PTSD)",
+    "late_onset(PTSD)"
+  ],
+  "verifications": [
+    {
+      "name": "PTSD late onset AFCS claim possible",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "afcs_eligible(p, PTSD)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

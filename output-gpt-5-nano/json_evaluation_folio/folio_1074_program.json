@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Lipstick",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "FinishType",
+      "type": "EnumSort",
+      "values": [
+        "Velvet",
+        "Satin"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_set",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rosewood_in_description",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "refillable",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "finish_of",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "FinishType"
+    }
+  ],
+  "constants": {
+    "lipsticks": {
+      "sort": "Lipstick",
+      "members": [
+        "rouge_dior_999"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "in_set(rouge_dior_999)",
+    "Or(rosewood_in_description(rouge_dior_999), finish_of(rouge_dior_999) == Velvet)",
+    "ForAll([l], Implies(And(in_set(l), finish_of(l) == Velvet), refillable(l)))",
+    "ForAll([l], Implies(in_set(l), Or(finish_of(l) == Velvet, finish_of(l) == Satin)))",
+    "ForAll([l], Implies(And(in_set(l), finish_of(l) == Satin), rosewood_in_description(l)))",
+    "ForAll([l], Or(Not(rosewood_in_description(l)), rosewood_in_description(l)))",
+    "in_set(rouge_dior_999)",
+    "Or(rosewood_in_description(rouge_dior_999), finish_of(rouge_dior_999) == Velvet)"
+  ],
+  "verifications": [
+    {
+      "name": "ROUGE Dior 999: Statement validity",
+      "constraint": "Not(Implies(Or(Not(rosewood_in_description(rouge_dior_999)), refillable(rouge_dior_999)), And(finish_of(rouge_dior_999) != Satin, Not(rosewood_in_description(rouge_dior_999)))))"
+    }
+  ]
+}

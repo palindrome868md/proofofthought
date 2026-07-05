@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Food",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Salt",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "uses_salt",
+      "domain": [
+        "Food",
+        "Salt"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smells_like_sulfur",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "salt_constants": {
+      "sort": "Salt",
+      "members": [
+        "black_salt"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "All foods made with black salt smell sulfur",
+      "forall": [
+        {
+          "name": "f",
+          "sort": "Food"
+        }
+      ],
+      "implies": {
+        "antecedent": "uses_salt(f, black_salt)",
+        "consequent": "smells_like_sulfur(f)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sat_in_parliament",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attended_westminster_school",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attended_university_edinburgh",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "supported_portland_whigs",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "sat_in_parliament(william_dickinson)",
+    "attended_westminster_school(william_dickinson)",
+    "attended_university_edinburgh(william_dickinson)",
+    "supported_portland_whigs(william_dickinson)",
+    "ForAll([p], Implies(supported_portland_whigs(p), Not(sat_in_parliament(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson did not get a seat in Parliament",
+      "constraint": "Not(sat_in_parliament(william_dickinson))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "needs_extra_looking_after",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_walking_difficulties",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_in_GB_last_12_months",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "difficulties_have_last_at_least_3_months",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "difficulties_expected_to_last_at_least_6_months",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "habitually_resident_in_GB",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "DLA eligibility for child",
+      "exists": [
+        {
+          "name": "child",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(age(child) < 16, Or(needs_extra_looking_after(child), has_walking_difficulties(child)), lived_in_GB_last_12_months(child), difficulties_have_last_at_least_3_months(child), difficulties_expected_to_last_at_least_6_months(child), habitually_resident_in_GB(child))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "swim",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "walk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stand_on_ground_by_self",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brainstem_functional",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "balance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "functional_leg_muscles",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "breath_control",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "human",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "george",
+        "archie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(breath_control(p), brainstem_functional(p)))",
+    "ForAll([p], Implies(swim(p), breath_control(p)))",
+    "ForAll([p], Or(swim(p), walk(p)))",
+    "ForAll([p], Implies(walk(p), stand_on_ground_by_self(p)))",
+    "ForAll([p], Implies(brainstem_functional(p), balance(p)))",
+    "ForAll([p], Implies(stand_on_ground_by_self(p), functional_leg_muscles(p)))",
+    "human(george)",
+    "human(archie)",
+    "balance(george)",
+    "swim(george)",
+    "Implies(walk(archie), brainstem_functional(archie))",
+    "Implies(brainstem_functional(archie), walk(archie))"
+  ],
+  "verifications": [
+    {
+      "name": "Archie balance and leg muscles",
+      "constraint": "And(Not(balance(archie)), Not(functional_leg_muscles(archie)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

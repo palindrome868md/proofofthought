@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Boat",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tunnel",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "traverse",
+      "domain": [
+        "Boat",
+        "Tunnel"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "boats": {
+      "sort": "Boat",
+      "members": [
+        "oasis"
+      ]
+    },
+    "tunnels": {
+      "sort": "Tunnel",
+      "members": [
+        "lincoln_tunnel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "b",
+      "sort": "Boat"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([b], Not(traverse(b, lincoln_tunnel)))"
+  ],
+  "verifications": [
+    {
+      "name": "Will Oasis traverse Lincoln Tunnel",
+      "constraint": "traverse(oasis, lincoln_tunnel)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

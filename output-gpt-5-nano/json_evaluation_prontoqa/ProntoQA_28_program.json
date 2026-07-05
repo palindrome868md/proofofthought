@@ -1,0 +1,179 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "rompus(alex)",
+    "ForAll([p], Implies(rompus(p), wumpus(p)))",
+    "ForAll([p], Implies(wumpus(p), Not(wooden(p))))",
+    "ForAll([p], Implies(wumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), Not(temperate(p))))",
+    "ForAll([p], Implies(yumpus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), dull(p)))",
+    "ForAll([p], Implies(dumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), Not(small(p))))",
+    "ForAll([p], Implies(tumpus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), nervous(p)))",
+    "ForAll([p], Implies(jompus(p), vumpus(p)))",
+    "ForAll([p], Implies(numpus(p), rompus(p)))",
+    "ForAll([p], Implies(numpus(p), bitter(p)))",
+    "ForAll([p], Implies(zumpus(p), numpus(p)))",
+    "ForAll([p], Implies(zumpus(p), Not(fruity(p))))",
+    "ForAll([p], Implies(impus(p), small(p)))",
+    "ForAll([p], Implies(rompus(p), kind(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Alex is small",
+      "constraint": "small(alex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

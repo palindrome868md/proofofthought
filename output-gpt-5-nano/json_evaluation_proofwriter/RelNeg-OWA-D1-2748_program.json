@@ -1,0 +1,103 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "dog",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "Not(chases(dog, rabbit))",
+    "Not(cold(dog))",
+    "Not(likes(dog, rabbit))",
+    "sees(dog, rabbit)",
+    "chases(rabbit, dog)",
+    "blue(rabbit)",
+    "cold(rabbit)",
+    "Not(young(rabbit))",
+    "Not(likes(rabbit, dog))",
+    "Not(sees(rabbit, dog))",
+    "ForAll([x], Implies(sees(x, rabbit), chases(x, dog)))",
+    "ForAll([x], Implies(sees(x, dog), red(dog)))",
+    "ForAll([x], Implies(And(red(x), Not(sees(x, rabbit))), Not(red(rabbit))))",
+    "Implies(sees(rabbit, dog), Not(chases(rabbit, dog)))",
+    "ForAll([x], Implies(And(chases(x, rabbit), sees(rabbit, dog)), cold(rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Dog does not chase the dog",
+      "constraint": "Not(chases(dog, dog))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

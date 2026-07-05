@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_warthog",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "on",
+      "domain": [
+        "Animal",
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "broadway"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Existence of a warthog on Broadway",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(is_warthog(a), on(a, broadway))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

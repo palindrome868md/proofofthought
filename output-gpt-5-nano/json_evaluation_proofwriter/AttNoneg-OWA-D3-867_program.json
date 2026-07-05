@@ -1,0 +1,95 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "charlie",
+        "fiona",
+        "harry"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "white(bob)",
+    "smart(charlie)",
+    "cold(fiona)",
+    "smart(harry)",
+    "ForAll([p], Implies(smart(p), quiet(p)))",
+    "ForAll([p], Implies(white(p), young(p)))",
+    "ForAll([p], Implies(And(cold(p), quiet(p)), nice(p)))",
+    "ForAll([p], Implies(cold(p), smart(p)))",
+    "ForAll([p], Implies(And(white(p), rough(p)), quiet(p)))",
+    "ForAll([p], Implies(And(smart(p), white(p)), young(p)))",
+    "ForAll([p], Implies(young(p), quiet(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Fiona is quiet",
+      "constraint": "quiet(fiona)"
+    }
+  ]
+}

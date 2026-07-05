@@ -1,0 +1,43 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lacks_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "statutory_will_possible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "granny",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "lacks_capacity(granny)",
+    "Implies(lacks_capacity(granny), statutory_will_possible(granny))"
+  ],
+  "verifications": [
+    {
+      "name": "Statutory Will Possible for Granny",
+      "constraint": "statutory_will_possible(granny)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

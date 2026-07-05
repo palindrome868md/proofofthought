@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "aggressive",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "Fae"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "tumpus(Fae)",
+    "numpus(Fae)",
+    "zumpus(Fae)",
+    "vumpus(Fae)",
+    "impus(Fae)"
+  ],
+  "verifications": [
+    {
+      "name": "Fae is not aggressive",
+      "constraint": "Not(aggressive(Fae))"
+    }
+  ]
+}

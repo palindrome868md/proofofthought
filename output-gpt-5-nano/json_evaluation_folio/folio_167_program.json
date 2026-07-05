@@ -1,0 +1,67 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "leader_for_life",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "king",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "queen",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "male",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "female",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "elizabeth"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "queen(elizabeth)",
+    "leader_for_life(elizabeth)"
+  ],
+  "verifications": [
+    {
+      "name": "Elizabeth is a leader for life",
+      "constraint": "leader_for_life(elizabeth)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

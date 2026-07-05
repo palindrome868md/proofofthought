@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Deputy",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_panel_deputy",
+      "domain": [
+        "Deputy"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_manage_finances",
+      "domain": [
+        "Deputy",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "dad",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Panel deputy can manage dad's finances",
+      "exists": [
+        {
+          "name": "d",
+          "sort": "Deputy"
+        }
+      ],
+      "constraint": "And(is_panel_deputy(d), can_manage_finances(d, dad))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

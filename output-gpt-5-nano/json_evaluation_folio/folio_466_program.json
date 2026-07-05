@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Instrument",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "plays_in_concert",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "good_at",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "peter",
+        "oliver"
+      ]
+    },
+    "instruments": {
+      "sort": "Instrument",
+      "members": [
+        "piano",
+        "violin",
+        "saxophone"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    },
+    {
+      "name": "i",
+      "sort": "Instrument"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p, i], Implies(plays_in_concert(p, i), good_at(p, i)))",
+    "plays_in_concert(peter, piano)",
+    "plays_in_concert(peter, violin)",
+    "plays_in_concert(peter, saxophone)",
+    "plays_in_concert(oliver, violin)",
+    "Distinct(piano, violin)"
+  ],
+  "verifications": [
+    {
+      "name": "Peter is good at piano",
+      "constraint": "good_at(peter, piano)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

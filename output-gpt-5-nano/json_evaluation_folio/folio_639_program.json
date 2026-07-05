@@ -1,0 +1,115 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Institution",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "PoliticalGroup",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "attended",
+      "domain": [
+        "Person",
+        "Institution"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sat_in_house_of_commons",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "supported",
+      "domain": [
+        "Person",
+        "PoliticalGroup"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "got_seat_parliament",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "Institution",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    },
+    "schools": {
+      "sort": "Institution",
+      "members": [
+        "westminster_school"
+      ]
+    },
+    "universities": {
+      "sort": "Institution",
+      "members": [
+        "university_of_edinburgh"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "united_kingdom"
+      ]
+    },
+    "groups": {
+      "sort": "PoliticalGroup",
+      "members": [
+        "portland_whigs"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "sat_in_house_of_commons(william_dickinson)",
+    "attended(william_dickinson, westminster_school)",
+    "attended(william_dickinson, university_of_edinburgh)",
+    "located_in(university_of_edinburgh, united_kingdom)",
+    "supported(william_dickinson, portland_whigs)",
+    "ForAll([p], Implies(supported(p, portland_whigs), Not(got_seat_parliament(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson sits in the House of Commons",
+      "constraint": "sat_in_house_of_commons(william_dickinson)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

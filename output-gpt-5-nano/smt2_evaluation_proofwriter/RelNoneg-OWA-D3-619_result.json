@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D3-619",
+  "question": "The cat is nice. The dog chases the rabbit. The rabbit visits the tiger. The tiger is nice. If the rabbit is blue and the rabbit visits the tiger then the tiger is young. If the rabbit visits the dog and the dog visits the rabbit then the rabbit eats the cat. If something eats the rabbit and it is red then the rabbit eats the cat. If something eats the tiger and it eats the rabbit then it visits the tiger. All young things are blue. If something chases the rabbit then the rabbit is blue. If something is red and it visits the cat then the cat visits the tiger. If something eats the tiger and it visits the rabbit then it chases the dog.\n\nQuestion: The cat is not nice.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

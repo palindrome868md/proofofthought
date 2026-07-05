@@ -1,0 +1,123 @@
+{
+  "sorts": [
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sour",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "tumpuses": {
+      "sort": "Tumpus",
+      "members": [
+        "Max"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "t",
+      "sort": "Tumpus"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([t], sour(t))",
+    "ForAll([t], vumpus(t))",
+    "ForAll([t], Implies(vumpus(t), bright(t)))",
+    "ForAll([t], Implies(vumpus(t), numpus(t)))",
+    "ForAll([t], Implies(numpus(t), impuse(t)))",
+    "ForAll([t], Implies(impuse(t), Not(small(t))))",
+    "ForAll([t], Implies(impuse(t), jompus(t)))",
+    "ForAll([t], Implies(jompus(t), brown(t)))",
+    "ForAll([t], Implies(jompus(t), yumpus(t)))",
+    "ForAll([t], Implies(rompus(t), Not(brown(t))))",
+    "tumpus(Max)"
+  ],
+  "verifications": [
+    {
+      "name": "Max not brown",
+      "constraint": "Not(brown(Max))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

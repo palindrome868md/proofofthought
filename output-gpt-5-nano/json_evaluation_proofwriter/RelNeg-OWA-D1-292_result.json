@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D1-292",
+  "question": "The lion is young. The lion does not like the mouse. The lion likes the rabbit. The lion visits the mouse. The mouse does not eat the rabbit. The mouse is blue. The mouse is green. The mouse visits the lion. The mouse visits the rabbit. The rabbit eats the lion. The rabbit eats the mouse. The rabbit is cold. The rabbit is green. The rabbit is not nice. The rabbit visits the lion. The rabbit does not visit the mouse. If someone likes the rabbit and the rabbit visits the mouse then they are not green. If someone visits the mouse then the mouse visits the rabbit. If someone is cold then they like the mouse. If someone eats the mouse then the mouse likes the lion. If someone is nice then they like the lion. If someone likes the rabbit and the rabbit eats the lion then the rabbit is green.\n\nQuestion: The rabbit likes the mouse.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,360 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpuses",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "dumpus(wren)"
+  ],
+  "rules": [
+    {
+      "name": "Dumpus implies Rompus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "dumpus(x)",
+        "consequent": "rompus(x)"
+      }
+    },
+    {
+      "name": "Rompus implies Not Cold",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "rompus(x)",
+        "consequent": "Not(cold(x))"
+      }
+    },
+    {
+      "name": "Rompus implies Dumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "rompus(x)",
+        "consequent": "dumpus(x)"
+      }
+    },
+    {
+      "name": "Dumpus implies Feisty",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "dumpus(x)",
+        "consequent": "feisty(x)"
+      }
+    },
+    {
+      "name": "Dumpus implies Numpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "dumpus(x)",
+        "consequent": "numpus(x)"
+      }
+    },
+    {
+      "name": "Numpus implies Mean",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "numpus(x)",
+        "consequent": "mean(x)"
+      }
+    },
+    {
+      "name": "Numpus implies Zumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "numpus(x)",
+        "consequent": "zumpus(x)"
+      }
+    },
+    {
+      "name": "Zumpus implies Not Earthy",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "zumpus(x)",
+        "consequent": "Not(earthy(x))"
+      }
+    },
+    {
+      "name": "Zumpus implies Tumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "zumpus(x)",
+        "consequent": "tumpus(x)"
+      }
+    },
+    {
+      "name": "Tumpus implies Opaque",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "tumpus(x)",
+        "consequent": "opaque(x)"
+      }
+    },
+    {
+      "name": "Tumpus implies Vumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "tumpus(x)",
+        "consequent": "vumpus(x)"
+      }
+    },
+    {
+      "name": "Vumpus implies Not Liquid",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "vumpus(x)",
+        "consequent": "Not(liquid(x))"
+      }
+    },
+    {
+      "name": "Vumpus implies Jompus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "vumpus(x)",
+        "consequent": "jompus(x)"
+      }
+    },
+    {
+      "name": "Jompus implies Not Spicy",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "jompus(x)",
+        "consequent": "Not(spicy(x))"
+      }
+    },
+    {
+      "name": "Jompus implies Yumpus",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "jompus(x)",
+        "consequent": "yumpus(x)"
+      }
+    },
+    {
+      "name": "Impuse implies Liquid",
+      "forall": [
+        {
+          "name": "x",
+          "sort": "Entity"
+        }
+      ],
+      "implies": {
+        "antecedent": "impuse(x)",
+        "consequent": "liquid(x)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Wren is liquid",
+      "constraint": "liquid(wren)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

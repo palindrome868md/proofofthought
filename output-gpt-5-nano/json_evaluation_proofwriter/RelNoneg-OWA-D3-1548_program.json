@@ -1,0 +1,111 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "cat",
+        "dog"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "cold(bald_eagle)",
+    "kind(bald_eagle)",
+    "young(bald_eagle)",
+    "sees(bald_eagle, cat)",
+    "visits(bald_eagle, cat)",
+    "visits(bald_eagle, dog)",
+    "kind(cat)",
+    "sees(cat, dog)",
+    "eats(dog, bald_eagle)",
+    "eats(dog, cat)",
+    "cold(dog)",
+    "round(dog)",
+    "sees(dog, bald_eagle)",
+    "sees(dog, cat)",
+    "visits(dog, bald_eagle)",
+    "visits(dog, cat)",
+    "Implies(visits(dog, cat), eats(cat, dog))",
+    "kind(dog)",
+    "Implies(kind(dog), sees(dog, dog))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Dog sees dog",
+      "constraint": "sees(dog, dog)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

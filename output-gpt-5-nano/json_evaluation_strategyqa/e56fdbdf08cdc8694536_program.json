@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Institution",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_enroll",
+      "domain": [
+        "Person",
+        "Institution"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "powerpuff_girls": {
+      "sort": "Person",
+      "members": [
+        "blossom",
+        "bubbles",
+        "buttercup"
+      ]
+    },
+    "academy": {
+      "sort": "Institution",
+      "members": [
+        "camden_military_academy"
+      ]
+    }
+  },
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Powerpuff Girls can enroll at Camden Military Academy",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(Or(x == blossom, x == bubbles, x == buttercup), can_enroll(x, camden_military_academy))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

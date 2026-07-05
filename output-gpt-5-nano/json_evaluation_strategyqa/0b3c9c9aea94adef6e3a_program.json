@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Purchase",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "PaymentMethod",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_use_payment_method",
+      "domain": [
+        "Purchase",
+        "PaymentMethod"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "purchases": {
+      "sort": "Purchase",
+      "members": [
+        "la_purchase"
+      ]
+    },
+    "payment_methods": {
+      "sort": "PaymentMethod",
+      "members": [
+        "bitcoin"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(can_use_payment_method(la_purchase, bitcoin))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Louisiana Purchase not paid with bitcoin",
+      "constraint": "Not(can_use_payment_method(la_purchase, bitcoin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

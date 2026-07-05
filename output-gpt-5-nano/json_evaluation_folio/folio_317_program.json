@@ -1,0 +1,55 @@
+{
+  "sorts": [
+    {
+      "name": "UnincorporatedCommunity",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "County",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "located_in",
+      "domain": [
+        "UnincorporatedCommunity",
+        "County"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "communities": {
+      "sort": "UnincorporatedCommunity",
+      "members": [
+        "Ordinary"
+      ]
+    },
+    "counties": {
+      "sort": "County",
+      "members": [
+        "Elliot_County"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "located_in(Ordinary, Elliot_County)"
+  ],
+  "verifications": [
+    {
+      "name": "Exists an unincorporated community located in Elliot County",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "UnincorporatedCommunity"
+        }
+      ],
+      "constraint": "located_in(x, Elliot_County)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Benefit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_benefit",
+      "domain": [
+        "Person",
+        "Benefit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_twins_birth",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_existing_children",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "within_six_months",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "england"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me"
+      ]
+    },
+    "benefits": {
+      "sort": "Benefit",
+      "members": [
+        "universal_credit"
+      ]
+    }
+  },
+  "knowledge_base": [],
+  "variables": [],
+  "verifications": [
+    {
+      "name": "Eligible for Sure Start Maternity Grant",
+      "constraint": "And(lives_in(me, england), has_benefit(me, universal_credit), is_twins_birth(me), has_existing_children(me), within_six_months(me))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

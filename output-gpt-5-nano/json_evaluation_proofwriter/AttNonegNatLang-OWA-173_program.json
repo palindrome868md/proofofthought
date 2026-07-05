@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alan",
+        "bob",
+        "charlie",
+        "eric"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "rough(alan)",
+    "round(alan)",
+    "kind(alan)",
+    "red(alan)",
+    "green(bob)",
+    "red(bob)",
+    "cold(bob)",
+    "rough(charlie)",
+    "red(charlie)",
+    "kind(charlie)",
+    "round(eric)",
+    "ForAll([p], Implies(And(rough(p), red(p), green(p)), blue(p)))",
+    "ForAll([p], Implies(And(big(p), round(p), kind(p)), rough(p)))",
+    "ForAll([p], Implies(And(kind(p), red(p)), green(p)))",
+    "ForAll([p], Implies(And(kind(p), rough(p)), red(p)))",
+    "ForAll([p], Implies(And(blue(p), red(p), big(p)), cold(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Alan not red",
+      "constraint": "Not(red(alan))"
+    }
+  ]
+}

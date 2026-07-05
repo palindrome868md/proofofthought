@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1128",
+  "question": "Given the following premises:\n\nAll people who regularly drink coffee are dependent on caffeine.\nPeople regularly drink coffee, or they don't want to be addicted to caffeine, or both.\nNo one who doesn't want to be addicted to caffeine is unaware that caffeine is a drug.\nRina is either a student who is unaware that caffeine is a drug, or she is not a student and is she aware that caffeine is a drug.\nRina  is either a student who is dependent on caffeine, or she is not a student and not dependent on caffeine.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Rina either regularly drinks coffee or is unaware that caffeine is a drug.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

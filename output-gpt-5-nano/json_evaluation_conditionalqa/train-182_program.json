@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "partner_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "Person"
+    },
+    {
+      "name": "brother_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "Person"
+    },
+    {
+      "name": "lacks_capacity",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_close_relative_or_friend",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "could_be_deputy_for",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "my_brother",
+      "sort": "Person"
+    },
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "lacks_capacity(my_brother)",
+    "ForAll([x], Implies(is_close_relative_or_friend(x, my_brother), could_be_deputy_for(x, my_brother)))"
+  ],
+  "verifications": [
+    {
+      "name": "Partner's brother can be deputy for my brother",
+      "exists": [
+        {
+          "name": "dep",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(dep == brother_of(partner_of(my_brother)), is_close_relative_or_friend(dep, my_brother), could_be_deputy_for(dep, my_brother))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

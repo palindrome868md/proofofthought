@@ -1,0 +1,162 @@
+{
+  "sorts": [
+    {
+      "name": "Being",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dumpus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "luminous",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Being"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Being",
+      "members": [
+        "rex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Being"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(dumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), blue(x)))",
+    "ForAll([x], Implies(numpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), hot(x)))",
+    "ForAll([x], Implies(wumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), luminous(x)))",
+    "ForAll([x], Implies(vumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), mean(x)))",
+    "ForAll([x], Implies(jompus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), Not(small(x))))",
+    "ForAll([x], Implies(impus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), Not(feisty(x))))",
+    "ForAll([x], Implies(rompus(x), zumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), Not(mean(x))))",
+    "dumpus(rex)"
+  ],
+  "verifications": [
+    {
+      "name": "Rex is mean",
+      "constraint": "mean(rex)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

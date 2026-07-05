@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_687",
+  "question": "Given the following premises:\n\nEveryone who rents a car spends money.\nWhenever Sarah goes to Vermont, Sarah drives there.\nSomeone who does not own a car to drive somewhere must either borrow a car or rent a car.\nSarah doesn\u2019t own a car.\nSarah never borrows a car to go camping.\nSarah is going to go camping in Vermont.\nTo go camping somewhere, you must go to that place.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Sarah will spend money this weekend.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_38",
+  "question": "Vumpuses are wooden. Every vumpus is a jompus. Jompuses are earthy. Each jompus is a wumpus. Wumpuses are not transparent. Wumpuses are yumpuses. Yumpuses are not bright. Each yumpus is an impus. Every rompus is happy. Impuses are not happy. Each impus is a dumpus. Dumpuses are brown. Dumpuses are zumpuses. Zumpuses are not sour. Zumpuses are numpuses. Every numpus is not angry. Numpuses are tumpuses. Polly is a vumpus.\n\nIs the following statement true or false? Polly is not happy.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

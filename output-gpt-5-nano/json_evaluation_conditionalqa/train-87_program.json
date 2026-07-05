@@ -1,0 +1,61 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "widow_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "death_was_due_to_service_before_2005",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "funeral_grant_available",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    },
+    {
+      "name": "husband",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([husband], And(widow_of(you, husband), death_was_due_to_service_before_2005(husband), funeral_grant_available(you)))"
+  ],
+  "verifications": [
+    {
+      "name": "Funeral grant possible for widow",
+      "exists": [
+        {
+          "name": "husband",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(widow_of(you, husband), death_was_due_to_service_before_2005(husband), funeral_grant_available(you))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

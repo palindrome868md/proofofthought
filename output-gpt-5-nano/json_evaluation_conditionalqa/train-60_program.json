@@ -1,0 +1,55 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_widow_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "died_in_service_before_2005",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_war_widow_pension",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "aunt",
+      "sort": "Person"
+    },
+    {
+      "name": "husband",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "Implies(And(is_widow_of(aunt, husband), died_in_service_before_2005(husband)), eligible_war_widow_pension(aunt))"
+  ],
+  "verifications": [
+    {
+      "name": "Aunt Can Claim War Widow Pension",
+      "constraint": "eligible_war_widow_pension(aunt)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

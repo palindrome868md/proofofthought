@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "mouse",
+        "rabbit",
+        "tiger"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "likes(bald_eagle, mouse)",
+    "likes(mouse, bald_eagle)",
+    "likes(rabbit, mouse)",
+    "chases(tiger, mouse)",
+    "chases(tiger, rabbit)",
+    "big(tiger)",
+    "sees(tiger, bald_eagle)"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit does not like mouse",
+      "constraint": "Not(likes(rabbit, mouse))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

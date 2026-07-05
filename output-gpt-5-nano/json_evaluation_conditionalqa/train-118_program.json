@@ -1,0 +1,29 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [
+    {
+      "name": "in_scotland",
+      "sort": "BoolSort"
+    },
+    {
+      "name": "first_child",
+      "sort": "BoolSort"
+    },
+    {
+      "name": "has_benefits",
+      "sort": "BoolSort"
+    }
+  ],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Any maternity allowance available",
+      "constraint": "Or(in_scotland, And(Not(in_scotland), first_child, has_benefits))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

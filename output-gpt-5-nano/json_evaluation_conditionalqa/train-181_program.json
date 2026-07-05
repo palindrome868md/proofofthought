@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_full_time_undergraduate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_dependent_children",
+      "domain": [
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_working",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_pla",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [],
+  "rules": [
+    {
+      "name": "PLA Eligibility Rule",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "And(is_full_time_undergraduate(p), has_dependent_children(p, 2))",
+        "consequent": "eligible_for_pla(p)"
+      }
+    }
+  ],
+  "variables": [],
+  "verifications": [
+    {
+      "name": "Can I claim Parents' Learning Allowance while studying full-time with 2 dependent children and not working",
+      "exists": [
+        {
+          "name": "person",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_full_time_undergraduate(person), has_dependent_children(person, 2), Not(is_working(person)), eligible_for_pla(person))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

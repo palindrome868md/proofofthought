@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Team",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "points",
+      "domain": [
+        "Team"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "head_to_head_points",
+      "domain": [
+        "Team",
+        "Team"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "ranks_higher",
+      "domain": [
+        "Team",
+        "Team"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "teams": {
+      "sort": "Team",
+      "members": [
+        "real_madrid",
+        "barcelona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Team"
+    },
+    {
+      "name": "i",
+      "sort": "Team"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p,i], Implies(points(p) > points(i), ranks_higher(p,i)))",
+    "ForAll([p,i], Implies(And(points(p) == points(i), head_to_head_points(p,i) > head_to_head_points(i,p)), ranks_higher(p,i)))",
+    "points(real_madrid) > points(barcelona)",
+    "head_to_head_points(real_madrid, barcelona) == head_to_head_points(barcelona, real_madrid)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Real Madrid ranks higher than Barcelona",
+      "constraint": "ranks_higher(real_madrid, barcelona)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

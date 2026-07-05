@@ -1,0 +1,46 @@
+{
+  "sorts": [
+    {
+      "name": "LipProduct",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "refillable",
+      "domain": [
+        "LipProduct"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rosewood_in_description",
+      "domain": [
+        "LipProduct"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "lip_products": {
+      "sort": "LipProduct",
+      "members": [
+        "ROUGE_Dior_Colored_Lip_Balm_999"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "refillable(ROUGE_Dior_Colored_Lip_Balm_999)",
+    "rosewood_in_description(ROUGE_Dior_Colored_Lip_Balm_999)"
+  ],
+  "verifications": [
+    {
+      "name": "Tautology: ROUGE Lip Balm 999 refillable or rosewood implies itself",
+      "constraint": "Implies(Or(refillable(ROUGE_Dior_Colored_Lip_Balm_999), rosewood_in_description(ROUGE_Dior_Colored_Lip_Balm_999)), Or(refillable(ROUGE_Dior_Colored_Lip_Balm_999), rosewood_in_description(ROUGE_Dior_Colored_Lip_Balm_999)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age_ok",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hours_looking_after",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "receiving_qualifying_benefit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "care_certificate_signed",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    },
+    {
+      "name": "receiver",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "age_ok(you)",
+    "hours_looking_after(you) == 22",
+    "receiving_qualifying_benefit(receiver)"
+  ],
+  "verifications": [
+    {
+      "name": "Eligible for Carer's Credit in scenario",
+      "exists": [
+        {
+          "name": "you",
+          "sort": "Person"
+        },
+        {
+          "name": "receiver",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(age_ok(you), hours_looking_after(you) >= 20, Or(receiving_qualifying_benefit(receiver), care_certificate_signed(you)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

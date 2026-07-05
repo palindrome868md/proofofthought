@@ -1,0 +1,50 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_english_professional_footballer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "scored_winning_goal_in_fa_cup_final",
+      "domain": [
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "thomas_barber"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_english_professional_footballer(thomas_barber)",
+    "scored_winning_goal_in_fa_cup_final(thomas_barber, 1913)"
+  ],
+  "verifications": [
+    {
+      "name": "An English professional footballer scored the winning goal in the 1913 FA Cup Final",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_english_professional_footballer(p), scored_winning_goal_in_fa_cup_final(p, 1913))"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "sorts": [
+    {
+      "name": "MantaRay",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "water_temperature",
+      "domain": [
+        "MantaRay"
+      ],
+      "range": "RealSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "m",
+      "sort": "MantaRay"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([m], water_temperature(m) > 4.0)"
+  ],
+  "verifications": [
+    {
+      "name": "All Manta Rays Live in Water Above Safe Cold Storage Temperature",
+      "forall": [
+        {
+          "name": "m",
+          "sort": "MantaRay"
+        }
+      ],
+      "implies": {
+        "antecedent": "m == m",
+        "consequent": "water_temperature(m) > 4.0"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

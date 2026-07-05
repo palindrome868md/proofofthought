@@ -1,0 +1,81 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "registered_blind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "married",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pays_tax",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "uses_all_allowance",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transfer_blind_allowance",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    },
+    {
+      "name": "wife",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "registered_blind(you)",
+    "married(you, wife)"
+  ],
+  "verifications": [
+    {
+      "name": "Can I claim Blind Person's Allowance and transfer to wife",
+      "exists": [
+        {
+          "name": "you",
+          "sort": "Person"
+        },
+        {
+          "name": "wife",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(registered_blind(you), married(you, wife), Or(Not(pays_tax(you)), Not(uses_all_allowance(you))), transfer_blind_allowance(you, wife))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Device",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Virus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_produce",
+      "domain": [
+        "Device",
+        "Virus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "devices": {
+      "sort": "Device",
+      "members": [
+        "three_d_printer"
+      ]
+    },
+    "viruses": {
+      "sort": "Virus",
+      "members": [
+        "adenovirus"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "d",
+      "sort": "Device"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([d], Not(can_produce(d, adenovirus)))"
+  ],
+  "verifications": [
+    {
+      "name": "3D printing cannot produce adenovirus",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Device"
+        }
+      ],
+      "constraint": "can_produce(p, adenovirus)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

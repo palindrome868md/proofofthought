@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D5-656",
+  "question": "Anne is smart. Charlie is not blue. Charlie is quiet. Erin is not nice. Erin is round. Harry is green. Harry is young. Smart things are green. If Anne is round then Anne is young. If something is blue and green then it is not quiet. If something is green and smart then it is round. If something is young then it is blue. Smart things are nice. If Harry is quiet and Harry is not smart then Harry is young.\n\nQuestion: Harry is quiet.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "LeetCodeProblem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "easy",
+      "domain": [
+        "LeetCodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hard",
+      "domain": [
+        "LeetCodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "novice_recommended",
+      "domain": [
+        "LeetCodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starred_more_than_1000",
+      "domain": [
+        "LeetCodeProblem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate_lt_20",
+      "domain": [
+        "LeetCodeProblem"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "LeetCodeProblem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "LeetCodeProblem"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(novice_recommended(p), easy(p)))",
+    "novice_recommended(two_sum)",
+    "starred_more_than_1000(four_sum)",
+    "easy(two_sum)"
+  ],
+  "verifications": [
+    {
+      "name": "2Sum is easy",
+      "constraint": "easy(two_sum)"
+    }
+  ]
+}

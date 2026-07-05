@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D2-1525",
+  "question": "The bear is cold. The dog does not chase the lion. The lion is not blue. The lion likes the squirrel. The squirrel eats the lion. The squirrel is cold. The squirrel does not like the bear. If the squirrel is cold then the squirrel chases the bear. If something chases the bear then the bear eats the squirrel.\n\nQuestion: The bear does not eat the squirrel.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

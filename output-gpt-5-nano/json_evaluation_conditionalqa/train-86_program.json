@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_child_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "declaration_of_presumed_death_possible",
+      "domain": [
+        "Person",
+        "Person",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    },
+    {
+      "name": "missing_father",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_child_of(you, missing_father)",
+    "declaration_of_presumed_death_possible(you, missing_father, 5)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can I obtain a declaration of presumed death after 5 years missing?",
+      "constraint": "declaration_of_presumed_death_possible(you, missing_father, 5)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "went_to_clay_school",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "makes_own_matcha",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_home_over_office",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_in_california",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "attends_yoga_regularly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wakes_up_late",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starts_schedule_past_noon",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_regular_9to5_job",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "works_in_entertainment_high_profile",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bunny"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(went_to_clay_school(p), makes_own_matcha(p)), And(Not(wakes_up_late(p)), Not(starts_schedule_past_noon(p)))))",
+    "ForAll([p], Implies(And(went_to_clay_school(p), lives_in_california(p), attends_yoga_regularly(p)), makes_own_matcha(p)))",
+    "ForAll([p], Implies(And(went_to_clay_school(p), works_in_entertainment_high_profile(p)), And(wakes_up_late(p), starts_schedule_past_noon(p))))",
+    "ForAll([p], Implies(And(went_to_clay_school(p), Not(has_regular_9to5_job(p))), works_in_entertainment_high_profile(p)))",
+    "ForAll([p], Implies(And(went_to_clay_school(p), prefers_home_over_office(p)), Not(has_regular_9to5_job(p))))",
+    "And(went_to_clay_school(bunny), Not(prefers_home_over_office(bunny)), Not(And(lives_in_california(bunny), attends_yoga_regularly(bunny))))"
+  ],
+  "verifications": [
+    {
+      "name": "Bunny does not prefer home over office and does not live in CA with yoga",
+      "constraint": "And(went_to_clay_school(bunny), Not(prefers_home_over_office(bunny)), Not(And(lives_in_california(bunny), attends_yoga_regularly(bunny))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "SocialMediaApp",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_chat_features",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_video_features",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_send_messages",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_upload_videos",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_software",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_computer_program",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_high_engagement",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_addictive",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ideal_for_preteens",
+      "domain": [
+        "SocialMediaApp"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "social_media_apps": {
+      "sort": "SocialMediaApp",
+      "members": [
+        "tiktok"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "ForAll([{\"name\": \"p\", \"sort\": \"SocialMediaApp\"}], Implies(has_chat_features(p), is_software(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"SocialMediaApp\"}], Implies(can_send_messages(p), has_chat_features(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"SocialMediaApp\"}], Or(has_chat_features(p), has_video_features(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"SocialMediaApp\"}], Implies(has_video_features(p), can_upload_videos(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"SocialMediaApp\"}], Implies(is_software(p), is_computer_program(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"SocialMediaApp\"}], Implies(has_high_engagement(p), is_addictive(p)))",
+    "ForAll([{\"name\": \"p\", \"sort\": \"SocialMediaApp\"}], Implies(is_addictive(p), Not(ideal_for_preteens(p))))",
+    "Not(ideal_for_preteens(tiktok))"
+  ],
+  "variables": [],
+  "verifications": [
+    {
+      "name": "TikTok has chat features or is a computer program",
+      "constraint": "Or(has_chat_features(tiktok), is_computer_program(tiktok))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

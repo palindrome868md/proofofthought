@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "spl_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "start_spl_together",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p1",
+      "sort": "Person"
+    },
+    {
+      "name": "p2",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p1, p2], Implies(And(spl_eligible(p1), spl_eligible(p2)), start_spl_together(p1, p2)))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Can I take SPL with my partner at the same time",
+      "exists": [
+        {
+          "name": "mom",
+          "sort": "Person"
+        },
+        {
+          "name": "dad",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(spl_eligible(mom), spl_eligible(dad), start_spl_together(mom, dad))"
+    }
+  ],
+  "optimization": [],
+  "actions": [
+    "verify_conditions"
+  ]
+}

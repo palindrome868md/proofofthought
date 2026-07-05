@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Creature",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Deck",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_giant_squid",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fits_on_deck",
+      "domain": [
+        "Creature",
+        "Deck"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "decks": {
+      "sort": "Deck",
+      "members": [
+        "titanic_deck"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Giant squid could fit on Titanic deck",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Creature"
+        }
+      ],
+      "constraint": "And(is_giant_squid(s), fits_on_deck(s, titanic_deck))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

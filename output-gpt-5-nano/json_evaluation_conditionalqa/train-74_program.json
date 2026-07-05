@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eligible_for_spl_and_shpp",
+      "domain": [
+        "Person",
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "baby": {
+      "sort": "Person",
+      "members": [
+        "baby_bella"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "mother",
+      "sort": "Person"
+    },
+    {
+      "name": "partner",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    {
+      "assertion": "eligible_for_spl_and_shpp(mother, partner, baby_bella)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for SPL and ShPP given baby born",
+      "constraint": "eligible_for_spl_and_shpp(mother, partner, baby_bella)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

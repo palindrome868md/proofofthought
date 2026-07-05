@@ -1,0 +1,178 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fruity",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "Fae"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "numpus(Fae)",
+    "ForAll([x], Implies(numpus(x), Not(nervous(x))))",
+    "ForAll([x], Implies(numpus(x), wumpus(x)))",
+    "ForAll([x], Implies(wumpus(x), liquid(x)))",
+    "ForAll([x], Implies(wumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), kind(x)))",
+    "ForAll([x], Implies(yumpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), opaque(x)))",
+    "ForAll([x], Implies(vumpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), Not(small(x))))",
+    "ForAll([x], Implies(impus(x), rompuse(x)))",
+    "ForAll([x], Implies(rompuse(x), dull(x)))",
+    "ForAll([x], Implies(rompuse(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), temperate(x)))",
+    "ForAll([x], Implies(tumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), Not(opaque(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Fae not opaque",
+      "constraint": "Not(opaque(Fae))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

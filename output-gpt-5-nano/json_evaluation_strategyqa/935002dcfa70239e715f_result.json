@@ -1,0 +1,11 @@
+{
+  "sample_id": "935002dcfa70239e715f",
+  "question": "Would Firefighters be included in a September 11th memorial?",
+  "ground_truth": true,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Undefined name in expression 'ForAll([p], Implies(is_firefighter(p), included_in_memorial(september_11_memorial, p)))': name 'p' is not defined"
+}

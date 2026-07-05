@@ -1,0 +1,39 @@
+{
+  "sorts": [
+    {
+      "name": "Food",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "horchata",
+      "domain": [
+        "Food"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "foods": {
+      "sort": "Food",
+      "members": [
+        "rice_pudding_with_water"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(horchata(rice_pudding_with_water))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Is rice_pudding_with_water horchata",
+      "constraint": "horchata(rice_pudding_with_water)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

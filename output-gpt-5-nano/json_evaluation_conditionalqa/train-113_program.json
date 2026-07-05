@@ -1,0 +1,96 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "diagnosed_after_2012",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "asbestos_exposure_in_uk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_employer_traceable",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_claimed_elsewhere",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_received_other_payments",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "DMPS_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "DMPS_eligible(you)",
+      "value": true
+    },
+    {
+      "assertion": "diagnosed_after_2012(you)",
+      "value": true
+    },
+    {
+      "assertion": "asbestos_exposure_in_uk(you)",
+      "value": true
+    },
+    {
+      "assertion": "not_employer_traceable(you)",
+      "value": true
+    },
+    {
+      "assertion": "not_claimed_elsewhere(you)",
+      "value": true
+    },
+    {
+      "assertion": "not_received_other_payments(you)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Eligible for DMPS despite untraceable employer",
+      "constraint": "DMPS_eligible(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

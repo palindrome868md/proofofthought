@@ -1,0 +1,79 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "quiet",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "charlie"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "red(anne)",
+    "young(charlie)",
+    "ForAll([p], Implies(And(red(p), young(p)), smart(p)))",
+    "ForAll([p], Implies(young(p), cold(p)))",
+    "ForAll([p], Implies(red(p), young(p)))",
+    "ForAll([p], Implies(And(young(p), cold(p)), quiet(p)))",
+    "ForAll([p], Implies(And(cold(p), young(p)), red(p)))",
+    "Implies(red(anne), cold(anne))"
+  ],
+  "verifications": [
+    {
+      "name": "Anne is red",
+      "constraint": "red(anne)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

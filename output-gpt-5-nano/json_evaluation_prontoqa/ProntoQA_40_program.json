@@ -1,0 +1,144 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Entity",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "wumpus(sally)",
+    "ForAll([x], Implies(wumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), rompuse(x)))",
+    "ForAll([x], Implies(rompuse(x), floral(x)))",
+    "ForAll([x], Implies(rompuse(x), tumpus(x)))",
+    "ForAll([x], Implies(floral(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), opaque(x)))",
+    "ForAll([x], Implies(tumpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), amenable(x)))",
+    "ForAll([x], Implies(jompus(x), zumpus(x)))",
+    "ForAll([x], Implies(numpus(x), wumpus(x)))",
+    "ForAll([x], Implies(impus(x), Not(amenable(x))))",
+    "ForAll([x], Implies(wumpus(x), bright(x)))"
+  ],
+  "verifications": [
+    {
+      "name": "Sally amenable",
+      "constraint": "amenable(sally)"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D5-940",
+  "question": "Charlie is blue. Charlie is green. Dave is rough. Erin is not cold. Erin is green. Erin is rough. Erin is young. Harry is green. Harry is red. Harry is rough. Harry is not young. All rough people are red. If someone is blue then they are rough. All green people are rough. If someone is quiet then they are cold. If Harry is blue then Harry is green. If Dave is blue and Dave is red then Dave is quiet. Rough, red people are blue. Green, cold people are not quiet. Cold people are not young.\n\nQuestion: Charlie is not red.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Ambiguous verification result: SAT=0, UNSAT=0\nOutput:\n"
+}

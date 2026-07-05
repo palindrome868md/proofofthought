@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "SpeechLanguage",
+      "type": "EnumSort",
+      "values": [
+        "Chinese",
+        "Portuguese",
+        "English",
+        "Spanish"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "speaks",
+      "domain": [
+        "Person",
+        "SpeechLanguage"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_anchor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "globo_anchors": {
+      "sort": "Person",
+      "members": [
+        "roberto_silva",
+        "marina_souza"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_anchor(roberto_silva)",
+    "is_anchor(marina_souza)",
+    "speaks(roberto_silva, Portuguese)",
+    "speaks(marina_souza, Portuguese)",
+    "speaks(roberto_silva, Chinese)",
+    "speaks(marina_souza, Chinese)"
+  ],
+  "verifications": [
+    {
+      "name": "Existence of Rede Globo anchor who speaks Chinese",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_anchor(a), speaks(a, Chinese))"
+    }
+  ]
+}

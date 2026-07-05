@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-744",
+  "question": "Charlie is furry. Charlie is rough. Charlie is white. Charlie is young. Fiona is nice. Fiona is red. Fiona is round. Fiona is white. Fiona is young. Harry is nice. Harry is red. Harry is round. All young, white things are rough. All round things are white. All white things are young.\n\nQuestion: Harry is young.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 3,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

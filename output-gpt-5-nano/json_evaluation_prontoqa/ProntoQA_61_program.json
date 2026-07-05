@@ -1,0 +1,206 @@
+{
+  "sorts": [
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "rompuses": {
+      "sort": "Rompus",
+      "members": [
+        "max"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "amenable",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus_of",
+      "domain": [
+        "Rompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown_of",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus_of",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bright_of",
+      "domain": [
+        "Zumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus_of",
+      "domain": [
+        "Zumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus_of",
+      "domain": [
+        "Dumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_nervous_of",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus_of",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_liquid_of",
+      "domain": [
+        "Jompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus_of",
+      "domain": [
+        "Jompus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_small_of",
+      "domain": [
+        "Impus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus_of",
+      "domain": [
+        "Impus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "not_transparent_of",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus_of",
+      "domain": [
+        "Tumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nervous_of",
+      "domain": [
+        "Vumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nerve_predicate",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([r], amenable(r) == True)",
+    "ForAll([r], Implies(numpus_of(r), brown_of(r)))",
+    "ForAll([r], Implies(brown_of(r), zumpus_of(r)))",
+    "ForAll([r], Implies(zumpus_of(r), bright_of(r)))",
+    "ForAll([r], Implies(zumpus_of(r), dumpus_of(r)))",
+    "ForAll([r], Implies(dumpus_of(r), yumpus_of(r)))",
+    "ForAll([r], Implies(yumpus_of(r), not_nervous_of(r)))",
+    "ForAll([r], Implies(yumpus_of(r), jompus_of(r)))",
+    "ForAll([r], Implies(jompus_of(r), not_liquid_of(r)))",
+    "ForAll([r], Implies(jompus_of(r), impus_of(r)))",
+    "ForAll([r], Implies(impus_of(r), not_small_of(r)))",
+    "ForAll([r], Implies(impus_of(r), tumpus_of(r)))",
+    "ForAll([r], Implies(tumpus_of(r), not_transparent_of(r)))",
+    "ForAll([r], Implies(tumpus_of(r), wumpus_of(r)))",
+    "ForAll([v], Implies(Vumpus(v), nervous_of(v) == True))",
+    "max is a Rompus"
+  ],
+  "variables": [
+    {
+      "name": "r",
+      "sort": "Rompus"
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Max not nervous",
+      "constraint": "not_nervous_of(max)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

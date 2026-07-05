@@ -1,0 +1,11 @@
+{
+  "sample_id": "de62d38623fde2c2285a",
+  "question": "Would a week be enough time to watch every episode of Ugly Betty?",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

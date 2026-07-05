@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Pict",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "confused_by_language",
+      "domain": [
+        "Pict",
+        "Language"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "old_english"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Exists a Pict who would be confused by Old English",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Pict"
+        }
+      ],
+      "constraint": "confused_by_language(p, old_english)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

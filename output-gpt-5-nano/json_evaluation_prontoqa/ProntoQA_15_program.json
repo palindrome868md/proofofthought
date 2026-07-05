@@ -1,0 +1,166 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_metallic",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nervous",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_opaque",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_hot",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_fruity",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dull",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_small",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_numpus(sam)",
+    "ForAll([x], Implies(is_jompus(x), Not(is_small(x))))",
+    "ForAll([x], Implies(is_jompus(x), is_tumpus(x)))",
+    "ForAll([x], Implies(is_tumpus(x), is_vumpus(x)))",
+    "ForAll([x], Implies(is_vumpus(x), is_metallic(x)))",
+    "ForAll([x], Implies(is_vumpus(x), is_numpus(x)))",
+    "ForAll([x], Implies(is_numpus(x), is_fruity(x)))",
+    "ForAll([x], Implies(is_numpus(x), is_dumpus(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_nervous(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_rompus(x)))",
+    "ForAll([x], Implies(is_rompus(x), is_opaque(x)))",
+    "ForAll([x], Implies(is_rompus(x), is_zumpus(x)))",
+    "ForAll([x], Implies(is_zumpus(x), is_hot(x)))",
+    "ForAll([x], Implies(is_zumpus(x), is_impus(x)))",
+    "ForAll([x], Implies(is_impus(x), Not(is_dull(x))))",
+    "ForAll([x], Implies(is_impus(x), is_yumpus(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_dull(x)))"
+  ],
+  "variables": [],
+  "verifications": [
+    {
+      "name": "Sam not dull",
+      "constraint": "Not(is_dull(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

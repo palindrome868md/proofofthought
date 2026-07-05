@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "MusicPeriod",
+      "type": "EnumSort",
+      "values": [
+        "renaissance",
+        "baroque"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_choral_conductor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "specializes_in",
+      "domain": [
+        "Person",
+        "MusicPeriod"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_musician",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "loves_music",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "miroslav_venhoda"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "is_choral_conductor(miroslav_venhoda)",
+    "specializes_in(miroslav_venhoda, renaissance)",
+    "specializes_in(miroslav_venhoda, baroque)"
+  ],
+  "rules": [
+    {
+      "name": "ChoralConductorsAreMusicians",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_choral_conductor(p)",
+        "consequent": "is_musician(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Existence of a Renaissance-specialized choral conductor",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_choral_conductor(x), specializes_in(x, renaissance))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

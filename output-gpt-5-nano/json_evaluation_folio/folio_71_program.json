@@ -1,0 +1,77 @@
+{
+  "sorts": [
+    {
+      "name": "Problem",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "recommended_to_novices",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_easy",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_hard",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "starred_more_than_1000",
+      "domain": [
+        "Problem"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ac_rate",
+      "domain": [
+        "Problem"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "problems": {
+      "sort": "Problem",
+      "members": [
+        "two_sum",
+        "four_sum"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Problem"
+    }
+  ],
+  "knowledge_base": [
+    "recommended_to_novices(two_sum)",
+    "ForAll([p], Implies(recommended_to_novices(p), is_easy(p)))",
+    "ForAll([p], Or(is_easy(p), is_hard(p)))",
+    "ForAll([p], Implies(starred_more_than_1000(p), is_hard(p)))",
+    "starred_more_than_1000(four_sum)",
+    "ForAll([p], Implies(is_easy(p), ac_rate(p) < 20))"
+  ],
+  "verifications": [
+    {
+      "name": "2Sum AC rate greater than 20 percent",
+      "constraint": "ac_rate(two_sum) > 20"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

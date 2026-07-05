@@ -1,0 +1,171 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "shy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "spicy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "metallic",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "wumpus(sally)",
+    "ForAll([x], Implies(wumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), shy(x)))",
+    "ForAll([x], Implies(dumpus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), rompus(x)))",
+    "ForAll([x], Implies(rompus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), metallic(x)))",
+    "ForAll([x], Implies(impus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), jompus(x)))",
+    "ForAll([x], Implies(jompus(x), dull(x)))",
+    "ForAll([x], Implies(jompus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), spicy(x)))",
+    "ForAll([x], Implies(vumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), cold(x)))",
+    "ForAll([x], Implies(zumpus(x), Not(red(x))))",
+    "ForAll([x], Implies(wumpus(x), transparent(x)))",
+    "ForAll([x], Implies(tumpus(x), Not(metallic(x))))"
+  ],
+  "verifications": [
+    {
+      "name": "Sally is metallic",
+      "constraint": "metallic(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

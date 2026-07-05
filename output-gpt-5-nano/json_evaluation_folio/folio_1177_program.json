@@ -1,0 +1,62 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lg",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "typec",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "before2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "L_2021"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Exists([{\"name\": \"m\", \"sort\": \"Monitor\"}], And(lg(m), typec(m)))",
+    "Not(Exists([{\"name\": \"m\", \"sort\": \"Monitor\"}], And(lg(m), typec(m), before2010(m))))",
+    "Not(Exists([{\"name\": \"m\", \"sort\": \"Monitor\"}], And(in_library(m), Not(before2010(m)))))",
+    "Or(in_library(L_2021), typec(L_2021))",
+    "Or(And(lg(L_2021), before2010(L_2021)), And(Not(lg(L_2021)), Not(before2010(L_2021))))"
+  ],
+  "verifications": [
+    {
+      "name": "L2021 implies library or LG given the stated condition",
+      "constraint": "Implies( Or(And(lg(L_2021), before2010(L_2021)), And(Not(lg(L_2021)), Not(before2010(L_2021)))), Or(in_library(L_2021), lg(L_2021)) )"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

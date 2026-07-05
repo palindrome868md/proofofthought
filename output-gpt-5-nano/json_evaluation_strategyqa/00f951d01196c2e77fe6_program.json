@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_class_of_2010",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lived_during_presidency",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "presidents": {
+      "sort": "Person",
+      "members": [
+        "richard_nixon"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(in_class_of_2010(x), Not(lived_during_presidency(x, richard_nixon))))"
+  ],
+  "verifications": [
+    {
+      "name": "Existence of a class member who lived through Nixon presidency",
+      "exists": [
+        {
+          "name": "x",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(in_class_of_2010(x), lived_during_presidency(x, richard_nixon))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Project",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Language",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Song",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "SongTitle",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "languages": {
+      "sort": "Language",
+      "members": [
+        "cpp",
+        "python"
+      ]
+    },
+    "song_titles": {
+      "sort": "SongTitle",
+      "members": [
+        "Perfect",
+        "Other"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "does_project",
+      "domain": [
+        "Person",
+        "Project"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "project_language",
+      "domain": [
+        "Project"
+      ],
+      "range": "Language"
+    },
+    {
+      "name": "uses_mac",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "plays",
+      "domain": [
+        "Person",
+        "Song"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "title_of_song",
+      "domain": [
+        "Song"
+      ],
+      "range": "SongTitle"
+    }
+  ],
+  "variables": [
+    {
+      "name": "sam",
+      "sort": "Person"
+    },
+    {
+      "name": "proj",
+      "sort": "Project"
+    },
+    {
+      "name": "p",
+      "sort": "Project"
+    },
+    {
+      "name": "song",
+      "sort": "Song"
+    }
+  ],
+  "knowledge_base": [
+    "Exists([proj], does_project(sam, proj))",
+    "Exists([proj], And(does_project(sam, proj), Or(project_language(proj) == cpp, project_language(proj) == python)))",
+    "ForAll([p], Implies(And(does_project(sam, p), project_language(p) == python), Not(uses_mac(sam))))",
+    "uses_mac(sam)",
+    "Implies(uses_mac(sam), Exists([song], plays(sam, song)))",
+    "ForAll([song], Implies(plays(sam, song), title_of_song(song) == Perfect))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam's project is written in C++",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Project"
+        }
+      ],
+      "constraint": "does_project(sam, p) and project_language(p) == cpp"
+    }
+  ]
+}

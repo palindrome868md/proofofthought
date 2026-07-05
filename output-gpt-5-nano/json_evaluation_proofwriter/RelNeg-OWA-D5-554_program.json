@@ -1,0 +1,109 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "chases",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bald_eagle",
+        "bear",
+        "cow",
+        "lion"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "chases(bald_eagle, cow)",
+    "likes(bald_eagle, lion)",
+    "chases(bear, lion)",
+    "Not(eats(bear, bald_eagle))",
+    "eats(bear, lion)",
+    "chases(cow, bald_eagle)",
+    "chases(cow, lion)",
+    "likes(cow, bald_eagle)",
+    "rough(lion)",
+    "likes(lion, bald_eagle)",
+    "ForAll([x], Implies(rough(x), eats(x, cow)))",
+    "ForAll([x], Implies(likes(x, cow), eats(x, cow)))",
+    "ForAll([x], Implies(likes(x, cow), likes(x, lion)))",
+    "ForAll([x], Implies(cold(x), likes(x, lion)))",
+    "Implies(And(cold(bear), eats(bear, lion)), chases(bear, cow))",
+    "ForAll([x], Implies(And(round(x), Not(big(x))), Not(eats(x, bald_eagle))))",
+    "Implies(And(likes(bald_eagle, bear), chases(bear, bald_eagle)), chases(bald_eagle, bear))",
+    "ForAll([x], Implies(And(rough(x), chases(x, cow)), rough(cow)))",
+    "ForAll([x], Implies(eats(x, cow), chases(x, cow)))"
+  ],
+  "verifications": [
+    {
+      "name": "Lion chases cow",
+      "constraint": "chases(lion, cow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

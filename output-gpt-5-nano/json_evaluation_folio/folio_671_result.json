@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_671",
+  "question": "Given the following premises:\n\nCancer biology is finding genetic alterations that confer a selective advantage to cancer cells. \nCancer researchers have frequently ranked the importance of substitutions to cancer growth by the P value.\nP values are thresholds for belief, not metrics of effect. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: P values don't represent metrics of effect.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

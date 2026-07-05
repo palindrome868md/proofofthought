@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "sees",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs",
+      "domain": [
+        "Entity",
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "tiger",
+        "bald_eagle",
+        "cow",
+        "cat"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "sees(bald_eagle, cow)",
+    "Not(sees(bald_eagle, tiger))",
+    "Not(visits(bald_eagle, tiger))",
+    "Not(rough(cat))",
+    "Not(visits(cow, bald_eagle))",
+    "blue(tiger)",
+    "rough(tiger)",
+    "needs(tiger, bald_eagle)",
+    "needs(tiger, cat)",
+    "sees(tiger, bald_eagle)",
+    "visits(tiger, cat)",
+    "visits(tiger, cow)",
+    "ForAll([x], Implies(And(visits(x, tiger), visits(tiger, bald_eagle)), Not(visits(tiger, cow))))",
+    "ForAll([x], Implies(And(needs(x, tiger), sees(tiger, cat)), sees(tiger, bald_eagle)))",
+    "ForAll([x], Implies(blue(x), sees(x, tiger)))",
+    "ForAll([x], Implies(needs(x, cat), nice(x)))",
+    "ForAll([x], Implies(nice(x), needs(x, cow)))",
+    "ForAll([x], Implies(needs(x, bald_eagle), visits(x, bald_eagle)))",
+    "ForAll([x], Implies(needs(x, cow), needs(cow, cat)))"
+  ],
+  "verifications": [
+    {
+      "name": "Tiger visits bald_eagle",
+      "constraint": "visits(tiger, bald_eagle)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

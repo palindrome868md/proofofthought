@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "School",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "attended",
+      "domain": [
+        "Person",
+        "School"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "located_in",
+      "domain": [
+        "School",
+        "Country"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "william_dickinson"
+      ]
+    },
+    "schools": {
+      "sort": "School",
+      "members": [
+        "westminster_school",
+        "university_of_edinburgh"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "united_kingdom"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "attended(william_dickinson, westminster_school)",
+    "attended(william_dickinson, university_of_edinburgh)",
+    "located_in(university_of_edinburgh, united_kingdom)"
+  ],
+  "verifications": [
+    {
+      "name": "William Dickinson attended university in the United Kingdom",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "School"
+        }
+      ],
+      "constraint": "And(attended(william_dickinson, s), located_in(s, united_kingdom))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

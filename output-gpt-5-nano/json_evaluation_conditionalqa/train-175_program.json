@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "receives_pension_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amount_owed",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "eligible_for_budgeting_loan",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "receives_pension_credit(you)",
+    "amount_owed(you) == 1600",
+    "Implies(amount_owed(you) > 1500, Not(eligible_for_budgeting_loan(you)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cannot borrow more budgeting loan due to existing debt",
+      "constraint": "eligible_for_budgeting_loan(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

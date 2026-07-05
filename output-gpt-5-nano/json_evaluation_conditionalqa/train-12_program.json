@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "owns",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_disabled",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_changes",
+      "domain": [
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_for_dfg",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "aunt"
+      ]
+    },
+    "homes": {
+      "sort": "Property",
+      "members": [
+        "aunt_home"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_disabled(aunt)",
+    "owns(aunt, aunt_home)",
+    "needs_changes(aunt_home)",
+    "Implies(And(is_disabled(aunt), owns(aunt, aunt_home), needs_changes(aunt_home)), can_apply_for_dfg(aunt, aunt_home))"
+  ],
+  "verifications": [
+    {
+      "name": "Aunt can apply for Disabled Facilities Grant",
+      "constraint": "can_apply_for_dfg(aunt, aunt_home)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

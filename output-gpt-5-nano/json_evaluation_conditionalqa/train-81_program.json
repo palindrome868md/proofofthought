@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "IsStepParent",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "CanClaimDLA",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Step-Parent can claim DLA for their child",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        },
+        {
+          "name": "c",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(IsStepParent(p, c), CanClaimDLA(p, c))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

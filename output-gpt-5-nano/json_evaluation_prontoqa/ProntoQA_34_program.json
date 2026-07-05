@@ -1,0 +1,102 @@
+{
+  "sorts": [
+    {
+      "name": "Impus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "yumpuses": {
+      "sort": "Yumpus",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_shy",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [],
+  "knowledge_base": [
+    "is_numpus(sam)",
+    "ForAll([y], Implies(is_numpus(y), is_dumpus(y)))",
+    "ForAll([y], Implies(is_dumpus(y), is_vumpus(y)))",
+    "ForAll([y], Implies(is_vumpus(y), is_tumpus(y)))",
+    "ForAll([y], Implies(is_tumpus(y), Not(is_shy(y))))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam shy",
+      "constraint": "is_shy(sam)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

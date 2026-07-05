@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "AstronomicalBody",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Star",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "star_of",
+      "domain": [
+        "AstronomicalBody"
+      ],
+      "range": "Star"
+    },
+    {
+      "name": "in_solar_system",
+      "domain": [
+        "AstronomicalBody"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "outside_solar_system",
+      "domain": [
+        "AstronomicalBody"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "bound_by_sun",
+      "domain": [
+        "AstronomicalBody"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rogue",
+      "domain": [
+        "AstronomicalBody"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orphan",
+      "domain": [
+        "AstronomicalBody"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "bodies": {
+      "sort": "AstronomicalBody",
+      "members": [
+        "pso_318_5_22"
+      ]
+    },
+    "stars": {
+      "sort": "Star",
+      "members": [
+        "sun"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "AstronomicalBody"
+    }
+  ],
+  "knowledge_base": [
+    "Implies(Not(And(rogue(pso_318_5_22), bound_by_sun(pso_318_5_22))), rogue(pso_318_5_22))",
+    "ForAll([a], Implies(in_solar_system(a), bound_by_sun(a)))",
+    "ForAll([a], Implies(Not(bound_by_sun(a)), Not(in_solar_system(a))))",
+    "ForAll([a], Implies(outside_solar_system(a), Not(star_of(a) == sun)))",
+    "ForAll([a], Implies(orphan(a), rogue(a)))",
+    "ForAll([a], Implies(bound_by_sun(a), Not(rogue(a))))",
+    "ForAll([a], Or(in_solar_system(a), outside_solar_system(a)))"
+  ],
+  "verifications": [
+    {
+      "name": "PSO J318.5-22 is an orphan planet or it does not have the Sun as its star, or both",
+      "constraint": "Or(orphan(pso_318_5_22), Not(star_of(pso_318_5_22) == sun))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

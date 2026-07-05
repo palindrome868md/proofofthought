@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D3-525",
+  "question": "The rabbit is blue. Green, round things are not blue. Blue things are green. If the rabbit is green then the rabbit is cold. If something is green and not blue then it is not cold. Round things are not red. If something is cold then it is not red. All round things are red. If the rabbit is cold then the rabbit is not red.\n\nQuestion: The rabbit is not green.",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

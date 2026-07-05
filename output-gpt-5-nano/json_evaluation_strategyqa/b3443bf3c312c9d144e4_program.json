@@ -1,0 +1,47 @@
+{
+  "sorts": [
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "burial_time",
+      "domain": [
+        "Event"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "neptunian_orbit_between",
+      "domain": [
+        "Event",
+        "Event"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "pantheon_women_burials": {
+      "sort": "Event",
+      "members": [
+        "first_woman_burial_pantheon",
+        "second_woman_burial_pantheon"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "burial_time(first_woman_burial_pantheon) < burial_time(second_woman_burial_pantheon)"
+  ],
+  "verifications": [
+    {
+      "name": "Neptunian orbit between first two Panth\u00e9on women burials",
+      "constraint": "neptunian_orbit_between(first_woman_burial_pantheon, second_woman_burial_pantheon)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

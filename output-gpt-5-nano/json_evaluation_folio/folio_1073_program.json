@@ -1,0 +1,70 @@
+{
+  "sorts": [
+    {
+      "name": "Lipstick",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_rouge_dior_lnyle",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "velvet_finish",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "satin_finish",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_rosewood_desc",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "refillable",
+      "domain": [
+        "Lipstick"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "lipsticks": {
+      "sort": "Lipstick",
+      "members": [
+        "rouge_dior_colored_lip_balm_999"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "in_rouge_dior_lnyle(rouge_dior_colored_lip_balm_999)",
+    "Or(velvet_finish(rouge_dior_colored_lip_balm_999), satin_finish(rouge_dior_colored_lip_balm_999))",
+    "Implies(satin_finish(rouge_dior_colored_lip_balm_999), has_rosewood_desc(rouge_dior_colored_lip_balm_999))",
+    "Or(Not(has_rosewood_desc(rouge_dior_colored_lip_balm_999)), has_rosewood_desc(rouge_dior_colored_lip_balm_999))",
+    "Or(has_rosewood_desc(rouge_dior_colored_lip_balm_999), velvet_finish(rouge_dior_colored_lip_balm_999))"
+  ],
+  "verifications": [
+    {
+      "name": "ROUGE Lip Balm 999: Rosewood Implication",
+      "constraint": "Implies(Or(Not(has_rosewood_desc(rouge_dior_colored_lip_balm_999)), refillable(rouge_dior_colored_lip_balm_999)), has_rosewood_desc(rouge_dior_colored_lip_balm_999))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

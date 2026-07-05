@@ -1,0 +1,144 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpuses",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "opaque",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "amenable",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "feisty",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "floral",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "rex"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "zumpus(rex)",
+    "ForAll([p], Implies(zumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), impus(p)))",
+    "ForAll([p], Implies(impus(p), Not(feisty(p))))",
+    "ForAll([p], Implies(impus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), opaque(p)))",
+    "ForAll([p], Implies(jompus(p), numpuses(p)))",
+    "ForAll([p], Implies(dumpus(p), amenable(p)))",
+    "ForAll([p], Implies(yumpus(p), Not(opaque(p))))",
+    "ForAll([p], Implies(zumpus(p), orange(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rex not opaque",
+      "constraint": "Not(opaque(rex))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

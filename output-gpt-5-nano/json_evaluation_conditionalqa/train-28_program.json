@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Estate",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "estate_owned_by",
+      "domain": [
+        "Estate",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "estate_sole_owner",
+      "domain": [
+        "Estate"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "probate_needed_to_sell",
+      "domain": [
+        "Estate"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "estates": {
+      "sort": "Estate",
+      "members": [
+        "uncle_house_estate"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "uncle"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "estate_owned_by(uncle_house_estate, uncle)",
+    "estate_sole_owner(uncle_house_estate)",
+    "probate_needed_to_sell(uncle_house_estate)"
+  ],
+  "verifications": [
+    {
+      "name": "Need probate to sell uncle's house",
+      "constraint": "probate_needed_to_sell(uncle_house_estate)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

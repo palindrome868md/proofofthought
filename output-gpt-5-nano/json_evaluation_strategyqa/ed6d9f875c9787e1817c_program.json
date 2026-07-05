@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Speech",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Medium",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_speech_of",
+      "domain": [
+        "Speech",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "could_record_on_cd",
+      "domain": [
+        "Speech",
+        "Medium"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "george_washington"
+      ]
+    },
+    "speeches": {
+      "sort": "Speech",
+      "members": [
+        "washington_speech_example"
+      ]
+    },
+    "medias": {
+      "sort": "Medium",
+      "members": [
+        "compact_disc"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Could George Washington speeches be recorded on Compact Disc",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Speech"
+        }
+      ],
+      "constraint": "And(is_speech_of(s, george_washington), could_record_on_cd(s, compact_disc))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

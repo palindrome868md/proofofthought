@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_child_of",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "probate_priority",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "deceased": {
+      "sort": "Person",
+      "members": [
+        "deceased_father"
+      ]
+    },
+    "uncle": {
+      "sort": "Person",
+      "members": [
+        "paternal_uncle"
+      ]
+    }
+  },
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "You have greater probate right than your uncle",
+      "forall": [
+        {
+          "name": "c",
+          "sort": "Person"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_child_of(c, deceased_father)",
+        "consequent": "probate_priority(c, deceased_father) <= probate_priority(paternal_uncle, deceased_father)"
+      }
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

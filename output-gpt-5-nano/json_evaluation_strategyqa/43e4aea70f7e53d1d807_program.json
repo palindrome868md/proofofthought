@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Podcast",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_deacon",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fan_of",
+      "domain": [
+        "Person",
+        "Podcast"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "podcast_constants": {
+      "sort": "Podcast",
+      "members": [
+        "god_awful_movies"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Deacon can be a fan of God Awful Movies",
+      "exists": [
+        {
+          "name": "d",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_deacon(d), fan_of(d, god_awful_movies))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

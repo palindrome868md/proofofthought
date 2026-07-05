@@ -1,0 +1,40 @@
+{
+  "sorts": [
+    {
+      "name": "Tree",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "dissimilar",
+      "domain": [
+        "Tree",
+        "Tree"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "trees": {
+      "sort": "Tree",
+      "members": [
+        "christmas_tree",
+        "deciduous_tree"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "dissimilar(christmas_tree, deciduous_tree)"
+  ],
+  "verifications": [
+    {
+      "name": "Are Christmas trees dissimilar to deciduous trees",
+      "constraint": "dissimilar(christmas_tree, deciduous_tree)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

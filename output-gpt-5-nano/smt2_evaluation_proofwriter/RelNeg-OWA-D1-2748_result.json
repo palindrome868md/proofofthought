@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D1-2748",
+  "question": "The dog does not chase the rabbit. The dog is not cold. The dog does not like the rabbit. The dog sees the rabbit. The rabbit chases the dog. The rabbit is blue. The rabbit is cold. The rabbit is not young. The rabbit does not like the dog. The rabbit does not see the dog. If something sees the rabbit then it chases the dog. If something sees the dog then the dog is red. If the rabbit sees the dog and the rabbit is cold then the dog chases the rabbit. If something is red and it does not see the rabbit then the rabbit is not red. If the rabbit sees the dog then the rabbit does not chase the dog. If something chases the rabbit and the rabbit sees the dog then the rabbit is cold.\n\nQuestion: The dog does not chase the dog.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

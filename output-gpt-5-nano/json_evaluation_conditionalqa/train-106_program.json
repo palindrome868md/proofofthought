@@ -1,0 +1,86 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Property",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "gift_home",
+      "domain": [
+        "Person",
+        "Person",
+        "Property",
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "continues_living",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rent_required",
+      "domain": [
+        "Person",
+        "Property"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "giver",
+      "sort": "Person"
+    },
+    {
+      "name": "owner",
+      "sort": "Person"
+    },
+    {
+      "name": "son",
+      "sort": "Person"
+    },
+    {
+      "name": "dil",
+      "sort": "Person"
+    },
+    {
+      "name": "prop",
+      "sort": "Property"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([giver, owner, son, dil, prop], Implies(And(gift_home(giver, owner, prop, son, dil), continues_living(giver, prop)), rent_required(giver, prop)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rent must be paid after gifting and continuing to live",
+      "exists": [
+        {
+          "name": "giver",
+          "sort": "Person"
+        },
+        {
+          "name": "prop",
+          "sort": "Property"
+        }
+      ],
+      "constraint": "rent_required(giver, prop)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "bob",
+        "dave"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(big(bob))",
+    "furry(bob)",
+    "green(bob)",
+    "rough(bob)",
+    "round(bob)",
+    "smart(bob)",
+    "Not(white(bob))",
+    "big(dave)",
+    "furry(dave)",
+    "green(dave)",
+    "rough(dave)",
+    "Not(round(dave))",
+    "Not(smart(dave))",
+    "white(dave)"
+  ],
+  "verifications": [
+    {
+      "name": "Bob is white",
+      "constraint": "white(bob)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

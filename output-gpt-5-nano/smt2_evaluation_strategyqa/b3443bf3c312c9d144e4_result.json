@@ -1,0 +1,11 @@
+{
+  "sample_id": "b3443bf3c312c9d144e4",
+  "question": "Is there a full Neptunian orbit between the first two burials of women in the Panth\u00e9on?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

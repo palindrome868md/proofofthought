@@ -1,0 +1,98 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_family",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribes_amc_alist",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "subscribes_hbo",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_three_movies_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "goes_to_cinemas_weekly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "watches_tv_series_in_cinemas",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_tv_series_to_movies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_tv_series",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "family_members": {
+      "sort": "Person",
+      "members": [
+        "lily"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(in_family(p), subscribes_amc_alist(p)), eligible_three_movies_weekly(p)))",
+    "Exists([p], And(in_family(p), goes_to_cinemas_weekly(p)))",
+    "ForAll([p], Implies(in_family(p), Or(subscribes_amc_alist(p), subscribes_hbo(p))))",
+    "ForAll([p], Implies(prefers_tv_series(p), Not(watches_tv_series_in_cinemas(p))))",
+    "ForAll([p], Implies(subscribes_hbo(p), prefers_tv_series_to_movies(p)))",
+    "in_family(lily)",
+    "watches_tv_series_in_cinemas(lily)"
+  ],
+  "verifications": [
+    {
+      "name": "Lily: If eligible to watch 3 movies weekly and watches TV series in cinemas, then goes weekly and prefers TV series to movies",
+      "constraint": "Not(Implies(And(eligible_three_movies_weekly(lily), watches_tv_series_in_cinemas(lily)), And(goes_to_cinemas_weekly(lily), prefers_tv_series_to_movies(lily))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_nearest_relative",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_apply_discharge",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "patients": {
+      "sort": "Person",
+      "members": [
+        "mother"
+      ]
+    },
+    "applicants": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_nearest_relative(you, mother)",
+    "ForAll([x], Implies(is_nearest_relative(x, mother), can_apply_discharge(x, mother)))"
+  ],
+  "verifications": [
+    {
+      "name": "Applicant who is nearest relative can discharge patient",
+      "constraint": "can_apply_discharge(you, mother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

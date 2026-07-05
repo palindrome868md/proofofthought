@@ -1,0 +1,73 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lives_in",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "main_caregiver",
+      "domain": [
+        "Person"
+      ],
+      "range": "Person"
+    },
+    {
+      "name": "can_apply_cms",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "me",
+        "my_child"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "abroad"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "child",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([child], Implies(And(lives_in(child, abroad), lives_in(main_caregiver(child), abroad)), Not(can_apply_cms(child, main_caregiver(child)))))",
+    "lives_in(my_child, abroad)",
+    "lives_in(me, abroad)",
+    "main_caregiver(my_child) == me"
+  ],
+  "verifications": [
+    {
+      "name": "Cannot claim Child Maintenance while living abroad",
+      "constraint": "Not(can_apply_cms(my_child, me))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

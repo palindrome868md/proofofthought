@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Asset",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "court_decision_possible",
+      "domain": [],
+      "range": "BoolSort"
+    },
+    {
+      "name": "there_is_disagreement_on_assets",
+      "domain": [],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [],
+  "knowledge_base": [
+    "court_decision_possible()",
+    "there_is_disagreement_on_assets()"
+  ],
+  "verifications": [
+    {
+      "name": "Court_decision_possible_when_disagree",
+      "constraint": "court_decision_possible()"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

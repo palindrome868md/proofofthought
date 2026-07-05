@@ -1,0 +1,63 @@
+{
+  "sorts": [
+    {
+      "name": "Vessel",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Location",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "can_sail_through",
+      "domain": [
+        "Vessel",
+        "Location"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_flooded",
+      "domain": [
+        "Location"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "vessels": {
+      "sort": "Vessel",
+      "members": [
+        "noahs_ark"
+      ]
+    },
+    "locations": {
+      "sort": "Location",
+      "members": [
+        "lincoln_tunnel"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_flooded(lincoln_tunnel)",
+    "can_sail_through(noahs_ark, lincoln_tunnel)"
+  ],
+  "verifications": [
+    {
+      "name": "Ark can sail flooded Lincoln Tunnel",
+      "exists": [
+        {
+          "name": "loc",
+          "sort": "Location"
+        }
+      ],
+      "constraint": "And(loc == lincoln_tunnel, is_flooded(loc), can_sail_through(noahs_ark, loc))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

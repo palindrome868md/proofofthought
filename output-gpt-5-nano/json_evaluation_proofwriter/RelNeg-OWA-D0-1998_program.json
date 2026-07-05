@@ -1,0 +1,107 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "cow",
+        "lion",
+        "squirrel"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sees",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "like",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "need",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [],
+  "knowledge_base": [
+    "Not(round(cow))",
+    "need(cow, lion)",
+    "need(cow, squirrel)",
+    "Not(sees(cow, lion))",
+    "Not(sees(cow, squirrel))",
+    "Not(red(lion))",
+    "need(lion, squirrel)",
+    "sees(lion, cow)",
+    "Not(sees(lion, squirrel))",
+    "cold(squirrel)",
+    "Not(red(squirrel))",
+    "like(squirrel, cow)",
+    "Not(like(squirrel, lion))",
+    "need(squirrel, cow)",
+    "sees(squirrel, cow)",
+    "Implies(And(round(lion), need(lion, cow)), nice(cow))"
+  ],
+  "verifications": [
+    {
+      "name": "Squirrel likes cow",
+      "constraint": "like(squirrel, cow)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

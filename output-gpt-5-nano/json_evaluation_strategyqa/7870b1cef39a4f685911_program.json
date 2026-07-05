@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Doll",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "references_person",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "references_doll",
+      "domain": [
+        "Person",
+        "Doll"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "adam_sandler",
+        "cole_spouse"
+      ]
+    },
+    "dolls": {
+      "sort": "Doll",
+      "members": [
+        "scuba_man_doll"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Adam Sandler reference to Cole Spouse and scuba man doll",
+      "constraint": "And(references_person(adam_sandler, cole_spouse), references_doll(adam_sandler, scuba_man_doll))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

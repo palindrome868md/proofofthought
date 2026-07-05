@@ -1,0 +1,147 @@
+{
+  "sorts": [
+    {
+      "name": "Thing",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "jompus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "angry",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "temperate",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "brown",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dull",
+      "domain": [
+        "Thing"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "things": {
+      "sort": "Thing",
+      "members": [
+        "wren"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Thing"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(jompus(x), Not(small(x))))",
+    "ForAll([x], Implies(wumpus(x), angry(x)))",
+    "ForAll([x], Implies(jompus(x), zumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), temperate(x)))",
+    "ForAll([x], Implies(zumpus(x), tumpus(x)))",
+    "ForAll([x], Implies(tumpus(x), brown(x)))",
+    "ForAll([x], Implies(tumpus(x), yumpus(x)))",
+    "ForAll([x], Implies(yumpus(x), wooden(x)))",
+    "ForAll([x], Implies(yumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), Not(angry(x))))",
+    "ForAll([x], Implies(dumpus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), Not(dull(x))))",
+    "ForAll([x], Implies(numpus(x), vumpus(x)))",
+    "jompus(wren)"
+  ],
+  "verifications": [
+    {
+      "name": "Wren not angry",
+      "constraint": "Not(angry(wren))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

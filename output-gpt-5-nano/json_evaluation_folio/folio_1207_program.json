@@ -1,0 +1,80 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "works_at_meta",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "high_income",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "takes_bus",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "drives",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_car",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "james"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(works_at_meta(p), high_income(p)))",
+    "ForAll([p], Implies(high_income(p), Not(takes_bus(p))))",
+    "ForAll([p], Or(takes_bus(p), drives(p)))",
+    "ForAll([p], Implies(has_car(p), drives(p)))",
+    "ForAll([p], Implies(is_student(p), Not(drives(p))))",
+    "Or(has_car(james), works_at_meta(james))"
+  ],
+  "verifications": [
+    {
+      "name": "James drives or is a student implies high income and student",
+      "constraint": "Implies(Or(drives(james), is_student(james)), And(high_income(james), is_student(james)))"
+    }
+  ]
+}

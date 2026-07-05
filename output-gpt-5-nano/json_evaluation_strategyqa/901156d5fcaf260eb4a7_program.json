@@ -1,0 +1,45 @@
+{
+  "sorts": [
+    {
+      "name": "Species",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "WaterTemp",
+      "type": "EnumSort",
+      "values": [
+        "Cold",
+        "Warm"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "population_of",
+      "domain": [
+        "Species",
+        "WaterTemp"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "species": {
+      "sort": "Species",
+      "members": [
+        "anchovy"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "More Anchovy in Cold Waters than Warm",
+      "constraint": "population_of(anchovy, Cold) > population_of(anchovy, Warm)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

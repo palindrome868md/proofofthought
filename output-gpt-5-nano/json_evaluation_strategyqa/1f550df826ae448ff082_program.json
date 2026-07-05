@@ -1,0 +1,54 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "connection",
+      "domain": [
+        "Organization",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_child_abuser",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "subway"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Subway connected to a child abuser exists",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(connection(subway, p), is_child_abuser(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

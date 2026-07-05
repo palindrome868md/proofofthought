@@ -1,0 +1,98 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "at_conference",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "investor",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "entrepreneur",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoys_startup",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_planned_economy",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "enjoys_state_ownership",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "prefers_state_ownership",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ardent_communist",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "Ho"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(at_conference(p), Or(investor(p), entrepreneur(p))))",
+    "ForAll([p], Implies(And(at_conference(p), enjoys_startup(p)), Not(prefers_planned_economy(p))))",
+    "ForAll([p], Implies(And(at_conference(p), entrepreneur(p)), enjoys_startup(p)))",
+    "ForAll([p], Implies(And(at_conference(p), enjoys_state_ownership(p)), prefers_planned_economy(p)))",
+    "ForAll([p], Implies(ardent_communist(p), prefers_state_ownership(p)))",
+    "at_conference(Ho)",
+    "prefers_state_ownership(Ho)"
+  ],
+  "verifications": [
+    {
+      "name": "Ho is investor or not ardent communist",
+      "constraint": "Or(investor(Ho), Not(ardent_communist(Ho)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

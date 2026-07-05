@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D1-1455",
+  "question": "The bald eagle eats the bear. The bald eagle eats the tiger. The bald eagle is rough. The bald eagle likes the bear. The bald eagle needs the tiger. The bear eats the cow. The bear eats the tiger. The bear is cold. The cow needs the tiger. The tiger needs the bald eagle. Rough people are kind. If someone likes the bear and they need the tiger then the bear likes the bald eagle. If someone is cold and they need the bear then they need the bald eagle.\n\nQuestion: The bald eagle needs the tiger.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

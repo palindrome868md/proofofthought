@@ -1,0 +1,36 @@
+{
+  "sorts": [
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "uses_relay_baton",
+      "domain": [
+        "Event"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "events": {
+      "sort": "Event",
+      "members": [
+        "space_race"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Space Race uses relay baton",
+      "constraint": "uses_relay_baton(space_race)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

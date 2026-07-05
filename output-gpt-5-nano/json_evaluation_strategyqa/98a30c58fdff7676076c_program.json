@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Discipline",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Topic",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "studies",
+      "domain": [
+        "Discipline",
+        "Topic"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "disciplines": {
+      "sort": "Discipline",
+      "members": [
+        "biochemistry"
+      ]
+    },
+    "topics": {
+      "sort": "Topic",
+      "members": [
+        "gluons"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "studies(biochemistry, gluons)"
+  ],
+  "verifications": [
+    {
+      "name": "Biochemistry studies gluons",
+      "constraint": "studies(biochemistry, gluons)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

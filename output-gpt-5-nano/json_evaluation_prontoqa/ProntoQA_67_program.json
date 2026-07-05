@@ -1,0 +1,163 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "small",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "orange",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wooden",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "sweet",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "impus(sam)",
+    "ForAll([p], Implies(numpus(p), impus(p)))",
+    "ForAll([p], Implies(numpus(p), Not(mean(p))))",
+    "ForAll([p], Implies(impus(p), zumpus(p)))",
+    "ForAll([p], Implies(zumpus(p), tumpus(p)))",
+    "ForAll([p], Implies(tumpus(p), small(p)))",
+    "ForAll([p], Implies(tumpus(p), transparent(p)))",
+    "ForAll([p], Implies(tumpus(p), jompus(p)))",
+    "ForAll([p], Implies(jompus(p), dumpus(p)))",
+    "ForAll([p], Implies(dumpus(p), orange(p)))",
+    "ForAll([p], Implies(dumpus(p), vumpus(p)))",
+    "ForAll([p], Implies(vumpus(p), sweet(p)))",
+    "ForAll([p], Implies(vumpus(p), yumpus(p)))",
+    "ForAll([p], Implies(yumpus(p), wooden(p)))",
+    "ForAll([p], Implies(yumpus(p), rompus(p)))",
+    "ForAll([p], Implies(wumpus(p), Not(orange(p))))"
+  ],
+  "verifications": [
+    {
+      "name": "Sam is orange",
+      "constraint": "orange(sam)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

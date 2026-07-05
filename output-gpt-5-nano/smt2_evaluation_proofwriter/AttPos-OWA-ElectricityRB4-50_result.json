@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttPos-OWA-ElectricityRB4-50",
+  "question": "The circuit includes the switch. The switch is on. The wire is metal. The circuit includes the light bulb. If the circuit includes the battery and the battery is not flat then the circuit is powered. If the circuit includes the switch and the switch is on then the circuit is complete. If the circuit does not include the switch then the circuit is complete. If the wire is metal then the wire is conducting. If the wire is plastic then the wire is not conducting. If the circuit is powered and the circuit is complete and the wire is conducting then the current runs through the circuit. If the current runs through the circuit and the circuit includes the light bulb then the current runs through the light bulb. If the current runs through the circuit and the circuit includes the bell then the current runs through the bell. If the current runs through the circuit and the circuit includes the radio then the current runs through the radio. If the current runs through the light bulb then the light bulb is glowing. If the current runs through the bell then the bell is ringing. If the current runs through the radio then the radio is playing.\n\nQuestion: The circuit includes the light bulb.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

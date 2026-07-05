@@ -1,0 +1,56 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "is_good_pet_for",
+      "domain": [
+        "Animal",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "northern_fur_seal"
+      ]
+    },
+    "people": {
+      "sort": "Person",
+      "members": [
+        "six_year_old_child"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "age(six_year_old_child) == 6"
+  ],
+  "verifications": [
+    {
+      "name": "Northern fur seal can be a good pet for a six-year-old",
+      "constraint": "is_good_pet_for(northern_fur_seal, six_year_old_child)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

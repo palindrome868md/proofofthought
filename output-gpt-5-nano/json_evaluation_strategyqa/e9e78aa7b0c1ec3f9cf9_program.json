@@ -1,0 +1,22 @@
+{
+  "sorts": [],
+  "functions": [],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Average peas per pod at least one billion",
+      "exists": [
+        {
+          "name": "avg",
+          "sort": "IntSort"
+        }
+      ],
+      "constraint": "avg >= 1000000000"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

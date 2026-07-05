@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "pre_hearing_examination",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "patients": {
+      "sort": "Person",
+      "members": [
+        "dina"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "pre_hearing_examination(dina)"
+  ],
+  "verifications": [
+    {
+      "name": "Tribunal will assess Dina's health before decision",
+      "constraint": "pre_hearing_examination(dina)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "ex_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "would_have_been_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "widow_of_ex_employee",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "family_members": {
+      "sort": "Person",
+      "members": [
+        "dad",
+        "mom"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "ex_employee(dad)",
+    "would_have_been_eligible(dad)",
+    "widow_of_ex_employee(mom, dad)",
+    "Implies(And(widow_of_ex_employee(mom, dad), ex_employee(dad), would_have_been_eligible(dad)), eligible(mom))"
+  ],
+  "verifications": [
+    {
+      "name": "Mother eligible for NCFS after father's death",
+      "constraint": "eligible(mom)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

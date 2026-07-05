@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_1306",
+  "question": "Given the following premises:\n\nNo birds are ectothermic.\nAll penguins are birds.\nAn animal is ectothermic or endothermic.\nAll endothermic animals produce heat within the body.\nRon and Henry are both animals.\nRon is not a bird and does not produce heat with the body. \nHenry is not a cat and does not produce heat with the body. \n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Ron is either both a penguin and endothermic, or he is nether.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

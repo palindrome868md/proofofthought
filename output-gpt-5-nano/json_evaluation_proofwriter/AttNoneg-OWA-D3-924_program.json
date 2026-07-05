@@ -1,0 +1,99 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "smart",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "white",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "anne",
+        "bob"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "big(anne)",
+    "red(anne)",
+    "big(bob)",
+    "round(bob)",
+    "smart(bob)",
+    "white(bob)",
+    "ForAll([p], Implies(And(big(p), red(p)), kind(p)))",
+    "ForAll([p], Implies(And(red(p), smart(p)), white(p)))",
+    "Implies(white(bob), kind(bob))",
+    "ForAll([p], Implies(And(white(p), round(p)), smart(p)))",
+    "ForAll([p], Implies(kind(p), round(p)))",
+    "ForAll([p], Implies(And(round(p), blue(p)), white(p)))",
+    "ForAll([p], Implies(big(p), blue(p)))",
+    "Implies(kind(anne), red(anne))"
+  ],
+  "verifications": [
+    {
+      "name": "Anne not kind",
+      "constraint": "Not(kind(anne))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

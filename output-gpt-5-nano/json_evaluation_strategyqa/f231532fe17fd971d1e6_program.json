@@ -1,0 +1,41 @@
+{
+  "sorts": [
+    {
+      "name": "Movie",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Aircraft",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [],
+  "constants": {
+    "box_office_values": {
+      "sort": "IntSort",
+      "members": [
+        "wonder_woman_box_office"
+      ]
+    },
+    "aircraft_cost_values": {
+      "sort": "IntSort",
+      "members": [
+        "boeing_737_cost"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "wonder_woman_box_office >= boeing_737_cost"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Boeing 737 cost covered by Wonder Woman box office",
+      "constraint": "wonder_woman_box_office >= boeing_737_cost"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

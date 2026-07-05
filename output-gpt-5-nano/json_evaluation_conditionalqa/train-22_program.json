@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lack_of_consent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "voidable_marriage",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "annul_possible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([you], Implies(lack_of_consent(you), voidable_marriage(you)))",
+    "ForAll([you], Implies(voidable_marriage(you), annul_possible(you)))",
+    "lack_of_consent(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Annulment possible for you",
+      "constraint": "annul_possible(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

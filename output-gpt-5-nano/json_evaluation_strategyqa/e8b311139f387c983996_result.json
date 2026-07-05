@@ -1,0 +1,11 @@
+{
+  "sample_id": "e8b311139f387c983996",
+  "question": "Would you take a photo of a Saltwater crocodile in Memphis?",
+  "ground_truth": false,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

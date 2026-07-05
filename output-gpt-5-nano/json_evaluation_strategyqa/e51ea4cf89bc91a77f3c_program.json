@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Role",
+      "type": "EnumSort",
+      "values": [
+        "Neutral",
+        "AlliedUseOfAzores",
+        "AxisSupport"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "ww2_role",
+      "domain": [
+        "Country"
+      ],
+      "range": "Role"
+    }
+  ],
+  "constants": {
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "portugal",
+        "angola",
+        "mozambique",
+        "guinea_bissau",
+        "cape_verde",
+        "timor_leste"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "ww2_role(portugal) == Neutral"
+  ],
+  "verifications": [
+    {
+      "name": "Any Portuguese Colonial War country shared Switzerland's WWII neutral role",
+      "exists": [
+        {
+          "name": "c",
+          "sort": "Country"
+        }
+      ],
+      "constraint": "ww2_role(c) == Neutral"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

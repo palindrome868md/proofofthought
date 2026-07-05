@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Student",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Event",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "class_of",
+      "domain": [
+        "Student",
+        "IntSort"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_amnesia_about",
+      "domain": [
+        "Student",
+        "Event"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "events": {
+      "sort": "Event",
+      "members": [
+        "nine_eleven"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Possible 2017-class student has amnesia about 9/11",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Student"
+        }
+      ],
+      "constraint": "And(class_of(s, 2017), has_amnesia_about(s, nine_eleven))"
+    }
+  ],
+  "optimization": {},
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Dog",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "GreySeal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "responds_to_bell_dog",
+      "domain": [
+        "Dog"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "responds_to_bell_grey_seal",
+      "domain": [
+        "GreySeal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "response_time_dog",
+      "domain": [
+        "Dog"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "response_time_grey_seal",
+      "domain": [
+        "GreySeal"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Dog responds to bell before Grey seal",
+      "exists": [
+        {
+          "name": "d",
+          "sort": "Dog"
+        },
+        {
+          "name": "s",
+          "sort": "GreySeal"
+        }
+      ],
+      "constraint": "And(responds_to_bell_dog(d), responds_to_bell_grey_seal(s), response_time_dog(d) < response_time_grey_seal(s))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "acquired_gender_recognized_in",
+      "domain": [
+        "Person",
+        "Country"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_overseas_documents",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "australia"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "age(you) >= 18",
+    "acquired_gender_recognized_in(you, australia)",
+    "has_overseas_documents(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Eligibility for UK Gender Recognition Certificate via Overseas Route",
+      "constraint": "And(age(you) >= 18, acquired_gender_recognized_in(you, australia), has_overseas_documents(you))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

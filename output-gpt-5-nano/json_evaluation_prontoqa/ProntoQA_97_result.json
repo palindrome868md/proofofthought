@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_97",
+  "question": "Tumpuses are large. Every tumpus is a rompus. Rompuses are not transparent. Each rompus is a zumpus. Every zumpus is sweet. Each zumpus is a vumpus. Every vumpus is brown. Vumpuses are yumpuses. Yumpuses are not aggressive. Yumpuses are numpuses. Numpuses are dull. Each numpus is an impus. Impuses are not metallic. Each impus is a jompus. Every dumpus is not dull. Jompuses are not cold. Jompuses are wumpuses. Polly is a rompus.\n\nIs the following statement true or false? Polly is not dull.",
+  "ground_truth": false,
+  "answer": null,
+  "success": false,
+  "num_attempts": 3,
+  "sat_count": 0,
+  "unsat_count": 0,
+  "error": "Failed after 3 attempts. Last error: Error evaluating expression 'ForAll([p], Implies(is_rompus(p), is_zumpus(p)))': Sort mismatch"
+}

@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_armed_forces",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lives_abroad",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_enforce_maintenance",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "child",
+      "sort": "Person"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(is_armed_forces(p), lives_abroad(p)), can_enforce_maintenance(p, child)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can an absent parent in the army be made to pay child maintenance while abroad",
+      "exists": [
+        {
+          "name": "pp",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_armed_forces(pp), lives_abroad(pp), can_enforce_maintenance(pp, child))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

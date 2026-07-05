@@ -1,0 +1,75 @@
+{
+  "sorts": [
+    {
+      "name": "Monitor",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Brand",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_library",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_type_c",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "produced_before_2010",
+      "domain": [
+        "Monitor"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "made_by",
+      "domain": [
+        "Monitor",
+        "Brand"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "monitors": {
+      "sort": "Monitor",
+      "members": [
+        "L_2021"
+      ]
+    },
+    "brands": {
+      "sort": "Brand",
+      "members": [
+        "LG"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Exists([{\"name\": \"m\", \"sort\": \"Monitor\"}], And(made_by(m, LG), has_type_c(m)))",
+    "ForAll([{\"name\": \"n\", \"sort\": \"Monitor\"}], Implies(has_type_c(n), Not(produced_before_2010(n))))",
+    "ForAll([{\"name\": \"n\", \"sort\": \"Monitor\"}], Implies(in_library(n), produced_before_2010(n)))",
+    "Or(in_library(L_2021), has_type_c(L_2021))",
+    "Or(And(produced_before_2010(L_2021), made_by(L_2021, LG)), And(Not(produced_before_2010(L_2021)), Not(made_by(L_2021, LG))))"
+  ],
+  "verifications": [
+    {
+      "name": "L-2021 implication holds given premises",
+      "constraint": "Implies(Or(And(in_library(L_2021), made_by(L_2021, LG)), And(Not(in_library(L_2021)), Not(made_by(L_2021, LG)))), And(Not(has_type_c(L_2021)), Not(made_by(L_2021, LG))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ],
+  "rules": []
+}

@@ -1,0 +1,57 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "in_court",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "took_oath",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "lies",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(took_oath(p), in_court(p)), Not(lies(p))))"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "No one lies after taking oath in court",
+      "exists": [
+        {
+          "name": "q",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(took_oath(q), in_court(q), lies(q))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

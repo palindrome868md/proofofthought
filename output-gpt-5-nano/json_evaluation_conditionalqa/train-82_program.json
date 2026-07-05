@@ -1,0 +1,34 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "lpa_valid_after_death",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "individuals": {
+      "sort": "Person",
+      "members": [
+        "grandfather"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(lpa_valid_after_death(grandfather))"
+  ],
+  "verifications": [
+    {
+      "name": "Power of attorney valid after grandfather's death",
+      "constraint": "lpa_valid_after_death(grandfather)"
+    }
+  ]
+}

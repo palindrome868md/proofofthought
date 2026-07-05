@@ -1,0 +1,60 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "MentalHealthCondition",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_condition",
+      "domain": [
+        "Person",
+        "MentalHealthCondition"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_mental_health_condition",
+      "domain": [
+        "MentalHealthCondition"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_esa",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [
+    "ForAll([p, c], Implies(And(has_condition(p, c), is_mental_health_condition(c)), eligible_for_esa(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Are people with mental health problems eligible for ESA?",
+      "exists": [
+        {
+          "name": "p2",
+          "sort": "Person"
+        },
+        {
+          "name": "c2",
+          "sort": "MentalHealthCondition"
+        }
+      ],
+      "constraint": "And(has_condition(p2, c2), is_mental_health_condition(c2), eligible_for_esa(p2))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

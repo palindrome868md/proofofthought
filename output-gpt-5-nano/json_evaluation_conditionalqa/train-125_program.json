@@ -1,0 +1,53 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "age",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "weekly_earnings",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "paye_required",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "young_actors": {
+      "sort": "Person",
+      "members": [
+        "child_ten"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "age(child_ten) == 10",
+    "weekly_earnings(child_ten) == 385",
+    "Implies(weekly_earnings(child_ten) > 120, paye_required(child_ten))"
+  ],
+  "verifications": [
+    {
+      "name": "PAYE required for 10-year-old actor earning \u00a310k in six months",
+      "constraint": "paye_required(child_ten)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

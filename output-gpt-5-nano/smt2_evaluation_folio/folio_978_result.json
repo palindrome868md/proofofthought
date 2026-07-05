@@ -1,0 +1,11 @@
+{
+  "sample_id": "folio_978",
+  "question": "Given the following premises:\n\nAll people who went to Clay's school and who make their own matcha teas every morning with ceremonial-grade matcha powder do not wake up late and start their schedules past noon regularly.\nAll people who went to Clay's school, who live in California, and attend yoga classes regularly, make their own matcha teas every morning with ceremonial-grade matcha powder.\nAll people who went to Clay's school, and work in the entertainment industry as high-profile celebrities, wake up late and start their schedules past noon regularly.\nAll people who went to Clay's school that do not have regular 9-5 jobs, work in the entertainment industry as high-profile celebrities.\nAll people who went to Clay's school and prefer working at home over going to the office daily do not have regular 9-5 jobs.\nBunny went to Clay's school, and she either prefers to work at home over going to the office and makes her own matcha teas every morning with ceremonial-grade matcha powder, or does not prefer to work at home over going to the office every day and does not make her own matcha teas every morning with ceremonial-grade matcha powder.\n\nAssuming all premises are true, is the following statement true or false?\n\nStatement: Bunny went to Clay's school and she neither prefers working at home over going to the office nor lives in California and attends yoga classes regularly.",
+  "ground_truth": true,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

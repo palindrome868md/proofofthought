@@ -1,0 +1,55 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Company",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "ice_princess_of",
+      "domain": [
+        "Person",
+        "Company"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "elsa"
+      ]
+    },
+    "companies": {
+      "sort": "Company",
+      "members": [
+        "disney"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "ice_princess_of(elsa, disney)"
+  ],
+  "verifications": [
+    {
+      "name": "Disney has an ice princess",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "ice_princess_of(p, disney)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

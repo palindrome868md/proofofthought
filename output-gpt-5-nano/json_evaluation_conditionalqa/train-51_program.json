@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "ex_ncb_bcc_employee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "ncfs_eligible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "you",
+      "sort": "Person"
+    },
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ex_ncb_bcc_employee(you)",
+    "ForAll([p], Implies(ex_ncb_bcc_employee(p), ncfs_eligible(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "NCFS eligibility for ex-NCB employee",
+      "constraint": "ncfs_eligible(you)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "sorts": [
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_rompus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_large",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_blue",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_nervous",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bright",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_fruity",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_mean",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_temperate",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_opaque",
+      "domain": [
+        "Yumpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "yumpuses": {
+      "sort": "Yumpus",
+      "members": [
+        "stella"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_yumpus(stella)"
+  ],
+  "rules": [
+    {
+      "name": "All yumpuses are not temperate",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_yumpus(p)",
+        "consequent": "Not(is_temperate(p))"
+      }
+    },
+    {
+      "name": "All yumpuses are rompus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_yumpus(p)",
+        "consequent": "is_rompus(p)"
+      }
+    },
+    {
+      "name": "All rompuses are large",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_rompus(p)",
+        "consequent": "is_large(p)"
+      }
+    },
+    {
+      "name": "All rompuses are impus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_rompus(p)",
+        "consequent": "is_impus(p)"
+      }
+    },
+    {
+      "name": "All impuses are not blue",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_impus(p)",
+        "consequent": "Not(is_blue(p))"
+      }
+    },
+    {
+      "name": "All impuses are tumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_impus(p)",
+        "consequent": "is_tumpus(p)"
+      }
+    },
+    {
+      "name": "All tumpuses are nervous",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_tumpus(p)",
+        "consequent": "is_nervous(p)"
+      }
+    },
+    {
+      "name": "All tumpuses are wumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_tumpus(p)",
+        "consequent": "is_wumpus(p)"
+      }
+    },
+    {
+      "name": "All wumpuses are bright",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_wumpus(p)",
+        "consequent": "is_bright(p)"
+      }
+    },
+    {
+      "name": "All wumpuses are zumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_wumpus(p)",
+        "consequent": "is_zumpus(p)"
+      }
+    },
+    {
+      "name": "All zumpuses are not fruity",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_zumpus(p)",
+        "consequent": "Not(is_fruity(p))"
+      }
+    },
+    {
+      "name": "All zumpuses are dumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_zumpus(p)",
+        "consequent": "is_dumpus(p)"
+      }
+    },
+    {
+      "name": "All dumpuses are opaque",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_dumpus(p)",
+        "consequent": "is_opaque(p)"
+      }
+    },
+    {
+      "name": "All dumpuses are vumpus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_dumpus(p)",
+        "consequent": "is_vumpus(p)"
+      }
+    },
+    {
+      "name": "All vumpuses are mean",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_vumpus(p)",
+        "consequent": "is_mean(p)"
+      }
+    },
+    {
+      "name": "All vumpuses are jompus",
+      "forall": [
+        {
+          "name": "p",
+          "sort": "Yumpus"
+        }
+      ],
+      "implies": {
+        "antecedent": "is_vumpus(p)",
+        "consequent": "is_jompus(p)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Stella not bright",
+      "constraint": "Not(is_bright(stella))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

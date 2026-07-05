@@ -1,0 +1,133 @@
+{
+  "sorts": [
+    {
+      "name": "Creature",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "wumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "impus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "numpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tumpus",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "large",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "hot",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "earthy",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "mean",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "liquid",
+      "domain": [
+        "Creature"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "creatures": {
+      "sort": "Creature",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Creature"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(wumpus(x), large(x)))",
+    "ForAll([x], Implies(wumpus(x), impus(x)))",
+    "ForAll([x], Implies(impus(x), Not(hot(x))))",
+    "ForAll([x], Implies(impus(x), numpus(x)))",
+    "ForAll([x], Implies(numpus(x), earthy(x)))",
+    "ForAll([x], Implies(numpus(x), vumpus(x)))",
+    "ForAll([x], Implies(vumpus(x), liquid(x)))",
+    "ForAll([x], Implies(vumpus(x), dumpus(x)))",
+    "ForAll([x], Implies(dumpus(x), Not(mean(x))))",
+    "ForAll([x], Implies(dumpus(x), tumpus(x)))",
+    "ForAll([x], Implies(zumpus(x), mean(x)))",
+    "wumpus(sam)"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Sam is mean",
+      "constraint": "mean(sam)"
+    }
+  ],
+  "optimization": [],
+  "actions": [
+    "verify_conditions"
+  ]
+}

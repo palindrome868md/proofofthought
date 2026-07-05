@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D2-1753",
+  "question": "The bear eats the cat. The bear sees the cat. The cat eats the bear. The cat is red. The cat sees the rabbit. The rabbit eats the squirrel. The rabbit sees the squirrel. The squirrel eats the bear. The squirrel eats the cat. The squirrel visits the rabbit. If something sees the cat then the cat visits the squirrel. If something eats the squirrel and the squirrel is green then the squirrel does not visit the cat. If something is nice and it eats the squirrel then the squirrel visits the cat. If something is red and it visits the squirrel then it eats the cat. If the rabbit is not green and the rabbit does not see the bear then the rabbit visits the squirrel. If something visits the bear then the bear eats the rabbit. If the squirrel does not eat the rabbit then the rabbit visits the cat. If something visits the cat and it sees the squirrel then the cat does not eat the bear.\n\nQuestion: The cat visits the squirrel.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 3,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

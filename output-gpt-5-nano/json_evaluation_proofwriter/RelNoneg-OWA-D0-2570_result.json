@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D0-2570",
+  "question": "The bald eagle is round. The bald eagle likes the squirrel. The squirrel eats the bald eagle. The squirrel is blue. The squirrel is kind. The squirrel likes the bald eagle. The squirrel visits the bald eagle. If something is kind then it visits the squirrel. If something eats the bald eagle and it is blue then the bald eagle likes the squirrel. All round, blue things are kind. If something visits the squirrel then the squirrel visits the bald eagle. If the squirrel is blue then the squirrel likes the bald eagle. If something is round then it eats the bald eagle.\n\nQuestion: The bald eagle does not like the squirrel.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

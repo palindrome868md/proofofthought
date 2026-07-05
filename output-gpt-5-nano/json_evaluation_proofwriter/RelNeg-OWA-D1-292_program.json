@@ -1,0 +1,108 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "likes",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "visits",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "blue",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "nice",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "lion",
+        "mouse",
+        "rabbit"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "Not(likes(lion, mouse))",
+    "likes(lion, rabbit)",
+    "visits(lion, mouse)",
+    "Not(eats(mouse, rabbit))",
+    "blue(mouse)",
+    "green(mouse)",
+    "green(rabbit)",
+    "cold(rabbit)",
+    "Not(nice(rabbit))",
+    "visits(rabbit, lion)",
+    "Not(visits(rabbit, mouse))",
+    "eats(rabbit, lion)",
+    "eats(rabbit, mouse)",
+    "visits(mouse, rabbit)",
+    "ForAll([x], Implies(visits(x, mouse), visits(mouse, rabbit)))",
+    "ForAll([x], Implies(cold(x), likes(x, mouse)))",
+    "ForAll([x], Implies(eats(x, mouse), likes(mouse, lion)))",
+    "ForAll([x], Implies(nice(x), likes(x, lion)))",
+    "ForAll([x], Implies(And(likes(x, rabbit), eats(rabbit, lion)), green(rabbit)))"
+  ],
+  "verifications": [
+    {
+      "name": "Rabbit likes mouse",
+      "constraint": "likes(rabbit, mouse)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

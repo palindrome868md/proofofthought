@@ -1,0 +1,74 @@
+{
+  "sorts": [
+    {
+      "name": "Numpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Impuse",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Dumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Vumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Yumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Tumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Zumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Wumpus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Jompus",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Rompus",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "blue",
+      "domain": [
+        "Numpus"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "numpuses": {
+      "sort": "Numpus",
+      "members": [
+        "sally"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "blue(sally)"
+  ],
+  "verifications": [
+    {
+      "name": "Sally blue",
+      "constraint": "blue(sally)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

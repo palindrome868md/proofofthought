@@ -1,0 +1,90 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_in_zodiac",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_chordate",
+      "domain": [
+        "Animal"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "zodiac_animals": {
+      "sort": "Animal",
+      "members": [
+        "rat",
+        "ox",
+        "tiger",
+        "rabbit",
+        "dragon",
+        "snake",
+        "horse",
+        "goat",
+        "monkey",
+        "rooster",
+        "dog",
+        "pig"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "a",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "is_in_zodiac(rat)",
+    "is_in_zodiac(ox)",
+    "is_in_zodiac(tiger)",
+    "is_in_zodiac(rabbit)",
+    "is_in_zodiac(dragon)",
+    "is_in_zodiac(snake)",
+    "is_in_zodiac(horse)",
+    "is_in_zodiac(goat)",
+    "is_in_zodiac(monkey)",
+    "is_in_zodiac(rooster)",
+    "is_in_zodiac(dog)",
+    "is_in_zodiac(pig)",
+    "is_chordate(rat)",
+    "is_chordate(ox)",
+    "is_chordate(tiger)",
+    "is_chordate(rabbit)",
+    "is_chordate(snake)",
+    "is_chordate(horse)",
+    "is_chordate(goat)",
+    "is_chordate(monkey)",
+    "is_chordate(rooster)",
+    "is_chordate(dog)",
+    "is_chordate(pig)",
+    "Not(is_chordate(dragon))"
+  ],
+  "verifications": [
+    {
+      "name": "Existence of a zodiac animal that is chordate",
+      "exists": [
+        {
+          "name": "a",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(is_in_zodiac(a), is_chordate(a))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

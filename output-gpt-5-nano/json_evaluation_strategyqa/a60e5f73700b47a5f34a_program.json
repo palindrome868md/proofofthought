@@ -1,0 +1,58 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Movie",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "plays_in",
+      "domain": [
+        "Person",
+        "Movie"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "captain_of_ship_in_movie",
+      "domain": [
+        "Person",
+        "Movie"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "keith_richards"
+      ]
+    },
+    "movies": {
+      "sort": "Movie",
+      "members": [
+        "pirates_of_caribbean"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "plays_in(keith_richards, pirates_of_caribbean)",
+    "captain_of_ship_in_movie(keith_richards, pirates_of_caribbean)"
+  ],
+  "verifications": [
+    {
+      "name": "Keith Richards is captain of a ship in a movie",
+      "constraint": "And(plays_in(keith_richards, pirates_of_caribbean), captain_of_ship_in_movie(keith_richards, pirates_of_caribbean))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

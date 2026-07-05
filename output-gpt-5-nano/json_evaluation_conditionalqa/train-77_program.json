@@ -1,0 +1,51 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_full_time_student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_working_part_time",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "eligible_for_childcare_grant",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "me",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "is_full_time_student(me)",
+    "is_working_part_time(me)",
+    "Implies(And(is_full_time_student(me), is_working_part_time(me)), eligible_for_childcare_grant(me))"
+  ],
+  "verifications": [
+    {
+      "name": "Is me eligible for Childcare Grant given full-time and part-time work",
+      "constraint": "eligible_for_childcare_grant(me)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

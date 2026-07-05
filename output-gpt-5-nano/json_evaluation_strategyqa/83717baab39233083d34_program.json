@@ -1,0 +1,71 @@
+{
+  "sorts": [
+    {
+      "name": "Organization",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Broadcast",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_from",
+      "domain": [
+        "Broadcast",
+        "Organization"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "year_of",
+      "domain": [
+        "Broadcast"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "makes_news",
+      "domain": [
+        "Broadcast"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "organizations": {
+      "sort": "Organization",
+      "members": [
+        "spirit_airlines"
+      ]
+    },
+    "broadcasts": {
+      "sort": "Broadcast",
+      "members": [
+        "spirit_2020_broadcast"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_from(spirit_2020_broadcast, spirit_airlines)",
+    "year_of(spirit_2020_broadcast) == 2020",
+    "makes_news(spirit_2020_broadcast)"
+  ],
+  "verifications": [
+    {
+      "name": "Would a Spirit broadcast make the news in 2020",
+      "exists": [
+        {
+          "name": "b",
+          "sort": "Broadcast"
+        }
+      ],
+      "constraint": "And(is_from(b, spirit_airlines), year_of(b) == 2020, makes_news(b))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

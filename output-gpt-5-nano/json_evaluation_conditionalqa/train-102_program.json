@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "immediate_risk",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "emergency_order_without_notice",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(immediate_risk(p), emergency_order_without_notice(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can seek emergency order without informing others",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(immediate_risk(p), emergency_order_without_notice(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

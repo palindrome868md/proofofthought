@@ -1,0 +1,48 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_attorney",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "willing_to_act",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(is_attorney(p), willing_to_act(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Cannot appoint an unwilling attorney",
+      "exists": [
+        {
+          "name": "d",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_attorney(d), Not(willing_to_act(d)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

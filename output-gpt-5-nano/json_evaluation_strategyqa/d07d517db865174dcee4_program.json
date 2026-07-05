@@ -1,0 +1,42 @@
+{
+  "sorts": [
+    {
+      "name": "Soup",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_chunks",
+      "domain": [
+        "Soup"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "can_eat_on_liquid_diet",
+      "domain": [
+        "Soup"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Existence of a soup that cannot be eaten on a liquid diet",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "Soup"
+        }
+      ],
+      "constraint": "And(has_chunks(s), Not(can_eat_on_liquid_diet(s)))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

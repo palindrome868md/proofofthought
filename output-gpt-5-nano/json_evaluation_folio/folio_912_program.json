@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "pirate",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "toddler",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kid",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "elderly",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "seafarer",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "nancy"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(kid(x), young(x)))",
+    "ForAll([x], Implies(toddler(x), kid(x)))",
+    "ForAll([x], Implies(young(x), Not(elderly(x))))",
+    "ForAll([x], Implies(pirate(x), seafarer(x)))",
+    "Implies(Not(pirate(nancy)), young(nancy))",
+    "Implies(Not(toddler(nancy)), seafarer(nancy))"
+  ],
+  "verifications": [
+    {
+      "name": "Statement is false given premises",
+      "constraint": "And(Not(pirate(nancy)), Not(toddler(nancy)), Not(And(young(nancy), kid(nancy))))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

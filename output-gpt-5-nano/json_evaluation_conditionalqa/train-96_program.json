@@ -1,0 +1,65 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "core_group",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "savings_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "pension_credit",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "core_group(husband)",
+      "value": true
+    },
+    {
+      "assertion": "core_group(wife)",
+      "value": true
+    },
+    {
+      "assertion": "savings_credit(husband)",
+      "value": true
+    },
+    {
+      "assertion": "savings_credit(wife)",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Warm Home Discount eligibility for couple",
+      "constraint": "Or(core_group(husband), core_group(wife))"
+    }
+  ]
+}

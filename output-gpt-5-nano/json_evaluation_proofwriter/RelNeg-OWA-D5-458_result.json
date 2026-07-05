@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNeg-OWA-D5-458",
+  "question": "The bald eagle sees the cow. The bald eagle does not see the tiger. The bald eagle does not visit the tiger. The cat is not rough. The cow does not visit the bald eagle. The tiger is blue. The tiger is rough. The tiger needs the bald eagle. The tiger needs the cat. The tiger sees the bald eagle. The tiger visits the cat. The tiger visits the cow. If something visits the tiger and the tiger visits the bald eagle then the tiger does not visit the cow. If something needs the tiger and the tiger sees the cat then the tiger sees the bald eagle. If something is blue then it sees the tiger. If something needs the cat then it is nice. If something is nice then it needs the cow. If something needs the bald eagle then it visits the bald eagle. If something needs the cow then the cow needs the cat.\n\nQuestion: The tiger visits the bald eagle.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

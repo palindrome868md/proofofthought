@@ -1,0 +1,123 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Film",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Country",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "directed_by",
+      "domain": [
+        "Film"
+      ],
+      "range": "Person"
+    },
+    {
+      "name": "is_filmmaker",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "from_city",
+      "domain": [
+        "Person"
+      ],
+      "range": "City"
+    },
+    {
+      "name": "from_country",
+      "domain": [
+        "Person"
+      ],
+      "range": "Country"
+    },
+    {
+      "name": "city_country",
+      "domain": [
+        "City"
+      ],
+      "range": "Country"
+    }
+  ],
+  "constants": {
+    "films": {
+      "sort": "Film",
+      "members": [
+        "miss_americana",
+        "after_tiller",
+        "the_departure"
+      ]
+    },
+    "cities": {
+      "sort": "City",
+      "members": [
+        "kirkland"
+      ]
+    },
+    "countries": {
+      "sort": "Country",
+      "members": [
+        "united_states"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "lana_wilson"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "f",
+      "sort": "Film"
+    }
+  ],
+  "knowledge_base": [
+    "directed_by(miss_americana) == lana_wilson",
+    "directed_by(after_tiller) == lana_wilson",
+    "directed_by(the_departure) == lana_wilson",
+    "from_city(lana_wilson) == kirkland",
+    "city_country(kirkland) == united_states"
+  ],
+  "rules": [
+    {
+      "name": "Lana Wilson is a filmmaker if she directs any film",
+      "forall": [
+        {
+          "name": "f",
+          "sort": "Film"
+        }
+      ],
+      "implies": {
+        "antecedent": "directed_by(f) == lana_wilson",
+        "consequent": "is_filmmaker(lana_wilson)"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "name": "Miss Americana is not directed by a filmmaker from Kirkland",
+      "constraint": "Not(And(directed_by(miss_americana) == lana_wilson, is_filmmaker(lana_wilson), from_city(lana_wilson) == kirkland))"
+    }
+  ],
+  "optimization": null,
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_powerpuff",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "tag_team",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "powerpuff_girls": {
+      "sort": "Person",
+      "members": [
+        "blossom",
+        "bubbles",
+        "buttercup"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "is_powerpuff(blossom)",
+    "is_powerpuff(bubbles)",
+    "is_powerpuff(buttercup)",
+    "tag_team(blossom, bubbles)"
+  ],
+  "verifications": [
+    {
+      "name": "Powerpuff Girls can form a tag team",
+      "exists": [
+        {
+          "name": "p1",
+          "sort": "Person"
+        },
+        {
+          "name": "p2",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(is_powerpuff(p1), is_powerpuff(p2), Distinct(p1, p2), tag_team(p1, p2))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

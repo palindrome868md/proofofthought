@@ -1,0 +1,89 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "green",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "red",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "harry"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "furry(harry)",
+    "green(harry)",
+    "kind(harry)",
+    "red(harry)",
+    "rough(harry)",
+    "round(harry)",
+    "Not(young(harry))",
+    "Implies(And(young(harry), green(harry)), kind(harry))",
+    "Implies(Not(young(harry)), rough(harry))",
+    "Implies(And(rough(harry), young(harry)), furry(harry))"
+  ],
+  "verifications": [
+    {
+      "name": "Harry is furry",
+      "constraint": "furry(harry)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "cheating",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "unreasonable_behaviour",
+      "domain": [
+        "Person",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "variables": [
+    {
+      "name": "me",
+      "sort": "Person"
+    },
+    {
+      "name": "partner",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "cheating(partner, me)",
+    "unreasonable_behaviour(me, partner)"
+  ],
+  "verifications": [
+    {
+      "name": "Possible to end civil partnership due to cheating",
+      "constraint": "unreasonable_behaviour(me, partner)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

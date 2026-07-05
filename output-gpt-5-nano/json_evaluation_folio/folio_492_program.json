@@ -1,0 +1,72 @@
+{
+  "sorts": [
+    {
+      "name": "Fish",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "stings",
+      "domain": [
+        "Fish",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "stepped_on",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "treated",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "death",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fish_constants": {
+      "sort": "Fish",
+      "members": [
+        "stonefish"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Exists([p], stepped_on(p))",
+    "ForAll([p], Implies(stepped_on(p), stings(stonefish, p)))",
+    "ForAll([p], Implies(And(stings(stonefish, p), Not(treated(p))), death(p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Stings of some fish can cause death if not treated",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(stings(stonefish, p), Not(treated(p)), death(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

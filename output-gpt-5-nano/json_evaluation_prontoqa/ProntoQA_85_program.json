@@ -1,0 +1,160 @@
+{
+  "sorts": [
+    {
+      "name": "Entity",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_rompous",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_earthy",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_zumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_bitter",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_jompus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dull",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_vumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_tumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_yumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_dumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_wumpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_transparent",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_impuse",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_numpus",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_kind",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "is_temperate",
+      "domain": [
+        "Entity"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "entities": {
+      "sort": "Entity",
+      "members": [
+        "sam"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "x",
+      "sort": "Entity"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([x], Implies(is_rompous(x), Not(is_earthy(x))))",
+    "ForAll([x], Implies(is_rompous(x), is_zumpus(x)))",
+    "ForAll([x], Implies(is_zumpus(x), Not(is_bitter(x))))",
+    "ForAll([x], Implies(is_zumpus(x), is_jompus(x)))",
+    "ForAll([x], Implies(is_jompus(x), is_dull(x)))",
+    "ForAll([x], Implies(is_jompus(x), is_vumpus(x)))",
+    "ForAll([x], Implies(is_vumpus(x), is_tumpus(x)))",
+    "ForAll([x], Implies(is_tumpus(x), is_yumpus(x)))",
+    "ForAll([x], Implies(is_yumpus(x), is_dumpus(x)))",
+    "ForAll([x], Implies(is_dumpus(x), is_wumpus(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_transparent(x)))",
+    "ForAll([x], Implies(is_wumpus(x), is_impuse(x)))",
+    "is_vumpus(sam)"
+  ],
+  "verifications": [
+    {
+      "name": "Sam is not transparent",
+      "constraint": "Not(is_transparent(sam))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

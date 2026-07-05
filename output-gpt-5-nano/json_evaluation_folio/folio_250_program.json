@@ -1,0 +1,64 @@
+{
+  "sorts": [
+    {
+      "name": "Neighborhood",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "member_of",
+      "domain": [
+        "Person",
+        "Neighborhood"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "zipcode",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "neighborhoods": {
+      "sort": "Neighborhood",
+      "members": [
+        "lawton_park"
+      ]
+    },
+    "people": {
+      "sort": "Person",
+      "members": [
+        "tom",
+        "daniel"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([{\"name\":\"p\",\"sort\":\"Person\"}], Implies(member_of(p, lawton_park), zipcode(p) == 98199))",
+    "member_of(tom, lawton_park)",
+    "zipcode(daniel) == 98199"
+  ],
+  "verifications": [
+    {
+      "name": "Tom does not use zip 98199",
+      "constraint": "Not(zipcode(tom) == 98199)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

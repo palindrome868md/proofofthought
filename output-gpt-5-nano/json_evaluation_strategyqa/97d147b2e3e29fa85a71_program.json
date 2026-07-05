@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Church",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "recognizes_saint",
+      "domain": [
+        "Church",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "churches": {
+      "sort": "Church",
+      "members": [
+        "ukrainian_greek_catholic_church"
+      ]
+    },
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "alexander_nevsky"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    {
+      "assertion": "Not(recognizes_saint(ukrainian_greek_catholic_church, alexander_nevsky))",
+      "value": true
+    }
+  ],
+  "verifications": [
+    {
+      "name": "UGCC does not recognize Alexander Nevsky as a saint",
+      "constraint": "recognizes_saint(ukrainian_greek_catholic_church, alexander_nevsky)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

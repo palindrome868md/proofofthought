@@ -1,0 +1,68 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "School",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "has_disability",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "offers_admission",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "withdraw_offer_due_to_disability",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "discriminate_on_disability",
+      "domain": [
+        "School",
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([s, p], Implies(And(offers_admission(s, p), has_disability(p)), Not(discriminate_on_disability(s, p))))",
+    "ForAll([s, p], Not(withdraw_offer_due_to_disability(s, p)))"
+  ],
+  "verifications": [
+    {
+      "name": "Can a school rescind admission due to disability",
+      "exists": [
+        {
+          "name": "s",
+          "sort": "School"
+        },
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "withdraw_offer_due_to_disability(s, p)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

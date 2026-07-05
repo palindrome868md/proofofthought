@@ -1,0 +1,52 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "on_benefits",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "fee_exemption",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "you"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "on_benefits(you)",
+    "fee_exemption(you)"
+  ],
+  "verifications": [
+    {
+      "name": "Can I get assistance with the cost of an LPA",
+      "exists": [
+        {
+          "name": "p",
+          "sort": "Person"
+        }
+      ],
+      "constraint": "And(on_benefits(p), fee_exemption(p))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

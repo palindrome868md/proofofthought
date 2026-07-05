@@ -1,0 +1,59 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "missing_years_of",
+      "domain": [
+        "Person"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "missing_due_to_disaster",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "declaration_possible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "missing_persons": {
+      "sort": "Person",
+      "members": [
+        "my_brother"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(And(missing_years_of(p) <= 7, missing_due_to_disaster(p)), declaration_possible(p)))",
+    "missing_years_of(my_brother) == 2",
+    "missing_due_to_disaster(my_brother)"
+  ],
+  "verifications": [
+    {
+      "name": "Declaration of presumed death possible for my_brother",
+      "constraint": "declaration_possible(my_brother)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "ProntoQA_81",
+  "question": "Jompuses are not dull. Every wumpus is opaque. Wumpuses are dumpuses. Every dumpus is not floral. Dumpuses are numpuses. Each numpus is not luminous. Each numpus is a vumpus. Every vumpus is large. Vumpuses are tumpuses. Every tumpus is not orange. Every tumpus is a zumpus. Zumpuses are dull. Every zumpus is an impus. Every impus is spicy. Every impus is a rompus. Rompuses are not temperate. Every rompus is a yumpus. Sam is a dumpus.\n\nIs the following statement true or false? Sam is dull.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "RelNoneg-OWA-D1-2930",
+  "question": "The bald eagle sees the rabbit. The rabbit likes the bald eagle. The squirrel is blue. If something likes the bald eagle then it is blue. If something likes the bald eagle and it sees the bald eagle then the bald eagle is blue. If something chases the rabbit then the rabbit is young.\n\nQuestion: The rabbit is blue.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 1,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

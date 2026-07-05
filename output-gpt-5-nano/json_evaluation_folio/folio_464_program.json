@@ -1,0 +1,61 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "Instrument",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "plays_in_concert",
+      "domain": [
+        "Person",
+        "Instrument"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "peter",
+        "oliver"
+      ]
+    },
+    "instruments": {
+      "sort": "Instrument",
+      "members": [
+        "piano",
+        "violin",
+        "saxophone"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "i",
+      "sort": "Instrument"
+    }
+  ],
+  "knowledge_base": [
+    "plays_in_concert(peter, piano)",
+    "plays_in_concert(peter, violin)",
+    "plays_in_concert(peter, saxophone)",
+    "Exists([i], plays_in_concert(oliver, i))",
+    "ForAll([i], Implies(plays_in_concert(oliver, i), Not(plays_in_concert(peter, i))))"
+  ],
+  "verifications": [
+    {
+      "name": "Oliver plays piano in the concert",
+      "constraint": "plays_in_concert(oliver, piano)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

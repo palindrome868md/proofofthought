@@ -1,0 +1,37 @@
+{
+  "sorts": [
+    {
+      "name": "Dish",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "contains_plastic",
+      "domain": [
+        "Dish"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "dishes": {
+      "sort": "Dish",
+      "members": [
+        "shrimp_scampi"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "Not(contains_plastic(shrimp_scampi))"
+  ],
+  "verifications": [
+    {
+      "name": "Shrimp Scampi is definitely free of plastic",
+      "constraint": "Not(contains_plastic(shrimp_scampi))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

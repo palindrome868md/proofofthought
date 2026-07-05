@@ -1,0 +1,76 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "drinks_coffee",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "dependent",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "wants_addiction",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "aware_of_caffeine_drug",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "student",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "rina"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([p], Implies(drinks_coffee(p), dependent(p)))",
+    "ForAll([p], Or(drinks_coffee(p), Not(wants_addiction(p))))",
+    "ForAll([p], Implies(Not(wants_addiction(p)), Not(aware_of_caffeine_drug(p))))",
+    "Or( And(student(rina), Not(aware_of_caffeine_drug(rina))), And(Not(student(rina)), aware_of_caffeine_drug(rina)) )",
+    "Or( And(student(rina), dependent(rina)), And(Not(student(rina)), Not(dependent(rina))) )"
+  ],
+  "rules": [],
+  "verifications": [
+    {
+      "name": "Antecedent implies consequent for Rina",
+      "constraint": "Implies( Or( And(Not(wants_addiction(rina)), Not(aware_of_caffeine_drug(rina))), And(wants_addiction(rina), aware_of_caffeine_drug(rina)) ), And(Not(wants_addiction(rina)), drinks_coffee(rina)) )"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNeg-OWA-D3-1151",
+  "question": "Anne is red. Bob is not nice. Charlie is blue. If someone is young then they are green. If someone is young and green then they are not red. Red people are white. If Charlie is white then Charlie is blue. All white people are not young. If someone is red and not young then they are nice.\n\nQuestion: Anne is nice.",
+  "ground_truth": true,
+  "answer": true,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 1,
+  "unsat_count": 0,
+  "error": null
+}

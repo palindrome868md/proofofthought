@@ -1,0 +1,80 @@
+{
+  "sorts": [
+    {
+      "name": "ChildType",
+      "type": "DeclareSort"
+    },
+    {
+      "name": "CareRate",
+      "type": "EnumSort",
+      "values": [
+        "Lowest",
+        "Middle",
+        "Highest"
+      ]
+    },
+    {
+      "name": "MobilityRate",
+      "type": "EnumSort",
+      "values": [
+        "Lower",
+        "Higher"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "under_16",
+      "domain": [
+        "ChildType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "needs_extra_looking_after",
+      "domain": [
+        "ChildType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "has_walking_difficulties",
+      "domain": [
+        "ChildType"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "care_rate",
+      "domain": [
+        "ChildType"
+      ],
+      "range": "CareRate"
+    },
+    {
+      "name": "mobility_rate",
+      "domain": [
+        "ChildType"
+      ],
+      "range": "MobilityRate"
+    }
+  ],
+  "constants": {},
+  "variables": [],
+  "knowledge_base": [],
+  "verifications": [
+    {
+      "name": "Maximum DLA for under-16 child with highest care and mobility needs",
+      "exists": [
+        {
+          "name": "child",
+          "sort": "ChildType"
+        }
+      ],
+      "constraint": "And(under_16(child), needs_extra_looking_after(child), has_walking_difficulties(child), care_rate(child) == Highest, mobility_rate(child) == Higher)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

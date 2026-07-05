@@ -1,0 +1,11 @@
+{
+  "sample_id": "AttNoneg-OWA-D3-49",
+  "question": "Bob is big. Bob is kind. Bob is red. Fiona is big. Fiona is cold. Fiona is kind. Fiona is red. Fiona is young. Gary is blue. Gary is cold. Gary is kind. Gary is red. Gary is rough. Gary is young. Harry is blue. All red people are blue. If someone is blue then they are young. Red, young people are cold.\n\nQuestion: Harry is not young.",
+  "ground_truth": false,
+  "answer": false,
+  "success": true,
+  "num_attempts": 2,
+  "sat_count": 0,
+  "unsat_count": 1,
+  "error": null
+}

@@ -1,0 +1,66 @@
+{
+  "sorts": [
+    {
+      "name": "Animal",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "eats",
+      "domain": [
+        "Animal",
+        "Animal"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "energy",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    },
+    {
+      "name": "daily_energy_requirement",
+      "domain": [
+        "Animal"
+      ],
+      "range": "IntSort"
+    }
+  ],
+  "constants": {
+    "animals": {
+      "sort": "Animal",
+      "members": [
+        "bee_hummingbird"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "ocelot",
+      "sort": "Animal"
+    }
+  ],
+  "knowledge_base": [
+    "eats(ocelot, bee_hummingbird)",
+    "energy(bee_hummingbird) == 400",
+    "daily_energy_requirement(ocelot) == 1000"
+  ],
+  "verifications": [
+    {
+      "name": "Ocelot cannot subsist on a single bee_hummingbird per day",
+      "exists": [
+        {
+          "name": "b",
+          "sort": "Animal"
+        }
+      ],
+      "constraint": "And(eats(ocelot, b), energy(b) >= daily_energy_requirement(ocelot), b == bee_hummingbird)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

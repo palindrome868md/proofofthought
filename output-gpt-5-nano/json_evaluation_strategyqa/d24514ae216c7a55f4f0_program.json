@@ -1,0 +1,38 @@
+{
+  "sorts": [
+    {
+      "name": "City",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "is_on_west_coast",
+      "domain": [
+        "City"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "cities": {
+      "sort": "City",
+      "members": [
+        "miami"
+      ]
+    }
+  },
+  "variables": [],
+  "knowledge_base": [
+    "Not(is_on_west_coast(miami))"
+  ],
+  "verifications": [
+    {
+      "name": "Is Miami on the American West Coast",
+      "constraint": "is_on_west_coast(miami)"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

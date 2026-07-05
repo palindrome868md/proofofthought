@@ -1,0 +1,43 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "pregnant_by_another_at_marriage",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "annulment_possible",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "persons": {
+      "sort": "Person",
+      "members": [
+        "husband",
+        "wife"
+      ]
+    }
+  },
+  "knowledge_base": [
+    "pregnant_by_another_at_marriage(wife)",
+    "annulment_possible(husband)"
+  ],
+  "verifications": [
+    {
+      "name": "Annulment possible due to wife's pregnancy by another at marriage",
+      "constraint": "annulment_possible(husband)"
+    }
+  ]
+}

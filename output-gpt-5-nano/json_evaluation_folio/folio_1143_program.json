@@ -1,0 +1,83 @@
+{
+  "sorts": [
+    {
+      "name": "Fruit",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "red_fruit",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "grows_in_ben",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "vitamin_c",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "healthy",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "on_warning_list",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "apple",
+      "domain": [
+        "Fruit"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "fruits": {
+      "sort": "Fruit",
+      "members": [
+        "cherries"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "f",
+      "sort": "Fruit"
+    }
+  ],
+  "knowledge_base": [
+    "ForAll([f], Implies(And(red_fruit(f), grows_in_ben(f)), vitamin_c(f)))",
+    "ForAll([f], Implies(And(apple(f), grows_in_ben(f)), red_fruit(f)))",
+    "ForAll([f], Implies(And(grows_in_ben(f), vitamin_c(f)), healthy(f)))",
+    "ForAll([f], Implies(And(grows_in_ben(f), healthy(f)), Not(on_warning_list(f))))",
+    "grows_in_ben(cherries)",
+    "Implies(And(Not(apple(cherries)), Not(healthy(cherries))), red_fruit(cherries))"
+  ],
+  "verifications": [
+    {
+      "name": "Cherries contain vitamin C or are on the warning list",
+      "constraint": "Or(vitamin_c(cherries), on_warning_list(cherries))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}

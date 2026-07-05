@@ -1,0 +1,101 @@
+{
+  "sorts": [
+    {
+      "name": "Person",
+      "type": "DeclareSort"
+    }
+  ],
+  "functions": [
+    {
+      "name": "furry",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "round",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "young",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "rough",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "big",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "kind",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    },
+    {
+      "name": "cold",
+      "domain": [
+        "Person"
+      ],
+      "range": "BoolSort"
+    }
+  ],
+  "constants": {
+    "people": {
+      "sort": "Person",
+      "members": [
+        "charlie",
+        "erin",
+        "fiona"
+      ]
+    }
+  },
+  "variables": [
+    {
+      "name": "p",
+      "sort": "Person"
+    }
+  ],
+  "knowledge_base": [
+    "furry(charlie)",
+    "round(charlie)",
+    "young(charlie)",
+    "furry(erin)",
+    "rough(erin)",
+    "rough(fiona)",
+    "round(fiona)",
+    "ForAll([p], Implies(kind(p), cold(p)))",
+    "ForAll([p], Implies(big(p), round(p)))",
+    "ForAll([p], Implies(And(rough(p), furry(p)), big(p)))",
+    "ForAll([p], Implies(And(kind(p), young(p)), cold(p)))",
+    "ForAll([p], Implies(And(round(p), furry(p)), cold(p)))",
+    "ForAll([p], Implies(big(p), kind(p)))",
+    "Implies(cold(fiona), rough(fiona))",
+    "Implies(And(furry(fiona), rough(fiona)), round(fiona))"
+  ],
+  "verifications": [
+    {
+      "name": "Erin not cold",
+      "constraint": "Not(cold(erin))"
+    }
+  ],
+  "actions": [
+    "verify_conditions"
+  ]
+}
