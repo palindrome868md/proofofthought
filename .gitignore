@@ -1,5 +1,6 @@
 outputs/*
 output/*
+outputLog.txt
 examples/folio_v2_train.jsonl
 examples/folio_v2_train_processed.json
 
